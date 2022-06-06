@@ -1,0 +1,66 @@
+services:
+
+  mongodb:
+    container_name: mongodb
+    image: mongo:4.4.14-focal
+    restart: unless-stopped
+    ports:
+      - '27020:27017'
+    networks:
+      netlab01:
+        ipv4_address: ${MONGODB_HOST}
+    volumes:
+      - mongodata:/data/db:rw
+      - $PWD/mongodb/config:/etc/mongo:ro
+      - $PWD/mongodb/init:/docker-entrypoint-initdb.d:ro
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=${SVC_PWD}
+    command: --config /etc/mongo/custom.conf
+
+  mongodb01:
+    container_name: mongodb01
+    image: mongo:4.4.14-focal
+    restart: unless-stopped
+    ports:
+      - '27021:27017'
+    networks:
+      netlab01:
+        ipv4_address: ${MONGODB_HOST01}
+    volumes:
+      - mongodata01:/data/db:rw
+      - $PWD/mongodb01/config:/etc/mongo:ro
+      - $PWD/mongodb01/init:/docker-entrypoint-initdb.d:ro
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=${SVC_PWD_01}
+    command: --config /etc/mongo/custom.conf
+
+  mongodb02:
+    container_name: mongodb02
+    image: mongo:4.4.14-focal
+    restart: unless-stopped
+    ports:
+      - '27022:27017'
+    networks:
+      netlab01:
+        ipv4_address: ${MONGODB_HOST02}
+    volumes:
+      - mongodata02:/data/db:rw
+      - $PWD/mongodb02/config/:/etc/mongo:ro
+      - $PWD/mongodb02/init:/docker-entrypoint-initdb.d:ro
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=${SVC_PWD_02}
+    command: --config /etc/mongo/custom.conf
+
+volumes:
+  mongodata:
+    name: mongodata
+    driver: local
+  mongodata01:
+    name: mongodata01
+    driver: local
+  mongodata02:
+    name: mongodata02
+    driver: local

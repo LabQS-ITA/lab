@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+function create_user() {
+
+    sudo adduser --disabled-password --gecos "" $1
+    sudo usermod --password $(echo p4ssw0rd | openssl passwd -1 -stdin) $1
+    sudo passwd --expire $1
+
+}
+
+function create_operator() {
+
+    create_user $1
+
+    sudo usermod -a -G docker $1
+
+}
+
+# User maint (já deve ter sido criado ao configurar o ambiente)
+# create_user gpes
+# usermod -aG sudo gpes
+
+# Professores SI-TIH
+create_user cunha
+create_user vieira
+create_user lineu
+create_user loubach
+create_user saotome
+
+# Pesquisadores SI-TIH
+create_operator lippi
+create_operator gomes
+
+# Pesquisadores STAMPS
+create_operator gildarcio
+create_operator jean

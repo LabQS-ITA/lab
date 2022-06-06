@@ -1,0 +1,1 @@
+# Serviço de cópias de segurança de dados do Laboratório de Testes de Software

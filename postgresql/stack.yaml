@@ -1,0 +1,63 @@
+services:
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - '5400:5432'
+    networks:
+      netlab01:
+        ipv4_address: ${POSTGRES_HOST}
+    volumes:
+      - postgresdata:/var/lib/postgresql/data
+      - $PWD/postgres/config:/etc/postgresql
+      - $PWD/postgres/init:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_PASSWORD=${SVC_PWD}
+    command: -c config_file=/etc/postgresql/postgresql.conf
+
+  postgres01:
+    container_name: postgres01
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - '5401:5432'
+    networks:
+      netlab01:
+        ipv4_address: ${POSTGRES_HOST01}
+    volumes:
+      - postgresdata01:/var/lib/postgresql/data
+      - $PWD/postgres01/config:/etc/postgresql
+      - $PWD/postgres01/init:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_PASSWORD=${SVC_PWD_01}
+    command: -c config_file=/etc/postgresql/postgresql.conf
+
+  postgres02:
+    container_name: postgres02
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - '5402:5432'
+    networks:
+      netlab01:
+        ipv4_address: ${POSTGRES_HOST02}
+    volumes:
+      - postgresdata02:/var/lib/postgresql/data
+      - $PWD/postgres02/config:/etc/postgresql
+      - $PWD/postgres02/init:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_PASSWORD=${SVC_PWD_02}
+    command: -c config_file=/etc/postgresql/postgresql.conf
+
+volumes:
+  postgresdata:
+    name: postgresdata
+    driver: local
+  postgresdata01:
+    name: postgresdata01
+    driver: local
+  postgresdata02:
+    name: postgresdata02
+    driver: local

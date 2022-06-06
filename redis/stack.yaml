@@ -1,0 +1,53 @@
+services:
+
+  redis01:
+    container_name: redis01
+    image: redis:alpine
+    ports:
+      - '6301:6379'
+    networks:
+      netlab01:
+        ipv4_address: ${REDIS_HOST01}
+    volumes:
+      - $PWD/config:/usr/local/etc/redis/redis.conf:ro
+      - redisdata01:/data:rw
+    environment:
+      - REDIS_REPLICATION_MODE=master
+    command: ["redis-server", "--requirepass", "${SVC_PWD_01}", "--appendonly", "yes"]
+
+  redis02:
+    container_name: redis02
+    image: redis:alpine
+    ports:
+      - '6302:6379'
+    networks:
+      netlab01:
+        ipv4_address: ${REDIS_HOST02}
+    volumes:
+      - $PWD/config:/usr/local/etc/redis/redis.conf:ro
+      - redisdata02:/data:rw
+    environment:
+      - REDIS_REPLICATION_MODE=master
+    command: ["redis-server", "--requirepass", "${SVC_PWD_02}", "--appendonly", "yes"]
+
+  redis-commander:
+    container_name: commander
+    image: rediscommander/redis-commander:latest
+    ports:
+      - '8081:8081'
+    networks:
+      netlab01:
+        ipv4_address: ${COMMANDER_HOST}
+    environment:
+      - URL_PREFIX=/commander
+    depends_on:
+      - redis01
+      - redis02
+
+volumes:
+  redisdata01:
+    name: redisdata01
+    driver: local
+  redisdata02:
+    name: redisdata02
+    driver: local

@@ -1,0 +1,11 @@
+concurrent = 4
+log_level = "warning"
+
+[[runners]]
+  name = "shell"
+  url = "http://192.168.15.201:8002"
+  token = "d0f2a810d982a88c14d6ab4b"
+  limit = 2
+  executor = "shell"
+  builds_dir = ""
+  shell = "bash"

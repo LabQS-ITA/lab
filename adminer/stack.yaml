@@ -1,0 +1,11 @@
+services:
+
+  adminer:
+    container_name: adminer
+    image: dockette/adminer:full
+    restart: unless-stopped
+    ports:
+      - '8080:80'
+    networks:
+      netlab01:
+        ipv4_address: ${ADMINER_HOST}

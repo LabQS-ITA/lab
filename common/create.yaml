@@ -1,0 +1,15 @@
+networks:
+  netlab01:
+    driver: bridge
+    name: netlab01
+    ipam:
+      config:
+        - subnet: '172.1.0.0/16'
+
+services:
+  netlab:
+    container_name: netlab
+    restart: always
+    image: tianon/true
+    networks:
+      - netlab01

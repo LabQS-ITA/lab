@@ -1,0 +1,14 @@
+services:
+
+  httpd:
+    container_name: httpd
+    image: httpd
+    restart: unless-stopped
+    ports:
+      - '80:80'
+    networks:
+      netlab01:
+        ipv4_address: ${HTTPD_HOST}
+    volumes:
+      - $PWD/panel/static:/usr/local/apache2/htdocs:ro
+      - $PWD/panel/config:/usr/local/apache2/conf:ro

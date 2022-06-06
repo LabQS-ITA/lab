@@ -1,0 +1,10 @@
+services:
+
+  hdfs01:
+    container_name: hdfs01
+    image: apache/hadoop
+    restart: unless-stopped
+    ports:
+      - '${SERVER_HOST}:5400:5432'
+    networks:
+      - netlab01

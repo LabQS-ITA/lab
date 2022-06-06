@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $EUID -ne 0 ]]; then
+   echo "Executar como root" 1>&2
+   exit 1
+fi
+
+read -p "Tem certeza? " -n 1 -r
+if [[ $REPLY =~ ^[Ss]$ ]]
+then
+    echo
+    echo -e "Excluindo dados em ../../postgresNN/data/"
+
+    rm -rf ../../postgres01/data/*
+    rm -rf ../../postgres02/data/*
+fi

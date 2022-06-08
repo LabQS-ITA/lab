@@ -3,6 +3,7 @@ services:
   redis01:
     container_name: redis01
     image: redis:alpine
+    restart: unless-stopped
     ports:
       - '6301:6379'
     networks:
@@ -18,6 +19,7 @@ services:
   redis02:
     container_name: redis02
     image: redis:alpine
+    restart: unless-stopped
     ports:
       - '6302:6379'
     networks:
@@ -33,6 +35,7 @@ services:
   redis-commander:
     container_name: commander
     image: rediscommander/redis-commander:latest
+    restart: unless-stopped
     ports:
       - '8081:8081'
     networks:

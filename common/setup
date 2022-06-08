@@ -83,7 +83,7 @@ export MARIADB_HOST02=172.1.9.202
 cd ../gitea
 echo '* Gitea *'
 
-echo 'Navegar até a página de configuração do serviço (http://'$GITEA_HOST
+echo 'Navegar até a página de configuração do serviço http://test.labqs.ita.br/git'
 echo 'e definir a conta do administrador (no final da página, em "Optional Settings")'
 
 echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) > .env

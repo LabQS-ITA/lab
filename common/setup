@@ -93,7 +93,7 @@ export MARIADB_HOST02=172.1.9.202
 
 cd ../drone
 echo '* Drone *'
-echo 'Gere uma aplicação OAuth no Gitea para o Drone em http://'$GITEA_HOST
+echo 'Gere uma aplicação OAuth no Gitea para o Drone em http://test.labqs.ita.br/git'
 echo 'Após gerar a aplicação informe os dados abaixo'
 read -p 'Informe o "Client ID": ' GID
 read -p 'Informe o "Client Secret": ' GSCRT

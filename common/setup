@@ -30,54 +30,54 @@ export MARIADB_HOST01=172.1.9.201
 export MARIADB_HOST02=172.1.9.202
 
 
-# cd ../httpd
-# echo '* Apache HTTPD *'
+cd ../httpd
+echo '* Apache HTTPD *'
 
-# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
-
-# cd ../postgresql
-# echo '* PostgreSQL *'
-
-# echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-# echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
-# echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
-
-# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-# cd ../mongodb
-# echo '* MongoDB *'
+cd ../postgresql
+echo '* PostgreSQL *'
 
-# echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-# echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
-# echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
+echo 'SVC_PWD='$(openssl rand -hex 8) > .env
+echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
+echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 
-# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
-
-# cd ../mariadb
-# echo '* MongoDB *'
-
-# echo 'SVC_PWD_01='$(openssl rand -hex 8) > .env
-# echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
-
-# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-# cd ../redis
-# echo '* Redis *'
+cd ../mongodb
+echo '* MongoDB *'
 
-# echo 'SVC_PWD_01='$(openssl rand -hex 8) > .env
-# echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
+echo 'SVC_PWD='$(openssl rand -hex 8) > .env
+echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
+echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 
-# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-# cd ../adminer
-# echo '* Adminer *'
+cd ../mariadb
+echo '* MongoDB *'
 
-# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+echo 'SVC_PWD_01='$(openssl rand -hex 8) > .env
+echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
+
+docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
+cd ../redis
+echo '* Redis *'
+
+echo 'SVC_PWD_01='$(openssl rand -hex 8) > .env
+echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
+
+docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
+cd ../adminer
+echo '* Adminer *'
+
+docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 cd ../gitea

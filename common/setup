@@ -30,65 +30,65 @@ export MARIADB_HOST01=172.1.9.201
 export MARIADB_HOST02=172.1.9.202
 
 
-cd ../httpd
-echo '* Apache HTTPD *'
+# cd ../httpd
+# echo '* Apache HTTPD *'
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
-
-cd ../postgresql
-echo '* PostgreSQL *'
-
-echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
-echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
-
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../mongodb
-echo '* MongoDB *'
+# cd ../postgresql
+# echo '* PostgreSQL *'
 
-echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
-echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
+# echo 'SVC_PWD='$(openssl rand -hex 8) > .env
+# echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
+# echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
-
-cd ../mariadb
-echo '* MongoDB *'
-
-echo 'SVC_PWD_01='$(openssl rand -hex 8) > .env
-echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
-
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../redis
-echo '* Redis *'
+# cd ../mongodb
+# echo '* MongoDB *'
 
-echo 'SVC_PWD_01='$(openssl rand -hex 8) > .env
-echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
+# echo 'SVC_PWD='$(openssl rand -hex 8) > .env
+# echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
+# echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
-
-cd ../adminer
-echo '* Adminer *'
-
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../gitea
-echo '* Gitea *'
+# cd ../mariadb
+# echo '* MongoDB *'
 
-echo 'Navegar até a página de configuração do serviço (http://'$GITEA_HOST
-echo 'e definir a conta do administrador (no final da página, em "Optional Settings")'
+# echo 'SVC_PWD_01='$(openssl rand -hex 8) > .env
+# echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 
-echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) > .env
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+# cd ../redis
+# echo '* Redis *'
+
+# echo 'SVC_PWD_01='$(openssl rand -hex 8) > .env
+# echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
+
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
+# cd ../adminer
+# echo '* Adminer *'
+
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
+# cd ../gitea
+# echo '* Gitea *'
+
+# echo 'Navegar até a página de configuração do serviço (http://'$GITEA_HOST
+# echo 'e definir a conta do administrador (no final da página, em "Optional Settings")'
+
+# echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) > .env
+
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 cd ../drone
@@ -98,7 +98,7 @@ echo 'Após gerar a aplicação informe os dados abaixo'
 read -p 'Informe o "Client ID": ' GID
 read -p 'Informe o "Client Secret": ' GSCRT
 
-echo 'DRONE_HOST='$DRONE_HOST > .env
+echo 'DRONE_HOST=ci.test.labqs.ita.br' > .env
 echo 'GITEA_HOST='$GITEA_HOST >> .env
 echo 'DRONE_TOKEN='$(openssl rand -hex 32) >> .env
 echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env

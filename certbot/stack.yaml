@@ -1,6 +1,6 @@
 services:
 
-  httpd:
+  certbot:
     container_name: certbot
     image: certbot
     restart: unless-stopped

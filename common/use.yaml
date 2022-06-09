@@ -1,3 +1,7 @@
 networks:
   netlab01:
     external: true
+
+volumes:
+  varwww:
+    name: varwww

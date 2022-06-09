@@ -11,4 +11,4 @@ services:
       - varwww:/var/www/letsencrypt:rw
       - $PWD/etc/letsencrypt:/etc/letsencrypt:rw
       - $PWD/var/lib/letsencrypt:/var/lib/letsencrypt:rw
-    command: [ "certbot", "certonly"]
+    command: [ "certonly" ]

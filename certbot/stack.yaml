@@ -1,0 +1,13 @@
+services:
+
+  httpd:
+    container_name: certbot
+    image: certbot
+    restart: unless-stopped
+    networks:
+      netlab01:
+        ipv4_address: ${CERTBOT_HOST}
+    volumes:
+      - varwww:/var/www/letsencrypt:rw
+      - $PWD/etc/letsencrypt:/etc/letsencrypt:ro
+      - $PWD/var/lib/letsencrypt:/var/lib/letsencrypt:ro

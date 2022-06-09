@@ -13,3 +13,8 @@ services:
     image: tianon/true
     networks:
       - netlab01
+
+volumes:
+  varwww:
+    name: varwww
+    driver: local

@@ -2,7 +2,7 @@ services:
 
   certbot:
     container_name: certbot
-    image: certbot
+    image: certbot/certbot
     restart: unless-stopped
     networks:
       netlab01:

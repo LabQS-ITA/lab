@@ -32,10 +32,10 @@ export MARIADB_HOST01=172.1.9.201
 export MARIADB_HOST02=172.1.9.202
 
 
-cd ../httpd
-echo '* Apache HTTPD *'
+# cd ../httpd
+# echo '* Apache HTTPD *'
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 cd ../certbot

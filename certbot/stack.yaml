@@ -2,7 +2,7 @@ services:
 
   certbot:
     container_name: certbot
-    image: certbot/certbot
+    image: blacklabelops/letsencrypt
     restart: unless-stopped
     networks:
       netlab01:
@@ -10,5 +10,7 @@ services:
     volumes:
       - varwww:/var/www/letsencrypt:rw
       - $PWD/etc/letsencrypt:/etc/letsencrypt:rw
-      - $PWD/var/lib/letsencrypt:/var/lib/letsencrypt:rw
-    command: [ "certonly", "certonly" ]
+    environment:
+      - LETSENCRYPT_EMAIL=gomesjm@ita.br
+      - LETSENCRYPT_DOMAIN1=test.labqs.ita.br
+      - LETSENCRYPT_DOMAIN2=ci.test.labqs.ita.br

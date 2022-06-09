@@ -10,4 +10,4 @@ services:
     volumes:
       - varwww:/var/www/letsencrypt:rw
       - $PWD/etc/letsencrypt:/etc/letsencrypt:rw
-      - $PWD/var/lib/letsencrypt:/var/lib/letsencrypt:ro
+      - $PWD/var/lib/letsencrypt:/var/lib/letsencrypt:rw

@@ -8,5 +8,6 @@ services:
       netlab01:
         ipv4_address: ${CERTBOT_HOST}
     volumes:
-      - $PWD/etc/letsencrypt:/etc/letsencrypt:rw
+      - $PWD/etc:/etc:rw
+      - $PWD/var:/var:rw
     command: [ "certbot", "certonly --standalone  --preferred-challenges http --agree-tos -n -d 'test.labqs.ita.br'"]

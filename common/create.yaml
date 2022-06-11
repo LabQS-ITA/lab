@@ -15,6 +15,6 @@ services:
       - netlab01
 
 volumes:
-  varwww:
-    name: varwww
+  certificates:
+    name: certificates
     driver: local

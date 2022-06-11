@@ -3,5 +3,5 @@ networks:
     external: true
 
 volumes:
-  varwww:
-    name: varwww
+  certificates:
+    name: certificates

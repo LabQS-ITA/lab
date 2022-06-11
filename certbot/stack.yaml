@@ -10,8 +10,8 @@ services:
       netlab01:
         ipv4_address: ${CERTBOT_HOST}
     volumes:
-      - $PWD/etc:/etc:rw
-      - $PWD/var:/var:rw
+      - $PWD/etc/letsencrypt:/etc/letsencrypt:rw
+      - $PWD/var/lib/letsencrypt:/var/lib/letsencrypt:rw
     command: 
       - 'certonly'
       - '--standalone'
@@ -20,3 +20,5 @@ services:
       - '-n'
       - '-d test.labqs.ita.br'
       - '-d ci.test.labqs.ita.br'
+      - '--dry-run'
+      - '--test-cert'

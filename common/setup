@@ -38,16 +38,10 @@ export MARIADB_HOST02=172.1.9.202
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-# cd ../certbot
-# echo '* Letsencrypt certbot *'
-
-# docker-compose -f register.yaml -f ../common/use.yaml up --detach
-
-
 cd ../certbot
 echo '* Letsencrypt certbot *'
 
-docker-compose -f renew.yaml -f ../common/use.yaml up --detach
+docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 # cd ../postgresql

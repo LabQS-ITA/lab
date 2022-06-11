@@ -322,4 +322,7 @@ ipython_config.py
 # Trash
 *.keep
 
+# Certificates
+*.pem
+
 # End of https://www.toptal.com/developers/gitignore/api/latex

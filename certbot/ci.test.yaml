@@ -19,5 +19,4 @@ services:
       - '--agree-tos'
       - '-m gomesjm@ita.br'
       - '-n'
-      - '-d test.labqs.ita.br'
       - '-d ci.test.labqs.ita.br'

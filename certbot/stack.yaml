@@ -2,15 +2,11 @@ services:
 
   certbot:
     container_name: certbot
-    image: blacklabelops/letsencrypt
+    image: certbot/certbot
     restart: unless-stopped
     networks:
       netlab01:
         ipv4_address: ${CERTBOT_HOST}
     volumes:
-      - varwww:/var/www/letsencrypt:rw
       - $PWD/etc/letsencrypt:/etc/letsencrypt:rw
-    environment:
-      - LETSENCRYPT_EMAIL=gomesjm@ita.br
-      - LETSENCRYPT_DOMAIN1=test.labqs.ita.br
-      - LETSENCRYPT_DOMAIN2=ci.test.labqs.ita.br
+    command: [ "certbot", "certonly --standalone  --preferred-challenges http --agree-tos -n -d 'test.labqs.ita.br'"]

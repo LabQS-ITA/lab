@@ -3,11 +3,20 @@ services:
   certbot:
     container_name: certbot
     image: certbot/certbot
-    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
     networks:
       netlab01:
         ipv4_address: ${CERTBOT_HOST}
     volumes:
       - $PWD/etc:/etc:rw
       - $PWD/var:/var:rw
-    command: [ "certbot", "certonly --standalone  --preferred-challenges http --agree-tos -n -d 'test.labqs.ita.br'"]
+    command: 
+      - 'certonly'
+      - '--standalone'
+      - '--agree-tos'
+      - '-m gomesjm@ita.br'
+      - '-n'
+      - '-d test.labqs.ita.br'
+      - '-d ci.test.labqs.ita.br'

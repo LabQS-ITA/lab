@@ -6,6 +6,7 @@ services:
     restart: unless-stopped
     ports:
       - '80:80'
+      - '443:443'
     networks:
       netlab01:
         ipv4_address: ${HTTPD_HOST}

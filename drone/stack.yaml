@@ -19,7 +19,7 @@ services:
       - DRONE_DATABASE_DRIVER=postgres
       - DRONE_DATABASE_DATASOURCE=postgres://drone:${POSTGRES_PWD}@postgres:5432/drone?sslmode=disable
       - DRONE_SERVER_HOST=ci.test.labqs.ita.br
-      - DRONE_SERVER_PROTO=http
+      - DRONE_SERVER_PROTO=https
       - DRONE_GITEA_SERVER=http://test.labqs.ita.br/git
       - DRONE_GITEA_CLIENT_ID=${GITEA_ID}
       - DRONE_GITEA_CLIENT_SECRET=${GITEA_PWD}

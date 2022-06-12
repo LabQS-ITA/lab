@@ -10,8 +10,7 @@ services:
       netlab01:
         ipv4_address: ${CERTBOT_HOST}
     volumes:
-      - certificates:/etc/letsencrypt/live:rw
-      - $PWD/etc/letsencrypt:/etc/letsencrypt:rw
+      - certificates:/etc/letsencrypt:rw
       - $PWD/var/lib/letsencrypt:/var/lib/letsencrypt:rw
       - $PWD/var/log:/var/log:rw
     command: 

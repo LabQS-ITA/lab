@@ -6,14 +6,6 @@ networks:
       config:
         - subnet: '172.1.0.0/16'
 
-services:
-  netlab:
-    container_name: netlab
-    restart: always
-    image: tianon/true
-    networks:
-      - netlab01
-
 volumes:
   certificates:
     name: certificates

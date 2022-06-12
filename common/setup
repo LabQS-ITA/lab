@@ -38,10 +38,10 @@ echo '* Letsencrypt certbot *'
 docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../httpd
-echo '* Apache HTTPD *'
+# cd ../httpd
+# echo '* Apache HTTPD *'
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 # cd ../postgresql

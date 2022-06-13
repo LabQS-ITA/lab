@@ -45,13 +45,13 @@ docker stop httpd
 docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-# cd ../httpd
-# echo '* Apache HTTPD *'
+cd ../httpd
+echo '* Apache HTTPD *'
 
-# echo 'Certificar que certbot está parado'
-# docker stop certbot
+echo 'Certificar que certbot está parado'
+docker stop certbot
 
-# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 # cd ../postgresql

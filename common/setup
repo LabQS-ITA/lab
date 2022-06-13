@@ -34,22 +34,22 @@ export MARIADB_HOST01=172.1.9.201
 export MARIADB_HOST02=172.1.9.202
 
 
-# cd ../certbot
-# echo '* Letsencrypt certbot *'
+cd ../certbot
+echo '* Letsencrypt certbot *'
 
-# echo 'Certificar que apache está parado'
-# docker stop httpd
-
-# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
-
-cd ../httpd
-echo '* Apache HTTPD *'
-
-echo 'Certificar que certbot está parado'
-docker stop certbot
+echo 'Certificar que apache está parado'
+docker stop httpd
 
 docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
+# cd ../httpd
+# echo '* Apache HTTPD *'
+
+# echo 'Certificar que certbot está parado'
+# docker stop certbot
+
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 # cd ../postgresql

@@ -5,3 +5,4 @@ networks:
 volumes:
   certificates:
     name: certificates
+    external: true

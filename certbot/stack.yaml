@@ -11,6 +11,7 @@ services:
         ipv4_address: ${CERTBOT_HOST}
     volumes:
       - certificates:/etc/letsencrypt:rw
+      - $PWD/var/log:/var/log:rw
     command: 
       - 'certonly'
       - '--standalone'

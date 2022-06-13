@@ -19,3 +19,4 @@ services:
       - '-m gomesjm@ita.br'
       - '-n'
       - '-d ${CERT_DOMAINS}'
+      - '--dry-run'

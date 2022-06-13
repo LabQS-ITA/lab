@@ -36,11 +36,17 @@ export MARIADB_HOST02=172.1.9.202
 # cd ../certbot
 # echo '* Letsencrypt certbot *'
 
+# Certificar que apache está parado
+# docker stop httpd
+
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 # cd ../httpd
 # echo '* Apache HTTPD *'
+
+# Certificar que certbot está parado
+# docker stop certbot
 
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 

@@ -19,4 +19,5 @@ services:
       - '--agree-tos'
       - '-m gomesjm@ita.br'
       - '-n'
-      - '-d test.labqs.ita.br,ci.test.labqs.ita.br'
+      - '-d ${CERT_DOMAINS}'
+      - '--dry-run'

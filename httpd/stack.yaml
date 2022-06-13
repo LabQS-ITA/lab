@@ -14,6 +14,3 @@ services:
       - $PWD/panel/static:/usr/local/apache2/htdocs:ro
       - $PWD/panel/config:/usr/local/apache2/conf:ro
       - certificates:/usr/local/apache2/certificates:ro
-    env_file:
-      - '.env'
-      - '../common/hosts.env'

@@ -11,8 +11,6 @@ services:
         ipv4_address: ${CERTBOT_HOST}
     volumes:
       - certificates:/etc/letsencrypt:rw
-      - $PWD/var/lib/letsencrypt:/var/lib/letsencrypt:rw
-      - $PWD/var/log:/var/log:rw
     command: 
       - 'certonly'
       - '--standalone'
@@ -20,4 +18,3 @@ services:
       - '-m gomesjm@ita.br'
       - '-n'
       - '-d ${CERT_DOMAINS}'
-      - '--dry-run'

@@ -32,7 +32,6 @@ export MARIADB_HOST01=172.1.9.201
 export MARIADB_HOST02=172.1.9.202
 
 
-# NÃO EXECUTAR CERTBOT E HTTPD JUNTOS - CONFLITO NAS PORTAS 80 E 443
 # cd ../certbot
 # echo '* Letsencrypt certbot *'
 

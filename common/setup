@@ -48,6 +48,7 @@ echo '* Letsencrypt certbot *'
 echo 'Certificar que apache está parado'
 docker stop httpd
 
+echo 'Registrando '${CERT_DOMAINS}
 docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 

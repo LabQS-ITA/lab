@@ -10,3 +10,5 @@ services:
     networks:
       netlab01:
         ipv4_address: ${LOCUST_HOST}
+    volumes:
+      - ${PWD}/config:/home/locust:rw

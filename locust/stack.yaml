@@ -1,0 +1,12 @@
+services:
+
+  locust:
+    container_name: locust
+    image: locust/locust:latest
+    restart: unless-stopped
+    ports:
+      - '8089:8089'
+      - '5557:5557'
+    networks:
+      netlab01:
+        ipv4_address: ${LOCUST_HOST}

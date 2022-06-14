@@ -1,7 +1,7 @@
 import time
 from locust import HttpUser, task, between
 
-class Dummy(HttpUser):
+class QuickstartUser(HttpUser):
     wait_time = between(1, 5)
 
     @task
@@ -10,4 +10,4 @@ class Dummy(HttpUser):
         self.client.get("/world")
 
     def on_start(self):
-        self.client.post("/", json={"dummy":"dummy"})
+        self.client.post("/login", json={"username":"foo", "password":"bar"})

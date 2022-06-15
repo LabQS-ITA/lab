@@ -68,10 +68,10 @@ sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/static/index.html
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../locust
-echo '* Locust *'
+# cd ../locust
+# echo '* Locust *'
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach
 
 
 # cd ../postgresql
@@ -129,17 +129,17 @@ docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-# cd ../drone
-# echo '* Drone *'
-# echo 'Gere uma aplicação OAuth no Gitea para o Drone em http://$LAB_DOMAIN/git'
-# echo 'Após gerar a aplicação informe os dados abaixo'
-# read -p 'Informe o "Client ID": ' GID
-# read -p 'Informe o "Client Secret": ' GSCRT
+cd ../drone
+echo '* Drone *'
+echo 'Gere uma aplicação OAuth no Gitea para o Drone em http://$LAB_DOMAIN/git'
+echo 'Após gerar a aplicação informe os dados abaixo'
+read -p 'Informe o "Client ID": ' GID
+read -p 'Informe o "Client Secret": ' GSCRT
 
-# echo 'DRONE_TOKEN='$(openssl rand -hex 32) > .env
-# echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
-# echo 'GITEA_ID='$GID >> .env
-# echo 'GITEA_PWD='$GSCRT >> .env
-# echo 'SVC_PWD='$(openssl rand -hex 16) >> .env
+echo 'DRONE_TOKEN='$(openssl rand -hex 32) > .env
+echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
+echo 'GITEA_ID='$GID >> .env
+echo 'GITEA_PWD='$GSCRT >> .env
+echo 'SVC_PWD='$(openssl rand -hex 16) >> .env
 
-# docker-compose -f stack.yaml -f ../common/use.yaml up --scale dockerrunner=2 --scale sshrunner=2 --detach
+docker-compose -f stack.yaml -f ../common/use.yaml up --scale dockerrunner=2 --scale sshrunner=2 --detach

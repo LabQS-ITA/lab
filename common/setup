@@ -54,8 +54,8 @@ export MARIADB_HOST02=172.1.9.202
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-# cd ../httpd
-# echo '* Apache HTTPD *'
+cd ../httpd
+echo '* Apache HTTPD *'
 
 # echo 'Certificar que certbot está parado'
 # docker stop certbot

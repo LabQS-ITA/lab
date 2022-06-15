@@ -26,15 +26,11 @@ services:
       - DRONE_RPC_SECRET=${SVC_PWD}
       - DRONE_USER_CREATE=username:maint,machine:false,admin:true,token:${DRONE_TOKEN},
 
-  dronerunner01:
-    container_name: dronerunner01
+  dronerunnerdocker:
     image: drone/drone-runner-docker
     restart: unless-stopped
     ports:
-      - '9021:3000'
-    networks:
-      netlab01:
-        ipv4_address: ${DRONE_RUNNER_HOST01}
+      - '9100+:3000'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
@@ -49,38 +45,11 @@ services:
     depends_on:
       - 'drone'
 
-  dronerunner02:
-    container_name: dronerunner02
-    image: drone/drone-runner-docker
-    restart: unless-stopped
-    ports:
-      - '9022:3000'
-    networks:
-      netlab01:
-        ipv4_address: ${DRONE_RUNNER_HOST02}
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    environment:
-      - DRONE_RPC_PROTO=http
-      - DRONE_RPC_HOST=drone
-      - DRONE_RPC_SECRET=${SVC_PWD}
-      - DRONE_RUNNER_NAME=dronerunner02
-      - DRONE_RUNNER_CAPACITY=2
-      - DRONE_RUNNER_NETWORKS=netlab01
-      - DRONE_DEBUG=false
-      - DRONE_TRACE=false
-    depends_on:
-      - 'drone'
-
-  dronerunner03:
-    container_name: dronerunner03
+  dronerunnerssh:
     image: drone/drone-runner-ssh
     restart: unless-stopped
     ports:
-      - '9011:3000'
-    networks:
-      netlab01:
-        ipv4_address: ${DRONE_RUNNER_HOST03}
+      - '9200+:3000'
     environment:
       - DRONE_RPC_HOST=drone
       - DRONE_RPC_PROTO=http
@@ -88,25 +57,6 @@ services:
       - DRONE_RUNNER_CAPACITY=2
       - DRONE_RUNNER_NETWORKS=netlab01
       - DRONE_RUNNER_NAME=dronerunner03
-    depends_on:
-      - 'drone'
-
-  dronerunner04:
-    container_name: dronerunner04
-    image: drone/drone-runner-ssh
-    restart: unless-stopped
-    ports:
-      - '9012:3000'
-    networks:
-      netlab01:
-        ipv4_address: ${DRONE_RUNNER_HOST04}
-    environment:
-      - DRONE_RPC_HOST=drone
-      - DRONE_RPC_PROTO=http
-      - DRONE_RPC_SECRET=${SVC_PWD}
-      - DRONE_RUNNER_CAPACITY=2
-      - DRONE_RUNNER_NETWORKS=netlab01
-      - DRONE_RUNNER_NAME=dronerunner04
     depends_on:
       - 'drone'
 

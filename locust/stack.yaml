@@ -12,9 +12,6 @@ services:
         ipv4_address: ${LOCUST_HOST}
     volumes:
       - ${PWD}/config:/home/locust:rw
-     environment:
-      - HTTP_PROXY=http://locust:8089
-      - HTTPS_PROXY=http://locust:8089
     command: 
       - '--config=master.conf'
 

@@ -19,6 +19,4 @@ services:
     image: locustio/locust
     volumes:
       - ${PWD}/config:/home/locust:rw
-    command: 
-      - '--worker'
-      - '--master-host locust'
+    command: '--worker --master-host locust'

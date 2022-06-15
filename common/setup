@@ -142,4 +142,4 @@ echo 'GITEA_ID='$GID >> .env
 echo 'GITEA_PWD='$GSCRT >> .env
 echo 'SVC_PWD='$(openssl rand -hex 16) >> .env
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --scale docker_runner=2 --scale ssh_runner=2 --detach
+docker-compose -f stack.yaml -f ../common/use.yaml up --scale docker=2 --scale ssh=2 --detach

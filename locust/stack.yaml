@@ -16,7 +16,6 @@ services:
       - '--config=master.conf'
 
   worker:
-    container_name: locustworker
     image: locustio/locust
     volumes:
       - ${PWD}/config:/home/locust:rw

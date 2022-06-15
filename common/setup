@@ -71,7 +71,7 @@ export MARIADB_HOST02=172.1.9.202
 cd ../locust
 echo '* Locust *'
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=4 --detach
 
 
 # cd ../postgresql

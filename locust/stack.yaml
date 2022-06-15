@@ -17,3 +17,12 @@ services:
       - HTTPS_PROXY=http://locust:8089
     command: 
       - '--config=master.conf'
+
+  worker:
+    container_name: locustworker
+    image: locustio/locust
+    volumes:
+      - ${PWD}/config:/home/locust:rw
+    command: 
+      - '--worker'
+      - '--master-host locust'

@@ -60,10 +60,10 @@ export MARIADB_HOST02=172.1.9.202
 # echo 'Certificar que certbot está parado'
 # docker stop certbot
 
-# sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' panel/config/sites/000-default.conf
-# sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/config/sites/001-ci.conf
+sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' panel/config/sites/000-default.conf
+sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/config/sites/001-ci.conf
 
-# sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/static/index.html
+sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/static/index.html
 
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 

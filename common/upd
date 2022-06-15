@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+
+git checkout ../httpd/panel/config/sites/000-default.conf
+git checkout ../httpd/panel/config/sites/001-ci.conf
+git checkout ../httpd/panel/static/index.html
+
+git pull

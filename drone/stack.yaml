@@ -30,7 +30,7 @@ services:
     image: drone/drone-runner-docker
     restart: unless-stopped
     ports:
-      - '9100+:3000'
+      - 9100+:3000
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
@@ -49,7 +49,7 @@ services:
     image: drone/drone-runner-ssh
     restart: unless-stopped
     ports:
-      - '9200+:3000'
+      - 9200+:3000
     environment:
       - DRONE_RPC_HOST=drone
       - DRONE_RPC_PROTO=http

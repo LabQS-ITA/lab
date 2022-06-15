@@ -1,6 +1,6 @@
 services:
 
-  locust:
+  master:
     container_name: locust
     image: locustio/locust:latest
     restart: unless-stopped
@@ -21,4 +21,4 @@ services:
       - ${PWD}/config:/home/locust:rw
     command: 
       - '--worker'
-      - '--master-host locust'
+      - '--master-host master'

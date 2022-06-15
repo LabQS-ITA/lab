@@ -84,14 +84,14 @@ sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/static/index.html
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-# cd ../mongodb
-# echo '* MongoDB *'
+cd ../mongodb
+echo '* MongoDB *'
 
-# echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-# echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
-# echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
+echo 'SVC_PWD='$(openssl rand -hex 8) > .env
+echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
+echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 
-# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 # cd ../mariadb

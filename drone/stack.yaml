@@ -26,7 +26,7 @@ services:
       - DRONE_RPC_SECRET=${SVC_PWD}
       - DRONE_USER_CREATE=username:maint,machine:false,admin:true,token:${DRONE_TOKEN},
 
-  dockerrunner:
+  docker_runner:
     image: drone/drone-runner-docker
     restart: unless-stopped
     ports:
@@ -45,7 +45,7 @@ services:
     depends_on:
       - 'drone'
 
-  sshrunner:
+  ssh_runner:
     image: drone/drone-runner-ssh
     restart: unless-stopped
     ports:

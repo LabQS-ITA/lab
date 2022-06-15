@@ -21,4 +21,4 @@ services:
       - ${PWD}/config:/home/locust:rw
     command: 
       - '--worker'
-      - '--master-host master'
+      - '--master-host locust'

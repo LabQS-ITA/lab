@@ -68,10 +68,10 @@ sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/static/index.html
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../locust
-echo '* Locust *'
+# cd ../locust
+# echo '* Locust *'
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach
 
 
 # cd ../postgresql
@@ -142,4 +142,4 @@ echo 'GITEA_ID='$GID >> .env
 echo 'GITEA_PWD='$GSCRT >> .env
 echo 'SVC_PWD='$(openssl rand -hex 16) >> .env
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --scale drone_runner=2 --scale ssh_runner=2 --detach
+docker-compose -f stack.yaml -f ../common/use.yaml up --scale docker_runner=2 --scale ssh_runner=2 --detach

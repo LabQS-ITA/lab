@@ -8,8 +8,8 @@ services:
       - '9000:9000'
     networks:
       netlab01:
-        ipv4_address: ${PHP_HOST}
+        ipv4_address: ${PHP_HOST01}
     volumes:
       - sites:/var/www/html:ro
     environment:
-      - PHP_HOST=${PHP_HOST}
+      - PHP_HOST=${PHP_HOST01}

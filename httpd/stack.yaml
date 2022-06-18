@@ -25,7 +25,7 @@ services:
       netlab01:
         ipv4_address: ${PHP_HOST}
     volumes:
-      - $PWD/panel/static:/var/www/html:ro
+      - $PWD/php:/var/www/html:ro
     environment:
       - PHP_HOST=${PHP_HOST}
     depends_on:

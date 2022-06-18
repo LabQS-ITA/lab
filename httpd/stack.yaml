@@ -27,6 +27,6 @@ services:
     volumes:
       - $PWD/php:/var/www/html:ro
     environment:
-      - PHP_HOST=${PHP_HOST}
+      - PHP_HOST=${LAB_DOMAIN}
     depends_on:
       - httpd

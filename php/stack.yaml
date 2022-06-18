@@ -1,0 +1,13 @@
+services:
+
+  php:
+    container_name: php
+    image: php:fpm
+    restart: unless-stopped
+    ports:
+      - '9000:9000'
+    networks:
+      netlab01:
+        ipv4_address: ${PHP_HOST}
+    volumes:
+      - sites:/var/www/html:ro

@@ -10,3 +10,6 @@ volumes:
   certificates:
     name: certificates
     driver: local
+  sites:
+    name: sites
+    driver: local

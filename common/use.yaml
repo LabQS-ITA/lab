@@ -6,3 +6,6 @@ volumes:
   certificates:
     name: certificates
     external: true
+  sites:
+    name: sites
+    external: true

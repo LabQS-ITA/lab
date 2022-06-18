@@ -20,7 +20,7 @@ services:
     image: php:7.4.30-apache
     restart: unless-stopped
     ports:
-      - '9000:9000'
+      - '9000:80'
     networks:
       netlab01:
         ipv4_address: ${PHP_HOST}

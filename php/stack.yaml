@@ -11,3 +11,5 @@ services:
         ipv4_address: ${PHP_HOST}
     volumes:
       - sites:/var/www/html:ro
+    environment:
+      - PHP_HOST=${PHP_HOST}

@@ -68,7 +68,6 @@ echo 'Registrar apache com domínios '$CERT_DOMAINS
 
 sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' panel/config/sites/000-default.conf
 sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/config/sites/001-ci.conf
-sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' panel/config/sites/002-php.conf
 
 sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/static/index.html
 

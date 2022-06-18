@@ -33,7 +33,7 @@ export MONGODB_HOST02=172.1.8.202
 export MARIADB_HOST01=172.1.9.201
 export MARIADB_HOST02=172.1.9.202
 
-export PHP_HOST01=172.1.11.201
+export PHP_HOST=172.1.11.200
 
 
 # cd ../certbot

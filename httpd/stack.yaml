@@ -17,7 +17,7 @@ services:
 
   php:
     container_name: php
-    image: php:fpm
+    image: php:7.4.30-apache
     restart: unless-stopped
     ports:
       - '9000:9000'

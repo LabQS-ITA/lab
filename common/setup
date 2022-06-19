@@ -58,8 +58,8 @@ export CI_LAB_DOMAIN=ci.test.labqs.ita.br
 export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN
 
 
-# cd ../httpd
-# echo '* Apache HTTPD *'
+cd ../httpd
+echo '* Apache HTTPD *'
 
 # echo 'Certificar que certbot está parado'
 # docker stop certbot

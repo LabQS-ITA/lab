@@ -58,20 +58,20 @@ export CI_LAB_DOMAIN=ci.test.labqs.ita.br
 export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN
 
 
-cd ../httpd
-echo '* Apache HTTPD *'
+# cd ../httpd
+# echo '* Apache HTTPD *'
 
-echo 'Certificar que certbot está parado'
-docker stop certbot
+# echo 'Certificar que certbot está parado'
+# docker stop certbot
 
-echo 'Registrar apache com domínios '$CERT_DOMAINS
+# echo 'Registrar apache com domínios '$CERT_DOMAINS
 
 sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' panel/config/sites/000-default.conf
 sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/config/sites/001-ci.conf
 
 sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/static/index.html
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 # cd ../locust
@@ -124,15 +124,15 @@ docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-# cd ../gitea
-# echo '* Gitea *'
+cd ../gitea
+echo '* Gitea *'
 
 # echo 'Navegar até a página de configuração do serviço http://$LAB_DOMAIN/git'
 # echo 'e definir a conta do administrador (no final da página, em "Optional Settings")'
 
 # echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) > .env
 
-# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 # cd ../drone

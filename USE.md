@@ -39,7 +39,7 @@ Connection closed.
 
 ## Via PuTTY
 
-É possível abrir uma conexão túnel utilizando o utilitário **PuTTY** para Windows. No site https://www.ibm.com/support/pages/ssh-tunneling-putty existe uma breve explicação. Na opção _SSH_ / _Tunnels_ basta informar em _Source Port a porta do serviço (_5432_ para **Postgres** ou _3306_ para **MariaDB** por exemplo) e em _Destination_ o endereço IP do serviço (_172.1.**2**.201_ para **Postgres** ou _172.1.**9**.201_ para **MariaDB** respectivamente)
+É possível abrir uma conexão túnel utilizando o utilitário **PuTTY** para Windows. No site https://www.ibm.com/support/pages/ssh-tunneling-putty existe uma breve explicação. Na opção _SSH_ / _Tunnels_ basta informar em _Source Port_ a porta do serviço (_5432_ para **Postgres** ou _3306_ para **MariaDB** por exemplo) e em _Destination_ o endereço IP do serviço (_172.1.**2**.201_ para **Postgres** ou _172.1.**9**.201_ para **MariaDB** respectivamente)
 
 
 ## Via código
@@ -76,3 +76,19 @@ server.stop()
 Uma vez conectada à VPN do laboratório, é possível usar um túnel SSH para acessar os serviços do laboratório dentro de uma aplicação (disponível em algumas), como os de bancos de dados por exemplo:
 
 ![Configuração túnel SSH do "_DbGate_"](./images/dbgate-ssh.png)
+
+
+## Via interface web
+
+Não é preciso utilizar VPN nem configurar túnel para utilizar a interface web:
+
+![Interface web](./images/mysql.png)
+
+## Criação de bancos de dados por experimento / projeto
+
+### Postgres
+
+### MongoDB
+
+
+### MariaDB

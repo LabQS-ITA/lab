@@ -36,6 +36,12 @@ telnet> quit
 Connection closed.
 ```
 
+
+## Via PuTTY
+
+É possível abrir uma conexão túnel utilizando o utilitário **PuTTY** para Windows. No site https://www.ibm.com/support/pages/ssh-tunneling-putty existe uma breve explicação. Na opção _SSH_ / _Tunnels_ basta informar em _Source Port a porta do serviço (_5432_ para **Postgres** ou _3306_ para **MariaDB** por exemplo) e em _Destination_ o endereço IP do serviço (_172.1.**2**.201_ para **Postgres** ou _172.1.**9**.201_ para **MariaDB** respectivamente)
+
+
 ## Via código
 
 Uma vez conectada à VPN do laboratório, é possível usar um túnel SSH para acessar os serviços do laboratório via código, como os de bancos de dados por exemplo:
@@ -63,6 +69,7 @@ r = redis.Redis(host = server.local_bind_host, port = server.local_bind_port, pa
 
 server.stop()
 ```
+
 
 ## Via aplicativo
 

@@ -23,6 +23,7 @@ services:
       - GITEA__database__USER=gitea
       - GITEA__database__PASSWD=${POSTGRES_PWD}
       - GITEA__server__ROOT_URL=http://${LAB_DOMAIN}/git
+      - GITEA__webhook__ALLOWED_HOST_LIST=${DRONE_HOST}
       - GITEA__ui.meta__AUTHOR=Laboratório de Testes de Software
       - GITEA__ui.meta__DESCRIPTION=Instituto Tecnológico de Aeronáutica
       - GITEA__ui.meta__KEYWORDS=git,ita,testes,teste de software,qualidade,segurança

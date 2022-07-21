@@ -54,9 +54,9 @@ services:
       - DRONE_RPC_HOST=drone
       - DRONE_RPC_PROTO=http
       - DRONE_RPC_SECRET=${SVC_PWD}
+      - DRONE_RUNNER_NAME=dronerunner03
       - DRONE_RUNNER_CAPACITY=2
       - DRONE_RUNNER_NETWORKS=netlab01
-      - DRONE_RUNNER_NAME=dronerunner03
     depends_on:
       - 'drone'
 

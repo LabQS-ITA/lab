@@ -48,12 +48,12 @@ export PHP_HOST=172.1.11.200
 
 
 # Servidor do lab
-export LAB_DOMAIN=test.labqs.ita.br
-export CI_LAB_DOMAIN=ci.test.labqs.ita.br
+# export LAB_DOMAIN=test.labqs.ita.br
+# export CI_LAB_DOMAIN=ci.test.labqs.ita.br
 
 # Servidores de desenvolvimento e testes
-# export LAB_DOMAIN=dev.labqs.ita.br
-# export CI_LAB_DOMAIN=ci.labqs.ita.br
+export LAB_DOMAIN=dev.labqs.ita.br
+export CI_LAB_DOMAIN=ci.labqs.ita.br
 
 export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN
 

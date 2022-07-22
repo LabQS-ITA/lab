@@ -17,6 +17,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
 
     environment:
+      - DRONE_AGENTS_ENABLED=true
       - DRONE_LOGS_DEBUG=true
       - DRONE_LOGS_TRACE=true
       - DRONE_DATADOG_ENABLED=false
@@ -27,6 +28,9 @@ services:
       - DRONE_GITEA_SERVER=https://${LAB_DOMAIN}/git
       - DRONE_GITEA_CLIENT_ID=${GITEA_ID}
       - DRONE_GITEA_CLIENT_SECRET=${GITEA_PWD}
+      - DRONE_GITEA_SKIP_VERIFY=true
+      - DRONE_VALIDATE_PLUGIN_SKIP_VERIFY=true
+      - DRONE_WEBHOOK_SKIP_VERIFY=true
       - DRONE_RPC_SECRET=${SVC_PWD}
       - DRONE_USER_CREATE=username:maint,machine:false,admin:true,token:${DRONE_TOKEN},
 

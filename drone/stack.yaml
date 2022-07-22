@@ -43,7 +43,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - DRONE_RPC_PROTO=http
-      - DRONE_RPC_HOST=${DRONE_HOST}
+      - DRONE_RPC_HOST=${CI_LAB_DOMAIN}
       - DRONE_RPC_SECRET=${SVC_PWD}
       - DRONE_RUNNER_NAME=dronerunner01
       - DRONE_RUNNER_CAPACITY=2
@@ -60,7 +60,7 @@ services:
       - '9200-9299:3000'
     environment:
       - DRONE_RPC_PROTO=http
-      - DRONE_RPC_HOST=${DRONE_HOST}
+      - DRONE_RPC_HOST=${CI_LAB_DOMAIN}
       - DRONE_RPC_SECRET=${SVC_PWD}
       - DRONE_RUNNER_NAME=dronerunner03
       - DRONE_RUNNER_CAPACITY=2

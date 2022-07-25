@@ -32,7 +32,7 @@ function create_operator() {
 # create_operator lippi
 # create_operator gomes
 # create_operator marcelo
-create_operator vitor
+# create_operator vitor
 
 # Pesquisadores STAMPS
 # create_operator gildarcio

@@ -22,32 +22,35 @@ function create_operator() {
 # usermod -aG sudo gpes
 
 # Professores SI-TIH
-create_user cunha
-create_user vieira
-create_user lineu
-create_user loubach
-create_user saotome
+# create_user cunha
+# create_user vieira
+# create_user lineu
+# create_user loubach
+# create_user saotome
 
 # Pesquisadores SI-TIH
-create_operator louro
-create_operator shigemura
-create_operator lippi
-create_operator max
-create_operator gomes
+# create_operator louro
+# create_operator shigemura
+# create_operator lippi
+# create_operator max
+# create_operator gomes
+# create_operator vitor
+# create_operator marcelo
+# create_operator matheus
 
 # Pesquisadores STAMPS
-create_operator gildarcio
-create_operator jean
+# create_operator gildarcio
+# create_operator jean
 
 # Professores IA-PLN
-create_user carlos
-create_user finger
-create_user ramirez
-create_user alves
-create_user navas
+# create_user carlos
+# create_user finger
+# create_user ramirez
+# create_user alves
+# create_user navas
 
 # Pesquisadores IA-PLN
-create_user carvalho
-create_user rodrigues
-create_user ribeiro
-create_user silva
+# create_user carvalho
+# create_user rodrigues
+# create_user ribeiro
+# create_user silva

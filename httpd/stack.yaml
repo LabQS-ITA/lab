@@ -12,6 +12,5 @@ services:
         ipv4_address: ${HTTPD_HOST}
     volumes:
       - $PWD/panel/static:/usr/local/apache2/htdocs:ro
-      - ../../../../shared/out/wav:/usr/local/apache2/htdocs/flualfa-ufjf:ro
       - $PWD/panel/config:/usr/local/apache2/conf:ro
       - certificates:/usr/local/apache2/certificates:ro

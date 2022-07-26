@@ -531,7 +531,7 @@ $CONFIG = [
  * it may be difficult for Nextcloud to detect this parameter, resulting in
  * invalid URLs.
  */
-'overwritewebroot' => '/nextcloud',
+'overwritewebroot' => '/dev.labqs.ita.br/nextcloud',
 
 /**
  * This option allows you to define a manual override condition as a regular

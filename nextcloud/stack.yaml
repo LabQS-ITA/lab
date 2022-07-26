@@ -2,10 +2,10 @@ services:
 
   nextcloud:
     container_name: nextcloud
-    image: nextcloud:fpm
+    image: nextcloud
     restart: unless-stopped
     ports:
-      - '9000:9000'
+      - '8080:80'
     networks:
       netlab01:
         ipv4_address: ${NEXTCLOUD_HOST}

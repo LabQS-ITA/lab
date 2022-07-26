@@ -11,9 +11,9 @@ services:
         ipv4_address: ${NEXTCLOUD_HOST}
     volumes:
       - nextclouddata:/var/www/html
-      - ${PWD}/nextcloud/apps:/var/www/html/custom_apps
-      - ${PWD}/nextcloud/config:/var/www/html/config
-      - ${PWD}/nextcloud/themes:/var/www/html/themes
+      - ${PWD}/apps:/var/www/html/custom_apps
+      - ${PWD}/config:/var/www/html/config
+      - ${PWD}/themes:/var/www/html/themes
     environment:
       - POSTGRES_DB=nextcloud
       - POSTGRES_USER=nextcloud

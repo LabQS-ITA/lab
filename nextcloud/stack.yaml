@@ -5,7 +5,7 @@ services:
     image: nextcloud:fpm
     restart: unless-stopped
     ports:
-      - '8001:80'
+      - '8001:9000'
     networks:
       netlab01:
         ipv4_address: ${NEXTCLOUD_HOST}

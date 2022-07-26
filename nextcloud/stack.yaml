@@ -1,0 +1,26 @@
+services:
+
+  nextcloud:
+    container_name: nextcloud
+    image: nextcloud:fpm
+    restart: unless-stopped
+    ports:
+      - '8001:80'
+    networks:
+      netlab01:
+        ipv4_address: ${NEXTCLOUD_HOST}
+    volumes:
+      - nextclouddata:/var/www/html
+      - ${PWD}/nextcloud/apps:/var/www/html/custom_apps
+      - ${PWD}/nextcloud/config:/var/www/html/config
+      - ${PWD}/nextcloud/themes:/var/www/html/themes
+    environment:
+      - POSTGRES_DB=nextcloud
+      - POSTGRES_USER=nextcloud
+      - POSTGRES_PASSWORD=${POSTGRES_PWD}
+      - POSTGRES_HOST=postgres:5432
+
+volumes:
+  nextclouddata:
+    name: nextclouddata
+    driver: local

@@ -18,7 +18,7 @@ services:
       - POSTGRES_DB=nextcloud
       - POSTGRES_USER=nextcloud
       - POSTGRES_PASSWORD=${POSTGRES_PWD}
-      - POSTGRES_HOST=postgres:5432
+      - POSTGRES_HOST=postgres
       - NEXTCLOUD_ADMIN_USER=nextcloud
       - NEXTCLOUD_ADMIN_PASSWORD=${POSTGRES_PWD}
 

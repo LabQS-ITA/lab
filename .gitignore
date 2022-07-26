@@ -324,5 +324,6 @@ ipython_config.py
 
 # Certificates
 *.pem
+**/var/**
 
 # End of https://www.toptal.com/developers/gitignore/api/latex

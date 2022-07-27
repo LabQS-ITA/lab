@@ -18,7 +18,7 @@ services:
       - POSTGRES_DB=nextcloud
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=${POSTGRES_PWD}
-      - POSTGRES_HOST=postgres:5400
+      - POSTGRES_HOST=postgres
 
 volumes:
   nextclouddata:

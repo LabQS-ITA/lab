@@ -10,4 +10,4 @@ services:
       netlab01:
         ipv4_address: ${FILESTASH_HOST}
     environment:
-      - APPLICATION_URL=/filestash
+      - APPLICATION_URL=https://${LAB_DOMAIN}/filestash

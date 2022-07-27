@@ -4,16 +4,13 @@ services:
     container_name: nextcloud
     image: nextcloud:fpm
     restart: unless-stopped
-    ports:
-      - '8083:9090'
-    networks:
-      netlab01:
-        ipv4_address: ${NEXTCLOUD_HOST}
     volumes:
       - nextclouddata:/var/www/html
       - ${PWD}/apps:/var/www/html/custom_apps
       - ${PWD}/config:/var/www/html/config
       - ${PWD}/themes:/var/www/html/themes
+    volumes_from:
+      - httpd
     environment:
       - POSTGRES_DB=nextcloud
       - POSTGRES_USER=postgres

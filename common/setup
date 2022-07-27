@@ -67,7 +67,7 @@ echo '* Apache HTTPD *'
 # echo 'Certificar que certbot está parado'
 # docker stop certbot
 
-echo "Registrar apache com domínios $(tput setaf 1)"$CERT_DOMAINS"(tput sgr0)"
+echo "Registrar apache com domínios $(tput setaf 1)"$CERT_DOMAINS"$(tput sgr0)"
 
 sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' panel/config/sites/000-default.conf
 sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/config/sites/001-ci.conf

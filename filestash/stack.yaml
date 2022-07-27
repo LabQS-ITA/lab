@@ -7,4 +7,4 @@ services:
     ports:
       - '8334:8334'
     environment:
-      - APPLICATION_URL=/filestash
+      - APPLICATION_URL=https://dev.labqs.ita.br/filestash

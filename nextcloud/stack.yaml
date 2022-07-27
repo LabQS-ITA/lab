@@ -20,7 +20,7 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PWD}
       - POSTGRES_HOST=${POSTGRES_HOST}
       - NEXTCLOUD_ADMIN_USER=maint
-      - NEXTCLOUD_ADMIN_PASSWORD${SVC_PWD}
+      - NEXTCLOUD_ADMIN_PASSWORD=${SVC_PWD}
 
 volumes:
   nextclouddata:

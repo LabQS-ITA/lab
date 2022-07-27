@@ -4,9 +4,6 @@ services:
     container_name: nextcloud
     image: nextcloud:latest
     restart: unless-stopped
-    depends_on:
-      postgres:
-        condition: service_healthy
     ports:
       - '8083:80'
     networks:

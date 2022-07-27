@@ -16,7 +16,7 @@ services:
       - ${PWD}/themes:/var/www/html/themes
     environment:
       - POSTGRES_DB=nextcloud
-      - POSTGRES_USER=postgres
+      - POSTGRES_USER=nextcloud
       - POSTGRES_PASSWORD=${POSTGRES_PWD}
       - POSTGRES_HOST=postgres
       - NEXTCLOUD_ADMIN_USER=maint

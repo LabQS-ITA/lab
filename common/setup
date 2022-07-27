@@ -36,6 +36,7 @@ export MARIADB_HOST02=172.1.9.202
 export PHP_HOST=172.1.11.200
 
 export NEXTCLOUD_HOST=172.1.12.200
+export FILESTASH_HOST=172.1.13.200
 
 
 # cd ../certbot

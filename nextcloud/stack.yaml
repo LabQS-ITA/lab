@@ -19,9 +19,6 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=${POSTGRES_PWD}
       - POSTGRES_HOST=postgres
-      - NEXTCLOUD_TRUSTED_DOMAINS=${LAB_DOMAIN} ${CI_LAB_DOMAIN}
-      - APACHE_DISABLE_REWRITE_IP=1
-      - TRUSTED_PROXIES=${LAB_DOMAIN} ${CI_LAB_DOMAIN}
 
 volumes:
   nextclouddata:

@@ -10,7 +10,7 @@ Para atender a necessidade arquitetural dos desenvolvedores de aplicações de t
 
 ## Configuração
 
-Foram criadas instâncias separadas por ambiente (denominadas [mariadb01](./mariadb01), [mariadb02](./mariadb02) e [mariadb03](./mariadb03)). Nas pastas de cada instância temos um arquivo de configuração [custom.cnf](./mariadb02) e [mariadb01](./mariadb01/custom.cnf) que permite configurar cada instância em particular.
+Foram criadas instâncias separadas por ambiente (denominadas [mariadb01](./mariadb01) e [mariadb02](./mariadb02). Nas pastas de cada instância temos um arquivo de configuração [custom.cnf](./mariadb02) e [mariadb01](./mariadb01/custom.cnf) que permite configurar cada instância em particular.
 
 ## Acesso aos serviços **MariaDB**
 
@@ -21,7 +21,7 @@ Para administração dos dados é possível utilizar a ferramenta [Adminer](../a
 Na rede local é possível acessar diretamente o console de cada serviço por meio da linha de comando:
 
 ```bash
-bash -c "docker exec -it mariadb01 mysql --user=root --password=`awk -F'=' '/SVC_PWD_01/{ printf("%s\n",$2) }' .env` -P 3306"
+bash -c "docker exec -it mysql01 mysql --user=root --password=`awk -F'=' '/SVC_PWD_01/{ printf("%s\n",$2) }' .env` -P 3306"
 ```
 
 Onde:
@@ -35,7 +35,6 @@ A senha do serviço está no arquivo `.env` na pasta do mesmo no servidor, como 
 ```ini
 SVC_PWD_01=fda2896ebab8ebfc9bf9613f
 SVC_PWD_02=93df7965e1d76bbdf686342a
-SVC_PWD_03=2fb0774931082c4cbfb54267
 ```
 
 O serviço pode ser acessado por máquinas na rede local através do nome (`mariadb01` por exemplo), usuário `root` e a senha no arquivo `.env`).

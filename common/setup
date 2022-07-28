@@ -102,13 +102,13 @@ docker restart httpd
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../mariadb
-echo '* MariaDB *'
+# cd ../mariadb
+# echo '* MariaDB *'
 
-echo 'SVC_PWD_01='$(openssl rand -hex 8) > .env
-echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
+# echo 'SVC_PWD_01='$(openssl rand -hex 8) > .env
+# echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 # cd ../redis

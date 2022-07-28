@@ -12,6 +12,8 @@ services:
     volumes:
       - nextclouddata:/var/www/html
     environment:
+      - REDIS_HOST=redis
+      - REDIS_HOST_PASSWORD=${REDIS_PWD}
       - POSTGRES_DB=nextcloud
       - POSTGRES_USER=nextcloud
       - POSTGRES_PASSWORD=${POSTGRES_PWD}

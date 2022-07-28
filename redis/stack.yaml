@@ -1,5 +1,21 @@
 services:
 
+  redis:
+    container_name: redis
+    image: redis:alpine
+    restart: unless-stopped
+    ports:
+      - '6300:6379'
+    networks:
+      netlab01:
+        ipv4_address: ${REDIS_HOST}
+    volumes:
+      - $PWD/config:/usr/local/etc/redis/redis.conf:ro
+      - redisdata:/data:rw
+    environment:
+      - REDIS_REPLICATION_MODE=master
+    command: ["redis-server", "--requirepass", "${SVC_PWD}", "--appendonly", "yes"]
+
   redis01:
     container_name: redis01
     image: redis:alpine
@@ -49,6 +65,9 @@ services:
       - redis02
 
 volumes:
+  redisdata:
+    name: redisdata
+    driver: local
   redisdata01:
     name: redisdata01
     driver: local

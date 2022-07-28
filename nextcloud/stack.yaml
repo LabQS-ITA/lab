@@ -19,6 +19,7 @@ services:
       - NEXTCLOUD_ADMIN_USER=maint
       - NEXTCLOUD_ADMIN_PASSWORD=${SVC_PWD}
       - NEXTCLOUD_TRUSTED_DOMAINS=${LAB_DOMAIN} ${CI_LAB_DOMAIN}
+      - OVERWRITEWEBROOT=${LAB_DOMAIN}/nextcloud
 
 volumes:
   nextclouddata:

@@ -11,6 +11,7 @@ services:
         ipv4_address: ${NEXTCLOUD_HOST}
     volumes:
       - nextclouddata:/var/www/html
+      - /home/gpes/shared/out:/var/www/shared:ro
     environment:
       - REDIS_HOST=redis
       - REDIS_HOST_PASSWORD=${REDIS_PWD}

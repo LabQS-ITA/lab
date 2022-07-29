@@ -138,8 +138,8 @@ echo '* Nextcloud *'
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-# cd ../gitea
-# echo '* Gitea *'
+cd ../gitea
+echo '* Gitea *'
 
 # echo 'Navegar até a página de configuração do serviço http://$LAB_DOMAIN/git'
 # echo 'e definir a conta do administrador (no final da página, em "Optional Settings")'
@@ -149,8 +149,8 @@ echo '* Nextcloud *'
 # # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-# cd ../drone
-# echo '* Drone *'
+cd ../drone
+echo '* Drone *'
 
 # echo 'Gere uma aplicação OAuth no Gitea para o Drone em http://$LAB_DOMAIN/git'
 # echo 'Após gerar a aplicação informe os dados abaixo'

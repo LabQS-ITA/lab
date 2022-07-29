@@ -4,42 +4,6 @@ set -euo pipefail
 
 source ./config
 
-# export HTTPD_HOST=172.1.1.200
-
-# export CERTBOT_HOST=172.1.9.200
-
-# export LOCUST_HOST=172.1.10.200
-
-# export POSTGRES_HOST=172.1.2.200
-# export POSTGRES_HOST01=172.1.2.201
-# export POSTGRES_HOST02=172.1.2.202
-
-# export ADMINER_HOST=172.1.3.200
-
-# export GITEA_HOST=172.1.5.200
-
-# export DRONE_HOST=172.1.6.200
-# export DRONE_RUNNER_HOST01=172.1.6.201
-# export DRONE_RUNNER_HOST02=172.1.6.202
-# export DRONE_RUNNER_HOST03=172.1.6.203
-# export DRONE_RUNNER_HOST04=172.1.6.204
-
-# export COMMANDER_HOST=172.1.13.200
-# export REDIS_HOST=172.1.7.200
-# export REDIS_HOST01=172.1.7.201
-# export REDIS_HOST02=172.1.7.202
-
-# export MONGODB_HOST=172.1.8.200
-# export MONGODB_HOST01=172.1.8.201
-# export MONGODB_HOST02=172.1.8.202
-
-# export MARIADB_HOST01=172.1.9.201
-# export MARIADB_HOST02=172.1.9.202
-
-# export PHP_HOST=172.1.11.200
-
-# export NEXTCLOUD_HOST=172.1.12.200
-
 
 # cd ../certbot
 # echo '* Letsencrypt certbot *'
@@ -154,15 +118,15 @@ docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 cd ../drone
 echo '* Drone *'
 
-# echo 'Gere uma aplicação OAuth no Gitea para o Drone em http://$LAB_DOMAIN/git'
-# echo 'Após gerar a aplicação informe os dados abaixo'
-# read -p 'Informe o "Client ID": ' GID
-# read -p 'Informe o "Client Secret": ' GSCRT
+echo 'Gere uma aplicação OAuth no Gitea para o Drone em http://$LAB_DOMAIN/git'
+echo 'Após gerar a aplicação informe os dados abaixo'
+read -p 'Informe o "Client ID": ' GID
+read -p 'Informe o "Client Secret": ' GSCRT
 
-# echo 'DRONE_TOKEN='$(openssl rand -hex 32) > .env
-# echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
-# echo 'GITEA_ID='$GID >> .env
-# echo 'GITEA_PWD='$GSCRT >> .env
-# echo 'SVC_PWD='$(openssl rand -hex 16) >> .env
+echo 'DRONE_TOKEN='$(openssl rand -hex 32) > .env
+echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
+echo 'GITEA_ID='$GID >> .env
+echo 'GITEA_PWD='$GSCRT >> .env
+echo 'SVC_PWD='$(openssl rand -hex 16) >> .env
 
 docker-compose -f stack.yaml -f ../common/use.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans

@@ -20,3 +20,5 @@ services:
     volumes:
       - ${PWD}/config:/home/locust:rw
     command: '--worker --master-host locust'
+    depends_on:
+      - 'master'

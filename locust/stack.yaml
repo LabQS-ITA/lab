@@ -17,6 +17,8 @@ services:
 
   worker:
     image: locustio/locust
+    networks:
+      netlab01
     volumes:
       - ${PWD}/config:/home/locust:rw
     command: '--worker --master-host locust'

@@ -41,7 +41,7 @@ sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/config/sites/001-ci.conf
 sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/static/index.html
 
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach --remove-orphans
-docker stack deploy --compose-file=stack.yaml -c ../common/use.yaml 
+docker stack deploy --compose-file=stack.yaml -c ../common/use.yaml httpd
 # docker restart httpd
 
 # cd ../locust

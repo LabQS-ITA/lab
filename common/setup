@@ -49,74 +49,74 @@ echo '* Locust *'
 docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach
 
 
-cd ../postgresql
-echo '* PostgreSQL *'
+# cd ../postgresql
+# echo '* PostgreSQL *'
 
 # echo 'SVC_PWD='$(openssl rand -hex 8) > .env
 # echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
 # echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../mongodb
-echo '* MongoDB *'
+# cd ../mongodb
+# echo '* MongoDB *'
 
 # echo 'SVC_PWD='$(openssl rand -hex 8) > .env
 # echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
 # echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../mariadb
-echo '* MariaDB *'
+# cd ../mariadb
+# echo '* MariaDB *'
 
 # echo 'SVC_PWD_01='$(openssl rand -hex 8) > .env
 # echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../redis
-echo '* Redis *'
+# cd ../redis
+# echo '* Redis *'
 
 # echo 'SVC_PWD='$(openssl rand -hex 8) > .env
 # echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
 # echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../adminer
-echo '* Adminer *'
+# cd ../adminer
+# echo '* Adminer *'
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../nextcloud
-echo '* Nextcloud *'
+# cd ../nextcloud
+# echo '* Nextcloud *'
 
 # echo 'SVC_PWD='$(openssl rand -hex 8) > .env
 # echo 'REDIS_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../redis/.env) >> .env
 # echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../gitea
-echo '* Gitea *'
+# cd ../gitea
+# echo '* Gitea *'
 
 # echo "Navegar até a página de configuração do serviço https://$LAB_DOMAIN/git"
 # echo 'e definir a conta do administrador (no final da página, em "Optional Settings")'
 
 # echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) > .env
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../drone
-echo '* Drone *'
+# cd ../drone
+# echo '* Drone *'
 
 # echo "Gere uma aplicação OAuth no Gitea para o Drone em https://$LAB_DOMAIN/git"
 # echo "com endereço de retorno https://$CI_LAB_DOMAIN/login"
@@ -130,4 +130,4 @@ echo '* Drone *'
 # echo 'GITEA_PWD='$GSCRT >> .env
 # echo 'SVC_PWD='$(openssl rand -hex 16) >> .env
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans
+# docker-compose -f stack.yaml -f ../common/use.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans

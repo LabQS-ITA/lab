@@ -39,6 +39,8 @@ services:
     restart: unless-stopped
     ports:
       - '9100-9199:3000'
+    networks:
+      - netlab01
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
@@ -58,6 +60,8 @@ services:
     restart: unless-stopped
     ports:
       - '9200-9299:3000'
+    networks:
+      - netlab01
     environment:
       - DRONE_RPC_PROTO=https
       - DRONE_RPC_HOST=${CI_LAB_DOMAIN}

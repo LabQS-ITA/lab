@@ -59,7 +59,6 @@ services:
         ipv4_address: ${COMMANDER_HOST}
     environment:
       - URL_PREFIX=/commander
-      - REDIS_HOSTS=local:redis01:6379:0:${SVC_PWD_01},local:redis02:6379:0:${SVC_PWD_02}
     depends_on:
       - redis01
       - redis02

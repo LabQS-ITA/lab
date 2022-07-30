@@ -40,13 +40,13 @@ sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/config/sites/001-ci.conf
 
 sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/static/index.html
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach --remove-orphans
-docker restart httpd
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach --remove-orphans
+# docker restart httpd
 
-cd ../locust
-echo '* Locust *'
+# cd ../locust
+# echo '* Locust *'
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach
 
 
 # cd ../postgresql
@@ -115,8 +115,8 @@ docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../drone
-echo '* Drone *'
+# cd ../drone
+# echo '* Drone *'
 
 # echo "Gere uma aplicação OAuth no Gitea para o Drone em https://$LAB_DOMAIN/git"
 # echo "com endereço de retorno https://$CI_LAB_DOMAIN/login"
@@ -130,4 +130,4 @@ echo '* Drone *'
 # echo 'GITEA_PWD='$GSCRT >> .env
 # echo 'SVC_PWD='$(openssl rand -hex 16) >> .env
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans
+# docker-compose -f stack.yaml -f ../common/use.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans

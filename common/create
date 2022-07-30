@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+docker network create -d bridge netlab01 --subnet='172.1.0.0/16'
+
+docker volume create -d local certificates

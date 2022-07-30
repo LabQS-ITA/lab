@@ -1,8 +1,0 @@
-# ...
-# SSHFS LabQS
-# TEST
-sshfs#gpes@161.24.23.94:/home/gpes/shared/out /home/gpes/shared/in/test fuse defaults,allow_other 0 0
-# DEV
-sshfs#gpes@161.24.23.95:/home/gpes/shared/out /home/gpes/shared/in/dev fuse defaults,allow_other 0 0
-# HOM
-sshfs#gpes@161.24.23.96:/home/gpes/shared/out /home/gpes/shared/in/hom fuse defaults,allow_other 0 0

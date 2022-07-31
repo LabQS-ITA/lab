@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-docker exec -i postgres /usr/bin/pg_dumpall -U postgres > postgres-`date +%F-%H%M`.sql
+echo 'postgres:5432:postgres:postgres:'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) > .pgpass
+echo 'postgres01:5432:postgres:postgres:'$(awk -F'=' '$1 =="SVC_PWD_01" {print $2}' ../postgresql/.env) >> .pgpass
+echo 'postgres02:5432:postgres:postgres:'$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' ../postgresql/.env) >> .pgpass
+chmod 600 .pgpass
+
+docker exec -i postgres /usr/bin/pg_dumpall -U postgres -w > postgres-`date +%F-%H%M`.sql
+docker exec -i postgres /usr/bin/pg_dumpall -U postgres -w > postgres01-`date +%F-%H%M`.sql
+docker exec -i postgres /usr/bin/pg_dumpall -U postgres -w > postgres02-`date +%F-%H%M`.sql

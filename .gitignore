@@ -361,4 +361,7 @@ ipython_config.py
 ### Postgresql
 *.pgpass
 
+### Backups
+*.gz
+
 # End of https://www.toptal.com/developers/gitignore/api/latex

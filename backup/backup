@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+docker exec -i postgres /usr/bin/pg_dumpall -U postgres > postgres-`date +%F-%H%M`.sql

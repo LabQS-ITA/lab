@@ -15,8 +15,9 @@ function backup_mariadb() {
 
 function backup_all_containers {
 
-    for CONTAINER in $(docker ps -a --format '{{.Names}}'); do
-        docker export $(docker ps -a | grep $CONTAINER | awk '{print $1}') > bkp_${CONTAINER}_$(date +%F-%H%M).docker.tar
+    for c in $(docker ps -a --format '{{.Names}}');
+    do
+        docker export $c > bkp_$c_$(date +%F-%H%M).docker.tar
     done
 
 }

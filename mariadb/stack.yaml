@@ -11,7 +11,8 @@ services:
         ipv4_address: ${MARIADB_HOST01}
     volumes:
       - mariadata01:/var/lib/mysql:rw
-      - $PWD/mariadb01:/etc/mysql/conf.d:ro
+      - $PWD/mariadb01/config:/etc/mysql/conf.d:ro
+      - $PWD/mairadb01/init:/docker-entrypoint-initdb.d:ro
     environment:
       - MARIADB_ROOT_PASSWORD=${SVC_PWD_01}
       - MARIADB_USER=maint
@@ -28,7 +29,8 @@ services:
         ipv4_address: ${MARIADB_HOST02}
     volumes:
       - mariadata02:/var/lib/mysql:rw
-      - $PWD/mariadb02:/etc/mysql/conf.d:ro
+      - $PWD/mariadb02/config:/etc/mysql/conf.d:ro
+      - $PWD/mairadb02/init:/docker-entrypoint-initdb.d:ro
     environment:
       - MARIADB_ROOT_PASSWORD=${SVC_PWD_02}
       - MARIADB_USER=maint

@@ -3,13 +3,21 @@ set -euo pipefail
 
 function backup_postgres() {
 
-    docker exec -i $1 /usr/bin/pg_dumpall -U postgres -w | gzip -9 > bkp_$1_`date +%F-%H%M`.sql.gz
+    docker exec -i $1 /usr/bin/pg_dumpall -U postgres -w | gzip -9 > bkp_$1_$(date +%F-%H%M).sql.gz
 
 }
 
 function backup_mariadb() {
 
-    docker exec -i $1 /usr/bin/mysqldump -u root -A | gzip -9 > bkp_$1_`date +%F-%H%M`.sql.gz
+    docker exec -i $1 /usr/bin/mysqldump -u root -A | gzip -9 > bkp_$1_$(date +%F-%H%M).sql.gz
+
+}
+
+function backup_all_containers {
+
+    for CONTAINER in $(docker ps -a --format '{{.Names}}'); do
+        docker export $(docker ps -a | grep $CONTAINER | awk '{print $1}') > bkp_${CONTAINER}_$(date +%F-%H%M).docker.tar
+    done
 
 }
 
@@ -19,3 +27,5 @@ backup_postgres postgres02
 
 backup_mariadb mariadb01
 backup_mariadb mariadb02
+
+backup_all_containers

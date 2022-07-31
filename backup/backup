@@ -3,19 +3,13 @@ set -euo pipefail
 
 function backup_postgres() {
 
-    TEMPFILE=`mktemp` && {
-        docker exec -i $1 /usr/bin/pg_dumpall -U postgres -w > $TEMPFILE | gzip -9 > .$1_`date +%F-%H%M`.sql.gz
-        rm -f $TEMPFILE
-    }
+    docker exec -i $1 /usr/bin/pg_dumpall -U postgres -w | gzip -9 > .$1_`date +%F-%H%M`.sql.gz
 
 }
 
 function backup_mariadb() {
 
-    TEMPFILE=`mktemp` && {
-        docker exec -i $1 /usr/bin/mysqldump -u root -A > $TEMPFILE | gzip -9 > .$1_`date +%F-%H%M`.sql.gz
-        rm -f $TEMPFILE
-    }
+    docker exec -i $1 /usr/bin/mysqldump -u root -A | gzip -9 > .$1_`date +%F-%H%M`.sql.gz
 
 }
 

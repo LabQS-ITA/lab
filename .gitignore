@@ -358,4 +358,7 @@ ipython_config.py
 *.wmv
 *.webm
 
+### Postgresql
+*.pgpass
+
 # End of https://www.toptal.com/developers/gitignore/api/latex

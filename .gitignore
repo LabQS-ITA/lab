@@ -361,6 +361,9 @@ ipython_config.py
 ### Postgresql
 *.pgpass
 
+### MariaDB
+autologin.conf
+
 ### Backups
 *.gz
 

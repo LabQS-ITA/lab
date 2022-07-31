@@ -15,6 +15,7 @@ services:
       - $PWD/postgres/init:/docker-entrypoint-initdb.d
     environment:
       - POSTGRES_PASSWORD=${SVC_PWD}
+      - PGPASSFILE=/etc/postgres/.pgpass
     command: -c config_file=/etc/postgresql/postgresql.conf
 
   postgres01:
@@ -32,6 +33,7 @@ services:
       - $PWD/postgres01/init:/docker-entrypoint-initdb.d
     environment:
       - POSTGRES_PASSWORD=${SVC_PWD_01}
+      - PGPASSFILE=/etc/postgres/.pgpass
     command: -c config_file=/etc/postgresql/postgresql.conf
 
   postgres02:
@@ -49,6 +51,7 @@ services:
       - $PWD/postgres02/init:/docker-entrypoint-initdb.d
     environment:
       - POSTGRES_PASSWORD=${SVC_PWD_02}
+      - PGPASSFILE=/etc/postgres/.pgpass
     command: -c config_file=/etc/postgresql/postgresql.conf
 
 volumes:

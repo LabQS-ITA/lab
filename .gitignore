@@ -362,7 +362,7 @@ ipython_config.py
 *.pgpass
 
 ### MariaDB
-autologin.conf
+autologin.cnf
 
 ### Backups
 *.gz

@@ -3,8 +3,10 @@ set -euo pipefail
 
 function backup_postgres() {
 
-    docker exec -i $1 /usr/bin/pg_dumpall -U postgres -w > .$1_temp.sql | gzip -9 > .$1_`date +%F-%H%M`.sql.gz
-    rm .$1_temp.sql
+    TEMPFILE=`mktemp` && {
+        docker exec -i $1 /usr/bin/pg_dumpall -U postgres -w > $TEMPFILE | gzip -9 > .$1_`date +%F-%H%M`.sql.gz
+        rm -f $TEMPFILE
+    }
 
 }
 

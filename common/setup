@@ -49,14 +49,18 @@ docker restart httpd
 # docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach
 
 
-# cd ../postgresql
-# echo '* PostgreSQL *'
+cd ../postgresql
+echo '* PostgreSQL *'
 
 # echo 'SVC_PWD='$(openssl rand -hex 8) > .env
 # echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
 # echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 
-# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+echo 'postgres:5432:postgres:postgres:'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env) > ./postgres/config/.pgpass
+echo 'postgres01:5432:postgres:postgres:'$(awk -F'=' '$1 =="SVC_PWD_01" {print $2}' .env) > ./postgres01/config/.pgpass
+echo 'postgres02:5432:postgres:postgres:'$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env) > ./postgres02/config/.pgpass
+
+docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 # cd ../mongodb

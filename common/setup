@@ -76,21 +76,21 @@ sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/static/index.html
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../mariadb
-echo '* MariaDB *'
+# cd ../mariadb
+# echo '* MariaDB *'
 
 # echo 'SVC_PWD_01='$(openssl rand -hex 8) > .env
 # echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 
-echo '[client]' > mariadb01/config/autologin.cnf
-echo 'user = maint' >> mariadb01/config/autologin.cnf
-echo 'password = '$(awk -F'=' '$1 =="SVC_PWD_01" {print $2}' .env) >> mariadb01/config/autologin.cnf
+# echo '[client]' > mariadb01/config/autologin.cnf
+# echo 'user = maint' >> mariadb01/config/autologin.cnf
+# echo 'password = '$(awk -F'=' '$1 =="SVC_PWD_01" {print $2}' .env) >> mariadb01/config/autologin.cnf
 
-echo '[client]' > mariadb02/config/autologin.cnf
-echo 'user = maint' >> mariadb02/config/autologin.cnf
-echo 'password = '$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env) >> mariadb02/config/autologin.cnf
+# echo '[client]' > mariadb02/config/autologin.cnf
+# echo 'user = maint' >> mariadb02/config/autologin.cnf
+# echo 'password = '$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env) >> mariadb02/config/autologin.cnf
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 # cd ../redis

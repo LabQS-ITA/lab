@@ -13,7 +13,7 @@ function backup_postgres() {
 function backup_mariadb() {
 
     TEMPFILE=`mktemp` && {
-        docker exec -i $1 /usr/bin/mysqldump -u maint -A > $TEMPFILE | gzip -9 > .$1_`date +%F-%H%M`.sql.gz
+        docker exec -i $1 /usr/bin/mysqldump -u root -A > $TEMPFILE | gzip -9 > .$1_`date +%F-%H%M`.sql.gz
         rm -f $TEMPFILE
     }
 

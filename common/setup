@@ -76,13 +76,21 @@ sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/static/index.html
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-# cd ../mariadb
-# echo '* MariaDB *'
+cd ../mariadb
+echo '* MariaDB *'
 
 # echo 'SVC_PWD_01='$(openssl rand -hex 8) > .env
 # echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 
-# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+echo '[client]' > mariadb01/autologin.conf
+echo 'user = maint' >> mariadb01/autologin.conf
+echo 'password = '$(awk -F'=' '$1 =="SVC_PWD_01" {print $2}' .env) >> mariadb01/autologin.conf
+
+echo '[client]' > mariadb02/autologin.conf
+echo 'user = maint' >> mariadb02/autologin.conf
+echo 'password = '$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env) >> mariadb02/autologin.conf
+
+docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 # cd ../redis

@@ -10,6 +10,18 @@ function backup_postgres() {
 
 }
 
+function backup_mariadb() {
+
+    TEMPFILE=`mktemp` && {
+        docker exec -i $1 /usr/bin/mysqldump -u maint -p -A > $TEMPFILE | gzip -9 > .$1_`date +%F-%H%M`.sql.gz
+        rm -f $TEMPFILE
+    }
+
+}
+
 backup_postgres postgres
 backup_postgres postgres01
 backup_postgres postgres02
+
+backup_mariadb mariadb01
+backup_mariadb mariadb02

@@ -17,7 +17,7 @@ function backup_all_containers {
 
     for c in $(docker ps -a --format '{{.Names}}');
     do
-        docker export $c > bkp_$c_$(date +%F-%H%M).docker.tar
+        docker export $c > bkp_$(c)_$(date +%F-%H%M).docker.tar
     done
 
 }

@@ -30,5 +30,3 @@ backup_postgres postgres02
 
 backup_mariadb mariadb01
 backup_mariadb mariadb02
-
-backup_all_containers

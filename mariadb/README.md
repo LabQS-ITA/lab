@@ -44,3 +44,7 @@ O serviço pode ser acessado por máquinas na rede local através do nome (`mari
 ## Repositório de dados
 
 Os dados de cada ambiente são mantidos numa pasta com o mesmo nome do serviço, **fora de controle de versão**, e sob um regime de _backup_ automatizado (ver [Serviço de cópias de segurança de dados do Laboratório de Testes de Software](../backup/README.md)).
+
+## Autologin
+
+O usuário `maint` possui auto-login configurado na pasta `config` do container correspondente (criado pelo script `common\setup`). Isto permite ao backup rodar via linha de comando sem inserção de senha.

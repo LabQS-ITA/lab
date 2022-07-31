@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-set -euo pipefail
+# set -euo pipefail
+
+crontab -r
 
 TEMPFILE=`mktemp` && {
     crontab -l 2>/dev/null > $TEMPFILE

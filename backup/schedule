@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-TEMPFILE = `mktemp` && {
+TEMPFILE=`mktemp` && {
     crontab -l > $TEMPFILE
     echo "0 0 * * 6 "`pwd`"\backup" >> $TEMPFILE
     crontab $TEMPFILE

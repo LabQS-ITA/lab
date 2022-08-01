@@ -25,10 +25,10 @@ function backup_mongodb() {
 
 }
 
-for c in $(docker ps -a --format '{{.Names}}');
-do
-    backup_container $c
-done
+# for c in $(docker ps -a --format '{{.Names}}');
+# do
+#     backup_container $c
+# done
 
 # backup_postgres postgres
 # backup_postgres postgres01

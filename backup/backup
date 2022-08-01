@@ -19,14 +19,22 @@ function backup_mariadb() {
 
 }
 
+function backup_mongodb() {
+
+    mongodump -h $1:27017 -u root - | gzip -9 > bkp_$1_$(date +%F-%H%M).bson.gz
+
+}
+
 for c in $(docker ps -a --format '{{.Names}}');
 do
     backup_container $c
 done
 
-backup_postgres postgres
-backup_postgres postgres01
-backup_postgres postgres02
+# backup_postgres postgres
+# backup_postgres postgres01
+# backup_postgres postgres02
 
-backup_mariadb mariadb01
-backup_mariadb mariadb02
+# backup_mariadb mariadb01
+# backup_mariadb mariadb02
+
+backup_mongodb mongodb

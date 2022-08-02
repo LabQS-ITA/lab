@@ -23,13 +23,13 @@ function backup_mongodb() {
 
     docker exec -i $1 /usr/bin/mongodump --config=/etc/mongo/.mdbpass --gzip --archive=$1.tar
     TEMPFILE=`mktemp` && {
-        docker cp $1:/$1.tar ./$TEMPFILE.tar
+        docker cp $1:/$1.tar $TEMPFILE.tar
         docker exec -i $1 rm $1.tar
         gzip --fast $TEMPFILE.tar
         mv $TEMPFILE.tar.gz bkp_$1_$(date +%F-%H%M).mongodb.gz
         rm -f $TEMPFILE
     }
-    
+
 }
 
 # for c in $(docker ps -a --format '{{.Names}}');

@@ -3,25 +3,32 @@ set -euo pipefail
 
 function backup_container {
 
-    docker export $c | gzip -9 > bkp_$1_$(date +%F-%H%M).docker.tar.gz
+    docker export $c | gzip --fast > bkp_$1_$(date +%F-%H%M).docker.gz
 
 }
 
 function backup_postgres() {
 
-    docker exec -i $1 /usr/bin/pg_dumpall -U postgres -w | gzip -9 > bkp_$1_$(date +%F-%H%M).sql.gz
+    docker exec -i $1 /usr/bin/pg_dumpall -U postgres -w | gzip --fast > bkp_$1_$(date +%F-%H%M).postgres.gz
 
 }
 
 function backup_mariadb() {
 
-    docker exec -i $1 /usr/bin/mysqldump -u root -A | gzip -9 > bkp_$1_$(date +%F-%H%M).sql.gz
+    docker exec -i $1 /usr/bin/mysqldump -u root -A | gzip --fast > bkp_$1_$(date +%F-%H%M).mariadb.gz
 
 }
 
 function backup_mongodb() {
 
-    docker exec -i $1 /usr/bin/mongodump --config=/etc/mongo/.mdbpass --out - | gzip -9 > bkp_$1_$(date +%F-%H%M).bson.gz
+    docker exec -i $1 /usr/bin/mongodump --config=/etc/mongo/.mdbpass --gzip --archive=$1.tar
+    TEMPFILE=`mktemp` && {
+        docker cp $1:/$1.tar ./$TEMPFILE.tar
+        docker exec -i $1 rm $1.tar
+        gzip --fast $TEMPFILE.tar
+        mv $TEMPFILE.tar.gz bkp_$1_$(date +%F-%H%M).mongodb.gz
+        rm -f $TEMPFILE
+    }
     
 }
 

@@ -365,7 +365,7 @@ ipython_config.py
 autologin.cnf
 
 ### MongoDB
-*.mdpass
+*.mdbpass
 
 ### Backups
 *.gz

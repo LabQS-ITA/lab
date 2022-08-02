@@ -21,9 +21,7 @@ function backup_mariadb() {
 
 function backup_mongodb() {
 
-    docker exec -i $1 /usr/bin/mongodump -h mongodb://localhost:27017 -u root - | gzip -9 > bkp_$1_$(date +%F-%H%M).bson.gz
-
-    docker exec -i mongodb /usr/bin/mongodump --config=/etc/mongo/.mdbpass - | gzip -9 > bkp.bson.gz
+    docker exec -i $1 /usr/bin/mongodump  --config=/etc/mongo/.mdbpass - | gzip -9 > bkp_$1_$(date +%F-%H%M).bson.gz
 
 }
 

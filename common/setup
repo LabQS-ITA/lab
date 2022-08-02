@@ -73,6 +73,10 @@ echo '* MongoDB *'
 # echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
 # echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 
+echo 'password: "'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env)'"' > ./mongodb/config/.mdbpass
+echo 'password: "'$(awk -F'=' '$1 =="SVC_PWD_01" {print $2}' .env)'"' > ./mongodb01/config/.mdbpass
+echo 'password: "'$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env)'"' > ./mongodb02/config/.mdbpass
+
 docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 

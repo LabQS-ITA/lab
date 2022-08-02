@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+rsync -a ~/shared/bkp/ ~/shared/in/tst/bkp

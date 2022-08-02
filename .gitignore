@@ -364,6 +364,9 @@ ipython_config.py
 ### MariaDB
 autologin.cnf
 
+### MongoDB
+*.mdpass
+
 ### Backups
 *.gz
 

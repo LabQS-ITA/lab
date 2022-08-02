@@ -32,16 +32,16 @@ function backup_mongodb() {
 
 }
 
-# for c in $(docker ps -a --format '{{.Names}}');
-# do
-#     backup_container $c
-# done
+for c in $(docker ps -a --format '{{.Names}}');
+do
+    backup_container $c
+done
 
-# backup_postgres postgres
-# backup_postgres postgres01
-# backup_postgres postgres02
+backup_postgres postgres
+backup_postgres postgres01
+backup_postgres postgres02
 
-# backup_mariadb mariadb01
-# backup_mariadb mariadb02
+backup_mariadb mariadb01
+backup_mariadb mariadb02
 
 backup_mongodb mongodb

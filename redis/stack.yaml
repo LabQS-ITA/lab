@@ -14,6 +14,7 @@ services:
       - redisdata:/data:rw
     environment:
       - REDIS_REPLICATION_MODE=master
+      - REDISCLI_AUTH="${SVC_PWD}"
     command: ["redis-server", "--requirepass", "${SVC_PWD}", "--appendonly", "yes"]
 
   redis01:
@@ -30,6 +31,7 @@ services:
       - redisdata01:/data:rw
     environment:
       - REDIS_REPLICATION_MODE=master
+      - REDISCLI_AUTH="${SVC_PWD_01}"
     command: ["redis-server", "--requirepass", "${SVC_PWD_01}", "--appendonly", "yes"]
 
   redis02:
@@ -46,6 +48,7 @@ services:
       - redisdata02:/data:rw
     environment:
       - REDIS_REPLICATION_MODE=master
+      - REDISCLI_AUTH="${SVC_PWD_02}"
     command: ["redis-server", "--requirepass", "${SVC_PWD_02}", "--appendonly", "yes"]
 
   redis-commander:

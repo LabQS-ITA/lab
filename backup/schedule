@@ -5,8 +5,8 @@ crontab -r
 
 TEMPFILE=`mktemp` && {
     crontab -l 2>/dev/null > $TEMPFILE
-    echo "0 0 * * 6 "`pwd`"/backup" >> $TEMPFILE
-    echo "0 2 * * 0-5 /usr/bin/rsync -r ~/shared/bkp/ ~/shared/in/tst/bkp" >> $TEMPFILE
+    echo "0 0 * * 6 /home/gpes/LTS/backup/backup" >> $TEMPFILE
+    echo "0 2 * * 0-5 /usr/bin/rsync -r /home/gpes/shared/bkp/ /home/gpes/shared/in/tst/bkp" >> $TEMPFILE
     crontab $TEMPFILE
     rm -f $TEMPFILE
 }

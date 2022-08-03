@@ -32,16 +32,33 @@ function backup_mongodb() {
 
 }
 
-for c in $(docker ps -a --format '{{.Names}}');
-do
-    backup_container $c
-done
+function backup_redis() {
 
-backup_postgres postgres
-backup_postgres postgres01
-backup_postgres postgres02
+    docker exec -i $1 /usr/local/bin/redis-cli "SAVE"
+    TEMPFILE=`mktemp` && {
+        docker cp $1:/data/dump.rdb $TEMPFILE.tar
+        docker exec -i $1 rm /data/dump.rdb
+        gzip --fast $TEMPFILE.tar
+        mv $TEMPFILE.tar.gz ~/shared/bkp/bkp_$1_$(date +%F-%H%M).redis.gz
+        rm -f $TEMPFILE
+    }
 
-backup_mariadb mariadb01
-backup_mariadb mariadb02
+}
 
-backup_mongodb mongodb
+# for c in $(docker ps -a --format '{{.Names}}');
+# do
+#     backup_container $c
+# done
+
+# backup_postgres postgres
+# backup_postgres postgres01
+# backup_postgres postgres02
+
+# backup_mariadb mariadb01
+# backup_mariadb mariadb02
+
+# backup_mongodb mongodb
+# backup_mongodb mongodb01
+# backup_mongodb mongodb02
+
+backup_redis redis

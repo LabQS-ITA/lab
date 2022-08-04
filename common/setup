@@ -17,12 +17,12 @@ source ./config
 
 
 # Servidor do lab
-# export LAB_DOMAIN=test.labqs.ita.br
-# export CI_LAB_DOMAIN=ci.test.labqs.ita.br
+export LAB_DOMAIN=test.labqs.ita.br
+export CI_LAB_DOMAIN=ci.test.labqs.ita.br
 
 # Servidores de desenvolvimento e testes
-export LAB_DOMAIN=dev.labqs.ita.br
-export CI_LAB_DOMAIN=ci.labqs.ita.br
+# export LAB_DOMAIN=dev.labqs.ita.br
+# export CI_LAB_DOMAIN=ci.labqs.ita.br
 
 export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN
 
@@ -153,3 +153,9 @@ sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/static/index.html
 # echo 'SVC_PWD='$(openssl rand -hex 16) >> .env
 
 # docker-compose -f stack.yaml -f ../common/use.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans
+
+
+cd ../ansible
+echo '* Ansible *'
+
+docker-compose -f stack.yaml -f ../common/use.yaml up --detach

@@ -1,10 +1,9 @@
 services:
 
-  build:
-    context: .
-    dockerfile: ansible.Dockerfile
-
   ansible:
+    build:
+      context: .
+      dockerfile: ansible.Dockerfile
     container_name: ansible
     image: ansible:latest
     restart: unless-stopped

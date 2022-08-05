@@ -158,5 +158,5 @@ sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/static/index.html
 cd ../ansible
 echo '* Ansible *'
 
-docker-compose -f build.yaml -p ansible build
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f build.yaml -p ansible build
+docker-compose -f stack.yaml -f ../common/use.yaml up --build --detach

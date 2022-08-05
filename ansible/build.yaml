@@ -1,7 +1,0 @@
-services:
-
-  build:
-    image: ansible:latest
-    build:
-      context: .
-      dockerfile: ansible.Dockerfile

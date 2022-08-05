@@ -1,37 +1,17 @@
-FROM alpine:3.16
+FROM centos:latest
 
-RUN apk --no-cache add \
-        sudo \
-        python3\
-        py3-pip \
-        openssl \
-        ca-certificates \
-        sshpass \
-        openssh-client \
-        rsync \
-        git && \
-    apk --no-cache add --virtual build-dependencies \
-        python3-dev \
-        libffi-dev \
-        musl-dev \
-        gcc \
-        cargo \
-        openssl-dev \
-        libressl-dev \
-        build-base && \
-    pip install --upgrade pip wheel && \
-    pip install --upgrade cryptography cffi && \
-    pip install ansible==2.9.27 && \
-    pip install mitogen==0.2.10 ansible-lint==5.4.0 jmespath && \
-    pip install --upgrade pywinrm && \
-    apk del build-dependencies && \
-    rm -rf /var/cache/apk/* && \
-    rm -rf /root/.cache/pip && \
-    rm -rf /root/.cargo
+RUN cd /etc/yum.repos.d/
+RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+RUN sed -i 's/#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
 
-RUN mkdir /ansible && \
-    mkdir -p /etc/ansible
+RUN yum -y install crontabs NetworkManager \
+    firewalld selinux-policy sudo python3-firewall initscripts python3
 
-WORKDIR /ansible
+RUN systemctl mask dev-mqueue.mount dev-hugepages.mount \
+    systemd-remount-fs.service sys-kernel-config.mount \
+    sys-kernel-debug.mount sys-fs-fuse-connections.mount \
+    graphical-target systemd-logind.service \
+    NetworkManager.service systemd-hostnamed.service
+STOPSIGNAL SIGRTMIN+3
 
-CMD [ "ansible-playbook", "--version" ]
+CMD ["/sbin/init"]

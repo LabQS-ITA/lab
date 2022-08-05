@@ -1,11 +1,11 @@
 services:
 
   ansible:
+    image: ansible:latest
     build:
       context: .
       dockerfile: ansible.Dockerfile
     container_name: ansible
-    image: ansible:latest
     restart: unless-stopped
     networks:
       netlab01:

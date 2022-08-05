@@ -1,4 +1,4 @@
-FROM alpine:ansible
+FROM alpine:latest
 
 RUN mkdir -p /etc/ansible
 RUN apk add ansible

@@ -4,6 +4,8 @@ services:
     container_name: ansible
     image: ansible:latest
     restart: unless-stopped
+    stdin_open: true
+    tty: true
     ports:
       - "8022:22"
     networks:

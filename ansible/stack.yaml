@@ -1,14 +1,11 @@
 services:
 
-  build:
+  ansible:
+    container_name: ansible
     image: ansible:local
     build:
       context: .
       dockerfile: ansible.Dockerfile
-
-  ansible:
-    container_name: ansible
-    image: ansible:local
     restart: unless-stopped
     stdin_open: true
     tty: true

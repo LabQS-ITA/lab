@@ -7,7 +7,7 @@ TEMPFILE=`mktemp` && {
     crontab -l 2>/dev/null > $TEMPFILE
     echo "0 0 * * 6 /home/gpes/LTS/backup/backup" >> $TEMPFILE
     echo "0 2 * * 0-5 /usr/bin/rsync -r /home/gpes/shared/bkp/ /home/gpes/shared/in/tst/bkp" >> $TEMPFILE
-    echo "0 4 * * * find /home/gpes/shared/bkp/* -mtime +90 -exec rm {} \;"
+    echo "0 4 * * * find /home/gpes/shared/bkp/* -mtime +90 -exec rm {} \;" >> $TEMPFILE
     crontab $TEMPFILE
     rm -f $TEMPFILE
 }

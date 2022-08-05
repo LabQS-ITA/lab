@@ -1,9 +1,6 @@
-FROM centos:latest
+FROM ubuntu:latest
 
-RUN dnf -y install epel-release
-
-RUN dnf makecache
-
-RUN dnf -y install ansible
-
-CMD ["/sbin/init"]
+RUN apt --yes update
+RUN apt --yes install software-properties-common
+RUN add-apt-repository --yes --update ppa:ansible/ansible
+RUN apt --yes install ansible

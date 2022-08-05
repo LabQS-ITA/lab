@@ -5,7 +5,7 @@ RUN apk update
 RUN apk add --no-cache ansible
 RUN apk add --no-cache openssh
 
-RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 RUN ssh-keygen -t rsa -P "" -f /root/.ssh/id_rsa
 

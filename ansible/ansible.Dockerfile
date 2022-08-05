@@ -1,7 +1,9 @@
 FROM alpine:latest
 
 RUN mkdir -p /etc/ansible
-RUN apk add ansible
+RUN apk update
+RUN apk add --no-cache ansible
+RUN apk add --no-cache openssh-keygen
 
 RUN ssh-keygen -t rsa -P ""
 

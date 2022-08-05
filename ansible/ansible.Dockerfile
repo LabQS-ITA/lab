@@ -1,30 +1,42 @@
-FROM alpine:latest
+FROM alpine:3.16
 
-ENV TERM="xterm" \
-    LANG="C.UTF-8" \
-    LC_ALL="C.UTF-8"
+ARG ANSIBLE_CORE_VERSION_ARG "2.9.27"
+ARG ANSIBLE_LINT "5.4.0"
+ENV ANSIBLE_LINT ${ANSIBLE_LINT}
+ENV ANSIBLE_CORE ${ANSIBLE_CORE_VERSION_ARG}
 
-RUN set -x \
-    # Install ansible
-    && apk-install \
-        python \
-        python-dev \
-        py-setuptools \
-        py-crypto \
-        py2-pip \
-        py-cparser \
-        py-cryptography \
-        py-markupsafe \
-        py-cffi \
-        py-yaml \
-        py-jinja2 \
-        py-paramiko \
+RUN apk --no-cache add \
+        sudo \
+        python3\
+        py3-pip \
+        openssl \
+        ca-certificates \
+        sshpass \
         openssh-client \
-    && pip install --upgrade pip \
-    && hash -r \
-    && pip install --no-cache-dir ansible \
-    && chmod 750 /usr/bin/ansible* \
-    # Cleanup
-    && apk del python-dev \
-    && docker-run-bootstrap \
-    && docker-image-cleanup
+        rsync \
+        git && \
+    apk --no-cache add --virtual build-dependencies \
+        python3-dev \
+        libffi-dev \
+        musl-dev \
+        gcc \
+        cargo \
+        openssl-dev \
+        libressl-dev \
+        build-base && \
+    pip install --upgrade pip wheel && \
+    pip install --upgrade cryptography cffi && \
+    pip install ansible==2.9.27 && \
+    pip install mitogen==0.2.10 ansible-lint==5.4.0 jmespath && \
+    pip install --upgrade pywinrm && \
+    apk del build-dependencies && \
+    rm -rf /var/cache/apk/* && \
+    rm -rf /root/.cache/pip && \
+    rm -rf /root/.cargo
+
+RUN mkdir /ansible && \
+    mkdir -p /etc/ansible
+
+WORKDIR /ansible
+
+CMD [ "ansible-playbook", "--version" ]

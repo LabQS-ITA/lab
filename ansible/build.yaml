@@ -1,6 +1,6 @@
 services:
 
-  ansible:
+  build:
     image: ansible:latest
     build:
       context: .

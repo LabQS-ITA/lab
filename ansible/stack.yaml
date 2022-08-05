@@ -1,5 +1,11 @@
 services:
 
+  build:
+    image: ansible:latest
+    build:
+      context: .
+      dockerfile: ansible.Dockerfile
+
   ansible:
     container_name: ansible
     image: ansible:latest

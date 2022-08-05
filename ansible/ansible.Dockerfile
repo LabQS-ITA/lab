@@ -1,3 +1,3 @@
 FROM alpine:latest
 
-RUN apk add ansible
+RUN apk add --no-cache openssh-client ansible git

@@ -1,10 +1,5 @@
 FROM alpine:3.16
 
-ARG ANSIBLE_CORE_VERSION_ARG "2.9.27"
-ARG ANSIBLE_LINT "5.4.0"
-ENV ANSIBLE_LINT ${ANSIBLE_LINT}
-ENV ANSIBLE_CORE ${ANSIBLE_CORE_VERSION_ARG}
-
 RUN apk --no-cache add \
         sudo \
         python3\

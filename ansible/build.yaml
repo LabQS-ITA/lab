@@ -1,0 +1,6 @@
+services:
+
+  ansible:
+    build:
+      context: .
+      dockerfile: ansible.Dockerfile

@@ -6,8 +6,6 @@ services:
     restart: unless-stopped
     ports:
       - '3000:3000'
-    expose:
-      - '22'
     networks:
       netlab01:
         ipv4_address: ${GITEA_HOST}

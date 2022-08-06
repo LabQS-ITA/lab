@@ -9,6 +9,7 @@ RUN addgroup -S ansible && adduser -s /bin/sh -S ansible -G ansible
 RUN PW=$(echo p4ssw0rd | base64) && echo -e "$PW\n$PW" | passwd ansible && unset PW
 
 USER ansible
+RUN mkdir -p ~/tasks
 
 RUN ssh-keygen -t rsa -P "" -C "ansible@161.24.23.96" -f ~/.ssh/id_rsa
 

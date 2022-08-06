@@ -16,3 +16,4 @@ services:
         ipv4_address: ${ANSIBLE_HOST}
     volumes:
       - ${PWD}/config:/etc/ansible:rw
+      - ${PWD}/tasks:/home/ansible/tasks:rw

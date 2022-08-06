@@ -6,8 +6,10 @@ RUN apk add --no-cache openrc
 RUN apk add --no-cache ansible
 RUN apk add --no-cache openssh
 
-RUN useradd -ms /bin/sh gpes
-RUN sudo usermod --password $(echo p4ssw0rd | openssl passwd -1 -stdin) gpes
+RUN addgroup -S gpes
+RUN adduser -s /bin/sh -S gpes -G gpes
+
+RUN PW=$(echo p4ssw0rd | base64) && echo -e "$PW\n$PW" | passwd gpes && unset PW
 
 USER gpes
 

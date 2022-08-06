@@ -1,8 +1,0 @@
-- name: 'Ping servidores LabQS'
-  hosts: labqs
-  tasks:
-    - name: 'Ping servidores'
-      ansible.builtin.ping:
-    - name: 'Mensagem de diagnóstico'
-      ansible.builtin.msg:
-        msg: 'Servidor UP'

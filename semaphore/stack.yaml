@@ -1,0 +1,25 @@
+services:
+
+  semaphore:
+    container_name: semaphore
+    image: ansiblesemaphore/semaphore:latest
+    restart: unless-stopped
+    ports:
+      - '8085:3000'
+    networks:
+      netlab01:
+        ipv4_address: ${SEMAPHORE_HOST}
+    volumes:
+      - tasks:/tmp/semaphore:rw
+    environment:
+      SEMAPHORE_DB_USER: semaphore
+      SEMAPHORE_DB_PASS: ${POSTGRES_PWD}
+      SEMAPHORE_DB_HOST: postgres
+      SEMAPHORE_DB_PORT: 5432
+      SEMAPHORE_DB: semaphore
+      SEMAPHORE_PLAYBOOK_PATH: /tmp/semaphore/
+      SEMAPHORE_ADMIN_PASSWORD: ${SVC_PWD}
+      SEMAPHORE_ADMIN_NAME: admin
+      SEMAPHORE_ADMIN_EMAIL: admin@localhost
+      SEMAPHORE_ADMIN: admin
+      SEMAPHORE_ACCESS_KEY_ENCRYPTION: ${SEMAPHORE_KEY}

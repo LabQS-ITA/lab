@@ -1,8 +1,8 @@
 labqs:
   hosts:
     tst:
-      ansible_host: 161.24.23.94
+      ansible_host: '161.24.23.94:2222'
     dev:
-      ansible_host: 161.24.23.95
+      ansible_host: '161.24.23.95:2222'
     hml:
-      ansible_host: 161.24.23.96
+      ansible_host: '161.24.23.96:2222'

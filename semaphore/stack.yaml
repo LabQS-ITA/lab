@@ -9,8 +9,6 @@ services:
     networks:
       netlab01:
         ipv4_address: ${SEMAPHORE_HOST}
-    volumes:
-      - tasks:/tmp/semaphore:rw
     environment:
       SEMAPHORE_DB_USER: semaphore
       SEMAPHORE_DB_PASS: ${POSTGRES_PWD}

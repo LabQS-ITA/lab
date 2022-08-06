@@ -1,0 +1,7 @@
+labqs:
+  tst:
+    ansible_host: 161.24.23.94
+  dev:
+    ansible_host: 161.24.23.95
+  hml:
+    ansible_host: 161.24.23.96

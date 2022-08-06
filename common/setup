@@ -158,7 +158,7 @@ sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/static/index.html
 cd ../ansible
 echo '* Ansible *'
 
-read -p 'Enter password: ' GPES_PASSWORD
+read -sp 'Enter password: ' GPES_PASSWORD
 
 echo 'GPES_PASSWORD='$GPES_PASSWORD > .env
 

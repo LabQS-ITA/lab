@@ -1,6 +1,7 @@
 FROM alpine:latest
 
-ENV GPES_PASSWORD=p4ssw0rd
+ARG GPES_PASSWORD
+ENV GPES_PASSWORD $GPES_PASSWORD
 
 RUN mkdir -p /etc/ansible
 RUN apk update

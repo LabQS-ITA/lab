@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+function create_user_noexpire() {
+
+    sudo adduser --gecos "" $1
+    sudo usermod --password $(echo p4ssw0rd | openssl passwd -1 -stdin) $1
+
+}
+
 function create_user() {
 
     sudo adduser --disabled-password --gecos "" $1
@@ -28,6 +35,9 @@ function nologin_operator() {
 # User maint (já deve ter sido criado ao configurar o ambiente)
 # create_user gpes
 # usermod -aG sudo gpes
+
+# User ansible
+# create_user_noexpire ansible
 
 # Professores SI-TIH
 # create_user cunha

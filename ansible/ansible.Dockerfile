@@ -15,6 +15,6 @@ USER ansible
 
 RUN ssh-keygen -t rsa -P "" -C "ansible@161.24.23.96" -f /home/ansible/.ssh/id_rsa
 
-RUN ssh-copy-id -p 2222 -i ~/.ssh/id_rsa.pub ansible@161.24.23.96
+# RUN ssh-copy-id -p 2222 -i /home/ansible/.ssh/id_rsa.pub ansible@161.24.23.96
 
 EXPOSE 22

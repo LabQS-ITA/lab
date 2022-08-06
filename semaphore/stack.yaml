@@ -10,7 +10,7 @@ services:
       netlab01:
         ipv4_address: ${SEMAPHORE_HOST}
     environment:
-      SEMAPHORE_WEB_ROOT: httpds://test.labqs.ita.br/semaphore
+      SEMAPHORE_WEB_ROOT: https://test.labqs.ita.br/semaphore
       SEMAPHORE_DB_DIALECT: postgres
       SEMAPHORE_DB_USER: semaphore
       SEMAPHORE_DB_PASS: ${POSTGRES_PWD}

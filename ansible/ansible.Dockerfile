@@ -1,5 +1,7 @@
 FROM alpine:latest
 
+ENV GPES_PASSWORD
+
 RUN mkdir -p /etc/ansible
 RUN apk update
 RUN apk add --no-cache openrc
@@ -15,6 +17,6 @@ USER ansible
 
 RUN ssh-keygen -t rsa -P "" -C "ansible@161.24.23.96" -f /home/ansible/.ssh/id_rsa
 
-# RUN ssh-copy-id -p 2222 -i /home/ansible/.ssh/id_rsa.pub ansible@161.24.23.96
+RUN echo "$GPES_PASSWORD" | cat .ssh/id_rsa.pub | ssh -p 2222 gpes@161.24.23.96 'cat >> .ssh/authorized_keys'
 
 EXPOSE 22

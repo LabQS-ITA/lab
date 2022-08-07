@@ -1,9 +1,0 @@
-[all:vars]
-ansible_connection=ssh
-ansible_user=ansible
-ansible_ssh_pass=p4ssw0rd
-
-[labqs]
-161.24.23.94:2222
-161.24.23.95:2222
-161.24.23.96:2222

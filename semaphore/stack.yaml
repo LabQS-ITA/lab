@@ -16,10 +16,10 @@ services:
       SEMAPHORE_DB_PASS: ${POSTGRES_PWD}
       SEMAPHORE_DB_HOST: postgres
       SEMAPHORE_DB_PORT: 5432
-      SEMAPHORE_DB: semaphore?sslmode=disable;
+      SEMAPHORE_DB: semaphore?sslmode=disable
       SEMAPHORE_PLAYBOOK_PATH: /tmp/semaphore/
       SEMAPHORE_ADMIN_PASSWORD: ${SVC_PWD}
-      SEMAPHORE_ADMIN_NAME: admin
-      SEMAPHORE_ADMIN_EMAIL: admin@localhost
-      SEMAPHORE_ADMIN: admin
+      SEMAPHORE_ADMIN_NAME: maint
+      SEMAPHORE_ADMIN_EMAIL: gomesjm@ita.br
+      SEMAPHORE_ADMIN: maint
       SEMAPHORE_ACCESS_KEY_ENCRYPTION: ${SEMAPHORE_KEY}

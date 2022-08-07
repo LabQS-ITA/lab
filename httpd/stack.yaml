@@ -15,3 +15,6 @@ services:
       - $PWD/panel/config:/usr/local/apache2/conf:ro
       - /home/gpes/shared/out:/usr/local/apache2/shared:ro
       - certificates:/usr/local/apache2/certificates:ro
+    environment:
+      - LAB_DOMAIN=${LAB_DOMAIN}
+      - CI_LAB_DOMAIN=${CI_LAB_DOMAIN}

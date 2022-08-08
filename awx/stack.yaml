@@ -1,11 +1,54 @@
 services:
 
+  rabbitmq:
+    image: rabbitmq:alpine
+    environment:
+      RABBITMQ_DEFAULT_VHOST: awx
+
+  memcached:
+    image: memcached:alpine
+
   awx:
-    container_name: awx
-    image: quay.io/ansible/awx:19.5.1
-    restart: unless-stopped
+    image: ansible/awx_web:latest
+    depends_on:
+      - rabbitmq
+      - memcached
     ports:
-      - '8052:8052'
-    networks:
-      netlab01:
-        ipv4_address: ${AWX_HOST}
+      - '80:8052'
+    user: root
+    environment:
+      SECRET_KEY: ${SVC_PWD}
+      DATABASE_USER: awx
+      DATABASE_PASSWORD: ${POSTGRES_PWD}
+      DATABASE_NAME: awx
+      DATABASE_PORT: 5432
+      DATABASE_HOST: postgres
+      RABBITMQ_USER: guest
+      RABBITMQ_PASSWORD: guest
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_VHOST: awx
+      MEMCACHED_HOST: memcached
+      MEMCACHED_PORT: 11211
+
+  task:
+    image: ansible/awx_task:latest
+    depends_on:
+      - rabbitmq
+      - memcached
+      - awx
+    user: root
+    environment:
+      SECRET_KEY: ${SVC_PWD}
+      DATABASE_USER: awx
+      DATABASE_PASSWORD: ${POSTGRES_PWD}
+      DATABASE_NAME: awx
+      DATABASE_PORT: 5432
+      DATABASE_HOST: postgres
+      RABBITMQ_USER: guest
+      RABBITMQ_PASSWORD: guest
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_VHOST: awx
+      MEMCACHED_HOST: memcached
+      MEMCACHED_PORT: 11211

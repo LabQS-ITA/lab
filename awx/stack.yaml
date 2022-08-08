@@ -4,3 +4,8 @@ services:
     container_name: awx
     image: quay.io/ansible/awx:19.5.1
     restart: unless-stopped
+    ports:
+      - '8052:8052'
+    networks:
+      netlab01:
+        ipv4_address: ${AWX_HOST}

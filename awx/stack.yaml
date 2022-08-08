@@ -2,5 +2,5 @@ services:
 
   awx:
     container_name: awx
-    image: quay.io/ansible/awx
+    image: quay.io/ansible/awx:19.5.1
     restart: unless-stopped

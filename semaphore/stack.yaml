@@ -5,7 +5,7 @@ services:
     image: ansiblesemaphore/semaphore:latest
     restart: unless-stopped
     ports:
-      - '8085:3000'
+      - '3000:3000'
     networks:
       netlab01:
         ipv4_address: ${SEMAPHORE_HOST}

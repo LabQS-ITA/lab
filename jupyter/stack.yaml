@@ -13,7 +13,7 @@ services:
       - jupyterdata:/home/jovyan/work
       - $PWD/config:/home/jovyan/.jupyter
     environment:
-      - JUPYTER_ENABLE_LAB=yes
+      JUPYTER_ENABLE_LAB: yes
     command: [ "start-notebook.sh", "--NotebookApp.token=${SVC_TOKEN}"]
 
 volumes:

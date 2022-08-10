@@ -14,9 +14,9 @@ services:
       - $PWD/mariadb01/config:/etc/mysql/conf.d:ro
       - $PWD/mariadb01/init:/docker-entrypoint-initdb.d:ro
     environment:
-      - MARIADB_ROOT_PASSWORD=${SVC_PWD_01}
-      - MARIADB_USER=maint
-      - MARIADB_PASSWORD=${SVC_PWD_01}
+      MARIADB_ROOT_PASSWORD: ${SVC_PWD_01}
+      MARIADB_USER: maint
+      MARIADB_PASSWORD: ${SVC_PWD_01}
 
   mysql02:
     container_name: mariadb02
@@ -32,9 +32,9 @@ services:
       - $PWD/mariadb02/config:/etc/mysql/conf.d:ro
       - $PWD/mariadb02/init:/docker-entrypoint-initdb.d:ro
     environment:
-      - MARIADB_ROOT_PASSWORD=${SVC_PWD_02}
-      - MARIADB_USER=maint
-      - MARIADB_PASSWORD=${SVC_PWD_02}
+      MARIADB_ROOT_PASSWORD: ${SVC_PWD_02}
+      MARIADB_USER: maint
+      MARIADB_PASSWORD: ${SVC_PWD_02}
 
 volumes:
   mariadata01:

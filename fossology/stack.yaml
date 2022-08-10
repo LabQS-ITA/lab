@@ -9,7 +9,7 @@ services:
     networks:
       - netlab01
     environment:
-      - FOSSOLOGY_DB_HOST=postgres
-      - FOSSOLOGY_DB_NAME=fossology
-      - FOSSOLOGY_DB_USER=fossology
-      - FOSSOLOGY_DB_PASSWORD=${POSTGRES_PWD}
+      FOSSOLOGY_DB_HOST: postgres
+      FOSSOLOGY_DB_NAME: fossology
+      FOSSOLOGY_DB_USER: fossology
+      FOSSOLOGY_DB_PASSWORD: ${POSTGRES_PWD}

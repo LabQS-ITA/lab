@@ -17,22 +17,22 @@ services:
       - /etc/localtime:/etc/localtime:ro
 
     environment:
-      - DRONE_AGENTS_ENABLED=true
-      - DRONE_LOGS_DEBUG=true
-      - DRONE_LOGS_TRACE=true
-      - DRONE_DATADOG_ENABLED=false
-      - DRONE_DATABASE_DRIVER=postgres
-      - DRONE_DATABASE_DATASOURCE=postgres://drone:${POSTGRES_PWD}@postgres:5432/drone?sslmode=disable
-      - DRONE_SERVER_HOST=${CI_LAB_DOMAIN}
-      - DRONE_SERVER_PROTO=https
-      - DRONE_GITEA_SERVER=https://${LAB_DOMAIN}/git
-      - DRONE_GITEA_CLIENT_ID=${GITEA_ID}
-      - DRONE_GITEA_CLIENT_SECRET=${GITEA_PWD}
-      - DRONE_GITEA_SKIP_VERIFY=true
-      - DRONE_VALIDATE_PLUGIN_SKIP_VERIFY=true
-      - DRONE_WEBHOOK_SKIP_VERIFY=true
-      - DRONE_RPC_SECRET=${SVC_PWD}
-      - DRONE_USER_CREATE=username:maint,machine:false,admin:true,token:${DRONE_TOKEN},
+      DRONE_AGENTS_ENABLED: true
+      DRONE_LOGS_DEBUG: true
+      DRONE_LOGS_TRACE: true
+      DRONE_DATADOG_ENABLED: false
+      DRONE_DATABASE_DRIVER: postgres
+      DRONE_DATABASE_DATASOURCE: postgres://drone:${POSTGRES_PWD}@postgres:5432/drone?sslmode: disable
+      DRONE_SERVER_HOST: ${CI_LAB_DOMAIN}
+      DRONE_SERVER_PROTO: https
+      DRONE_GITEA_SERVER: https://${LAB_DOMAIN}/git
+      DRONE_GITEA_CLIENT_ID: ${GITEA_ID}
+      DRONE_GITEA_CLIENT_SECRET: ${GITEA_PWD}
+      DRONE_GITEA_SKIP_VERIFY: true
+      DRONE_VALIDATE_PLUGIN_SKIP_VERIFY: true
+      DRONE_WEBHOOK_SKIP_VERIFY: true
+      DRONE_RPC_SECRET: ${SVC_PWD}
+      DRONE_USER_CREATE: username:maint,machine:false,admin:true,token:${DRONE_TOKEN},
 
   docker:
     image: drone/drone-runner-docker
@@ -44,14 +44,14 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - DRONE_RPC_PROTO=https
-      - DRONE_RPC_HOST=${CI_LAB_DOMAIN}
-      - DRONE_RPC_SECRET=${SVC_PWD}
-      - DRONE_RUNNER_NAME=dronerunner01
-      - DRONE_RUNNER_CAPACITY=2
-      - DRONE_RUNNER_NETWORKS=netlab01
-      - DRONE_DEBUG=false
-      - DRONE_TRACE=false
+      DRONE_RPC_PROTO: https
+      DRONE_RPC_HOST: ${CI_LAB_DOMAIN}
+      DRONE_RPC_SECRET: ${SVC_PWD}
+      DRONE_RUNNER_NAME: dronerunner01
+      DRONE_RUNNER_CAPACITY: 2
+      DRONE_RUNNER_NETWORKS: netlab01
+      DRONE_DEBUG: false
+      DRONE_TRACE: false
     depends_on:
       - 'drone'
 
@@ -63,12 +63,12 @@ services:
     networks:
       - netlab01
     environment:
-      - DRONE_RPC_PROTO=https
-      - DRONE_RPC_HOST=${CI_LAB_DOMAIN}
-      - DRONE_RPC_SECRET=${SVC_PWD}
-      - DRONE_RUNNER_NAME=dronerunner03
-      - DRONE_RUNNER_CAPACITY=2
-      - DRONE_RUNNER_NETWORKS=netlab01
+      DRONE_RPC_PROTO: https
+      DRONE_RPC_HOST: ${CI_LAB_DOMAIN}
+      DRONE_RPC_SECRET: ${SVC_PWD}
+      DRONE_RUNNER_NAME: dronerunner03
+      DRONE_RUNNER_CAPACITY: 2
+      DRONE_RUNNER_NETWORKS: netlab01
     depends_on:
       - 'drone'
 

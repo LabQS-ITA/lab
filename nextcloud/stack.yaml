@@ -13,17 +13,17 @@ services:
       - nextclouddata:/var/www/html
       - /home/gpes/shared/out:/var/www/shared:ro
     environment:
-      - REDIS_HOST=redis
-      - REDIS_HOST_PASSWORD=${REDIS_PWD}
-      - POSTGRES_DB=nextcloud
-      - POSTGRES_USER=nextcloud
-      - POSTGRES_PASSWORD=${POSTGRES_PWD}
-      - POSTGRES_HOST=postgres
-      - NEXTCLOUD_ADMIN_USER=maint
-      - NEXTCLOUD_ADMIN_PASSWORD=${SVC_PWD}
-      - NEXTCLOUD_TRUSTED_DOMAINS=${LAB_DOMAIN} ${CI_LAB_DOMAIN}
-      - OVERWRITEPROTOCOL=https
-      - OVERWRITEWEBROOT=nextcloud
+      REDIS_HOST: redis
+      REDIS_HOST_PASSWORD: ${REDIS_PWD}
+      POSTGRES_DB: nextcloud
+      POSTGRES_USER: nextcloud
+      POSTGRES_PASSWORD: ${POSTGRES_PWD}
+      POSTGRES_HOST: postgres
+      NEXTCLOUD_ADMIN_USER: maint
+      NEXTCLOUD_ADMIN_PASSWORD: ${SVC_PWD}
+      NEXTCLOUD_TRUSTED_DOMAINS: ${LAB_DOMAIN} ${CI_LAB_DOMAIN}
+      OVERWRITEPROTOCOL: https
+      OVERWRITEWEBROOT: nextcloud
 
 volumes:
   nextclouddata:

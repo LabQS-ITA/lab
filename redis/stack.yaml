@@ -13,8 +13,8 @@ services:
       - $PWD/config:/usr/local/etc/redis/redis.conf:ro
       - redisdata:/data:rw
     environment:
-      - REDIS_REPLICATION_MODE=master
-      - REDISCLI_AUTH=${SVC_PWD}
+      REDIS_REPLICATION_MODE: master
+      REDISCLI_AUTH: ${SVC_PWD}
     command: ["redis-server", "--requirepass", "${SVC_PWD}", "--appendonly", "yes"]
 
   redis01:
@@ -30,8 +30,8 @@ services:
       - $PWD/config:/usr/local/etc/redis/redis.conf:ro
       - redisdata01:/data:rw
     environment:
-      - REDIS_REPLICATION_MODE=master
-      - REDISCLI_AUTH=${SVC_PWD_01}
+      REDIS_REPLICATION_MODE: master
+      REDISCLI_AUTH: ${SVC_PWD_01}
     command: ["redis-server", "--requirepass", "${SVC_PWD_01}", "--appendonly", "yes"]
 
   redis02:
@@ -47,8 +47,8 @@ services:
       - $PWD/config:/usr/local/etc/redis/redis.conf:ro
       - redisdata02:/data:rw
     environment:
-      - REDIS_REPLICATION_MODE=master
-      - REDISCLI_AUTH=${SVC_PWD_02}
+      REDIS_REPLICATION_MODE: master
+      REDISCLI_AUTH: ${SVC_PWD_02}
     command: ["redis-server", "--requirepass", "${SVC_PWD_02}", "--appendonly", "yes"]
 
   redis-commander:
@@ -61,7 +61,7 @@ services:
       netlab01:
         ipv4_address: ${COMMANDER_HOST}
     environment:
-      - URL_PREFIX=/commander
+      - URL_PREFIX: /commander
     depends_on:
       - redis01
       - redis02

@@ -37,8 +37,8 @@ echo "Registrar apache com domínios $(tput setaf 1)"$CERT_DOMAINS"$(tput sgr0)"
 
 sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/static/index.html
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach --remove-orphans
-docker restart httpd
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach --remove-orphans
+# docker restart httpd
 
 # cd ../locust
 # echo '* Locust *'

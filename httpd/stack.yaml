@@ -13,7 +13,6 @@ services:
     volumes:
       - $PWD/panel/static:/usr/local/apache2/htdocs:ro
       - $PWD/panel/config:/usr/local/apache2/conf:ro
-      - /home/gpes/shared/out:/usr/local/apache2/shared:ro
       - certificates:/usr/local/apache2/certificates:ro
     environment:
       LAB_DOMAIN: ${LAB_DOMAIN}

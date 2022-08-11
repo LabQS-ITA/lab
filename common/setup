@@ -19,37 +19,35 @@ export CM_LAB_DOMAIN=cm.test.labqs.ita.br
 export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN,$CM_LAB_DOMAIN
 
 
-cd ../certbot
-echo '* Letsencrypt certbot *'
+# cd ../certbot
+# echo '* Letsencrypt certbot *'
 
-echo 'Certificar que apache está parado'
-docker stop httpd
+# echo 'Certificar que apache está parado'
+# docker stop httpd
 
-# registrar somente CM (os demais já estão registrados)
-# depois apagar stack-cm.yaml e a linha abaixo
-export CERT_DOMAINS=$CM_LAB_DOMAIN
+# # registrar somente CM (os demais já estão registrados)
+# # depois apagar stack-cm.yaml e a linha abaixo
+# export CERT_DOMAINS=$CM_LAB_DOMAIN
 
-echo 'Registrando '${CERT_DOMAINS}
-docker-compose -f stack-cm.yaml -f ../common/use.yaml up --detach
-# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN,$CM_LAB_DOMAIN
-
-# docker stop certbot
+# echo 'Registrando '${CERT_DOMAINS}
+# docker-compose -f stack-cm.yaml -f ../common/use.yaml up --detach
+# # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN,$CM_LAB_DOMAIN
 
 
-# cd ../httpd
-# echo '* Apache HTTPD *'
+cd ../httpd
+echo '* Apache HTTPD *'
 
-# echo 'Certificar que certbot está parado'
-# docker stop certbot
+echo 'Certificar que certbot está parado'
+docker stop certbot
 
-# echo "Registrar apache com domínios $(tput setaf 1)"$CERT_DOMAINS"$(tput sgr0)"
+echo "Registrar apache com domínios $(tput setaf 1)"$CERT_DOMAINS"$(tput sgr0)"
 
-# sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/static/index.html
-# sed -i 's/@CM_LAB_DOMAIN/'$CM_LAB_DOMAIN'/g' panel/static/index.html
+sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/static/index.html
+sed -i 's/@CM_LAB_DOMAIN/'$CM_LAB_DOMAIN'/g' panel/static/index.html
 
-# docker-compose -f stack.yaml -f ../common/use.yaml up --detach --remove-orphans
-# docker restart httpd
+docker-compose -f stack.yaml -f ../common/use.yaml up --detach --remove-orphans
+docker restart httpd
 
 # cd ../locust
 # echo '* Locust *'

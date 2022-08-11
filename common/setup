@@ -40,16 +40,16 @@ docker stop certbot
 cd ../httpd
 echo '* Apache HTTPD *'
 
-# echo 'Certificar que certbot está parado'
-# docker stop certbot
+echo 'Certificar que certbot está parado'
+docker stop certbot
 
 echo "Registrar apache com domínios $(tput setaf 1)"$CERT_DOMAINS"$(tput sgr0)"
 
 sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/static/index.html
 sed -i 's/@CM_LAB_DOMAIN/'$CM_LAB_DOMAIN'/g' panel/static/index.html
 
-# docker-compose -f stack.yaml -f ../common/use.yaml up --detach --remove-orphans
-# docker restart httpd
+docker-compose -f stack.yaml -f ../common/use.yaml up --detach --remove-orphans
+docker restart httpd
 
 # cd ../locust
 # echo '* Locust *'
@@ -169,10 +169,10 @@ sed -i 's/@CM_LAB_DOMAIN/'$CM_LAB_DOMAIN'/g' panel/static/index.html
 # docker-compose -f stack.yaml -f ../common/use.yaml up --build --detach
 
 
-cd ../semaphore
-echo '* Ansible Semaphore *'
+# cd ../semaphore
+# echo '* Ansible Semaphore *'
 
-echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
+# echo 'SVC_PWD='$(openssl rand -hex 8) > .env
+# echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach

@@ -15,7 +15,7 @@ services:
     command: 
       - '--config=master.conf'
 
-  worker:
+  worker_agent:
     image: locustio/locust
     networks:
       - netlab01

@@ -5,14 +5,14 @@ services:
     image: portainer/portainer-ce:latest
     restart: unless-stopped
     ports:
-      - '8086:8000'
-      - '9443:9443'
+      - '8086:9000'
     networks:
       netlab01:
         ipv4_address: ${PORTAINER_HOST}
     volumes:
       - portainerdata:/data
       - /var/run/docker.sock:/var/run/docker.sock
+
 volumes:
   portainerdata:
     name: portainerdata

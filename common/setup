@@ -7,14 +7,14 @@ source ./config
 
 
 # Servidor do lab
-# export LAB_DOMAIN=test.labqs.ita.br
-# export CI_LAB_DOMAIN=ci.test.labqs.ita.br
-# export CM_LAB_DOMAIN=cm.test.labqs.ita.br
+export LAB_DOMAIN=test.labqs.ita.br
+export CI_LAB_DOMAIN=ci.test.labqs.ita.br
+export CM_LAB_DOMAIN=cm.test.labqs.ita.br
 
 # Servidores de desenvolvimento e testes
-export LAB_DOMAIN=dev.labqs.ita.br
-export CI_LAB_DOMAIN=ci.labqs.ita.br
-export CM_LAB_DOMAIN=cm.labqs.ita.br
+# export LAB_DOMAIN=dev.labqs.ita.br
+# export CI_LAB_DOMAIN=ci.labqs.ita.br
+# export CM_LAB_DOMAIN=cm.labqs.ita.br
 
 export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN,$CM_LAB_DOMAIN
 
@@ -172,7 +172,7 @@ docker restart httpd
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../portainer
-echo '* Portainer *'
+# cd ../portainer
+# echo '* Portainer *'
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach

@@ -48,7 +48,8 @@ sed -i 's/@CM_LAB_DOMAIN/'$CM_LAB_DOMAIN'/g' panel/static/index.html
 sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' panel/static/index.html
 
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach --remove-orphans
-docker restart httpd
+docker stop httpd
+docker start httpd
 
 
 # cd ../locust

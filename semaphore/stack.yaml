@@ -4,6 +4,7 @@ services:
     container_name: semaphore
     image: ansiblesemaphore/semaphore:latest
     command: 
+      - sh -c "python3 -m ensurepip"
       - sh -c "/sbin/tini -- /usr/local/bin/semaphore-wrapper /usr/local/bin/semaphore server --config /etc/semaphore/config.json"
     restart: unless-stopped
     ports:

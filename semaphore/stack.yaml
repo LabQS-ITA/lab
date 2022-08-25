@@ -3,6 +3,7 @@ services:
   semaphore:
     container_name: semaphore
     image: ansiblesemaphore/semaphore:latest
+    command: sh -c python3 -m ensurepip
     restart: unless-stopped
     ports:
       - '8085:3000'

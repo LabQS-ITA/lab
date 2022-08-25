@@ -1,7 +1,6 @@
 services:
 
   semaphore:
-    container_name: semaphore
     build:
       context: .
       dockerfile: Dockerfile

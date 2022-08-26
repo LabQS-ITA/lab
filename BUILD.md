@@ -17,7 +17,7 @@
 
 ## Propósito do laboratório
 
-**Medições**
+### Grupos de testes
 
 * _**Acurácia** - a medida em que o resultado se aproxima do desejado, esperado ou correto_
 * _**Precisão** - a variação do resultado na repetição do processo_
@@ -25,9 +25,9 @@
 * _**Privacidade e Segurança** - livre do uso ou divulgação indesejada, não autorizada ou imprevista da informação dos indivíduos e protegido de invasão ou sabotagem_
 * _**Desempenho** - medição dos tempos de respostas em diferentes ambientes e cargas, disponibilidade e tolerância à falha_
 
-**Dimensões**
+### Tipos de testes
 
-As que **serão abordadas** pelo laboratório:
+**Serão abordados**:
 
 * **Funcionais**
     * _**Compatibilidade** - situação onde o uso pode ocorrer em diferentes ambientes tais como dispositivos, sistemas operacionais e navegadores_
@@ -41,7 +41,7 @@ As que **serão abordadas** pelo laboratório:
     * _**Escalabilidade** - habilidade de aumentar ou diminuir o desempenho em resposta às mudanças nas demandas de processamento_
     * _**Estabilidade** - habilidade de permanecer estável sob diferentes cargas durante o uso_
 
-As que **não serão abordadas** pelo laboratório:
+**Não serão abordados**:
 
 * **Funcionais**
     * _**Acessibilidade** - grau no qual pode ser usado com conforto por um amplo público, incluindo aqueles que necessitam tecnologias de assistência visual, auditiva e motora_
@@ -147,6 +147,30 @@ Origem do ambiente de homologação e onde são executados os testes dos usuári
 
 ---
 
+### Definição do processo de construção e instalação de um projeto
+
+```yaml
+- name: Deploy FluAlfa Docker container
+  hosts: dev
+  become: yes
+  become_user: gpes
+  remote_user: gpes
+  tasks:
+    
+    - name: Clone FluAlfa repository
+      copy:
+        src: .
+        dest: /home/gpes/flualfaapp
+
+    - name: Build FluAlfa container
+      community.docker.docker_compose:
+        project_src: flualfaapp
+        env_file: flualfaapp/.env.dev
+        build: yes
+```
+
+---
+
 ### Gerenciador de serviços
 
 ![](./images/0195-portainer.png)
@@ -177,6 +201,28 @@ Origem do ambiente de homologação e onde são executados os testes dos usuári
 
 ---
 
+### Definição do processo de integração e testes
+
+```yaml
+kind: pipeline
+type: docker
+name: default
+
+steps:
+
+  - name: install
+    image: composer
+    commands:
+    - composer install
+
+  - name: test
+    image: php:7.4-cli
+    commands:
+    - vendor/bin/phpunit --configuration phpunit.xml
+```
+
+---
+
 ### Instalação da aplicação na integração
 
 ![](./images/0230-drone-install.png)
@@ -185,6 +231,6 @@ Origem do ambiente de homologação e onde são executados os testes dos usuári
 
 ### Teste da aplicação na integração
 
-![](./images/0240-drone-teste.png)
+![](./images/0240-drone-test.png)
 
 ---

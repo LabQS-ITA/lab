@@ -13,6 +13,9 @@ services:
       - postgresdata:/var/lib/postgresql/data
       - $PWD/postgres/config:/etc/postgresql
       - $PWD/postgres/init:/docker-entrypoint-initdb.d
+      - /etc/zoneinfo:/etc/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     environment:
       POSTGRES_PASSWORD: ${SVC_PWD}
       PGPASSFILE: /etc/postgresql/.pgpass
@@ -31,6 +34,9 @@ services:
       - postgresdata01:/var/lib/postgresql/data
       - $PWD/postgres01/config:/etc/postgresql
       - $PWD/postgres01/init:/docker-entrypoint-initdb.d
+      - /etc/zoneinfo:/etc/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     environment:
       POSTGRES_PASSWORD: ${SVC_PWD_01}
       PGPASSFILE: /etc/postgresql/.pgpass
@@ -49,6 +55,9 @@ services:
       - postgresdata02:/var/lib/postgresql/data
       - $PWD/postgres02/config:/etc/postgresql
       - $PWD/postgres02/init:/docker-entrypoint-initdb.d
+      - /etc/zoneinfo:/etc/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     environment:
       POSTGRES_PASSWORD: ${SVC_PWD_02}
       PGPASSFILE: /etc/postgresql/.pgpass

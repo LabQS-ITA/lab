@@ -12,6 +12,9 @@ services:
         ipv4_address: ${LOCUST_HOST}
     volumes:
       - ${PWD}/config:/home/locust:rw
+      - /etc/zoneinfo:/etc/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     command: 
       - '--config=master.conf'
 

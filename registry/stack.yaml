@@ -11,6 +11,9 @@ services:
         ipv4_address: ${REGISTRY_HOST}
     volumes:
       - registrydata:/var/lib/registry
+      - /etc/zoneinfo:/etc/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
 
 volumes:
   registrydata:

@@ -13,6 +13,9 @@ services:
       - mongodata:/data/db:rw
       - $PWD/mongodb/config:/etc/mongo:ro
       - $PWD/mongodb/init:/docker-entrypoint-initdb.d:ro
+      - /etc/zoneinfo:/etc/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: ${SVC_PWD}
@@ -31,6 +34,9 @@ services:
       - mongodata01:/data/db:rw
       - $PWD/mongodb01/config:/etc/mongo:ro
       - $PWD/mongodb01/init:/docker-entrypoint-initdb.d:ro
+      - /etc/zoneinfo:/etc/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: ${SVC_PWD_01}
@@ -49,6 +55,9 @@ services:
       - mongodata02:/data/db:rw
       - $PWD/mongodb02/config/:/etc/mongo:ro
       - $PWD/mongodb02/init:/docker-entrypoint-initdb.d:ro
+      - /etc/zoneinfo:/etc/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: ${SVC_PWD_02}

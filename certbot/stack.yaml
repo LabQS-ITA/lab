@@ -12,6 +12,9 @@ services:
     volumes:
       - certificates:/etc/letsencrypt:rw
       - $PWD/var/log:/var/log:rw
+      - /etc/zoneinfo:/etc/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     command: 
       - 'certonly'
       - '--standalone'

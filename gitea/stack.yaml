@@ -27,7 +27,7 @@ services:
       GITEA__ui.meta__AUTHOR: Laboratório de Testes de Software
       GITEA__ui.meta__DESCRIPTION: Instituto Tecnológico de Aeronáutica
       GITEA__ui.meta__KEYWORDS: git,ita,testes,teste de software,qualidade,segurança
-      GITEA__service__DISABLE_REGISTRATION: true
+      GITEA__service__DISABLE_REGISTRATION: 'true'
 
 volumes:
   giteadata:

@@ -68,7 +68,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
-      - URL_PREFIX: '/commander'
+      - URL_PREFIX: "/commander"
     depends_on:
       - redis01
       - redis02

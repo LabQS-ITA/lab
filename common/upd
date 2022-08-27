@@ -7,4 +7,6 @@ git checkout ../httpd/panel/config/sites/001-ci.conf
 
 git checkout ../httpd/panel/static/index.html
 
+git checkout ../registry/config/config.yml
+
 git pull

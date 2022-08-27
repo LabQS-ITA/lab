@@ -12,7 +12,7 @@ services:
     volumes:
       - registrydata:/var/lib/registry
       - $PWD/config/config.yml:/etc/docker/registry/config.yml
-      - $PWD/config/htpasswd:/etc/docker/registry/htpasswd
+      - $PWD/.htpasswd:/etc/docker/registry/htpasswd
       - /etc/zoneinfo:/etc/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro

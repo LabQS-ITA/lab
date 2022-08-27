@@ -34,21 +34,22 @@ export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN,$CM_LAB_DOMAIN
 # export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN,$CM_LAB_DOMAIN
 
 
-cd ../httpd
-echo '* Apache HTTPD *'
+echo "Registrar domínios $(tput setaf 1)"$CERT_DOMAINS"$(tput sgr0)"
 
-echo 'Certificar que certbot está parado'
-docker stop certbot
+sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
+sed -i 's/@CM_LAB_DOMAIN/'$CM_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
+sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' ../httpd/panel/static/index.html
 
-echo "Registrar apache com domínios $(tput setaf 1)"$CERT_DOMAINS"$(tput sgr0)"
+sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' ../registry/config/config.yml
 
-sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/static/index.html
-sed -i 's/@CM_LAB_DOMAIN/'$CM_LAB_DOMAIN'/g' panel/static/index.html
-sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' panel/static/index.html
+
+# cd ../httpd
+# echo '* Apache HTTPD *'
+
+# echo 'Certificar que certbot está parado'
+# docker stop certbot
 
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-docker stop httpd
-docker start httpd
 
 
 # cd ../locust
@@ -172,10 +173,8 @@ docker-compose -f stack.yaml -f ../common/use.yaml up --scale docker=2 --scale s
 # docker-compose -f stack.yaml -f ../common/use.yaml up --build --detach
 
 
-cd ../registry
-echo '* registry *'
-
-sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' config/config.yml
+# cd ../registry
+# echo '* registry *'
 
 # docker run --rm --entrypoint htpasswd httpd -Bbn maint p4ssw0rd > .htpasswd
 

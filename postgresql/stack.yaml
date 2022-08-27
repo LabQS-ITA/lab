@@ -19,7 +19,6 @@ services:
     environment:
       POSTGRES_PASSWORD: ${SVC_PWD}
       PGPASSFILE: /etc/postgresql/.pgpass
-    command: [ -c config_file=/etc/postgresql/postgresql.conf ]
 
   postgres01:
     container_name: postgres01
@@ -40,7 +39,6 @@ services:
     environment:
       POSTGRES_PASSWORD: ${SVC_PWD_01}
       PGPASSFILE: /etc/postgresql/.pgpass
-    command: [ -c config_file=/etc/postgresql/postgresql.conf ]
 
   postgres02:
     container_name: postgres02
@@ -61,7 +59,6 @@ services:
     environment:
       POSTGRES_PASSWORD: ${SVC_PWD_02}
       PGPASSFILE: /etc/postgresql/.pgpass
-    command: [ -c config_file=/etc/postgresql/postgresql.conf ]
 
 volumes:
   postgresdata:

@@ -50,8 +50,8 @@ services:
       DRONE_RUNNER_NAME: dronerunner01
       DRONE_RUNNER_CAPACITY: 2
       DRONE_RUNNER_NETWORKS: netlab01
-      DRONE_DEBUG: false
-      DRONE_TRACE: false
+      DRONE_DEBUG: 'false'
+      DRONE_TRACE: 'false'
     depends_on:
       - 'drone'
 

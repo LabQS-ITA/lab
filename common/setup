@@ -176,7 +176,7 @@ cd ../registry
 echo '* registry *'
 
 sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' config/config.yml
-docker run --entrypoint htpasswd httpd -Bbn maint p4ssw0rd > .htpasswd
+docker run --rm --entrypoint htpasswd httpd -Bbn maint p4ssw0rd > .htpasswd
 
 docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 

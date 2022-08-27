@@ -15,8 +15,6 @@ export CM_LAB_DOMAIN=cm.test.labqs.ita.br
 # export CI_LAB_DOMAIN=ci.labqs.ita.br
 # export CM_LAB_DOMAIN=cm.labqs.ita.br
 
-# export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN,$CM_LAB_DOMAIN
-
 
 # cd ../certbot
 # echo '* Letsencrypt certbot *'
@@ -27,14 +25,14 @@ export CM_LAB_DOMAIN=cm.test.labqs.ita.br
 # # registrar somente CM (os demais já estão registrados)
 # # depois apagar stack-cm.yaml e a linha abaixo
 # export CERT_DOMAINS=$CM_LAB_DOMAIN
-
 # echo 'Registrando '${CERT_DOMAINS}
 # docker-compose -f stack-cm.yaml -f ../common/use.yaml up --detach
-# # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
 # export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN,$CM_LAB_DOMAIN
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-echo "Registrar domínios $(tput setaf 1)"$CERT_DOMAINS"$(tput sgr0)"
+echo "Registrar domínios $(tput setaf 1)"$LAB_DOMAIN"$(tput sgr0)"
 
 sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
 sed -i 's/@CM_LAB_DOMAIN/'$CM_LAB_DOMAIN'/g' ../httpd/panel/static/index.html

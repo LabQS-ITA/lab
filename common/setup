@@ -173,6 +173,12 @@ docker start httpd
 # docker-compose -f stack.yaml -f ../common/use.yaml up --build --detach
 
 
+cd ../registry
+echo '* registry *'
+
+docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
 # cd ../portainer
 # echo '* Portainer *'
 

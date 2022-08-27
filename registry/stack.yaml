@@ -1,0 +1,18 @@
+services:
+
+  registry:
+    container_name: registry
+    image: registry:latest
+    restart: unless-stopped
+    ports:
+      - '5000:5000'
+    networks:
+      netlab01:
+        ipv4_address: ${REGISTRY_HOST}
+    volumes:
+      - registrydata:/var/lib/registry
+
+  volumes:
+    nextclouddata:
+      name: registrydata
+      driver: local

@@ -46,19 +46,19 @@ sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/static/index.html
 sed -i 's/@CM_LAB_DOMAIN/'$CM_LAB_DOMAIN'/g' panel/static/index.html
 sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' panel/static/index.html
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 docker stop httpd
 docker start httpd
 
 
-cd ../locust
-echo '* Locust *'
+# cd ../locust
+# echo '* Locust *'
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach --remove-orphans
+# docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach --remove-orphans
 
 
-cd ../postgresql
-echo '* PostgreSQL *'
+# cd ../postgresql
+# echo '* PostgreSQL *'
 
 # echo 'SVC_PWD='$(openssl rand -hex 8) > .env
 # echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
@@ -71,11 +71,11 @@ echo '* PostgreSQL *'
 # echo 'localhost:5432:*:postgres:'$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env) > ./postgres02/config/.pgpass
 # chmod 0600 ./postgres02/config/.pgpass
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../mongodb
-echo '* MongoDB *'
+# cd ../mongodb
+# echo '* MongoDB *'
 
 # echo 'SVC_PWD='$(openssl rand -hex 8) > .env
 # echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
@@ -88,11 +88,11 @@ echo '* MongoDB *'
 # echo 'uri: "mongodb://root:'$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env)'@localhost:27017"' > ./mongodb02/config/.mdbpass
 # chmod 0600 ./mongodb02/config/.mdbpass
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../mariadb
-echo '* MariaDB *'
+# cd ../mariadb
+# echo '* MariaDB *'
 
 # echo 'SVC_PWD_01='$(openssl rand -hex 8) > .env
 # echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
@@ -105,44 +105,44 @@ echo '* MariaDB *'
 # echo 'user = root' >> mariadb02/config/autologin.cnf
 # echo 'password = '$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env) >> mariadb02/config/autologin.cnf
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../redis
-echo '* Redis *'
+# cd ../redis
+# echo '* Redis *'
 
 # echo 'SVC_PWD='$(openssl rand -hex 8) > .env
 # echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
 # echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../adminer
-echo '* Adminer *'
+# cd ../adminer
+# echo '* Adminer *'
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../nextcloud
-echo '* Nextcloud *'
+# cd ../nextcloud
+# echo '* Nextcloud *'
 
 # echo 'SVC_PWD='$(openssl rand -hex 8) > .env
 # echo 'REDIS_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../redis/.env) >> .env
 # echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-cd ../gitea
-echo '* Gitea *'
+# cd ../gitea
+# echo '* Gitea *'
 
 # echo "Navegar até a página de configuração do serviço https://$LAB_DOMAIN/git"
 # echo 'e definir a conta do administrador (no final da página, em "Optional Settings")'
 
 # echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) > .env
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 cd ../drone

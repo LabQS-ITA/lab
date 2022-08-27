@@ -371,3 +371,11 @@ autologin.cnf
 *.gz
 
 # End of https://www.toptal.com/developers/gitignore/api/latex
+
+### Docker ###
+
+### Passwords
+.env
+.htpasswd
+
+# End of Docker

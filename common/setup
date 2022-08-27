@@ -46,7 +46,7 @@ sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' panel/static/index.html
 sed -i 's/@CM_LAB_DOMAIN/'$CM_LAB_DOMAIN'/g' panel/static/index.html
 sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' panel/static/index.html
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach --remove-orphans
+docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 docker stop httpd
 docker start httpd
 
@@ -54,7 +54,7 @@ docker start httpd
 # cd ../locust
 # echo '* Locust *'
 
-# docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach --remove-orphans
 
 
 # cd ../postgresql

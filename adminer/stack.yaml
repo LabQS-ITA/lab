@@ -9,3 +9,7 @@ services:
     networks:
       netlab01:
         ipv4_address: ${ADMINER_HOST}
+    volumes:
+      - /etc/zoneinfo:/etc/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro

@@ -19,6 +19,9 @@ services:
     image: joxit/docker-registry-ui:latest
     ports:
       - '8084:80'
+    networks:
+      netlab01:
+        ipv4_address: ${REGISTRYUI_HOST}
     environment:
       - REGISTRY_TITLE=LabQS Docker Registry
       - REGISTRY_URL=http://${REGISTRY_HOST}:5000

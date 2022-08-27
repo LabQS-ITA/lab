@@ -13,6 +13,6 @@ services:
       - registrydata:/var/lib/registry
 
   volumes:
-    nextclouddata:
+    registrydata:
       name: registrydata
       driver: local

@@ -16,7 +16,9 @@ services:
       - /etc/localtime:/etc/localtime:ro
 
   ui:
+    container_name: registry_ui
     image: joxit/docker-registry-ui:latest
+    restart: unless-stopped
     ports:
       - '8084:80'
     networks:

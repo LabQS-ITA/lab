@@ -14,6 +14,9 @@ services:
       - $PWD/panel/static:/usr/local/apache2/htdocs:ro
       - $PWD/panel/config:/usr/local/apache2/conf:ro
       - certificates:/usr/local/apache2/certificates:ro
+      - /etc/zoneinfo:/etc/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     environment:
       LAB_DOMAIN: ${LAB_DOMAIN}
       CI_LAB_DOMAIN: ${CI_LAB_DOMAIN}

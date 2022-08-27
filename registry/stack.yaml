@@ -12,7 +12,7 @@ services:
     volumes:
       - registrydata:/var/lib/registry
 
-  volumes:
-    registrydata:
-      name: registrydata
-      driver: local
+volumes:
+  registrydata:
+    name: registrydata
+    driver: local

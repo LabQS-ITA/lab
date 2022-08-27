@@ -172,13 +172,13 @@ docker start httpd
 # docker-compose -f stack.yaml -f ../common/use.yaml up --build --detach
 
 
-cd ../registry
-echo '* registry *'
+# cd ../registry
+# echo '* registry *'
 
-sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' config/config.yml
-docker run --rm --entrypoint htpasswd httpd -Bbn maint p4ssw0rd > .htpasswd
+# sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' config/config.yml
+# docker run --rm --entrypoint htpasswd httpd -Bbn maint p4ssw0rd > .htpasswd
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 # cd ../portainer

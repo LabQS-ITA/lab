@@ -1,6 +1,6 @@
 services:
 
-  registry:
+  registrydb:
     container_name: registry
     image: registry:latest
     restart: unless-stopped
@@ -17,8 +17,8 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
 
-  ui:
-    container_name: registry_ui
+  registryui:
+    container_name: containers
     image: joxit/docker-registry-ui:latest
     restart: unless-stopped
     ports:
@@ -36,7 +36,7 @@ services:
       - SINGLE_REGISTRY=true
       - DELETE_IMAGES=true
     depends_on:
-      - registry
+      - registrydb
 
 volumes:
   registrydata:

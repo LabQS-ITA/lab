@@ -15,6 +15,18 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
 
+  ui:
+    image: joxit/docker-registry-ui:latest
+    ports:
+      - '8084:80'
+    environment:
+      - REGISTRY_TITLE=LabQS Docker Registry
+      - REGISTRY_URL=http://${REGISTRY_HOST}:5000
+      - SINGLE_REGISTRY=true
+      - DELETE_IMAGES=true
+    depends_on:
+      - registry
+
 volumes:
   registrydata:
     name: registrydata

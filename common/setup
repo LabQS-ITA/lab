@@ -145,8 +145,8 @@ docker start httpd
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-# cd ../drone
-# echo '* Drone *'
+cd ../drone
+echo '* Drone *'
 
 # echo "Gere uma aplicação OAuth no Gitea para o Drone em https://$LAB_DOMAIN/git"
 # echo "com endereço de retorno https://$CI_LAB_DOMAIN/login"
@@ -160,7 +160,7 @@ docker start httpd
 # echo 'GITEA_PWD='$GSCRT >> .env
 # echo 'SVC_PWD='$(openssl rand -hex 16) >> .env
 
-# docker-compose -f stack.yaml -f ../common/use.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans
+docker-compose -f stack.yaml -f ../common/use.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans
 
 
 # cd ../semaphore

@@ -7,15 +7,15 @@ if [ $# -ne 1 ]; then
 
 else
 
-    if [ $1 -ne 'dev' && $1 -ne 'test' ] ;then
+    if [ $1 -ne 'dev' ] && [ $1 -ne 'test' ] ;then
 
         echo "Argumento $1 incorreto. Use [ dev | test ]"
 
     else 
-    
+
         source ./config
 
-        if [ $1 -eq 'dev' ]; then
+        if [ $1 -eq 'test' ]; then
 
             # Servidor do lab
             export LAB_DOMAIN=test.labqs.ita.br

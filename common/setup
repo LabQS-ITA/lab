@@ -22,9 +22,7 @@ else
             export CI_LAB_DOMAIN=ci.test.labqs.ita.br
             export CM_LAB_DOMAIN=cm.test.labqs.ita.br
 
-        fi
-
-        if [ "$1" -eq "dev" ]; then
+        elif [ "$1" -eq "dev" ]; then
 
             # Servidores de desenvolvimento e testes
             export LAB_DOMAIN=dev.labqs.ita.br

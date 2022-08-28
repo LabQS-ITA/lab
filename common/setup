@@ -1,206 +1,203 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+
 if [ $# -ne 1 ]; then
 
     echo "Informe [ dev | test]"
 
+    exit 1
+
+elif [ "$1" -eq "test" ]; then
+
+    # Servidor do lab
+    export LAB_DOMAIN=test.labqs.ita.br
+    export CI_LAB_DOMAIN=ci.test.labqs.ita.br
+    export CM_LAB_DOMAIN=cm.test.labqs.ita.br
+
+elif [ "$1" -eq "dev" ]; then
+
+    # Servidores de desenvolvimento e testes
+    export LAB_DOMAIN=dev.labqs.ita.br
+    export CI_LAB_DOMAIN=ci.labqs.ita.br
+    export CM_LAB_DOMAIN=cm.labqs.ita.br
+
 else
 
-    if [ "$1" -ne "dev" ] && [ "$1" -ne "test" ] ;then
+    echo "Argumento $1 incorreto. Use [ dev | test ]"
 
-        echo "Argumento $1 incorreto. Use [ dev | test ]"
-
-    else 
-
-        source ./config
-
-        if [ "$1" -eq "test" ]; then
-
-            # Servidor do lab
-            export LAB_DOMAIN=test.labqs.ita.br
-            export CI_LAB_DOMAIN=ci.test.labqs.ita.br
-            export CM_LAB_DOMAIN=cm.test.labqs.ita.br
-
-        elif [ "$1" -eq "dev" ]; then
-
-            # Servidores de desenvolvimento e testes
-            export LAB_DOMAIN=dev.labqs.ita.br
-            export CI_LAB_DOMAIN=ci.labqs.ita.br
-            export CM_LAB_DOMAIN=cm.labqs.ita.br
-
-        fi
-
-        # cd ../certbot
-        # echo '* Letsencrypt certbot *'
-
-        # echo 'Certificar que apache está parado'
-        # docker stop httpd
-
-        # # registrar somente CM (os demais já estão registrados)
-        # # depois apagar stack-cm.yaml e a linha abaixo
-        # export CERT_DOMAINS=$CM_LAB_DOMAIN
-        # echo 'Registrando '${CERT_DOMAINS}
-        # docker-compose -f stack-cm.yaml -f ../common/use.yaml up --detach
-
-        # export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN,$CM_LAB_DOMAIN
-        # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
-
-        echo "Registrar domínios $(tput setaf 1)"$LAB_DOMAIN"$(tput sgr0)"
-
-        sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
-        sed -i 's/@CM_LAB_DOMAIN/'$CM_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
-        sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' ../httpd/panel/static/index.html
-
-        sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' ../registry/config/config.yml
-
-
-        cd ../httpd
-        echo '* Apache HTTPD *'
-
-        # echo 'Certificar que certbot está parado'
-        # docker stop certbot
-
-        # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
-        docker stop httpd
-        docker start httpd
-
-        # cd ../locust
-        # echo '* Locust *'
-
-        # docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach --remove-orphans
-
-
-        # cd ../postgresql
-        # echo '* PostgreSQL *'
-
-        # echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-        # echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
-        # echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
-
-        # echo 'localhost:5432:*:postgres:'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env) > ./postgres/config/.pgpass
-        # chmod 0600 ./postgres/config/.pgpass
-        # echo 'localhost:5432:*:postgres:'$(awk -F'=' '$1 =="SVC_PWD_01" {print $2}' .env) > ./postgres01/config/.pgpass
-        # chmod 0600 ./postgres01/config/.pgpass
-        # echo 'localhost:5432:*:postgres:'$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env) > ./postgres02/config/.pgpass
-        # chmod 0600 ./postgres02/config/.pgpass
-
-        # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
-
-        # cd ../mongodb
-        # echo '* MongoDB *'
-
-        # echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-        # echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
-        # echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
-
-        # echo 'uri: "mongodb://root:'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env)'@localhost:27017"' > ./mongodb/config/.mdbpass
-        # chmod 0600 ./mongodb/config/.mdbpass
-        # echo 'uri: "mongodb://root:'$(awk -F'=' '$1 =="SVC_PWD_01" {print $2}' .env)'@localhost:27017"' > ./mongodb01/config/.mdbpass
-        # chmod 0600 ./mongodb01/config/.mdbpass
-        # echo 'uri: "mongodb://root:'$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env)'@localhost:27017"' > ./mongodb02/config/.mdbpass
-        # chmod 0600 ./mongodb02/config/.mdbpass
-
-        # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
-
-        # cd ../mariadb
-        # echo '* MariaDB *'
-
-        # echo 'SVC_PWD_01='$(openssl rand -hex 8) > .env
-        # echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
-
-        # echo '[client]' > mariadb01/config/autologin.cnf
-        # echo 'user = root' >> mariadb01/config/autologin.cnf
-        # echo 'password = '$(awk -F'=' '$1 =="SVC_PWD_01" {print $2}' .env) >> mariadb01/config/autologin.cnf
-
-        # echo '[client]' > mariadb02/config/autologin.cnf
-        # echo 'user = root' >> mariadb02/config/autologin.cnf
-        # echo 'password = '$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env) >> mariadb02/config/autologin.cnf
-
-        # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
-
-        # cd ../redis
-        # echo '* Redis *'
-
-        # echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-        # echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
-        # echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
-
-        # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
-
-        # cd ../adminer
-        # echo '* Adminer *'
-
-        # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
-
-        # cd ../nextcloud
-        # echo '* Nextcloud *'
-
-        # echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-        # echo 'REDIS_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../redis/.env) >> .env
-        # echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
-
-        # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
-
-        # cd ../gitea
-        # echo '* Gitea *'
-
-        # echo "Navegar até a página de configuração do serviço https://$LAB_DOMAIN/git"
-        # echo 'e definir a conta do administrador (no final da página, em "Optional Settings")'
-
-        # echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) > .env
-
-        # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
-
-        # cd ../drone
-        # echo '* Drone *'
-
-        # echo "Gere uma aplicação OAuth no Gitea para o Drone em https://$LAB_DOMAIN/git"
-        # echo "com endereço de retorno https://$CI_LAB_DOMAIN/login"
-        # echo 'Após gerar a aplicação informe os dados abaixo'
-        # read -p 'Informe o "Client ID": ' GID
-        # read -p 'Informe o "Client Secret": ' GSCRT
-
-        # echo 'DRONE_TOKEN='$(openssl rand -hex 32) > .env
-        # echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
-        # echo 'GITEA_ID='$GID >> .env
-        # echo 'GITEA_PWD='$GSCRT >> .env
-        # echo 'SVC_PWD='$(openssl rand -hex 16) >> .env
-
-        # docker-compose -f stack.yaml -f ../common/use.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans
-
-
-        # cd ../semaphore
-        # echo '* Ansible Semaphore *'
-
-        # echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-        # echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
-
-        # docker-compose -f stack.yaml -f ../common/use.yaml up --build --detach
-
-
-        # cd ../registry
-        # echo '* registry *'
-
-        # docker run --rm --entrypoint htpasswd httpd -Bbn maint p4ssw0rd > .htpasswd
-
-        # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
-
-        # cd ../portainer
-        # echo '* Portainer *'
-
-        # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
-    fi
+    exit 1
 
 fi
+
+source ./config
+
+# cd ../certbot
+# echo '* Letsencrypt certbot *'
+
+# echo 'Certificar que apache está parado'
+# docker stop httpd
+
+# # registrar somente CM (os demais já estão registrados)
+# # depois apagar stack-cm.yaml e a linha abaixo
+# export CERT_DOMAINS=$CM_LAB_DOMAIN
+# echo 'Registrando '${CERT_DOMAINS}
+# docker-compose -f stack-cm.yaml -f ../common/use.yaml up --detach
+
+# export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN,$CM_LAB_DOMAIN
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
+echo "Registrar domínios $(tput setaf 1)"$LAB_DOMAIN"$(tput sgr0)"
+
+sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
+sed -i 's/@CM_LAB_DOMAIN/'$CM_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
+sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' ../httpd/panel/static/index.html
+
+sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' ../registry/config/config.yml
+
+
+cd ../httpd
+echo '* Apache HTTPD *'
+
+# echo 'Certificar que certbot está parado'
+# docker stop certbot
+
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+docker stop httpd
+docker start httpd
+
+# cd ../locust
+# echo '* Locust *'
+
+# docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach --remove-orphans
+
+
+# cd ../postgresql
+# echo '* PostgreSQL *'
+
+# echo 'SVC_PWD='$(openssl rand -hex 8) > .env
+# echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
+# echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
+
+# echo 'localhost:5432:*:postgres:'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env) > ./postgres/config/.pgpass
+# chmod 0600 ./postgres/config/.pgpass
+# echo 'localhost:5432:*:postgres:'$(awk -F'=' '$1 =="SVC_PWD_01" {print $2}' .env) > ./postgres01/config/.pgpass
+# chmod 0600 ./postgres01/config/.pgpass
+# echo 'localhost:5432:*:postgres:'$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env) > ./postgres02/config/.pgpass
+# chmod 0600 ./postgres02/config/.pgpass
+
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
+# cd ../mongodb
+# echo '* MongoDB *'
+
+# echo 'SVC_PWD='$(openssl rand -hex 8) > .env
+# echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
+# echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
+
+# echo 'uri: "mongodb://root:'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env)'@localhost:27017"' > ./mongodb/config/.mdbpass
+# chmod 0600 ./mongodb/config/.mdbpass
+# echo 'uri: "mongodb://root:'$(awk -F'=' '$1 =="SVC_PWD_01" {print $2}' .env)'@localhost:27017"' > ./mongodb01/config/.mdbpass
+# chmod 0600 ./mongodb01/config/.mdbpass
+# echo 'uri: "mongodb://root:'$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env)'@localhost:27017"' > ./mongodb02/config/.mdbpass
+# chmod 0600 ./mongodb02/config/.mdbpass
+
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
+# cd ../mariadb
+# echo '* MariaDB *'
+
+# echo 'SVC_PWD_01='$(openssl rand -hex 8) > .env
+# echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
+
+# echo '[client]' > mariadb01/config/autologin.cnf
+# echo 'user = root' >> mariadb01/config/autologin.cnf
+# echo 'password = '$(awk -F'=' '$1 =="SVC_PWD_01" {print $2}' .env) >> mariadb01/config/autologin.cnf
+
+# echo '[client]' > mariadb02/config/autologin.cnf
+# echo 'user = root' >> mariadb02/config/autologin.cnf
+# echo 'password = '$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env) >> mariadb02/config/autologin.cnf
+
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
+# cd ../redis
+# echo '* Redis *'
+
+# echo 'SVC_PWD='$(openssl rand -hex 8) > .env
+# echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
+# echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
+
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
+# cd ../adminer
+# echo '* Adminer *'
+
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
+# cd ../nextcloud
+# echo '* Nextcloud *'
+
+# echo 'SVC_PWD='$(openssl rand -hex 8) > .env
+# echo 'REDIS_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../redis/.env) >> .env
+# echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
+
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
+# cd ../gitea
+# echo '* Gitea *'
+
+# echo "Navegar até a página de configuração do serviço https://$LAB_DOMAIN/git"
+# echo 'e definir a conta do administrador (no final da página, em "Optional Settings")'
+
+# echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) > .env
+
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
+# cd ../drone
+# echo '* Drone *'
+
+# echo "Gere uma aplicação OAuth no Gitea para o Drone em https://$LAB_DOMAIN/git"
+# echo "com endereço de retorno https://$CI_LAB_DOMAIN/login"
+# echo 'Após gerar a aplicação informe os dados abaixo'
+# read -p 'Informe o "Client ID": ' GID
+# read -p 'Informe o "Client Secret": ' GSCRT
+
+# echo 'DRONE_TOKEN='$(openssl rand -hex 32) > .env
+# echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
+# echo 'GITEA_ID='$GID >> .env
+# echo 'GITEA_PWD='$GSCRT >> .env
+# echo 'SVC_PWD='$(openssl rand -hex 16) >> .env
+
+# docker-compose -f stack.yaml -f ../common/use.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans
+
+
+# cd ../semaphore
+# echo '* Ansible Semaphore *'
+
+# echo 'SVC_PWD='$(openssl rand -hex 8) > .env
+# echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
+
+# docker-compose -f stack.yaml -f ../common/use.yaml up --build --detach
+
+
+# cd ../registry
+# echo '* registry *'
+
+# docker run --rm --entrypoint htpasswd httpd -Bbn maint p4ssw0rd > .htpasswd
+
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
+# cd ../portainer
+# echo '* Portainer *'
+
+# docker-compose -f stack.yaml -f ../common/use.yaml up --detach

@@ -8,14 +8,14 @@ if [ $# -ne 1 ]; then
 
     exit 1
 
-elif [ "$1" != "test" ]; then
+elif [ "$1" == "test" ]; then
 
     # Servidor do lab
     export LAB_DOMAIN=test.labqs.ita.br
     export CI_LAB_DOMAIN=ci.test.labqs.ita.br
     export CM_LAB_DOMAIN=cm.test.labqs.ita.br
 
-elif [ "$1" != "dev" ]; then
+elif [ "$1" == "dev" ]; then
 
     # Servidores de desenvolvimento e testes
     export LAB_DOMAIN=dev.labqs.ita.br

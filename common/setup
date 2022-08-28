@@ -41,14 +41,16 @@ sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' ../httpd/panel/static/index.html
 sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' ../registry/config/config.yml
 
 
-# cd ../httpd
-# echo '* Apache HTTPD *'
+cd ../httpd
+echo '* Apache HTTPD *'
 
 # echo 'Certificar que certbot está parado'
 # docker stop certbot
 
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
+docker stop httpd
+docker start httpd
 
 # cd ../locust
 # echo '* Locust *'

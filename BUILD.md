@@ -171,6 +171,70 @@ Origem do ambiente de homologação e onde são executados os testes dos usuári
 
 ---
 
+### Descrição da imagem do container
+
+```Dockerfile
+FROM php:7.4-cli as phpbase
+
+ENV FLUALFAAPP_PORT=10001
+ENV FLUALFAAPP_HOST=172.1.100.1
+
+RUN rm /etc/apt/preferences.d/no-debian-php
+
+RUN apt-get update
+RUN apt-get install -y wget php-cli php-zip php-pgsql unzip libpq-dev
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+
+RUN docker-php-ext-install pdo pdo_pgsql
+
+WORKDIR /dist
+COPY . /dist
+
+RUN composer self-update
+RUN composer update
+RUN composer install
+
+RUN cp .env.dev .env
+
+RUN php artisan key:generate
+# RUN php artisan migrate
+
+RUN echo "#!/bin/sh\n" > /dist/start.sh
+RUN echo "APP_ENV=dev php artisan serve --host=\$FLUALFAAPP_HOST --port=\$FLUALFAAPP_PORT\n" >> /dist/start.sh
+RUN chmod +x /dist/start.sh
+
+CMD ["/dist/start.sh"]
+```
+
+---
+
+### Descrição do container
+
+```yaml
+services:
+  flualfaapp:
+    container_name: flualfa
+    image: mecita/flualfaapp:${FLUALFAAPP_TAG}
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: phpbase
+    ports:
+      - "${FLUALFAAPP_PORT}:80"
+    networks:
+      netlab01:
+        ipv4_address: "${FLUALFAAPP_HOST}"
+
+networks:
+  netlab01:
+    external: true
+```
+
+---
+
 ### Gerenciador de serviços
 
 ![](./images/0195-portainer.png)

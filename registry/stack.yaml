@@ -20,6 +20,7 @@ services:
       - REGISTRY_HTTP_SECRET=${REGISTRY_HTTP_SECRET}
       - REGISTRY_STORAGE_CACHE_BLOBDESCRIPTOR=redis
       - REGISTRY_REDIS_ADDR=redis
+      - REGISTRY_REDIS_PASSWORD=${REDIS_PWD}
 
   registryui:
     container_name: containers

@@ -16,6 +16,8 @@ services:
       - /etc/zoneinfo:/etc/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
+    environment:
+      - REGISTRY_HTTP_SECRET=${REGISTRY_HTTP_SECRET}
 
   registryui:
     container_name: containers

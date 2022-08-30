@@ -192,6 +192,8 @@ docker start httpd
 # cd ../registry
 # echo '* registry *'
 
+# echo 'REGISTRY_HTTP_SECRET='$(openssl rand -hex 8) > .env
+
 # docker run --rm --entrypoint htpasswd httpd -Bbn maint p4ssw0rd > .htpasswd
 
 # docker-compose -f stack.yaml -f ../common/use.yaml up --detach

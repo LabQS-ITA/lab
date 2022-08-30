@@ -18,6 +18,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
     environment:
       - REGISTRY_HTTP_SECRET=${REGISTRY_HTTP_SECRET}
+      - REGISTRY_STORAGE_CACHE_BLOBDESCRIPTOR=redis
+      - REGISTRY_REDIS_ADDR=redis
 
   registryui:
     container_name: containers

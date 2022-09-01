@@ -189,15 +189,15 @@ docker start httpd
 # docker-compose -f stack.yaml -f ../common/use.yaml up --build --detach
 
 
-# cd ../registry
-# echo '* registry *'
+cd ../registry
+echo '* registry *'
 
-# echo 'REGISTRY_HTTP_SECRET='$(openssl rand -hex 8) > .env
-# echo 'REDIS_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../redis/.env) >> .env
+echo 'REGISTRY_HTTP_SECRET='$(openssl rand -hex 8) > .env
+echo 'REDIS_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../redis/.env) >> .env
 
 docker run --rm --entrypoint htpasswd httpd -Bbn maint $(awk -F'=' '$1 =="REGISTRY_HTTP_SECRET" {print $2}' ./.env) > .htpasswd
 
-# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 # cd ../portainer

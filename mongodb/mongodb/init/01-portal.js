@@ -2,7 +2,7 @@ db = db.getSiblingDB('portal');
 db.createUser( 
     { 
         user: 'portal', 
-        pwd: 'p4ssw04d', 
+        pwd: 's3cr37', 
         roles: [ 
             { 
                 role: 'dbOwner', 

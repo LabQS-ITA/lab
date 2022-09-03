@@ -11,7 +11,7 @@ services:
         ipv4_address: ${GITEA_HOST}
     volumes:
       - giteadata:/data
-      - /etc/zoneinfo:/etc/zoneinfo:ro
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:

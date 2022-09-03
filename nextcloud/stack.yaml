@@ -12,7 +12,7 @@ services:
     volumes:
       - nextclouddata:/var/www/html
       - /home/gpes/shared/out:/var/www/shared:ro
-      - /etc/zoneinfo:/etc/zoneinfo:ro
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:

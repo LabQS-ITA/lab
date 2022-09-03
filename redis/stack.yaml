@@ -46,7 +46,7 @@ services:
     volumes:
       - $PWD/config:/usr/local/etc/redis/redis.conf:ro
       - redisdata02:/data:rw
-      - /etc/zoneinfo:/etc/zoneinfo:ro
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
@@ -64,7 +64,7 @@ services:
       netlab01:
         ipv4_address: ${COMMANDER_HOST}
     volumes:
-      - /etc/zoneinfo:/etc/zoneinfo:ro
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:

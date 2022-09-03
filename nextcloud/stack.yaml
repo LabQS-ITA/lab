@@ -12,6 +12,7 @@ services:
     volumes:
       - nextclouddata:/var/www/html
       - /home/gpes/shared/out:/var/www/shared:ro
+      - flualfadata:/var/www/shared/audios:ro
       - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
@@ -31,4 +32,7 @@ services:
 volumes:
   nextclouddata:
     name: nextclouddata
+    driver: local
+  flualfadata:
+    name: flualfadata
     driver: local

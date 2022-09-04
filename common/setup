@@ -73,11 +73,6 @@ docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 docker stop httpd
 docker start httpd
 
-cd ../locust
-echo '* Locust *'
-
-docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach --remove-orphans
-
 
 cd ../postgresql
 echo '* PostgreSQL *'
@@ -151,6 +146,7 @@ docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 if [ $1 !- "hom" ]; then
+
     cd ../adminer
     echo '* Adminer *'
 
@@ -210,4 +206,11 @@ if [ $1 !- "hom" ]; then
     echo '* Portainer *'
 
     docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
+    cd ../locust
+    echo '* Locust *'
+
+    docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach --remove-orphans
+
 fi

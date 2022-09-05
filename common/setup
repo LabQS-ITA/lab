@@ -218,6 +218,5 @@ if [ $1 != "hom" ]; then
     elif [ $1 != "dev" ]; then
         ssh -p 2222 -fN -L 9001:${PORTAINERAGENT_HOST}:9001 gpes@test.labqs.ita.br
     fi
-    ssh -p 2222 -fN -L 9002:${PORTAINERAGENT_HOST}:9001 gpes@labqs.ita.br
 
 fi

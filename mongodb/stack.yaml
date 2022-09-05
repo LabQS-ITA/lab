@@ -8,7 +8,8 @@ services:
       test: echo 'db.runCommand("ping").ok' | mongo ${MONGODB_HOST}:27017/local --quiet
       interval: 30s
       timeout: 10s
-      retries: 3
+      retries: 5
+      start_period: 90s
     ports:
       - '27020:27017'
     networks:
@@ -30,6 +31,12 @@ services:
     container_name: mongodb01
     image: mongo:4.4.14-focal
     restart: unless-stopped
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo ${MONGODB_HOST}:27017/local --quiet
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 90s
     ports:
       - '27021:27017'
     networks:
@@ -51,6 +58,12 @@ services:
     container_name: mongodb02
     image: mongo:4.4.14-focal
     restart: unless-stopped
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo ${MONGODB_HOST}:27017/local --quiet
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 90s
     ports:
       - '27022:27017'
     networks:

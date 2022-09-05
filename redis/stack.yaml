@@ -4,6 +4,12 @@ services:
     container_name: redis
     image: redis:alpine
     restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+      timeout: 10s
     ports:
       - '6300:6379'
     networks:
@@ -24,6 +30,12 @@ services:
     container_name: redis01
     image: redis:alpine
     restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+      timeout: 10s
     ports:
       - '6301:6379'
     networks:
@@ -44,6 +56,12 @@ services:
     container_name: redis02
     image: redis:alpine
     restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+      timeout: 10s
     ports:
       - '6302:6379'
     networks:

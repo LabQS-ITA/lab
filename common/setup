@@ -214,9 +214,9 @@ if [ $1 != "hom" ]; then
     docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
     if [ $1 != "tst" ]; then
-        ssh -p 2222 -fN -L 9001:${PORTAINERAGENT_HOST}:9001 gpes@dev.labqs.ita.br
+        ssh -p 2222 -fN -L 9002:${PORTAINERAGENT_HOST}:9001 gpes@dev.labqs.ita.br
     elif [ $1 != "dev" ]; then
-        ssh -p 2222 -fN -L 9001:${PORTAINERAGENT_HOST}:9001 gpes@test.labqs.ita.br
+        ssh -p 2222 -fN -L 9002:${PORTAINERAGENT_HOST}:9001 gpes@test.labqs.ita.br
     fi
 
 fi

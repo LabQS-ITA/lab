@@ -145,7 +145,7 @@ echo '* Nextcloud *'
 docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
-if [ $1 !- "hom" ]; then
+if [ $1 != "hom" ]; then
 
     cd ../adminer
     echo '* Adminer *'

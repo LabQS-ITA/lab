@@ -30,6 +30,12 @@ services:
     container_name: postgres01
     image: postgres
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U postgres -d postgres'"]
+      interval: 30s
+      timeout: 60s
+      retries: 5
+      start_period: 90s
     ports:
       - '5401:5432'
     networks:
@@ -50,6 +56,12 @@ services:
     container_name: postgres02
     image: postgres
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U postgres -d postgres'"]
+      interval: 30s
+      timeout: 60s
+      retries: 5
+      start_period: 90s
     ports:
       - '5402:5432'
     networks:

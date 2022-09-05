@@ -174,7 +174,13 @@ Origem do ambiente de homologação e onde são executados os testes dos usuári
 ### Descrição da imagem do container
 
 ```Dockerfile
+FROM node:16.17.0 as nodebase
+
 FROM php:7.4-cli as phpbase
+
+COPY --from=nodebase /usr/local/lib/node_modules /usr/local/lib/node_modules
+COPY --from=nodebase /usr/local/bin/node /usr/local/bin/node
+RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 
 ENV FLUALFAAPP_PORT=10001
 ENV FLUALFAAPP_HOST=172.1.100.1
@@ -185,22 +191,33 @@ RUN apt-get update
 RUN apt-get install -y wget php-cli php-zip php-pgsql unzip libpq-dev
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
-RUN docker-php-ext-install pdo pdo_pgsql
+RUN pecl install xdebug
 
-WORKDIR /dist
-COPY . /dist
+RUN echo "xdebug.mode=debug,coverage,profile,trace\n" > /usr/local/etc/php/conf.d/90-xdebug.ini
+RUN echo "xdebug.remote_enable=1\n" >> /usr/local/etc/php/conf.d/90-xdebug.ini
+RUN echo "xdebug.remote_connect_back=1\n" >> /usr/local/etc/php/conf.d/90-xdebug.ini
+RUN echo "xdebug.discover_client_host=0\n" >> /usr/local/etc/php/conf.d/90-xdebug.ini
+RUN echo "xdebug.client_host=$FLUALFAAPP_HOST\n" >> /usr/local/etc/php/conf.d/90-xdebug.ini
+
+RUN docker-php-ext-install pdo pdo_pgsql
+RUN docker-php-ext-enable xdebug
+
+WORKDIR /dist/flualfa
+COPY . /dist/flualfa
 
 RUN composer self-update
 RUN composer update
+RUN npm install
 RUN composer install
 
 RUN cp .env.dev .env
 
-RUN php artisan key:generate
-# RUN php artisan migrate
-
-RUN echo "#!/bin/sh\n" > /dist/start.sh
-RUN echo "APP_ENV=dev php artisan serve --host=\$FLUALFAAPP_HOST --port=\$FLUALFAAPP_PORT\n" >> /dist/start.sh
+RUN echo "#!/bin/bash\n" > /dist/start.sh
+RUN echo "APP_ENV=dev php artisan key:generate\n" >> /dist/start.sh
+RUN echo "APP_ENV=dev php artisan migrate\n" >> /dist/start.sh
+RUN echo "npm run dev\n" >> /dist/start.sh
+RUN echo "APP_ENV=dev php artisan route:clear\n" >> /dist/start.sh
+RUN echo "APP_ENV=dev php artisan serve --host=$FLUALFAAPP_HOST --port=$FLUALFAAPP_PORT\n" >> /dist/start.sh
 RUN chmod +x /dist/start.sh
 
 CMD ["/dist/start.sh"]
@@ -227,6 +244,10 @@ services:
     networks:
       netlab01:
         ipv4_address: "${FLUALFAAPP_HOST}"
+    volumes:
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
 
 networks:
   netlab01:
@@ -277,12 +298,24 @@ steps:
   - name: install
     image: composer
     commands:
+    - composer update
     - composer install
-
-  - name: test
-    image: php:7.4-cli
+      
+  - name: static
+    image: php:7.4.30-cli
+    failure: ignore
     commands:
-    - vendor/bin/phpunit --configuration phpunit.xml
+    - vendor/bin/phpstan analyse app bootstrap config database resources/lang resources/views routes
+    
+  - name: unit
+    image: php:7.4.30-cli
+    commands:
+    - php artisan test
+    
+  - name: coverage/mutation
+    image: php:7.4.30-cli
+    commands:
+    - phpdbg -qrr vendor/bin/infection --threads=4
 ```
 
 ---

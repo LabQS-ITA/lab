@@ -2,34 +2,34 @@
 set -euo pipefail
 
 
-if [ $# -ne 1 || $# -ne 2 ]; then
+if [[ $# -ne 1 || $# -ne 2 ]]; then
 
-    echo "Informe [ --dev | --tst | --hom ]"
+    echo "Informe [ dev | tst | hom ]"
 
     exit 1
 
-elif [ "$1" == "--tst" ]; then
+elif [ "$1" == "tst" ]; then
 
     # Servidor do lab
     export LAB_DOMAIN=test.labqs.ita.br
     export CI_LAB_DOMAIN=ci.test.labqs.ita.br
     export CM_LAB_DOMAIN=cm.test.labqs.ita.br
 
-elif [ "$1" == "--dev" ]; then
+elif [ "$1" == "dev" ]; then
 
     # Servidores de desenvolvimento e testes
     export LAB_DOMAIN=dev.labqs.ita.br
     export CI_LAB_DOMAIN=ci.labqs.ita.br
     export CM_LAB_DOMAIN=cm.labqs.ita.br
 
-elif [ "$1" == "--hom" ]; then
+elif [ "$1" == "hom" ]; then
 
     # Servidores de homologação
     export LAB_DOMAIN=labqs.ita.br
     
 else
 
-    echo "Argumento $1 incorreto. Use [ --dev | --tst | --hom ]"
+    echo "Argumento $1 incorreto. Use [ dev | tst | hom ]"
 
     exit 1
 
@@ -37,7 +37,7 @@ fi
 
 CONFIG_ENV="N"
 
-if [ "$2" == "--config" ]; then
+if [ "$2" == "config" ]; then
 
     echo 'Configurando ambientes'
     read -p -n 3 'Confirme [S/N]: '

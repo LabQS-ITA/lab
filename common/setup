@@ -42,7 +42,7 @@ if [ "$2" == "config" ]; then
     echo 'Configurando ambientes'
     read -p "Confirme [S/N]: " -n1 CONFIG_OPT
     CONFIG_OPT=${CONFIG_OPT:-N}
-    if [[ $REPLY =~ ^[Ss]$ ]]; then
+    if [[ $CONFIG_OPT =~ ^[Ss]$ ]]; then
         echo 'Todos os ambientes serão configurados'
         CONFIG_ENV="Y"
     fi

@@ -26,6 +26,8 @@ elif [ "$1" == "hom" ]; then
 
     # Servidores de homologação
     export LAB_DOMAIN=labqs.ita.br
+    export CI_LAB_DOMAIN=ci.labqs.ita.br
+    export CM_LAB_DOMAIN=cm.labqs.ita.br
     
 else
 

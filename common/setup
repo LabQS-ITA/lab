@@ -2,7 +2,7 @@
 set -euo pipefail
 
 
-if [[ $# -ne 1 || $# -ne 2 ]]; then
+if [[ $# -ne 1 && $# -ne 2 ]]; then
 
     echo "Informe [ dev | tst | hom ]"
 
@@ -48,7 +48,7 @@ if [ "$2" == "config" ]; then
 
 else
 
-    echo "Argumento $2 incorreto. Use [ --config ]"
+    echo "Argumento $2 incorreto. Use [ config ]"
 
     exit 2
     

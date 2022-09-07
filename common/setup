@@ -39,16 +39,16 @@ fi
 
 CONFIG_ENV="N"
 
-if [[ $# == 2 && "$2" == "config" ]]; then
-
-    echo 'Configurando ambientes'
-    read -p "Confirme [S/N]: " -n1 CONFIG_OPT
-    CONFIG_OPT=${CONFIG_OPT:-N}
-    if [[ $CONFIG_OPT =~ ^[Ss]$ ]]; then
-        echo 'Todos os ambientes serão configurados'
-        CONFIG_ENV="Y"
+if [ $# == 2 &&]; then
+    if [ "$2" == "config" ]; then
+        echo 'Configurando ambientes'
+        read -p "Confirme [S/N]: " -n1 CONFIG_OPT
+        CONFIG_OPT=${CONFIG_OPT:-N}
+        if [[ $CONFIG_OPT =~ ^[Ss]$ ]]; then
+            echo 'Todos os ambientes serão configurados'
+            CONFIG_ENV="Y"
+        fi
     fi
-
 else
 
     echo "Argumento $2 incorreto. Use [ config ]"

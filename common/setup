@@ -69,7 +69,7 @@ echo '* Letsencrypt certbot *'
 # # depois apagar stack-cm.yaml e a linha abaixo
 export CERT_DOMAINS=$LAB_DOMAIN
 # export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN,$CM_LAB_DOMAIN
-# echo 'Registrando '${CERT_DOMAINS}
+echo 'Registrando '${CERT_DOMAINS}
 
 docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 

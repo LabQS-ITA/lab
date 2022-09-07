@@ -39,7 +39,7 @@ fi
 
 CONFIG_ENV="N"
 
-if [ $# == 2 ]; then
+if [ $# -eq 2 ]; then
     if [ "$2" == "config" ]; then
         echo 'Configurando ambientes'
         read -p "Confirme [S/N]: " -n1 CONFIG_OPT
@@ -48,13 +48,13 @@ if [ $# == 2 ]; then
             echo 'Todos os ambientes serão configurados'
             CONFIG_ENV="Y"
         fi
+    else
+
+        echo "Argumento $2 incorreto. Use [ config ]"
+
+        exit 2
+        
     fi
-else
-
-    echo "Argumento $2 incorreto. Use [ config ]"
-
-    exit 2
-    
 fi
 
 source ./config

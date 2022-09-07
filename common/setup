@@ -39,7 +39,7 @@ fi
 
 CONFIG_ENV="N"
 
-if [ $e == 2 && "$2" == "config" ]; then
+if [ $# == 2 && "$2" == "config" ]; then
 
     echo 'Configurando ambientes'
     read -p "Confirme [S/N]: " -n1 CONFIG_OPT

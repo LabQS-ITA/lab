@@ -42,11 +42,8 @@ Isso permiti a inclusão de novos serviços, como é feita comumente nos servido
     ErrorLog logs/error.log
     CustomLog logs/access.log combined
 
-    ProxyPass /adminer http://adminer01:80
-    ProxyPassReverse /adminer http://adminer01:80
-
     ProxyPass /gitlab http://gitlab:80
-    ProxyPassReverse /adminer http://gitlab:80
+    ProxyPassReverse /gitlab http://gitlab:80
 	
 </VirtualHost>
 ````
@@ -65,10 +62,8 @@ A página inicial (e geralmente única) de cada _front-end_ deve ser atualizada 
                     <img src="./hourglass.gif" style=" max-width: 90%; margin: 5%; " />
                 </div>
                 <ul>
-                    <li><a href="/adminer">Administração de Dados</a></li>
                     <li><a href="/gitlab">Controle de fontes/Integração Contínua</a></li>
                 </ul>
-                <a href="/adminer">Administração de Dados</a>
             </div>
         </article>
     </body>

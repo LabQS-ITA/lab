@@ -17,7 +17,6 @@ docker-compose -f create.yaml up --detach
 ---
 ## Detalhes de instalação dos demais serviços
 
-* [`Adminer`](adminer/README.md)
 * [`Artifactory`](artifactory/README.md)
 * [`Backup`](backup/README.md) - _Ainda não configurado_
 * [`Drone`](drone/README.md)

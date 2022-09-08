@@ -16,7 +16,11 @@ Foram criadas instâncias separadas por ambiente (denominadas [mariadb01](./mari
 
 Os serviços não podem ser acessados fora da rede local.
 
-Para administração dos dados é possível utilizar a ferramenta [Adminer](../adminer/README.md) a partir do portal de cada ambiente (ver [Serviço de administração dos ambientes do Laboratório de Testes de Software](../httpd/README.md)).
+Para administração dos dados é possível se utilizar de um túnel SSH via VPN do ITA:
+
+```bash
+ssh -p 2222 -fN -L 3306:172.1.9.201:3306 <usuário VPN ITA>@dev.labqs.ita.br
+```
 
 Na rede local é possível acessar diretamente o console de cada serviço por meio da linha de comando:
 

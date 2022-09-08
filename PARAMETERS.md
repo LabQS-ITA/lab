@@ -7,13 +7,6 @@ Neste documento listamos o conteúdo que pode ser encontrado no arquivo `.env` d
 Os serviços aqui são listads em ordem alfabética, porém alguns exigem uma ordem específica para serem criados. O script [setup](../common/setup) cuida disso e copia os valores exatos no arquivo `.env` de cada serviço.
 
 ---
-## [`Adminer`](adminer/README.md)
-
-```ini
-SERVER_HOST=192.168.15.201
-```
-
----
 ## [`Artifactory`](artifactory/README.md)
 - _Ainda não configurado_
 

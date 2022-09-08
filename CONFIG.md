@@ -72,7 +72,6 @@ Use o comando abaixo para criar todos os _containers_ de um determinado serviço
 
 Os seguintes serviços estão disponíveis:
 
-* [`Adminer`](adminer/README.md)
 * [`Artifactory`](artifactory/README.md) - (_Ainda não configurado_)
 * [`Backup`](backup/README.md) - (_Ainda não configurado_)
 * [`Drone`](drone/README.md)
@@ -179,12 +178,6 @@ Estes são "_front-ends_" para os serviços disponíveis nos ambientes. Geralmen
 > **ATENÇÃO**: Certifique-se de estar sob a pasta `httpd` para executar os comandos abaixo - eles fazem referência relativa à arquivos em outras pastas.
 
 > **OBSERVAÇÃO**: Para acessar o painel AD do MongoDB via _browser_ será necessária a senha que está no arquivo `.env` do ambiente correspondente. Esta senha não está disponível no sistema de controle de versões e pode ser diferente da senha no ambiente do desenvolvedor.
-
-#### Adminer
-
-```bash
-bash -c 'docker exec -it adminer sh'
-```
 
 #### GitLab
 

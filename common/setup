@@ -74,7 +74,7 @@ source ./config
 # echo 'Registrando '${CERT_DOMAINS}
 
 # Usando docker
-# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+# docker compose -f stack.yaml -f ../common/use.yaml up --detach
 
 # Usando letsencrypt
 # sudo certbot certonly --standalone --agree-tos -m gomesjm@ita.br -n -d ${CERT_DOMAINS}
@@ -95,7 +95,7 @@ echo '* Apache HTTPD *'
 # echo 'Certificar que certbot está parado'
 # docker stop certbot
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+docker compose -f stack.yaml -f ../common/use.yaml up --detach
 
 docker stop httpd
 docker start httpd
@@ -117,7 +117,7 @@ if [ $CONFIG_ENV == 'Y' ]; then
     chmod 0600 ./postgres02/config/.pgpass
 fi
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+docker compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 cd ../mongodb
@@ -136,7 +136,7 @@ if [ $CONFIG_ENV == 'Y' ]; then
     chmod 0600 ./mongodb02/config/.mdbpass
 fi
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+docker compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 cd ../mariadb
@@ -155,7 +155,7 @@ if [ $CONFIG_ENV == 'Y' ]; then
     echo 'password = '$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env) >> mariadb02/config/autologin.cnf
 fi
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+docker compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 cd ../redis
@@ -167,7 +167,7 @@ if [ $CONFIG_ENV == 'Y' ]; then
     echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 fi
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+docker compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 cd ../nextcloud
@@ -179,7 +179,7 @@ if [ $CONFIG_ENV == 'Y' ]; then
     echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
 fi
 
-docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+docker compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 if [ $1 != "hom" ]; then
@@ -187,7 +187,7 @@ if [ $1 != "hom" ]; then
     cd ../adminer
     echo '* Adminer *'
 
-    docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+    docker compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
     cd ../gitea
@@ -200,7 +200,7 @@ if [ $1 != "hom" ]; then
         echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) > .env
     fi
 
-    docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+    docker compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
     cd ../drone
@@ -220,7 +220,7 @@ if [ $1 != "hom" ]; then
         echo 'SVC_PWD='$(openssl rand -hex 16) >> .env
     fi
 
-    docker-compose -f stack.yaml -f ../common/use.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans
+    docker compose -f stack.yaml -f ../common/use.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans
 
 
     cd ../semaphore
@@ -231,7 +231,7 @@ if [ $1 != "hom" ]; then
         echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
     fi
 
-    docker-compose -f stack.yaml -f ../common/use.yaml up --build --detach
+    docker compose -f stack.yaml -f ../common/use.yaml up --build --detach
 
 
     cd ../registry
@@ -244,19 +244,19 @@ if [ $1 != "hom" ]; then
         docker run --rm --entrypoint htpasswd httpd -Bbn maint $(awk -F'=' '$1 =="REGISTRY_HTTP_SECRET" {print $2}' ./.env) > .htpasswd
     fi
 
-    docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+    docker compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
     cd ../locust
     echo '* Locust *'
 
-    docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach --remove-orphans
+    docker compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach --remove-orphans
 
 
     cd ../portainer
     echo '* Portainer *'
 
-    docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+    docker compose -f stack.yaml -f ../common/use.yaml up --detach
 
     if [ $1 != "tst" ]; then
         ssh -p 2222 -fN -L 9002:${PORTAINERAGENT_HOST}:9001 gpes@dev.labqs.ita.br

@@ -193,12 +193,6 @@ docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 if [ $1 != "hom" ]; then
 
-    cd ../adminer
-    echo '* Adminer *'
-
-    docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
-
     cd ../gitea
     echo '* Gitea *'
 
@@ -208,12 +202,6 @@ if [ $1 != "hom" ]; then
 
         echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) > .env
     fi
-
-    docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
-
-    cd ../commander
-    echo '* Commander *'
 
     docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 

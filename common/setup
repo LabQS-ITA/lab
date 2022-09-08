@@ -41,7 +41,7 @@ CONFIG_ENV="N"
 
 if [ $# -eq 2 ]; then
     if [ "$2" == "config" ]; then
-        echo 'Configurando ambientes'
+        echo "$(tput setaf 1)Configurando ambientes$(tput sgr0)"
         read -p "Confirme [S/N]: " -n1 CONFIG_OPT
         CONFIG_OPT=${CONFIG_OPT:-N}
         if [[ $CONFIG_OPT =~ ^[Ss]$ ]]; then
@@ -55,6 +55,11 @@ if [ $# -eq 2 ]; then
         exit 2
         
     fi
+
+else
+
+    echo "$(tput setaf 1)Atualizando ambientes sem reconfigurar$(tput sgr0)"
+
 fi
 
 source ./config

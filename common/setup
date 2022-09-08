@@ -212,6 +212,12 @@ if [ $1 != "hom" ]; then
     docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
+    cd ../commander
+    echo '* Commander *'
+
+    docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
     cd ../drone
     echo '* Drone *'
 

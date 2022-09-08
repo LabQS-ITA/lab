@@ -89,6 +89,9 @@ sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' ../httpd/panel/static/index.html
 sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' ../registry/config/config.yml
 
 
+cd ../httpd
+echo '* Apache HTTPD *'
+
 if [ $1 == "hom" ]; then
 
     echo "Desabilitar proxy para "$CI_LAB_DOMAIN" e "$CM_LAB_DOMAIN
@@ -97,9 +100,6 @@ if [ $1 == "hom" ]; then
     rm panel/config/sites/002-ci.conf
 
 fi
-
-cd ../httpd
-echo '* Apache HTTPD *'
 
 # echo 'Certificar que certbot está parado'
 # docker stop certbot

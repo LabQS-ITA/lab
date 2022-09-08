@@ -89,6 +89,15 @@ sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' ../httpd/panel/static/index.html
 sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' ../registry/config/config.yml
 
 
+if [ $1 == "hom" ]; then
+
+    echo "Desabilitar proxy para "$CI_LAB_DOMAIN" e "$CM_LAB_DOMAIN
+
+    rm panel/config/sites/001-ci.conf
+    rm panel/config/sites/002-ci.conf
+
+fi
+
 cd ../httpd
 echo '* Apache HTTPD *'
 

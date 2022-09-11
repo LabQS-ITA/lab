@@ -50,7 +50,7 @@ echo 'Registrando '${CERT_DOMAINS}
 
 # Usando docker
 docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-echo '$(tput setaf 1)Aguarde a finalização da execução e encerre o container$(tput sgr0)'
+echo "$(tput setaf 1)Aguarde a finalização da execução e encerre o container$(tput sgr0)"
 docker logs certbot --follow
 
 # Usando letsencrypt

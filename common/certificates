@@ -49,12 +49,14 @@ export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN,$CM_LAB_DOMAIN
 echo 'Registrando '${CERT_DOMAINS}
 
 # Usando docker
+# Verificar em stack.yml se está configurado para criação ou renovação
 docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 echo "$(tput setaf 1)Aguarde a finalização da execução$(tput sgr0)"
 docker logs certbot --follow
 
 # Usando letsencrypt
 # sudo certbot certonly --standalone --agree-tos -m gomesjm@ita.br -n -d ${CERT_DOMAINS}
+# sudo certbot renew --force-renewal
 
 echo 'Re-inicando apache'
 docker start httpd

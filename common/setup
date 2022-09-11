@@ -64,22 +64,6 @@ fi
 
 source ./config
 
-# cd ../certbot
-# echo '* Letsencrypt certbot *'
-
-# echo 'Certificar que apache está parado'
-# docker stop httpd
-
-# export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN,$CM_LAB_DOMAIN
-# echo 'Registrando '${CERT_DOMAINS}
-
-# Usando docker
-# docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
-# Usando letsencrypt
-# sudo certbot certonly --standalone --agree-tos -m gomesjm@ita.br -n -d ${CERT_DOMAINS}
-
-
 echo "Registrar domínios $(tput setaf 1)"$LAB_DOMAIN"$(tput sgr0)"
 
 sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
@@ -101,8 +85,8 @@ if [ $1 == "hom" ]; then
 
 fi
 
-# echo 'Certificar que certbot está parado'
-# docker stop certbot
+echo 'Certificar que certbot está parado'
+docker stop certbot
 
 docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 

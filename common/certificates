@@ -48,7 +48,7 @@ docker stop httpd
 export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN,$CM_LAB_DOMAIN
 echo 'Registrando '${CERT_DOMAINS}
 
-Usando docker
+# Usando docker
 docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 # Usando letsencrypt

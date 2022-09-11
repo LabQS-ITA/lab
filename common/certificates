@@ -45,7 +45,11 @@ echo '* Letsencrypt certbot *'
 echo 'Certificar que apache está parado'
 docker stop httpd
 
-export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN,$CM_LAB_DOMAIN
+if [ "$1" == "hom" ]; then
+    export CERT_DOMAINS=$LAB_DOMAIN
+else
+    export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN,$CM_LAB_DOMAIN
+fi
 echo 'Registrando '${CERT_DOMAINS}
 
 # Usando docker

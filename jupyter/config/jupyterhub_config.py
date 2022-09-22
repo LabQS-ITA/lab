@@ -754,6 +754,9 @@ c.JupyterHub.init_spawners_timeout = 60
 #    - simple: jupyterhub.spawner.SimpleLocalProcessSpawner
 #  Default: 'jupyterhub.spawner.LocalProcessSpawner'
 # c.JupyterHub.spawner_class = 'jupyterhub.spawner.LocalProcessSpawner'
+c.JupyterHub.spawner_class = 'dockerspawner.DockerSpawner'
+c.DockerSpawner.notebook_dir = '/data'
+c.DockerSpawner.volumes = { 'jupyterhub-user-{username}': '/data' }
 
 ## Path to SSL certificate file for the public facing interface of the proxy
 #  

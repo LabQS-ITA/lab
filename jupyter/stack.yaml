@@ -2,7 +2,13 @@ services:
 
   jupyter:
     container_name: jupyter
-    image: jupyterhub/jupyterhub
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: jupyterhubbase
+      args:
+      - GPES_PASSWORD=${SVC_PWD}
+      - GPES_DEV_PASSWORD=${SVC_DEV_PWD}
     restart: unless-stopped
     ports:
       - '8000:8000'

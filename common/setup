@@ -217,6 +217,12 @@ else
     docker-compose -f stack.yaml -f ../common/use.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans
 
 
+    cd ../jupyter
+    echo '* Jupyter Notebook *'
+
+    docker-compose -f stack.yaml -f ../common/use.yaml up --build --detach
+    
+
     cd ../semaphore
     echo '* Ansible Semaphore *'
 

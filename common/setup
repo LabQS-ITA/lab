@@ -222,7 +222,7 @@ else
 
     docker-compose -f stack.yaml -f ../common/use.yaml up --build --detach
     
-    if [ $CONFIG_ENV == 'Y' ]; then
+    # if [ $CONFIG_ENV == 'Y' ]; then
         docker exec -it jupyter pip install jupyter_server
 
         docker exec -it jupyter adduser --disabled-password --gecos "" gpes
@@ -230,7 +230,7 @@ else
 
         docker exec -it jupyter adduser --disabled-password --gecos "" gpesdev
         docker exec -it jupyter usermod --password $(echo s3cr37 | openssl passwd -1 -stdin) gpesdev
-    fi
+    # fi
 
     cd ../semaphore
     echo '* Ansible Semaphore *'

@@ -776,6 +776,8 @@ c.DockerSpawner.use_internal_ip = True
 c.DockerSpawner.network_name = network_name
 c.DockerSpawner.remove_containers = True
 
+c.SystemUserSpawner.run_as_root = True
+
 ## Path to SSL certificate file for the public facing interface of the proxy
 #  
 #          When setting this, you should also set ssl_key

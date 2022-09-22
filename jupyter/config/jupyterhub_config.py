@@ -755,8 +755,20 @@ c.JupyterHub.init_spawners_timeout = 60
 #  Default: 'jupyterhub.spawner.LocalProcessSpawner'
 # c.JupyterHub.spawner_class = 'jupyterhub.spawner.LocalProcessSpawner'
 c.JupyterHub.spawner_class = 'dockerspawner.DockerSpawner'
-c.DockerSpawner.notebook_dir = '/data'
-c.DockerSpawner.volumes = { 'jupyterhub-user-{username}': '/data' }
+
+c.DockerSpawner.container_image = os.environ['DOCKER_NOTEBOOK_IMAGE']
+
+spawn_cmd = os.environ.get('DOCKER_SPAWN_CMD', "start-singleuser.sh")
+c.DockerSpawner.extra_create_kwargs.update({ 'command': spawn_cmd })
+
+notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR') or '/home/jovyan/work'
+c.DockerSpawner.notebook_dir = notebook_dir
+c.DockerSpawner.volumes = { 'jupyterhub-user-{username}': notebook_dir }
+
+network_name = os.environ['DOCKER_NETWORK_NAME']
+c.DockerSpawner.use_internal_ip = True
+c.DockerSpawner.network_name = network_name
+c.DockerSpawner.remove_containers = True
 
 ## Path to SSL certificate file for the public facing interface of the proxy
 #  

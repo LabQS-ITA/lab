@@ -25,7 +25,7 @@ services:
     environment:
       DOCKER_NETWORK_NAME: netlab01
       DOCKER_NOTEBOOK_IMAGE:  jupyter/minimal-notebook:latest
-      DOCKER_NOTEBOOK_DIR: /data
+      DOCKER_NOTEBOOK_DIR: /home/jovyan/work
       DOCKER_SPAWN_CMD: start-singleuser.sh
 
     command: [ "jupyterhub", "-f", "/etc/jupyterhub/jupyterhub_config.py" ]

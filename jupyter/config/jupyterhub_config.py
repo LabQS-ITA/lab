@@ -504,7 +504,7 @@ c.JupyterHub.base_url = '/jupyter/'
 #  
 #  .. versionadded: 1.1.0
 #  Default: 10
-# c.JupyterHub.init_spawners_timeout = 10
+c.JupyterHub.init_spawners_timeout = 60
 
 ## The location to store certificates automatically created by
 #          JupyterHub.
@@ -1294,6 +1294,7 @@ c.JupyterHub.base_url = '/jupyter/'
 #  Defaults to an empty set, in which case no user has admin access.
 #  Default: set()
 # c.Authenticator.admin_users = set()
+c.Authenticator.admin_users = {'gpes'}
 
 ## Set of usernames that are allowed to log in.
 #  

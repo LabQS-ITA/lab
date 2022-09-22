@@ -23,6 +23,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
+      DOCKER_JUPYTER_CONTAINER: jupyter
       DOCKER_NETWORK_NAME: netlab01
       DOCKER_NOTEBOOK_IMAGE:  jupyter/minimal-notebook:latest
       DOCKER_NOTEBOOK_DIR: /home/jovyan/work

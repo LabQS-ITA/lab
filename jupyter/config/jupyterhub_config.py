@@ -444,6 +444,8 @@ c.JupyterHub.base_url = '/jupyter'
 #          or `hub_bind_url` for setting the full bind URL.
 #  Default: '127.0.0.1'
 # c.JupyterHub.hub_ip = '127.0.0.1'
+c.JupyterHub.hub_ip = 'jupyter'
+
 
 ## The internal port for the Hub process.
 #  
@@ -455,6 +457,7 @@ c.JupyterHub.base_url = '/jupyter'
 #  bind URL.
 #  Default: 8081
 # c.JupyterHub.hub_port = 8081
+c.JupyterHub.hub_port = 8000
 
 ## The routing prefix for the Hub itself.
 #  

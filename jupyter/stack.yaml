@@ -10,11 +10,13 @@ services:
       netlab01:
         ipv4_address: ${JUPYTER_HOST}
     volumes:
+      - $PWD/config/jupyterhub_config:/etc/jupyterhub/jupyterhub_config.py:ro
       - jupyterdata:/data
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
+    command: [ "jupyterhub", "-f", "/etc/jupyterhub/jupyterhub_config.py" ]
 
 volumes:
   jupyterdata:

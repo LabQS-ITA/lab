@@ -184,6 +184,7 @@
 #              Use JupyterHub.bind_url
 #  Default: '/'
 # c.JupyterHub.base_url = '/'
+c.JupyterHub.base_url = '/jupyter/'
 
 ## The public facing URL of the whole JupyterHub application.
 #  

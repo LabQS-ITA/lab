@@ -444,7 +444,7 @@ c.JupyterHub.base_url = '/jupyter'
 #          or `hub_bind_url` for setting the full bind URL.
 #  Default: '127.0.0.1'
 # c.JupyterHub.hub_ip = '127.0.0.1'
-hub_ip = os.environ.get('DOCKER_JUPYTER_CONTAINER', "jupyter")
+hub_ip = os.environ.get('DOCKER_JUPYTER_CONTAINER', 'jupyter')
 c.JupyterHub.hub_ip = hub_ip
 
 
@@ -761,17 +761,17 @@ c.JupyterHub.init_spawners_timeout = 60
 # c.JupyterHub.spawner_class = 'jupyterhub.spawner.LocalProcessSpawner'
 c.JupyterHub.spawner_class = 'dockerspawner.DockerSpawner'
 
-container_image = os.environ.get('DOCKER_NOTEBOOK_IMAGE') or 'jupyter/minimal-notebook:latest'
+container_image = os.environ.get('DOCKER_NOTEBOOK_IMAGE', 'jupyter/minimal-notebook:latest')
 c.DockerSpawner.container_image = container_image
 
-spawn_cmd = os.environ.get('DOCKER_SPAWN_CMD', "start-singleuser.sh")
+spawn_cmd = os.environ.get('DOCKER_SPAWN_CMD', 'start-singleuser.sh')
 c.DockerSpawner.extra_create_kwargs.update({ 'command': spawn_cmd })
 
-notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR') or '/home/jovyan/work'
+notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR', '/home/jovyan/work')
 c.DockerSpawner.notebook_dir = notebook_dir
 c.DockerSpawner.volumes = { 'jupyterhub-user-{username}': notebook_dir }
 
-network_name = os.environ['DOCKER_NETWORK_NAME']
+network_name = os.environ.get('DOCKER_NETWORK_NAME', 'bridge')
 c.DockerSpawner.use_internal_ip = True
 c.DockerSpawner.network_name = network_name
 c.DockerSpawner.remove_containers = True

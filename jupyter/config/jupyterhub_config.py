@@ -1044,7 +1044,7 @@ c.JupyterHub.init_spawners_timeout = 60
 #  Once a server has successfully been spawned, this is the amount of time we
 #  wait before assuming that the server is unable to accept connections.
 #  Default: 30
-c.Spawner.http_timeout = 60
+c.Spawner.http_timeout = 120
 
 ## The URL the single-user server should connect to the Hub.
 #  

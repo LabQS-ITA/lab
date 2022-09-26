@@ -95,6 +95,7 @@ import os
 #  If set to 0, no limit is enforced.
 #  Default: 0
 # c.JupyterHub.active_server_limit = 0
+c.JupyterHub.active_server_limit = 4
 
 ## Duration (in seconds) to determine the number of active users.
 #  Default: 1800
@@ -238,6 +239,7 @@ c.JupyterHub.base_url = '/jupyter'
 #  If set to 0, no limit is enforced.
 #  Default: 100
 # c.JupyterHub.concurrent_spawn_limit = 100
+c.JupyterHub.concurrent_spawn_limit = 10
 
 ## The config file to load
 #  Default: 'jupyterhub_config.py'
@@ -392,6 +394,7 @@ c.JupyterHub.base_url = '/jupyter'
 #  .. versionadded:: 0.9
 #  Default: ''
 # c.JupyterHub.hub_bind_url = ''
+c.JupyterHub.bind_url = 'http://127.0.0.1:8000/jupyter/'
 
 ## The ip or hostname for proxies and spawners to use
 #          for connecting to the Hub.
@@ -744,6 +747,7 @@ c.JupyterHub.init_spawners_timeout = 60
 ## Shuts down all user servers on logout
 #  Default: False
 # c.JupyterHub.shutdown_on_logout = False
+c.JupyterHub.shutdown_on_logout = True
 
 ## The class to use for spawning single-user servers.
 #  

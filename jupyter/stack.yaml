@@ -5,8 +5,8 @@ services:
       context: .
       dockerfile: Dockerfile.jupyterlab
       target: jupyterlabbase
-      
-  jupyter:
+
+  jupyterhub:
     container_name: jupyter
     build:
       context: .

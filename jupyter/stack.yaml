@@ -1,10 +1,16 @@
 services:
 
+  jupyterlab:
+    build:
+      context: .
+      dockerfile: Dockerfile.jupyterlab
+      target: jupyterlabbase
+      
   jupyter:
     container_name: jupyter
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.jupyterhub
       target: jupyterhubbase
       args:
       - GPES_PASSWORD=${SVC_PWD}

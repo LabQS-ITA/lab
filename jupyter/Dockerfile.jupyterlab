@@ -1,4 +1,4 @@
-FROM jupyter/tensorflow-notebook:latest as jupyterlabbase
+FROM jupyter/base-notebook:latest as jupyterlabbase
 
 USER root
 
@@ -16,3 +16,5 @@ RUN set -ex \
     && mamba clean -qafy \
     && fix-permissions "${CONDA_DIR}" \
     && fix-permissions "/home/${NB_USER}"
+
+FROM jupyter/tensorflow-notebook:latest as jupyterlabbase

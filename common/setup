@@ -225,7 +225,7 @@ else
         echo 'SVC_DEV_PWD='$(openssl rand -hex 8) >> .env
     fi
 
-    docker build --tag latest . jupyterlab
+    docker build --file Dockerfile.jupyterlab --tag latest .
     docker-compose -p labqs -f stack.yaml -f ../common/use.yaml up --build --detach jupyterhub
     
 

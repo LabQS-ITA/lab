@@ -1,4 +1,4 @@
-FROM jupyter/base-notebook:latest as jupyterbase
+FROM jupyter/base-notebook:latest as jupyterlabbase
 
 USER root
 
@@ -17,4 +17,4 @@ RUN set -ex \
     && fix-permissions "${CONDA_DIR}" \
     && fix-permissions "/home/${NB_USER}"
 
-FROM jupyter/tensorflow-notebook:latest as jupyterlabbase
+FROM jupyter/tensorflow-notebook:latest

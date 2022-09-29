@@ -15,5 +15,5 @@ RUN set -ex \
     && source activate cling \
     && mamba install xeus-cling -c conda-forge \
     && mamba clean --all -f -y \
-    && fix-permissions "${CONDA_DIR}" && \
+    && fix-permissions "${CONDA_DIR}" \
     && fix-permissions "/home/${NB_USER}"

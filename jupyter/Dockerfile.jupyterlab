@@ -57,10 +57,3 @@ RUN set -x && \
             fix-permissions "${CONDA_DIR}" && \
             fix-permissions "/home/${NB_USER}"; \
     fi;
-
-
-RUN set -ex \
-    &&mamba install --quiet --yes  xeus-cling -c conda-forge \
-    && mamba clean -qafy \
-    && fix-permissions "${CONDA_DIR}" \
-    && fix-permissions "/home/${NB_USER}"

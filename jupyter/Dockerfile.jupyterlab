@@ -11,7 +11,7 @@ RUN set -ex \
 FROM jupyter/r-notebook
 
 RUN set -ex \
-    &&mamba install xeus-cling -c conda-forge \
+    &&mamba install -yn xeus-cling -c conda-forge \
     # && mamba create -yn xeus-cling xeus-cling \
     && mamba clean -qafy \
     && fix-permissions "${CONDA_DIR}" \

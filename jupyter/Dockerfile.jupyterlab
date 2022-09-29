@@ -27,14 +27,6 @@ RUN apt-get update --yes && \
 
 USER ${NB_UID}
 
-# Install xeus-cling
-RUN set -ex && \
-    mamba install --quiet --yes  \
-        xeus-cling -c conda-forge && \
-        mamba clean --all -f -y && \
-        fix-permissions "${CONDA_DIR}" && \
-        fix-permissions "/home/${NB_USER}"; \
-
 # R packages including IRKernel which gets installed globally.
 # r-e1071: dependency of the caret R package
 RUN mamba install --quiet --yes \

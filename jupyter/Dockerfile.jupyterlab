@@ -6,6 +6,14 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 USER root
 
+# JavaScript pre-requisites
+
+RUN apt-get update --yes && \
+    apt-get install --yes --no-install-recommends \
+    nodejs \
+    npm && \ 
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
 # R pre-requisites
 RUN apt-get update --yes && \
     apt-get install --yes --no-install-recommends \
@@ -18,6 +26,14 @@ RUN apt-get update --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 USER ${NB_UID}
+
+# Install xeus-cling
+RUN set -ex && \
+    mamba install --quiet --yes  \
+        xeus-cling -c conda-forge && \
+        mamba clean --all -f -y && \
+        fix-permissions "${CONDA_DIR}" && \
+        fix-permissions "/home/${NB_USER}"; \
 
 # R packages including IRKernel which gets installed globally.
 # r-e1071: dependency of the caret R package
@@ -55,11 +71,3 @@ RUN set -x && \
             fix-permissions "${CONDA_DIR}" && \
             fix-permissions "/home/${NB_USER}"; \
     fi;
-
-# Install xeus-cling
-RUN set -ex && \
-    mamba install --quiet --yes  \
-        'xeus-cling' -c conda-forge && \
-        mamba clean --all -f -y && \
-        fix-permissions "${CONDA_DIR}" && \
-        fix-permissions "/home/${NB_USER}"; \

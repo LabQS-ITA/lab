@@ -9,3 +9,11 @@ RUN set -ex \
    && update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 
 
 FROM jupyter/r-notebook
+
+RUN set -ex \
+    && mamba create -n cling \
+    && source activate cling \
+    && mamba install xeus-cling -c conda-forge \
+    && mamba clean --all -f -y \
+    && fix-permissions "${CONDA_DIR}" && \
+    && fix-permissions "/home/${NB_USER}"

@@ -31,7 +31,7 @@ services:
     environment:
       DOCKER_JUPYTER_CONTAINER: jupyter
       DOCKER_NETWORK_NAME: netlab01
-      DOCKER_NOTEBOOK_IMAGE:  jupyter/tensorflow-notebook:latest
+      DOCKER_NOTEBOOK_IMAGE:  labqs/jupyterlab:latest
       DOCKER_NOTEBOOK_DIR: /home/jovyan/work
       DOCKER_SPAWN_CMD: start-singleuser.sh
 

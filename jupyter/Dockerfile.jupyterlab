@@ -46,7 +46,6 @@ RUN mamba install --quiet --yes \
     fix-permissions "/home/${NB_USER}"
 
 # `r-tidymodels` is not easy to install under arm
-# Install xeus-cling
 RUN set -x && \
     arch=$(uname -m) && \
     if [ "${arch}" == "x86_64" ]; then \
@@ -57,7 +56,7 @@ RUN set -x && \
             fix-permissions "/home/${NB_USER}"; \
     fi;
 
-
+# Install xeus-cling
 RUN set -ex && \
     mamba install --quiet --yes  \
         'xeus-cling' -c conda-forge && \

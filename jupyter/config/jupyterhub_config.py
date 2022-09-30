@@ -125,6 +125,7 @@ c.JupyterHub.active_server_limit = 4
 ## Allow named single-user servers per user
 #  Default: False
 # c.JupyterHub.allow_named_servers = False
+c.JupyterHub.allow_named_servers = True
 
 ## Answer yes to any questions (e.g. confirm overwrite)
 #  Default: False
@@ -609,6 +610,7 @@ c.JupyterHub.init_spawners_timeout = 60
 #  If set to 0, no limit is enforced.
 #  Default: 0
 # c.JupyterHub.named_server_limit_per_user = 0
+c.JupyterHub.named_server_limit_per_user = 5
 
 ## Expiry (in seconds) of OAuth access tokens.
 #  

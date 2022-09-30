@@ -117,6 +117,7 @@ c.JupyterHub.active_server_limit = 4
 #          https://jupyterhub.readthedocs.io/en/stable/rbac/index.html
 #  Default: False
 # c.JupyterHub.admin_access = False
+c.JupyterHub.admin_access = True
 
 ## DEPRECATED since version 0.7.2, use Authenticator.admin_users instead.
 #  Default: set()

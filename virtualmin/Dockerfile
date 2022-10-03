@@ -2,6 +2,7 @@ FROM ubuntu:focal AS virtualminbase
 
 ARG HOST_NAME
 
+RUN apt install wget
 RUN mkdir -p dist
 WORKDIR dist
 RUN wget -r https://software.virtualmin.com/gpl/scripts/install.sh

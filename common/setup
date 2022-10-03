@@ -263,7 +263,7 @@ else
     echo '* VirtualMin *'
 
     echo 'HOST_NAME='${LAB_DOMAIN} > .env
-    docker-compose -f stack.yaml -f ../common/use/yaml up --detach
+    docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
     cd ../portainer

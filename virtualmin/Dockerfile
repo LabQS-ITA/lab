@@ -1,6 +1,6 @@
 FROM ubuntu:focal AS virtualminbase
 
-ARG HOST_NAME
+ENV HOST_NAME
 
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y wget

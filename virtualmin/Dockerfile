@@ -6,5 +6,5 @@ RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y wget
 RUN mkdir -p dist
 WORKDIR dist
-RUN wget -r https://software.virtualmin.com/gpl/scripts/install.sh
+RUN wget https://software.virtualmin.com/gpl/scripts/install.sh
 RUN ./install.sh --hostname ${HOST_NAME} --minimal --force --verbose

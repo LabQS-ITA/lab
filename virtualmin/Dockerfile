@@ -7,4 +7,4 @@ RUN apt-get install -y wget
 RUN mkdir -p dist
 WORKDIR dist
 RUN wget -r https://software.virtualmin.com/gpl/scripts/install.sh
-RUN sh ./install.sh --hostname ${HOST_NAME} --minimal --force --verbose
+RUN ./install.sh --hostname ${HOST_NAME} --minimal --force --verbose

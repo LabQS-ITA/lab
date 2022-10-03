@@ -2,8 +2,8 @@ FROM ubuntu:focal AS virtualminbase
 
 ARG HOST_NAME
 
-RUN apt update && apt upgrade -y
-RUN apt install wget
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install -y wget
 RUN mkdir -p dist
 WORKDIR dist
 RUN wget -r https://software.virtualmin.com/gpl/scripts/install.sh

@@ -1,6 +1,6 @@
 FROM ubuntu:focal AS virtualminbase
 
-ENV HOST_NAME
+ENV HOST_NAME labqs.ita.br
 
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y wget

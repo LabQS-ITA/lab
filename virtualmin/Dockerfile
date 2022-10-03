@@ -2,6 +2,8 @@ FROM ubuntu:focal AS virtualminbase
 
 ENV HOST_NAME test.labqs.ita.br
 
+USER root
+
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y wget
 RUN mkdir -p dist

@@ -263,20 +263,17 @@ else
     echo '* VirtualMin *'
 
     echo 'HOST_NAME='${LAB_DOMAIN} > .env
-    docker-compose -f stack.yaml -f ../common/use.yaml up --build --detach
+    docker build --file Dockerfile --tag labqs/virtualmin --rm .
+    docker-compose -p labqs -f stack.yaml -f ../common/use.yaml up --build --detach
 
 
     cd ../portainer
     echo '* Portainer *'
 
     if [ $1 == "dev" ]; then
-
         docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
     else
-
         docker-compose -f stack.yaml -f ../common/use.yaml up  --detach portainer_agent
-
     fi
 
 fi

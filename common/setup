@@ -264,7 +264,7 @@ else
 
     echo 'HOST_NAME='${LAB_DOMAIN} > .env
     docker build --file Dockerfile --tag labqs/virtualmin --rm .
-    docker-compose -p labqs -f stack.yaml -f ../common/use.yaml up --build --detach
+    docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
     cd ../portainer

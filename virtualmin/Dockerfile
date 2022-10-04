@@ -10,9 +10,8 @@ RUN mkdir -p dist
 WORKDIR dist
 RUN wget https://software.virtualmin.com/gpl/scripts/install.sh
 RUN chmod g+x ./install.sh
-RUN ./install.sh --setup
-RUN ./install.sh --hostname ${HOST_NAME} --minimal --force --verbose
+# RUN ./install.sh --hostname ${HOST_NAME} --minimal --force --verbose
 
 EXPOSE 80 443 21 25 110 143 465 587 993 995 2122 10000 20000 53/udp 53/tcp
 
-ENTRYPOINT ["/usr/bin/systemctl","default","--init"]
+# ENTRYPOINT ["/usr/bin/systemctl","default","--init"]

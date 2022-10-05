@@ -2,10 +2,7 @@ services:
 
   virtualmin:
     container_name: virtualmin
-    build:
-      context: .
-      dockerfile: Dockerfile
-      target: virtualminbase
+    image: labqs/virtualmin:latest
     restart: unless-stopped
     ports:
       - '10000:10000'

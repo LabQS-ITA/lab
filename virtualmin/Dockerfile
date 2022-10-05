@@ -5,7 +5,7 @@ ENV HOST_NAME test.labqs.ita.br
 USER root
 
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y apt-utils wget
+RUN apt-get install -y apt-utils iproute2 wget
 RUN mkdir -p dist
 WORKDIR dist
 RUN wget https://software.virtualmin.com/gpl/scripts/install.sh

@@ -2,7 +2,10 @@ services:
 
   semaphore:
     container_name: semaphore
-    image: labqs/virtualmin:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: semaphorebase
     restart: unless-stopped
     ports:
       - '8085:3000'

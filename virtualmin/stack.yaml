@@ -13,7 +13,7 @@ services:
        - virtualminhomedata:/home
        - virtualminvardata:/var
     environment:
-      HOST_NAME: ${HOST_NAME}
+          HOST_NAME: ${HOST_NAME}
       
 volumes:
   virtualminhomedata:

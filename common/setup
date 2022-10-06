@@ -259,14 +259,6 @@ else
     docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach --remove-orphans
 
 
-    cd ../virtualmin
-    echo '* VirtualMin *'
-
-    echo 'HOST_NAME='${LAB_DOMAIN} > .env
-    docker build --file Dockerfile --tag labqs/virtualmin --rm .
-    docker-compose -f stack.yaml -f ../common/use.yaml up --detach
-
-
     cd ../portainer
     echo '* Portainer *'
 

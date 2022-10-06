@@ -226,7 +226,7 @@ else
     fi
 
     docker build --file Dockerfile.jupyterlab --tag labqs/jupyterlab --rm .
-    docker-compose -p labqs -f stack.yaml -f ../common/use.yaml up --build --detach jupyterhub
+    docker-compose -f stack.yaml -f ../common/use.yaml up --build --detach jupyterhub
     
 
     cd ../semaphore

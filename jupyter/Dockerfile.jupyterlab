@@ -64,14 +64,6 @@ RUN set -x && \
             fix-permissions "/home/${NB_USER}"; \
     fi;
 
-# c/c++
-RUN set -x && \
-    mamba install --quiet --yes \
-        'xeus-cling' -c conda-forge && \
-        mamba clean --all -f -y && \
-        fix-permissions "${CONDA_DIR}" && \
-        fix-permissions "/home/${NB_USER}";
-
 # git
 RUN set -x && \
     mamba install --quiet --yes \

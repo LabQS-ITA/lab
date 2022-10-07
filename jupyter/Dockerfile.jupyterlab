@@ -6,25 +6,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 USER root
 
-# JavaScript pre-requisites
-
-RUN apt-get update --yes && \
-    apt-get install --yes --no-install-recommends \
-    nodejs \
-    npm && \ 
-    apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# JavaScript pre-requisites
-RUN apt-get update --yes && \
-    apt-get install --yes --no-install-recommends \
-    nodejs \
-    npm && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
-
-RUN npm install -g --unsafe-perm ijavascript && \
-    ijsinstall --install=global
-    
-# R pre-requisites
+# JavaScript/R pre-requisites
 RUN apt-get update --yes && \
     apt-get install --yes --no-install-recommends \
     fonts-dejavu \
@@ -32,8 +14,14 @@ RUN apt-get update --yes && \
     unixodbc-dev \
     r-cran-rodbc \
     gfortran \
-    gcc && \
+    gcc \
+    nodejs \
+    npm && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# IJavaScript Kernel
+RUN npm install -g --unsafe-perm ijavascript && \
+    ijsinstall --install=global
 
 USER ${NB_UID}
 

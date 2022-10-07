@@ -14,16 +14,16 @@ RUN apt-get update --yes && \
     unixodbc-dev \
     r-cran-rodbc \
     gfortran \
-    gcc \
-    nodejs \
-    npm && \
+    gcc && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 USER ${NB_UID}
 
 # R packages including IRKernel which gets installed globally.
 # r-e1071: dependency of the caret R package
+# Git
 RUN mamba install --quiet --yes \
+    'jupyterlab-git' \
     'r-base' \
     'r-caret' \
     'r-crayon' \
@@ -42,32 +42,8 @@ RUN mamba install --quiet --yes \
     'r-rsqlite' \
     'r-shiny' \
     'r-tidyverse' \
-    'unixodbc' && \
+    'unixodbc' \
+    'r-tidymodels' && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
-
-# `r-tidymodels` is not easy to install under arm
-RUN set -x && \
-    arch=$(uname -m) && \
-    if [ "${arch}" == "x86_64" ]; then \
-        mamba install --quiet --yes \
-            'r-tidymodels' && \
-            mamba clean --all -f -y && \
-            fix-permissions "${CONDA_DIR}" && \
-            fix-permissions "/home/${NB_USER}"; \
-    fi;
-
-# git
-RUN set -x && \
-    mamba install --quiet --yes \
-        'jupyterlab-git' && \
-        mamba clean --all -f -y && \
-        fix-permissions "${CONDA_DIR}" && \
-        fix-permissions "/home/${NB_USER}"
-
-# IJavaScript Kernel
-RUN set -x && \
-    npm config set prefix "/home/${NB_USER}" && \
-    npm install -g ijavascript && \
-    /usr/local/bin/ijsinstall

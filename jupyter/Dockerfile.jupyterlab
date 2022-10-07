@@ -67,5 +67,7 @@ RUN set -x && \
         fix-permissions "/home/${NB_USER}"
 
 # IJavaScript Kernel
-RUN npm install -g --unsafe-perm ijavascript && \
-    ijsinstall --install=global
+RUN set -x && \
+    npm config set prefix $HOME && \
+    npm install -g ijavascript && \
+    ijsinstall

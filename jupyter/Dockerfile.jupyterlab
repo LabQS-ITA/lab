@@ -19,10 +19,6 @@ RUN apt-get update --yes && \
     npm && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# IJavaScript Kernel
-RUN npm install -g --unsafe-perm ijavascript && \
-    ijsinstall --install=global
-
 USER ${NB_UID}
 
 # R packages including IRKernel which gets installed globally.
@@ -69,3 +65,7 @@ RUN set -x && \
         mamba clean --all -f -y && \
         fix-permissions "${CONDA_DIR}" && \
         fix-permissions "/home/${NB_USER}"
+
+# IJavaScript Kernel
+RUN npm install -g --unsafe-perm ijavascript && \
+    ijsinstall --install=global

@@ -62,7 +62,7 @@ RUN set -x && \
             'r-tidymodels' && \
             mamba clean --all -f -y && \
             fix-permissions "${CONDA_DIR}" && \
-            fix-permissions "/home/${NB_USER}"; \
+            fix-permissions "/home/${NB_USER}"
     fi;
 
 # c/c++
@@ -71,7 +71,7 @@ RUN set -x && \
         'xeus-cling' -c conda-forge && \
         mamba clean --all -f -y && \
         fix-permissions "${CONDA_DIR}" && \
-        fix-permissions "/home/${NB_USER}"; \
+        fix-permissions "/home/${NB_USER}";
 
 # git
 RUN set -x && \
@@ -79,4 +79,4 @@ RUN set -x && \
         'jupyterlab-git' && \
         mamba clean --all -f -y && \
         fix-permissions "${CONDA_DIR}" && \
-        fix-permissions "/home/${NB_USER}"; \
+        fix-permissions "/home/${NB_USER}"

@@ -9,6 +9,8 @@ USER root
 # JavaScript/R pre-requisites
 RUN apt-get update --yes && \
     apt-get install --yes --no-install-recommends \
+    nodejs \
+    npm \
     fonts-dejavu \
     unixodbc \
     unixodbc-dev \
@@ -16,6 +18,9 @@ RUN apt-get update --yes && \
     gfortran \
     gcc && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN npm install -g --unsafe-perm ijavascript && \
+    ijsinstall --install=global
 
 USER ${NB_UID}
 

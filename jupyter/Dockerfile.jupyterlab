@@ -68,6 +68,6 @@ RUN set -x && \
 
 # IJavaScript Kernel
 RUN set -x && \
-    npm config set prefix $HOME && \
+    npm config set prefix "/home/${NB_USER}" && \
     npm install -g ijavascript && \
     ijsinstall

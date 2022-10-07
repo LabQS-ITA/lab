@@ -49,7 +49,6 @@ RUN mamba install --quiet --yes \
     'r-tidyverse' \
     'unixodbc' \
     'r-tidymodels' \ 
-    'pm4py' \
     'python-decouple' \
     'webdav4' \
     'psycopg2' \

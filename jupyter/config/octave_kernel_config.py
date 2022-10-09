@@ -1,1 +1,1 @@
-c.OctaveKernel.plot_settings = [dict(backend='fltk'),dict(backend='gnuplot')]
+c.OctaveKernel.plot_settings = dict(backend='qt')

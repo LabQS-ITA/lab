@@ -17,7 +17,6 @@ RUN apt-get update --yes && \
     unixodbc \
     unixodbc-dev \
     r-cran-rodbc \
-    gnuplot-qt \
     octave \
     gfortran \
     gcc && \
@@ -59,7 +58,7 @@ RUN mamba install --quiet --yes \
     'sqlalchemy' \
     'sshtunnel' \
     'texinfo' \
-    'gnuplot' \
+    'fltk' \
     'octave_kernel' && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \

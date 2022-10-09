@@ -6,6 +6,8 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 USER root
 
+RUN add-apt-repository ppa:octave/stable
+
 # JavaScript/R pre-requisites
 RUN apt-get update --yes && \
     apt-get install --yes --no-install-recommends \
@@ -15,8 +17,10 @@ RUN apt-get update --yes && \
     unixodbc \
     unixodbc-dev \
     r-cran-rodbc \
+    octave \
     gfortran \
     gcc && \
+
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 USER ${NB_UID}

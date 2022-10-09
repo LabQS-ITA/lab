@@ -60,8 +60,6 @@ RUN mamba install --quiet --yes \
     'sqlalchemy' \
     'sshtunnel' \
     'texinfo' \
-    'fltk' \
-    'gnuplot' \
     'oct2py' \
     'octave_kernel' && \
     mamba clean --all -f -y && \

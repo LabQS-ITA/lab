@@ -17,6 +17,8 @@ RUN apt-get update --yes && \
     unixodbc \
     unixodbc-dev \
     r-cran-rodbc \
+    gnuplot-qt \
+    liboctave-dev \
     octave \
     gfortran \
     gcc && \

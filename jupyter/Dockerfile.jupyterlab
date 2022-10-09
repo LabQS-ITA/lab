@@ -6,11 +6,11 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 USER root
 
-RUN add-apt-repository universe
-
 # JavaScript/R pre-requisites
 RUN apt-get update --yes && \
+    apt-get upgrade --yes && \
     apt-get install --yes --no-install-recommends \
+    software-properties-common \
     nodejs \
     npm \
     fonts-dejavu \

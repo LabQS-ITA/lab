@@ -55,7 +55,7 @@ RUN mamba install --quiet --yes \
     'sqlalchemy' \
     'sshtunnel' \
     'texinfo' \
-    'octave-kernel' && \
+    'octave_kernel' && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"

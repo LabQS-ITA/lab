@@ -59,6 +59,7 @@ RUN mamba install --quiet --yes \
     'sshtunnel' \
     'texinfo' \
     'fltk' \
+    'oct2py' \
     'octave_kernel' && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \

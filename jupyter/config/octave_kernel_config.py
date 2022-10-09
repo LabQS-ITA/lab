@@ -1,1 +1,1 @@
-c.OctaveKernel.plot_settings = dict(backend='qt')
+c.OctaveKernel.plot_settings = dict(backend='fltk')

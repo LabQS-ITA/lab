@@ -58,7 +58,7 @@ RUN mamba install --quiet --yes \
     'sqlalchemy' \
     'sshtunnel' \
     'texinfo' \
-    'qt' \
+    'fltk' \
     'octave_kernel' && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \

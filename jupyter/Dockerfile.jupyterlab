@@ -17,9 +17,6 @@ RUN apt-get update --yes && \
     unixodbc \
     unixodbc-dev \
     r-cran-rodbc \
-    gnuplot-qt \
-    liboctave-dev \
-    octave \
     gfortran \
     gcc && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -59,9 +56,7 @@ RUN mamba install --quiet --yes \
     'psycopg2' \
     'sqlalchemy' \
     'sshtunnel' \
-    'texinfo' \
-    'oct2py' \
-    'octave_kernel' && \
+    'texinfo' && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"

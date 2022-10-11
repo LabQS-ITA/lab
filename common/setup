@@ -220,7 +220,7 @@ else
     cd ../cherrybomb
     echo '* Cherrybomb *'
 
-    docker build --file Dockerfile.cherrybomb --tag labqs/cherrybomb --rm .
+    docker build --tag labqs/cherrybomb --rm .
 
 
     cd ../jupyter

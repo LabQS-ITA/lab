@@ -1,11 +1,13 @@
 services:
 
-  drone:
-    container_name: drone
+  cherrybomb:
     build:
       context: .
-      dockerfile: Dockerfile
-      target: dronebase
+      dockerfile: Dockerfile.cherrybomb
+
+  drone:
+    container_name: drone
+    image: drone/drone:latest
     restart: unless-stopped
     ports:
       - '8082:80'

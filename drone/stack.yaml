@@ -2,7 +2,10 @@ services:
 
   drone:
     container_name: drone
-    image: drone/drone
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dronebase
     restart: unless-stopped
     ports:
       - '8082:80'

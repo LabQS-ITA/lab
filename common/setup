@@ -214,6 +214,7 @@ else
         echo 'SVC_PWD='$(openssl rand -hex 16) >> .env
     fi
 
+    docker build --file Dockerfile.cherrybomb --tag labqs/cherrybomb --rm .
     docker-compose -f stack.yaml -f ../common/use.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans
 
 

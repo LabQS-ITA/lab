@@ -1,10 +1,5 @@
 services:
 
-  cherrybomb:
-    build:
-      context: .
-      dockerfile: Dockerfile.cherrybomb
-
   drone:
     container_name: drone
     image: drone/drone:latest

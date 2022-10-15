@@ -274,4 +274,11 @@ else
         docker-compose -f stack.yaml -f ../common/use.yaml up  --detach portainer_agent
     fi
 
+
+    cd ../openstack
+    echo '* OpenStack *'
+
+    docker build --file Dockerfile --tag labqs/openstack --rm .
+    docker-compose -f stack.yaml -f ../common/use.yaml up --build --detach openstack
+
 fi

@@ -263,6 +263,7 @@ else
     echo '* Locust *'
 
     docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach --remove-orphans
+    docker stop $(docker ps -qa -f 'name=locust*')
 
 
     cd ../portainer

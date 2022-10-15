@@ -2,18 +2,12 @@ FROM ubuntu:latest as openstackbase
 
 ENV OPENSTACK_HOST=172.1.4.200
 
-USER root
-
 RUN apt-get update -y && apt-get upgrade -y && \
-    useradd -s /bin/bash -d /opt/stack -m stack && \
-    mkdir -p /etc/sudoers.d && \
-    echo "stack ALL=(ALL) NOPASSWD: ALL" | tee /etc/sudoers.d/stack && \
-    apt-get install -y git vim
-
-USER stack
-
-RUN git clone https://opendev.org/openstack/devstack
+    apt-get install -y git vim && \
+    mkdir -p /opt/stack
 
 WORKDIR /opt/stack/devstack
+
+RUN git clone https://opendev.org/openstack/devstack
 
 RUN ./stack.sh

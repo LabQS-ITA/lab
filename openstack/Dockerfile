@@ -6,7 +6,7 @@ USER root
 
 RUN apt update -y && apt upgrade -y && \
     useradd -s /bin/bash -d /opt/stack -m stack && \
-    echo "stack ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/stack && \
+    echo "stack ALL=(ALL) NOPASSWD: ALL" | tee /etc/sudoers.d/stack && \
     apt install git vim
 
 USER stack

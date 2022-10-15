@@ -9,7 +9,12 @@ RUN apt-get update -y && apt-get upgrade -y && \
 WORKDIR /opt/stack
 
 RUN git clone https://opendev.org/openstack/devstack && \
-    cd devstack && \
+    useradd -s /bin/bash -d /opt/stack -m stack && \
+    echo "stack ALL=(ALL) NOPASSWD: ALL" | tee /etc/sudoers.d/stack
+
+USER stack
+
+RUN  cd devstack && \
     echo "[[local|localrc]]" > local.conf && \
     echo "ADMIN_PASSWORD=p4ssw0rd" >> local.conf && \
     echo "DATABASE_PASSWORD=$ADMIN_PASSWORD" >> local.conf && \

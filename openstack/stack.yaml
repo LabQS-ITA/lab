@@ -10,7 +10,6 @@ services:
       netlab01:
         ipv4_address: ${OPENSTACK_HOST}
     volumes:
-      - $PWD/config/local.conf:/opt/stack/devstack/local.conf:ro
       - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro

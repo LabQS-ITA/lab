@@ -3,17 +3,12 @@ FROM ubuntu:latest as openstackbase
 ENV OPENSTACK_HOST=172.1.4.200
 
 RUN apt-get update -y && apt-get upgrade -y && \
-    apt-get install -y git vim && \
-    mkdir -p /opt/stack
-
-RUN git clone https://opendev.org/openstack/devstack && \
-    useradd -s /bin/bash -d /opt/stack -m stack && \
-    mkdir -p /etc/sudoers.d && \
-    echo "stack ALL=(ALL) NOPASSWD: ALL" | tee /etc/sudoers.d/stack
+    apt-get install -y git vim
 
 USER stack
 
-RUN  cd devstack && \
+RUN git clone https://opendev.org/openstack/devstack && \
+     cd devstack && \
     echo "[[local|localrc]]" > local.conf && \
     echo "ADMIN_PASSWORD=p4ssw0rd" >> local.conf && \
     echo "DATABASE_PASSWORD=$ADMIN_PASSWORD" >> local.conf && \

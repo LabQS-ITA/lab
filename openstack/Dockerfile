@@ -1,11 +1,11 @@
 FROM ubuntu:focal as openstackbase
 
-RUN  apt-get update -y && sudo apt upgrade -y && \
+RUN  apt-get update -y && apt upgrade -y && \
     apt-get install -y git vim && \
     ln -sf /bin/bash /bin/sh && \
     useradd -s /bin/bash -d /opt/stack -m stack && \
     chmod +x /opt/stack && \
-    echo "stack ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/stack
+    echo "stack ALL=(ALL) NOPASSWD: ALL" | tee /etc/sudoers.d/stack
 
 USER stack
 WORKDIR /opt/stack

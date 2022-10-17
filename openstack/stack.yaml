@@ -1,0 +1,18 @@
+services:
+  openstack:
+    container_name: openstack
+    image: labqs/openstack:latest
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: openstackbase
+    networks:
+      netlab01:
+        ipv4_address: "${OPENSTACK_HOST}"
+    volumes:
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro

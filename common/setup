@@ -184,6 +184,13 @@ if [ $1 == "hom" ]; then
 
 else
 
+    cd ../openstack
+    echo '* openstack *'
+
+    docker build --file Dockerfile --tag labqs/openstack --rm .
+    docker-compose -f stack.yaml -f ../common/use.yaml up --build --detach
+
+
     cd ../gitea
     echo '* Gitea *'
 

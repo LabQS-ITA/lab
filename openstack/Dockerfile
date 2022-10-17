@@ -1,6 +1,6 @@
 FROM ubuntu:focal as openstackbase
 
-RUN  apt-get update -y && apt upgrade -y && \
+RUN  apt-get update -y && apt-get upgrade -y && \
     apt-get install -y git sudo && \
     ln -sf /bin/bash /bin/sh && \
     useradd -s /bin/bash -d /opt/stack -m stack && \

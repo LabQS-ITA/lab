@@ -13,6 +13,7 @@ WORKDIR /opt/stack
 RUN git clone https://opendev.org/openstack/devstack
 
 WORKDIR /opt/stack/devstack
+VOLUME /opt/stack/devstack
 
 COPY local.conf /opt/stack/devstack/local.conf
 

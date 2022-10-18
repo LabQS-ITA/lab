@@ -18,4 +18,4 @@ RUN apt-get update -y && apt-get upgrade -y && \
         --bootstrap-public-url http://${CONTROLLER}:5000/v3/ \
         --bootstrap-region-id RegionOne
 
-ENTRYPOINT ["tail", "-f", "/var/log/syslog"]
+ENTRYPOINT ["tail", "-f", "/dev/null"]

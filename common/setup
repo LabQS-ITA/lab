@@ -136,8 +136,13 @@ cd ../mariadb
 echo '* MariaDB *'
 
 if [ $CONFIG_ENV == 'Y' ]; then
-    echo 'SVC_PWD_01='$(openssl rand -hex 8) > .env
+    echo 'SVC_PWD_00='$(openssl rand -hex 8) > .env
+    echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
     echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
+
+    echo '[client]' > mariadb/config/autologin.cnf
+    echo 'user = root' >> mariadb/config/autologin.cnf
+    echo 'password = '$(awk -F'=' '$1 =="SVC_PWD_00" {print $2}' .env) >> mariadb/config/autologin.cnf
 
     echo '[client]' > mariadb01/config/autologin.cnf
     echo 'user = root' >> mariadb01/config/autologin.cnf

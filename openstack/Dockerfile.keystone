@@ -6,6 +6,7 @@ ARG CONTROLLER=localhost
 ENV DEBIAN_FRONTEND=noninteractive
 
 EXPOSE 5000/tcp
+EXPOSE 4200/tcp
 
 RUN apt-get update -y && apt-get upgrade -y && \
     apt-get install -y keystone && \

@@ -13,6 +13,7 @@ services:
     restart: unless-stopped
     ports:
       - '5001:5000'
+      - '4200:4200'
     networks:
       netlab01:
         ipv4_address: ${OPENSTACK_KEYSTONE_HOST}

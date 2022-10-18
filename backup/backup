@@ -54,6 +54,7 @@ backup_postgres postgres
 backup_postgres postgres01
 backup_postgres postgres02
 
+backup_mariadb mariadb
 backup_mariadb mariadb01
 backup_mariadb mariadb02
 

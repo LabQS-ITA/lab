@@ -9,7 +9,7 @@ services:
       target: keystonebase
       args:
       - ADMIN_PASS=${SVC_PWD}
-      - CONTROLLER=localhost
+      - CONTROLLER=${LAB_DOMAIN}
     restart: unless-stopped
     ports:
       - '5001:5000'

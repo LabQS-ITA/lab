@@ -284,6 +284,11 @@ else
     cd ../openstack
     echo '* openstack *'
 
+    if [ $CONFIG_ENV == 'Y' ]; then
+        echo 'SVC_PWD='$(openssl rand -hex 8) > .env
+        echo 'MARIADB_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../mariadb/.env) >> .env
+    fi
+
     docker-compose -f stack.yaml -f ../common/use.yaml up --build --detach
-    
+
 fi

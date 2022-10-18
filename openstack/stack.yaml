@@ -8,6 +8,7 @@ services:
       target: keystonebase
       args:
       - ADMIN_PASS=${SVC_PWD}
+      - CONTROLLER=${LAB_DOMAIN}
     restart: unless-stopped
     ports:
       '5000:5000'
@@ -25,5 +26,5 @@ services:
       OS_PROJECT_NAME: admin
       OS_USER_DOMAIN_NAME: Default
       OS_PROJECT_DOMAIN_NAME: Default
-      OS_AUTH_URL: http://controller:5000/v3
+      OS_AUTH_URL: http://${LAB_DOMAIN}:5000/v3
       OS_IDENTITY_API_VERSION: 3

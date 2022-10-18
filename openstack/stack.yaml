@@ -1,7 +1,7 @@
 services:
 
   keystone:
-    continer_name: keystone
+    container_name: keystone
     build:
       context: .
       dockerfile: Dockerfile.keystone

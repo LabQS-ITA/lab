@@ -289,6 +289,7 @@ else
         echo 'MARIADB_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../mariadb/.env) >> .env
     fi
 
+    sed -i 's/@MARIADB_PWD/'$MARIADB_PWD'/g' ./config/keystone/keystone.conf
     docker-compose -f stack.yaml -f ../common/use.yaml up --build --detach
 
 fi

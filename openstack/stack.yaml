@@ -16,7 +16,7 @@ services:
       netlab01:
         ipv4_address: ${OPENSTACK_KEYSTONE_HOST}
     volumes:
-      - $PWD/config/keystone:/etc/keystone:ro
+      - $PWD/config/keystone:/etc/keystone:rw
       - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro

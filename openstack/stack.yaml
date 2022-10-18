@@ -1,0 +1,29 @@
+services:
+
+  keystone:
+    continer_name: keystone
+    build:
+      context: .
+      dockerfile: Dockerfile.keystone
+      target: keystonebase
+      args:
+      - ADMIN_PASS=${SVC_PWD}
+    restart: unless-stopped
+    ports:
+      '5000:5000'
+    networks:
+      netlab01:
+        ipv4_address: ${OPENSTACK_KEYSTONE_HOST}
+    volumes:
+      - $PWD/config/keystone:/etc/keystone:ro
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      OS_USERNAME: admin
+      OS_PASSWORD: ${SVC_PWD}
+      OS_PROJECT_NAME: admin
+      OS_USER_DOMAIN_NAME: Default
+      OS_PROJECT_DOMAIN_NAME: Default
+      OS_AUTH_URL: http://controller:5000/v3
+      OS_IDENTITY_API_VERSION: 3

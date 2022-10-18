@@ -17,8 +17,8 @@ services:
         ipv4_address: ${MARIADB_HOST}
     volumes:
       - mariadata00:/var/lib/mysql:rw
-      - $PWD/mariadb00/config:/etc/mysql/conf.d:ro
-      - $PWD/mariadb00/init:/docker-entrypoint-initdb.d:ro
+      - $PWD/mariadb/config:/etc/mysql/conf.d:ro
+      - $PWD/mariadb/init:/docker-entrypoint-initdb.d:ro
       - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro

@@ -16,7 +16,7 @@ services:
       netlab01:
         ipv4_address: ${MARIADB_HOST}
     volumes:
-      - mariadata00:/var/lib/mysql:rw
+      - mariadata:/var/lib/mysql:rw
       - $PWD/mariadb/config:/etc/mysql/conf.d:ro
       - $PWD/mariadb/init:/docker-entrypoint-initdb.d:ro
       - /usr/share/zoneinfo:/user/share/zoneinfo:ro
@@ -82,6 +82,9 @@ services:
       MARIADB_PASSWORD: ${SVC_PWD_02}
 
 volumes:
+  mariadata:
+    name: mariadbdata
+    driver: local
   mariadata01:
     name: mariadbdata01
     driver: local

@@ -280,4 +280,10 @@ else
         docker-compose -f stack.yaml -f ../common/use.yaml up  --detach portainer_agent
     fi
 
+
+    cd ../openstack
+    echo '* openstack *'
+
+    docker-compose -f stack.yaml -f ../common/use.yaml up --build --detach
+    
 fi

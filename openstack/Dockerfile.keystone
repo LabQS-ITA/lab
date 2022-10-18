@@ -5,6 +5,8 @@ ARG CONTROLLER=localhost
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+EXPOSE 5000/tcp
+
 RUN apt-get update -y && apt-get upgrade -y && \
     apt-get install -y keystone && \
     /bin/sh -c "keystone-manage db_sync" keystone && \

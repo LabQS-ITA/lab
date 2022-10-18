@@ -16,6 +16,6 @@ RUN apt-get update -y && apt-get upgrade -y && \
         --bootstrap-admin-url https://${CONTROLLER}/keystone/v3/ \
         --bootstrap-internal-url https://${CONTROLLER}/keystone/v3/ \
         --bootstrap-public-url https://${CONTROLLER}/keystone/v3/ \
-        --bootstrap-region-id SJK
+        --bootstrap-region-id RegionOne
 
 ENTRYPOINT ["tail", "-f", "/var/log/keystone/keystone-manage.log"]

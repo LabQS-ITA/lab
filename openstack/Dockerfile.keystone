@@ -18,4 +18,4 @@ RUN apt-get update -y && apt-get upgrade -y && \
         --bootstrap-public-url https://${CONTROLLER}keystone/v3/ \
         --bootstrap-region-id RegionOne
 
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+ENTRYPOINT ["tail", "-f", "/var/log/keystone/keystone-manage.log"]

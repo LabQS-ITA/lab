@@ -1,4 +1,4 @@
-FROM ubuntu:lates AS keystonebase
+FROM ubuntu:latest AS keystonebase
 
 ARG ADMIN_PASS=s3cr37
 ARG CONTROLLER=localhost

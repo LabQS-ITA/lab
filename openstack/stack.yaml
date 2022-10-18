@@ -2,6 +2,7 @@ services:
 
   keystone:
     container_name: keystone
+    image: labqs/openstack/keystone:latest
     build:
       context: .
       dockerfile: Dockerfile.keystone

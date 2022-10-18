@@ -3,8 +3,8 @@ FROM ubuntu:latest AS keystonebase
 ARG ADMIN_PASS=s3cr37
 ARG CONTROLLER=localhost
 
-RUN apt update -y && apt upgrade -y && \
-    apt install keystone && \
+RUN apt-get update -y && apt-get upgrade -y && \
+    apt-get install keystone && \
     /bin/sh -c "keystone-manage db_sync" keystone && \
     keystone-manage fernet_setup --keystone-user keystone --keystone-group keystone && \
     keystone-manage credential_setup --keystone-user keystone --keystone-group keystone && \

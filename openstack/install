@@ -6,6 +6,9 @@ export CONTROLLER=localhost
 
 export DEBIAN_FRONTEND=noninteractive
 
+# Tunel para DB
+ssh -p 2222 -fN -L 3306:$MARIADB_HOST:3306 gpes@test.labqs.ita.br
+
 apt-get update -y && apt-get upgrade -y && \
 apt-get install -y keystone && \
 /bin/sh -c "keystone-manage db_sync" keystone && \

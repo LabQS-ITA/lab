@@ -10,6 +10,4 @@ git checkout ../httpd/panel/static/index.html
 
 git checkout ../registry/config/config.yml
 
-git checkout ../openstack/config/keystone/keystone.conf
-
 git pull

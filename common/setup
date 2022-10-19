@@ -166,6 +166,12 @@ fi
 docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
+cd ../memcached
+echo '* memcached *'
+
+docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
 cd ../rabbitmq
 echo '* RabbitMW *'
 

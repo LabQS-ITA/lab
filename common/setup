@@ -70,8 +70,6 @@ sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
 sed -i 's/@CM_LAB_DOMAIN/'$CM_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
 sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' ../httpd/panel/static/index.html
 
-sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' ../registry/config/config.yml
-
 
 cd ../httpd
 echo '* Apache HTTPD *'
@@ -168,6 +166,18 @@ fi
 docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
+cd ../rabbitmq
+echo '* RabbitMW *'
+
+if [ $CONFIG_ENV == 'Y' ]; then
+     echo 'SVC_PWD='$(openssl rand -hex 8) > .env
+fi
+
+sed -i 's/@SVC_PWD/'$SVC_PWD'/g' config/rabbitmq.conf
+
+docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
 cd ../nextcloud
 echo '* Nextcloud *'
 
@@ -260,6 +270,8 @@ else
 
         docker run --rm --entrypoint htpasswd httpd -Bbn maint $(awk -F'=' '$1 =="REGISTRY_HTTP_SECRET" {print $2}' ./.env) > .htpasswd
     fi
+
+    sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' config/config.yml
 
     docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 

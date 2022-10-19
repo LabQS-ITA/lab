@@ -134,7 +134,7 @@ cd ../mariadb
 echo '* MariaDB *'
 
 if [ $CONFIG_ENV == 'Y' ]; then
-    echo 'SVC_PWD_00='$(openssl rand -hex 8) > .env
+    echo 'SVC_PWD='$(openssl rand -hex 8) > .env
     echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
     echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 

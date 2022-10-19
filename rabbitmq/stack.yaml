@@ -4,11 +4,9 @@ services:
     container_name: rabbitmq
     image: rabbitmq:alpine
     restart: unless-stopped
-    ports:
-      - 'x:x'
     networks:
       netlab01:
-        ipv4_address: ${RABBITMQ_HOST}
+        ipv4_address: ${RABBITMQ_HOST01}
     volumes:
       - rabbitmqdata:/var/lib/mysql:rw
       - $PWD/config:/usr/share/doc/rabbitmq-server:ro
@@ -21,10 +19,10 @@ services:
     image: rabbitmq:management-alpine
     restart: unless-stopped
     ports:
-      - 'x:x'
+      - '8080:8080'
     networks:
       netlab01:
-        ipv4_address: ${RABBITMNG_HOST}
+        ipv4_address: ${RABBITMQ_HOST}
     volumes:
       - rabbitmqdata:/var/lib/rabbitmq:rw
       - $PWD/config:/usr/share/doc/rabbitmq-server:ro

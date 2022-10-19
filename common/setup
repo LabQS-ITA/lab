@@ -70,8 +70,6 @@ sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
 sed -i 's/@CM_LAB_DOMAIN/'$CM_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
 sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' ../httpd/panel/static/index.html
 
-sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' ../registry/config/config.yml
-
 
 cd ../httpd
 echo '* Apache HTTPD *'
@@ -136,8 +134,13 @@ cd ../mariadb
 echo '* MariaDB *'
 
 if [ $CONFIG_ENV == 'Y' ]; then
-    echo 'SVC_PWD_01='$(openssl rand -hex 8) > .env
+    echo 'SVC_PWD_00='$(openssl rand -hex 8) > .env
+    echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
     echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
+
+    echo '[client]' > mariadb/config/autologin.cnf
+    echo 'user = root' >> mariadb/config/autologin.cnf
+    echo 'password = '$(awk -F'=' '$1 =="SVC_PWD_00" {print $2}' .env) >> mariadb/config/autologin.cnf
 
     echo '[client]' > mariadb01/config/autologin.cnf
     echo 'user = root' >> mariadb01/config/autologin.cnf
@@ -159,6 +162,18 @@ if [ $CONFIG_ENV == 'Y' ]; then
     echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
     echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 fi
+
+docker-compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
+cd ../rabbitmq
+echo '* RabbitMW *'
+
+if [ $CONFIG_ENV == 'Y' ]; then
+     echo 'SVC_PWD='$(openssl rand -hex 8) > .env
+fi
+
+sed -i 's/@LAB_DOMAIN/'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env)'/g' config/rabbitmq.conf
 
 docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
@@ -217,6 +232,12 @@ else
     docker-compose -f stack.yaml -f ../common/use.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans
 
 
+    cd ../cherrybomb
+    echo '* Cherrybomb *'
+
+    docker build --tag labqs/cherrybomb --rm .
+
+
     cd ../jupyter
     echo '* Jupyter Notebook *'
 
@@ -225,7 +246,7 @@ else
         echo 'SVC_DEV_PWD='$(openssl rand -hex 8) >> .env
     fi
 
-    docker build --file Dockerfile.jupyterlab --tag labqs/jupyterlab --rm .
+    docker build --file Dockerfile.jupyterlab --rm .
     docker-compose -f stack.yaml -f ../common/use.yaml up --build --detach jupyterhub
     
 
@@ -250,13 +271,16 @@ else
         docker run --rm --entrypoint htpasswd httpd -Bbn maint $(awk -F'=' '$1 =="REGISTRY_HTTP_SECRET" {print $2}' ./.env) > .htpasswd
     fi
 
+    sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' config/config.yml
+
     docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
     cd ../locust
     echo '* Locust *'
 
-    docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach --remove-orphans
+    # docker-compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach --remove-orphans
+    # docker stop $(docker ps -qa -f 'name=locust*')
 
 
     cd ../portainer

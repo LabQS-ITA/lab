@@ -5,6 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile.jupyterlab
       target: jupyterlabbase
+    image: labqs/jupyterlab:latest
 
   jupyterhub:
     container_name: jupyter
@@ -15,6 +16,7 @@ services:
       args:
       - GPES_PASSWORD=${SVC_PWD}
       - GPES_DEV_PASSWORD=${SVC_DEV_PWD}
+    image: labqs/jupyterhub:latest
     restart: unless-stopped
     ports:
       - '8000:8000'

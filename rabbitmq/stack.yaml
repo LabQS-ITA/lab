@@ -1,0 +1,39 @@
+services:
+
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:alpine
+    restart: unless-stopped
+    networks:
+      netlab01:
+        ipv4_address: ${RABBITMQ_HOST01}
+    volumes:
+      - rabbitmqdata:/var/lib/mysql:rw
+      - $PWD/config:/usr/share/doc/rabbitmq-server:ro
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+  rabbitmng:
+    container_name: rabbitmng
+    image: rabbitmq:management-alpine
+    restart: unless-stopped
+    ports:
+      - '8080:8080'
+    networks:
+      netlab01:
+        ipv4_address: ${RABBITMQ_HOST}
+    volumes:
+      - rabbitmqdata:/var/lib/rabbitmq:rw
+      - $PWD/config:/usr/share/doc/rabbitmq-server:ro
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      RABBITMQ_DEFAULT_USER: maint
+      RABBITMQ_DEFAULT_PASS: ${SVC_PWD}
+
+volumes:
+  rabbitmqdata:
+    name: rabbitmqdata
+    driver: local

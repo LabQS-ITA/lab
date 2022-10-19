@@ -2,6 +2,7 @@ services:
 
   semaphore:
     container_name: semaphore
+    image: labqs/semaphore:latest
     build:
       context: .
       dockerfile: Dockerfile

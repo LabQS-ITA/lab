@@ -84,7 +84,7 @@ if [ $1 == "hom" ]; then
 fi
 
 echo 'Certificar que certbot está parado'
-docker stop certbot
+docker stop certbot || true
 
 docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 

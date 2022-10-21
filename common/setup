@@ -78,8 +78,8 @@ if [ $1 == "hom" ]; then
 
     echo "Desabilitar proxy para "$CI_LAB_DOMAIN" e "$CM_LAB_DOMAIN
 
-    rm panel/config/sites/001-ci.conf
-    rm panel/config/sites/002-cm.conf
+    rm panel/config/sites/001-ci.conf || true
+    rm panel/config/sites/002-cm.conf || true
 
 fi
 

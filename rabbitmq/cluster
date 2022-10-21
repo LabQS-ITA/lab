@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+docker exec rabbitmq01 rabbitmqctl stop_app
+docker exec rabbitmq01  rabbitmqctl reset
+docker exec rabbitmq01  rabbitmqctl join_cluster rabbit@*master node hostname*
+docker exec rabbitmq01  rabbitmqctl start_app
+
+docker exec rabbitmq02 rabbitmqctl stop_app
+docker exec rabbitmq02  rabbitmqctl reset
+docker exec rabbitmq02  rabbitmqctl join_cluster rabbit@*master node hostname*
+docker exec rabbitmq02  rabbitmqctl start_app

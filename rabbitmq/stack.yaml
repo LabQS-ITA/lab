@@ -9,6 +9,7 @@ services:
         ipv4_address: ${RABBITMQ_HOST01}
     volumes:
       - $PWD/config/rabbitmq01/enabled_plugins:/etc/rabbitmq/enabled_plugins:ro
+      - $PWD/config/rabbitmq01/20-node.conf:/etc/rabbitmq/conf.d/20-node.conf:ro
       - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
@@ -22,6 +23,7 @@ services:
         ipv4_address: ${RABBITMQ_HOST02}
     volumes:
       - $PWD/config/rabbitmq02/enabled_plugins:/etc/rabbitmq/enabled_plugins:ro
+      - $PWD/config/rabbitmq02/20-node.conf:/etc/rabbitmq/conf.d/20-node.conf:ro
       - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro

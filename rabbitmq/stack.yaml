@@ -8,6 +8,7 @@ services:
       netlab01:
         ipv4_address: ${RABBITMQ_HOST01}
     volumes:
+      - $PWD/config/rabbitmq01/enabled_plugins:/etc/rabbitmq/enabled_plugins:ro
       - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
@@ -20,6 +21,7 @@ services:
       netlab01:
         ipv4_address: ${RABBITMQ_HOST02}
     volumes:
+      - $PWD/config/rabbitmq02/enabled_plugins:/etc/rabbitmq/enabled_plugins:ro
       - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
@@ -34,7 +36,8 @@ services:
       netlab01:
         ipv4_address: ${RABBITMQ_HOST}
     volumes:
-      - $PWD/config/20-user.conf:/etc/rabbitmq/conf.d/20-user.conf:ro
+      - $PWD/config/rabbitmng/enabled_plugins:/etc/rabbitmq/enabled_plugins:ro
+      - $PWD/config/rabbitmng/20-user.conf:/etc/rabbitmq/conf.d/20-user.conf:ro
       - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro

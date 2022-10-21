@@ -2,6 +2,7 @@ services:
 
   rabbitmq01:
     container_name: rabbitmq01
+    hostname: rabbitmq01
     image: rabbitmq:alpine
     restart: unless-stopped
     networks:
@@ -19,6 +20,7 @@ services:
 
   rabbitmq02:
     container_name: rabbitmq02
+    hostname: rabbitmq02
     image: rabbitmq:alpine
     restart: unless-stopped
     networks:
@@ -36,6 +38,7 @@ services:
 
   rabbitmng:
     container_name: rabbitmng
+    hostname: rabbitmng
     image: rabbitmq:management-alpine
     restart: unless-stopped
     ports:

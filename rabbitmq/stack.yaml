@@ -12,12 +12,12 @@ services:
       - rabbitmqdata01:/var/lib/rabbitmq
       - $PWD/config/rabbitmq01/enabled_plugins:/etc/rabbitmq/enabled_plugins:ro
       - $PWD/config/rabbitmq01/rabbitmq-env.conf:/etc/rabbitmq/rabbitmq-env.conf:ro
+      - $PWD/config/.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie:ro
       - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
       RABBITMQ_CONF_ENV_FILE: /etc/rabbitmq/rabbitmq-env.conf
-      RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
 
   rabbitmq02:
     container_name: rabbitmq02
@@ -31,12 +31,12 @@ services:
       - rabbitmqdata02:/var/lib/rabbitmq
       - $PWD/config/rabbitmq02/enabled_plugins:/etc/rabbitmq/enabled_plugins:ro
       - $PWD/config/rabbitmq02/rabbitmq-env.conf:/etc/rabbitmq/rabbitmq-env.conf:ro
+      - $PWD/config/.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie:ro
       - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
       RABBITMQ_CONF_ENV_FILE: /etc/rabbitmq/rabbitmq-env.conf
-      RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
 
   rabbitmng:
     container_name: rabbitmng
@@ -53,12 +53,12 @@ services:
       - $PWD/config/rabbitmng/enabled_plugins:/etc/rabbitmq/enabled_plugins:ro
       - $PWD/config/rabbitmng/20-user.conf:/etc/rabbitmq/conf.d/20-user.conf:ro
       - $PWD/config/rabbitmng/rabbitmq-env.conf:/etc/rabbitmq/rabbitmq-env.conf:ro
+      - $PWD/config/.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie:ro
       - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
       RABBITMQ_CONF_ENV_FILE: /etc/rabbitmq/rabbitmq-env.conf
-      RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
 
 volumes:
   rabbitmqdata:

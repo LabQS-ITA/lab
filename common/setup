@@ -177,7 +177,7 @@ echo '* RabbitMQ *'
 
 if [ $CONFIG_ENV == 'Y' ]; then
      echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-     echo 'RABBITMQ_ERLANG_COOKIE='$(openssl rand -hex 16) >> .env
+     echo $(openssl rand -hex 10) > config/.erlang.cookie
 fi
 
 sed -i 's/@SVC_PWD/'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env)'/g' config/rabbitmng/20-user.conf

@@ -378,4 +378,6 @@ autologin.cnf
 .env
 .htpasswd
 
+.erlang.cookie
+
 # End of Docker

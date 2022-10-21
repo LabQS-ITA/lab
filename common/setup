@@ -173,7 +173,7 @@ docker-compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
 cd ../rabbitmq
-echo '* RabbitMW *'
+echo '* RabbitMQ *'
 
 if [ $CONFIG_ENV == 'Y' ]; then
      echo 'SVC_PWD='$(openssl rand -hex 8) > .env

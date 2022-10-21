@@ -17,6 +17,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
     environment:
       RABBITMQ_CONF_ENV_FILE: /etc/rabbitmq/rabbitmq-env.conf
+      RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
 
   rabbitmq02:
     container_name: rabbitmq02
@@ -35,6 +36,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
     environment:
       RABBITMQ_CONF_ENV_FILE: /etc/rabbitmq/rabbitmq-env.conf
+      RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
 
   rabbitmng:
     container_name: rabbitmng
@@ -56,6 +58,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
     environment:
       RABBITMQ_CONF_ENV_FILE: /etc/rabbitmq/rabbitmq-env.conf
+      RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
 
 volumes:
   rabbitmqdata:

@@ -1,12 +1,24 @@
 services:
 
-  rabbitmq:
-    container_name: rabbitmq
+  rabbitmq01:
+    container_name: rabbitmq01
     image: rabbitmq:alpine
     restart: unless-stopped
     networks:
       netlab01:
         ipv4_address: ${RABBITMQ_HOST01}
+    volumes:
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+  rabbitmq02:
+    container_name: rabbitmq02
+    image: rabbitmq:alpine
+    restart: unless-stopped
+    networks:
+      netlab01:
+        ipv4_address: ${RABBITMQ_HOST02}
     volumes:
       - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

@@ -1,6 +1,0 @@
-services:
-
-  artifactory:
-    container_name: artifactory
-    networks:
-      - netlab01

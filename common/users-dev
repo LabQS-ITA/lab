@@ -1,10 +1,17 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+function create_user_noexpire() {
+
+    sudo adduser --gecos "" $1
+    sudo usermod --password $(echo s3cr37 | openssl passwd -1 -stdin) $1
+
+}
+
 function create_user() {
 
     sudo adduser --disabled-password --gecos "" $1
-    sudo usermod --password $(echo p4ssw0rd | openssl passwd -1 -stdin) $1
+    sudo usermod --password $(echo s3cr37 | openssl passwd -1 -stdin) $1
     sudo passwd --expire $1
 
 }
@@ -17,37 +24,62 @@ function create_operator() {
 
 }
 
+function nologin_operator() {
+
+    create_operator $1
+    
+    usermod $1 -s /sbin/nologin
+
+}
+
 # User maint (já deve ter sido criado ao configurar o ambiente)
 # create_user gpes
 # usermod -aG sudo gpes
 
+# User ansible
+# create_user_noexpire ansible
+
 # Professores SI-TIH
-create_user cunha
-create_user vieira
-create_user lineu
-create_user loubach
-create_user saotome
+# create_user cunha
+# create_user vieira
+# create_user lineu
+# create_user loubach
+# create_user saotome
 
 # Pesquisadores SI-TIH
-create_operator louro
-create_operator shigemura
-create_operator lippi
-create_operator max
-create_operator gomes
+# create_operator louro
+# create_operator shigemura
+# create_operator lippi
+# create_operator max
+# create_operator gomes
+# create_operator vitor
+# create_operator marcelo
+# create_operator matheus
 
 # Pesquisadores STAMPS
-create_operator gildarcio
-create_operator jean
+# create_operator gildarcio
+# create_operator jean
+
+# Apagar para usar nologin
+userdel -f carlos
+userdel -f finger
+userdel -f ramirez
+userdel -f alves
+userdel -f navas
+userdel -f carvalho
+userdel -f rodrigues
+userdel -f ribeiro
+userdel -f silva
 
 # Professores IA-PLN
-create_user carlos
-create_user finger
-create_user ramirez
-create_user alves
-create_user navas
+# create_nologin carlos
+# create_nologin finger
+# create_nologin ramirez
+# create_nologin alves
+# create_nologin navas
 
 # Pesquisadores IA-PLN
-create_user carvalho
-create_user rodrigues
-create_user ribeiro
-create_user silva
+# create_nologin carvalho
+# create_nologin rodrigues
+# create_nologin ribeiro
+# create_nologin silva

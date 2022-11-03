@@ -1,20 +1,43 @@
 services:
 
-  jupyter:
+  jupyterlab:
+    build:
+      context: .
+      dockerfile: Dockerfile.jupyterlab
+      target: jupyterlabbase
+    image: labqs/jupyterlab:latest
+
+  jupyterhub:
     container_name: jupyter
-    image: jupyter/datascience-notebook
+    build:
+      context: .
+      dockerfile: Dockerfile.jupyterhub
+      target: jupyterhubbase
+      args:
+      - GPES_PASSWORD=${SVC_PWD}
+      - GPES_DEV_PASSWORD=${SVC_DEV_PWD}
+    image: labqs/jupyterhub:latest
     restart: unless-stopped
     ports:
-      - '8888:80'
+      - '8000:8000'
     networks:
       netlab01:
         ipv4_address: ${JUPYTER_HOST}
     volumes:
-      - jupyterdata:/home/jovyan/work
-      - $PWD/config:/home/jovyan/.jupyter
+      - $PWD/config/jupyterhub_config.py:/etc/jupyterhub/jupyterhub_config.py:ro
+      - jupyterdata:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     environment:
-      - JUPYTER_ENABLE_LAB=yes
-    command: [ "start-notebook.sh", "--NotebookApp.token=${SVC_TOKEN}"]
+      DOCKER_JUPYTER_CONTAINER: jupyter
+      DOCKER_NETWORK_NAME: netlab01
+      DOCKER_NOTEBOOK_IMAGE:  labqs/jupyterlab:latest
+      DOCKER_NOTEBOOK_DIR: /home/jovyan/work
+      DOCKER_SPAWN_CMD: start-singleuser.sh
+
+    command: [ "jupyterhub", "-f", "/etc/jupyterhub/jupyterhub_config.py" ]
 
 volumes:
   jupyterdata:

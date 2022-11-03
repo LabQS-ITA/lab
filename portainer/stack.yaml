@@ -1,0 +1,35 @@
+services:
+
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce:latest
+    restart: unless-stopped
+    ports:
+      - '8086:9000'
+    networks:
+      netlab01:
+        ipv4_address: ${PORTAINER_HOST}
+    volumes:
+      - portainerdata:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+  portainer_agent:
+    container_name: portainer_agent
+    image: portainer/agent:latest
+    restart: unless-stopped
+    ports:
+      - '9001:9001'
+    networks:
+      netlab01:
+        ipv4_address: ${PORTAINERAGENT_HOST}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/volumes:/var/lib/docker/volumes
+
+volumes:
+  portainerdata:
+    name: portainerdata
+    driver: local

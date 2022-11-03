@@ -1,0 +1,29 @@
+services:
+
+  master:
+    container_name: locust
+    image: locustio/locust:latest
+    restart: unless-stopped
+    ports:
+      - '8089:8089'
+      - '5557:5557'
+    networks:
+      netlab01:
+        ipv4_address: ${LOCUST_HOST}
+    volumes:
+      - ${PWD}/config:/home/locust:rw
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    command: 
+      - '--config=master.conf'
+
+  worker_agent:
+    image: locustio/locust
+    networks:
+      - netlab01
+    volumes:
+      - ${PWD}/config:/home/locust:rw
+    command: '--worker --master-host locust'
+    depends_on:
+      - 'master'

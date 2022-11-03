@@ -1,0 +1,69 @@
+services:
+
+  rabbitmq01:
+    container_name: rabbitmq01
+    hostname: rabbitmq01
+    image: rabbitmq:alpine
+    restart: unless-stopped
+    networks:
+      netlab01:
+        ipv4_address: ${RABBITMQ_HOST01}
+    volumes:
+      - rabbitmqdata01:/var/lib/rabbitmq
+      - $PWD/config/rabbitmq01/enabled_plugins:/etc/rabbitmq/enabled_plugins:ro
+      - $PWD/config/rabbitmq01/rabbitmq-env.conf:/etc/rabbitmq/rabbitmq-env.conf:ro
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      RABBITMQ_CONF_ENV_FILE: /etc/rabbitmq/rabbitmq-env.conf
+
+  rabbitmq02:
+    container_name: rabbitmq02
+    hostname: rabbitmq02
+    image: rabbitmq:alpine
+    restart: unless-stopped
+    networks:
+      netlab01:
+        ipv4_address: ${RABBITMQ_HOST02}
+    volumes:
+      - rabbitmqdata02:/var/lib/rabbitmq
+      - $PWD/config/rabbitmq02/enabled_plugins:/etc/rabbitmq/enabled_plugins:ro
+      - $PWD/config/rabbitmq02/rabbitmq-env.conf:/etc/rabbitmq/rabbitmq-env.conf:ro
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      RABBITMQ_CONF_ENV_FILE: /etc/rabbitmq/rabbitmq-env.conf
+
+  rabbitmng:
+    container_name: rabbitmng
+    hostname: rabbitmng
+    image: rabbitmq:management-alpine
+    restart: unless-stopped
+    ports:
+      - '15672:15672'
+    networks:
+      netlab01:
+        ipv4_address: ${RABBITMQ_HOST}
+    volumes:
+      - rabbitmqdata:/var/lib/rabbitmq
+      - $PWD/config/rabbitmng/enabled_plugins:/etc/rabbitmq/enabled_plugins:ro
+      - $PWD/config/rabbitmng/20-user.conf:/etc/rabbitmq/conf.d/20-user.conf:ro
+      - $PWD/config/rabbitmng/rabbitmq-env.conf:/etc/rabbitmq/rabbitmq-env.conf:ro
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      RABBITMQ_CONF_ENV_FILE: /etc/rabbitmq/rabbitmq-env.conf
+
+volumes:
+  rabbitmqdata:
+    name: rabbitmqdata
+    driver: local
+  rabbitmqdata01:
+    name: rabbitmqdata01
+    driver: local
+  rabbitmqdata02:
+    name: rabbitmqdata02
+    driver: local

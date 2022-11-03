@@ -6,53 +6,62 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             body { 
+                font: 2vw Helvetica, sans-serif; 
+                color: #bebebe;
+                background-color: rgb(16, 16, 16); 
                 text-align: center; 
                 padding: 5%; 
-                /* background: url('./hourglass.gif') no-repeat;
-                background-position: 50% 50%; */
-                /* background-size: 1920px 1200px; */
+                max-width: 70ch;
+                padding: 3em 1em;
+                margin: auto;
+                line-height: 1.75;
+                font-size: 1.25em;
             }
-            h1 { font-size: 3vw; }
-            body { 
-                font: 2vw Helvetica, sans-serif; 
-                color: #fff;
-                background-color: #000; 
+            main {
+                max-width: 38rem;
+                padding: 2rem;
+                margin: auto;
+            }
+            h1,h2,h3,h4,h5,h6 {
+                margin: 3em 0 1em;
+            }
+            p,ul,ol {
+                margin-bottom: 2em;
+                color: #bebebe;
+                font-family: sans-serif;
             }
             article { 
                 display: block; 
                 text-align: left; 
                 width: 95%; 
                 margin: 0 auto; 
-                color: #fff;
-            }
+                color: rgb(228, 228, 228);
+            } 
             a { 
-                color: #dc8100; 
+                color: #ff9500; 
                 text-decoration: none; 
             }
             a:hover { 
-                color: #fff;
+                color: rgb(228, 228, 228);
                 text-decoration: none; 
             }
-            /* img { 
-                width: 75%; 
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                width: 50%; 
-            } */
         </style>
     </head>
     <body>
         <article>
-            <h1>LabQS</h1>
+            <h1>LabQS - @LAB_DOMAIN</h1>
             <h3>Serviços de Desenvolvimento</h3>
             <div>
                 <ul>
-                    <!-- <li><a href="/lab" target="_blank">Jupyter Lab</a></li> -->
-                    <li><a href="/adminer" target="_blank">Administração de Dados</a></li>
-                    <li><a href="http://@CI_LAB_DOMAIN" target="_blank">Integração Contínua</a></li>
+                    <li><a href="https://@CI_LAB_DOMAIN" target="_blank">Integração Contínua</a></li>
+                    <li><a href="https://@CM_LAB_DOMAIN" target="_blank">Gerenciamento de Configurações</a></li>
                     <li><a href="/git" target="_blank">Controle de Fontes</a></li>
-                    <li><a href="/commander" target="_blank">Redis Commander</a></li>
+                    <li><a href="/nextcloud" target="_blank">Sistema de Arquivos</a></li>
+                    <li><a href="/jupyter" target="_blank">Data-science</a></li>
+                    <li><a href="https://dev.labqs.ita.br/portainer" target="_blank">Gestão de Serviços</a></li>
+                    <li><a href="/registry/index.html" target="_blank">Gestão de Imagens de Containers</a></li>
+                    <li><a href="/rabbitmq/" target="_blank">Filas de Mensagens</a></li>
+                    <li><a href="/locust/" target="_blank">Testes de Carga</a></li>
                 </ul>
             </div>
         </article>

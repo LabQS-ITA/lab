@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+docker cp rabbitmng:/var/lib/rabbitmq/.erlang.cookie .erlang.cookie
+docker cp .erlang.cookie rabbitmq01:/var/lib/rabbitmq/.erlang.cookie
+docker cp .erlang.cookie rabbitmq02:/var/lib/rabbitmq/.erlang.cookie
+
+docker restart rabbitmq01 rabbitmq02
+
+docker exec rabbitmq01 rabbitmqctl -n rabbit@rabbitmq01 stop_app
+docker exec rabbitmq01  rabbitmqctl -n rabbit@rabbitmq01 reset
+docker exec rabbitmq01  rabbitmqctl -n rabbit@rabbitmq01 join_cluster rabbit@rabbitmng
+docker exec rabbitmq01  rabbitmqctl -n rabbit@rabbitmq01 start_app
+
+docker exec rabbitmq02 rabbitmqctl -n rabbit@rabbitmq02 stop_app
+docker exec rabbitmq02  rabbitmqctl -n rabbit@rabbitmq02 reset
+docker exec rabbitmq02  rabbitmqctl -n rabbit@rabbitmq02 join_cluster rabbit@rabbitmng
+docker exec rabbitmq02  rabbitmqctl -n rabbit@rabbitmq02 start_app

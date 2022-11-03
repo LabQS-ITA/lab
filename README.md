@@ -22,10 +22,10 @@ Além disto os alunos, professores e pesquisadores aplicam técnicas consagradas
 
 ## Configuração do laboratório
 
-O laboratório está contido num ambiente virtualizado (_ainda em construção_ - ver: [Lista de tarefas](./TODO.md)) que pode ser hospedado localmente por uma organização, ou num provedor na nuvem. 
-
 > Algumas das prospecções e atividades em andamento podem ser vistas em [Links úteis](./LINKS.md)
 
 Instruções de instalação está em [Instalação do Laboratório](./SETUP.md).
 
 A configuração dos serviços pode ser vista em [Configuração do Laboratório](./CONFIG.md).
+
+Uma visão mais detalhada pode ser vista em [BUILD.md](./BUILD.md).

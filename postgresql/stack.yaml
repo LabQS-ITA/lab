@@ -4,6 +4,12 @@ services:
     container_name: postgres
     image: postgres
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U postgres -d postgres'"]
+      interval: 30s
+      timeout: 60s
+      retries: 5
+      start_period: 90s
     ports:
       - '5400:5432'
     networks:
@@ -13,14 +19,23 @@ services:
       - postgresdata:/var/lib/postgresql/data
       - $PWD/postgres/config:/etc/postgresql
       - $PWD/postgres/init:/docker-entrypoint-initdb.d
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     environment:
-      - POSTGRES_PASSWORD=${SVC_PWD}
-    command: -c config_file=/etc/postgresql/postgresql.conf
+      POSTGRES_PASSWORD: ${SVC_PWD}
+      PGPASSFILE: /etc/postgresql/.pgpass
 
   postgres01:
     container_name: postgres01
     image: postgres
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U postgres -d postgres'"]
+      interval: 30s
+      timeout: 60s
+      retries: 5
+      start_period: 90s
     ports:
       - '5401:5432'
     networks:
@@ -30,14 +45,23 @@ services:
       - postgresdata01:/var/lib/postgresql/data
       - $PWD/postgres01/config:/etc/postgresql
       - $PWD/postgres01/init:/docker-entrypoint-initdb.d
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     environment:
-      - POSTGRES_PASSWORD=${SVC_PWD_01}
-    command: -c config_file=/etc/postgresql/postgresql.conf
+      POSTGRES_PASSWORD: ${SVC_PWD_01}
+      PGPASSFILE: /etc/postgresql/.pgpass
 
   postgres02:
     container_name: postgres02
     image: postgres
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U postgres -d postgres'"]
+      interval: 30s
+      timeout: 60s
+      retries: 5
+      start_period: 90s
     ports:
       - '5402:5432'
     networks:
@@ -47,9 +71,12 @@ services:
       - postgresdata02:/var/lib/postgresql/data
       - $PWD/postgres02/config:/etc/postgresql
       - $PWD/postgres02/init:/docker-entrypoint-initdb.d
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     environment:
-      - POSTGRES_PASSWORD=${SVC_PWD_02}
-    command: -c config_file=/etc/postgresql/postgresql.conf
+      POSTGRES_PASSWORD: ${SVC_PWD_02}
+      PGPASSFILE: /etc/postgresql/.pgpass
 
 volumes:
   postgresdata:

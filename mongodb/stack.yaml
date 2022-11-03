@@ -4,6 +4,12 @@ services:
     container_name: mongodb
     image: mongo:4.4.14-focal
     restart: unless-stopped
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo ${MONGODB_HOST}:27017/local --quiet
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 90s
     ports:
       - '27020:27017'
     networks:
@@ -13,15 +19,24 @@ services:
       - mongodata:/data/db:rw
       - $PWD/mongodb/config:/etc/mongo:ro
       - $PWD/mongodb/init:/docker-entrypoint-initdb.d:ro
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=${SVC_PWD}
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: ${SVC_PWD}
     command: --config /etc/mongo/custom.conf
 
   mongodb01:
     container_name: mongodb01
     image: mongo:4.4.14-focal
     restart: unless-stopped
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo ${MONGODB_HOST}:27017/local --quiet
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 90s
     ports:
       - '27021:27017'
     networks:
@@ -31,15 +46,24 @@ services:
       - mongodata01:/data/db:rw
       - $PWD/mongodb01/config:/etc/mongo:ro
       - $PWD/mongodb01/init:/docker-entrypoint-initdb.d:ro
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=${SVC_PWD_01}
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: ${SVC_PWD_01}
     command: --config /etc/mongo/custom.conf
 
   mongodb02:
     container_name: mongodb02
     image: mongo:4.4.14-focal
     restart: unless-stopped
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo ${MONGODB_HOST}:27017/local --quiet
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 90s
     ports:
       - '27022:27017'
     networks:
@@ -49,9 +73,12 @@ services:
       - mongodata02:/data/db:rw
       - $PWD/mongodb02/config/:/etc/mongo:ro
       - $PWD/mongodb02/init:/docker-entrypoint-initdb.d:ro
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=${SVC_PWD_02}
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: ${SVC_PWD_02}
     command: --config /etc/mongo/custom.conf
 
 volumes:

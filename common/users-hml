@@ -17,6 +17,14 @@ function create_operator() {
 
 }
 
+function nologin_operator() {
+
+    create_operator $1
+    
+    usermod $1 -s /sbin/nologin
+
+}
+
 # User maint (já deve ter sido criado ao configurar o ambiente)
 # create_user gpes
 # usermod -aG sudo gpes
@@ -32,7 +40,7 @@ function create_operator() {
 # create_operator lippi
 # create_operator gomes
 # create_operator marcelo
-create_operator vitor
+# create_operator vitor
 
 # Pesquisadores STAMPS
 # create_operator gildarcio

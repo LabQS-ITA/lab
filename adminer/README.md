@@ -1,1 +1,0 @@
-# Serviço de administração dos serviços de dados do Laboratório de Testes de Software

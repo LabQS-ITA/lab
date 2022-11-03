@@ -1,0 +1,38 @@
+services:
+
+  nextcloud:
+    container_name: nextcloud
+    image: nextcloud:latest
+    restart: unless-stopped
+    ports:
+      - '8083:80'
+    networks:
+      netlab01:
+        ipv4_address: ${NEXTCLOUD_HOST}
+    volumes:
+      - nextclouddata:/var/www/html
+      - /home/gpes/shared/out:/var/www/shared:ro
+      - flualfadata:/var/www/flualfa:ro
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      REDIS_HOST: redis
+      REDIS_HOST_PASSWORD: ${REDIS_PWD}
+      POSTGRES_DB: nextcloud
+      POSTGRES_USER: nextcloud
+      POSTGRES_PASSWORD: ${POSTGRES_PWD}
+      POSTGRES_HOST: postgres
+      NEXTCLOUD_ADMIN_USER: maint
+      NEXTCLOUD_ADMIN_PASSWORD: ${SVC_PWD}
+      NEXTCLOUD_TRUSTED_DOMAINS: ${LAB_DOMAIN} ${CI_LAB_DOMAIN} ${CM_LAB_DOMAIN}
+      OVERWRITEPROTOCOL: https
+      OVERWRITEWEBROOT: nextcloud
+
+volumes:
+  nextclouddata:
+    name: nextclouddata
+    driver: local
+  flualfadata:
+    name: flualfadata
+    driver: local

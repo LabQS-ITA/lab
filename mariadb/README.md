@@ -10,18 +10,22 @@ Para atender a necessidade arquitetural dos desenvolvedores de aplicações de t
 
 ## Configuração
 
-Foram criadas instâncias separadas por ambiente (denominadas [mariadb01](./mariadb01), [mariadb02](./mariadb02) e [mariadb03](./mariadb03)). Nas pastas de cada instância temos um arquivo de configuração [custom.cnf](./mariadb02) e [mariadb01](./mariadb01/custom.cnf) que permite configurar cada instância em particular.
+Foram criadas instâncias separadas por ambiente (denominadas [mariadb01](./mariadb01) e [mariadb02](./mariadb02). Nas pastas de cada instância temos um arquivo de configuração [custom.cnf](./mariadb02) e [mariadb01](./mariadb01/custom.cnf) que permite configurar cada instância em particular.
 
 ## Acesso aos serviços **MariaDB**
 
 Os serviços não podem ser acessados fora da rede local.
 
-Para administração dos dados é possível utilizar a ferramenta [Adminer](../adminer/README.md) a partir do portal de cada ambiente (ver [Serviço de administração dos ambientes do Laboratório de Testes de Software](../httpd/README.md)).
+Para administração dos dados é possível se utilizar de um túnel SSH via VPN do ITA:
+
+```bash
+ssh -p 2222 -fN -L 3306:172.1.9.201:3306 <usuário VPN ITA>@dev.labqs.ita.br
+```
 
 Na rede local é possível acessar diretamente o console de cada serviço por meio da linha de comando:
 
 ```bash
-bash -c "docker exec -it mariadb01 mysql --user=root --password=`awk -F'=' '/SVC_PWD_01/{ printf("%s\n",$2) }' .env` -P 3306"
+bash -c "docker exec -it mysql01 mysql --user=root --password=`awk -F'=' '/SVC_PWD_01/{ printf("%s\n",$2) }' .env` -P 3306"
 ```
 
 Onde:
@@ -35,7 +39,6 @@ A senha do serviço está no arquivo `.env` na pasta do mesmo no servidor, como 
 ```ini
 SVC_PWD_01=fda2896ebab8ebfc9bf9613f
 SVC_PWD_02=93df7965e1d76bbdf686342a
-SVC_PWD_03=2fb0774931082c4cbfb54267
 ```
 
 O serviço pode ser acessado por máquinas na rede local através do nome (`mariadb01` por exemplo), usuário `root` e a senha no arquivo `.env`).
@@ -45,3 +48,7 @@ O serviço pode ser acessado por máquinas na rede local através do nome (`mari
 ## Repositório de dados
 
 Os dados de cada ambiente são mantidos numa pasta com o mesmo nome do serviço, **fora de controle de versão**, e sob um regime de _backup_ automatizado (ver [Serviço de cópias de segurança de dados do Laboratório de Testes de Software](../backup/README.md)).
+
+## Autologin
+
+O usuário `maint` possui auto-login configurado na pasta `config` do container correspondente (criado pelo script `common\setup`). Isto permite ao backup rodar via linha de comando sem inserção de senha.

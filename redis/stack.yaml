@@ -1,9 +1,41 @@
 services:
 
+  redis:
+    container_name: redis
+    image: redis:alpine
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+      timeout: 10s
+    ports:
+      - '6300:6379'
+    networks:
+      netlab01:
+        ipv4_address: ${REDIS_HOST}
+    volumes:
+      - $PWD/config:/usr/local/etc/redis/redis.conf:ro
+      - redisdata:/data:rw
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      REDIS_REPLICATION_MODE: master
+      REDISCLI_AUTH: ${SVC_PWD}
+    command: ["redis-server", "--requirepass", "${SVC_PWD}", "--appendonly", "yes"]
+
   redis01:
     container_name: redis01
     image: redis:alpine
     restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+      timeout: 10s
     ports:
       - '6301:6379'
     networks:
@@ -12,14 +44,24 @@ services:
     volumes:
       - $PWD/config:/usr/local/etc/redis/redis.conf:ro
       - redisdata01:/data:rw
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     environment:
-      - REDIS_REPLICATION_MODE=master
+      REDIS_REPLICATION_MODE: master
+      REDISCLI_AUTH: ${SVC_PWD_01}
     command: ["redis-server", "--requirepass", "${SVC_PWD_01}", "--appendonly", "yes"]
 
   redis02:
     container_name: redis02
     image: redis:alpine
     restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+      timeout: 10s
     ports:
       - '6302:6379'
     networks:
@@ -28,27 +70,18 @@ services:
     volumes:
       - $PWD/config:/usr/local/etc/redis/redis.conf:ro
       - redisdata02:/data:rw
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     environment:
-      - REDIS_REPLICATION_MODE=master
+      REDIS_REPLICATION_MODE: master
+      REDISCLI_AUTH: ${SVC_PWD_02}
     command: ["redis-server", "--requirepass", "${SVC_PWD_02}", "--appendonly", "yes"]
 
-  redis-commander:
-    container_name: commander
-    image: rediscommander/redis-commander:latest
-    restart: unless-stopped
-    ports:
-      - '8081:8081'
-    networks:
-      netlab01:
-        ipv4_address: ${COMMANDER_HOST}
-    environment:
-      - URL_PREFIX=/commander
-      - REDIS_HOSTS=local:redis01:6379:0:${SVC_PWD_01},local:redis02:6379:0:${SVC_PWD_02}
-    depends_on:
-      - redis01
-      - redis02
-
 volumes:
+  redisdata:
+    name: redisdata
+    driver: local
   redisdata01:
     name: redisdata01
     driver: local

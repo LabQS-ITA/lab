@@ -28,7 +28,11 @@ host      all         all         172.1.0.0/16   md5
 
 Os serviços não podem ser acessados fora da rede local.
 
-Para administração dos dados é possível utilizar a ferramenta [Adminer](../adminer/README.md) a partir do portal de cada ambiente (ver [Serviço de administração dos ambientes do Laboratório de Testes de Software](../httpd/README.md)).
+Para administração dos dados é possível se utilizar de um túnel SSH via VPN do ITA:
+
+```bash
+ssh -p 2222 -fN -L 5432:172.1.9.201:5432 <usuário VPN ITA>@dev.labqs.ita.br
+```
 
 Na rede local é possível acessar diretamente o console de cada serviço por meio da linha de comando:
 
@@ -54,3 +58,7 @@ O serviço pode ser acessado por máquinas na rede local através do nome (`post
 ## Repositório de dados
 
 Os dados de cada ambiente são mantidos numa pasta com o mesmo nome do serviço, **fora de controle de versão**, e sob um regime de _backup_ automatizado (ver [Serviço de cópias de segurança de dados do Laboratório de Testes de Software](../backup/README.md)).
+
+## Autologin
+
+O usuário `postgres` possui auto-login configurado no arquivo `config/.pgpass` do container correspondente (criado pelo script `common\setup`). Isto permite ao backup rodar via linha de comando sem inserção de senha.

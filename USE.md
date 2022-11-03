@@ -78,11 +78,14 @@ Uma vez conectada à VPN do laboratório, é possível usar um túnel SSH para a
 ![Configuração túnel SSH do "_DbGate_"](./images/dbgate-ssh.png)
 
 
-## Via interface web
+# Senhas dos serviços WEB
 
-Não é preciso utilizar VPN nem configurar túnel para utilizar a interface web:
+Todos serviços web possuem um usuário, geralmente denominado **maint**, e uma senha de acesso que somente pode ser verificada via VPN do ITA.
 
-![Interface web](./images/mysql.png)
+A senha encontra-se no arquivo `.env` na pasta de cada serviço.
+
+![Exemplo de sessão SSH para recuperar senhas do Postgres"](./images/sessaon-vpn-test.png)
+
 
 ## Criação de bancos de dados por experimento / projeto
 

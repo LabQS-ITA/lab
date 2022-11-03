@@ -73,9 +73,11 @@ server.stop()
 
 ## Via aplicativo
 
-Uma vez conectada à VPN do laboratório, é possível usar um túnel SSH para acessar os serviços do laboratório dentro de uma aplicação (disponível em algumas), como os de bancos de dados por exemplo:
+Uma vez conectada à VPN do laboratório, é possível usar um túnel SSH para acessar os serviços do laboratório dentro de uma aplicação (disponível em algumas), como os de bancos de dados:
 
-![Configuração túnel SSH do "_DbGate_"](./images/dbgate-ssh.png)
+![Configuração túnel SSH do "_Beekeeper_"](./images/beekeeper-ssh.png)
+
+> *O arquivo informado em **Private key file** é o sem terminação (por exemplo: "**id_ed2551**" - sem "**.pub**" no final).*
 
 
 # Senhas dos serviços WEB
@@ -85,13 +87,3 @@ Todos serviços web possuem um usuário, geralmente denominado **maint**, e uma 
 A senha encontra-se no arquivo `.env` na pasta de cada serviço.
 
 ![Exemplo de sessão SSH para recuperar senhas do Postgres"](./images/sessaon-vpn-test.png)
-
-
-## Criação de bancos de dados por experimento / projeto
-
-### Postgres
-
-### MongoDB
-
-
-### MariaDB

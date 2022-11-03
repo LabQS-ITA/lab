@@ -10,8 +10,6 @@ Este laboratório é um trablho em andamento e temos ainda uma série de tarefas
 
 > O script [setup](./common/setup) deve ser executado na pasta [common](./common) para criar todo o ambiente.
 
-> Temos uma [lista](./TODO.md) de tarefas em andamento.
-
 > Temos também [links](./LINKS.md) úteis com ferramentas e recursos que utilizamos ou pretendemos utilizar.
 
 A configuração pode ser vista em [SETUP.md](./SETUP.md).

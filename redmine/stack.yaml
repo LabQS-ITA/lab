@@ -5,7 +5,7 @@ services:
     image: redmine:alpine
     restart: unless-stopped
     ports:
-      - '8085:3000'
+      - '8087:3000'
     networks:
       netlab01:
         ipv4_address: ${REDMINE_HOST}

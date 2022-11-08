@@ -10,6 +10,7 @@ services:
       netlab01:
         ipv4_address: ${REDMINE_HOST}
     volumes:
+      - $PWD/config/config.ru:/usr/src/redmine/config.ru
       - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
@@ -18,3 +19,4 @@ services:
       REDMINE_DB_DATABASE: redmine
       REDMINE_DB_USERNAME: redmine
       REDMINE_DB_PASSWORD: ${POSTGRES_PWD}
+      RAILS_RELATIVE_URL_ROOT: /redmine

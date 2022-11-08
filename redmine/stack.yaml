@@ -15,5 +15,6 @@ services:
       - /etc/localtime:/etc/localtime:ro
     environment:
       REDMINE_DB_POSTGRES: redmine
+      REDMINE_DB_DATABASE: redmine
       REDMINE_DB_USERNAME: redmine
       REDMINE_DB_PASSWORD: ${POSTGRES_PWD}

@@ -1,0 +1,19 @@
+services:
+
+  redmine:
+    container_name: redmine
+    image: redmine:alpine
+    restart: unless-stopped
+    ports:
+      - '8085:3000'
+    networks:
+      netlab01:
+        ipv4_address: ${REDMINE_HOST}
+    volumes:
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      REDMINE_DB_POSTGRES: redmine
+      REDMINE_DB_USERNAME: redmine
+      REDMINE_DB_PASSWORD: ${POSTGRES_PWD}

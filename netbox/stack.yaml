@@ -22,4 +22,3 @@ services:
       DB_PASSWORD: ${POSTGRES_PWD}
       REDIS_HOST: redis
       REDIS_PASSWORD: ${REDIS_PWD}
-      BASE_PATH: /netbox

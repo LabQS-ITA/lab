@@ -10,8 +10,8 @@ services:
       netlab01:
         ipv4_address: ${NETBOX_HOST}
     environment:
-      PUID: 1002
-      PGID: 1002
+      PUID: 1005
+      PGID: 1005
       TZ: America/Sao_Paulo
       SUPERUSER_EMAIL: maint@ita.br
       SUPERUSER_PASSWORD: ${SVC_PWD}

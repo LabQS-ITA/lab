@@ -9,15 +9,13 @@ services:
     networks:
       netlab01:
         ipv4_address: ${NETBOX_HOST}
-    volumes:
-      - $PWD/config:/config
     environment:
       PUID: 1002
       PGID: 1002
       TZ: America/Sao_Paulo
       SUPERUSER_EMAIL: maint@ita.br
       SUPERUSER_PASSWORD: ${SVC_PWD}
-      ALLOWED_HOST: ${LAB_DOMAIN} ${HTTPD_HOST}
+      ALLOWED_HOST: ${LAB_DOMAIN}
       BASE_PATH: /netbox
       DB_HOST: postgres
       DB_NAME: netbox

@@ -16,7 +16,7 @@ services:
       SUPERUSER_EMAIL: maint@ita.br
       SUPERUSER_PASSWORD: ${SVC_PWD}
       ALLOWED_HOST: ${LAB_DOMAIN}
-      BASE_PATH: /netbox
+      BASE_PATH: netbox
       DB_HOST: postgres
       DB_NAME: netbox
       DB_USER: netbox

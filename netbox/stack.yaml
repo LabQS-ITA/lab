@@ -2,7 +2,7 @@ services:
 
   netbox:
     container_name: netbox
-    image: netboxcommunity/netbox:latest
+    image: lscr.io/linuxserver/netbox:latest
     restart: unless-stopped
     ports:
       - '8088:8080'

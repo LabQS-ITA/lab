@@ -2,10 +2,10 @@ services:
 
   netbox:
     container_name: netbox
-    image: lscr.io/linuxserver/netbox:latest
+    image: netboxcommunity/netbox:latest
     restart: unless-stopped
     ports:
-      - '8088:8000'
+      - '8088:8080'
     networks:
       netlab01:
         ipv4_address: ${NETBOX_HOST}

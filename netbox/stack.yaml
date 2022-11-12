@@ -11,7 +11,7 @@ services:
         ipv4_address: ${NETBOX_HOST}
     environment:
       PUID: ${UID}
-      GUID: ${GID}
+      PGID: ${GID}
       TZ: America/Sao_Paulo
       SUPERUSER_EMAIL: maint@ita.br
       SUPERUSER_PASSWORD: ${SVC_PWD}

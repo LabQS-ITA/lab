@@ -9,6 +9,8 @@ services:
     networks:
       netlab01:
         ipv4_address: ${NETBOX_HOST}
+    volumes:
+      - ${PWD}:/config/configuration.py:/config/configuration.py
     environment:
       TZ: America/Sao_Paulo
       SUPERUSER_EMAIL: maint@ita.br

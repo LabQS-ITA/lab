@@ -23,7 +23,7 @@ services:
       SEMAPHORE_DB_PASS: ${POSTGRES_PWD}
       SEMAPHORE_DB_HOST: postgres
       SEMAPHORE_DB_PORT: 5432
-      SEMAPHORE_DB: semaphore?sslmode=disable,timezone=\"America/Sao_Paulo\"
+      SEMAPHORE_DB: semaphore?sslmode=disable
       SEMAPHORE_ADMIN: maint
       SEMAPHORE_ADMIN_PASSWORD: ${SVC_PWD}
       SEMAPHORE_ADMIN_NAME: maint

@@ -45,6 +45,15 @@ function backup_redis() {
 
 }
 
+function backup_volumes() {
+
+    for VOLUME in `docker volume ls -q`
+    do
+        docker run --rm -v "$VOLUME":/source-volume -v "$PWD":/target-volume busybox tar -zcvf /source-volume/"$VOLUME".tar.gz /target-volume
+    done
+
+}
+
 for c in $(docker ps -a --format '{{.Names}}');
 do
     backup_container $c

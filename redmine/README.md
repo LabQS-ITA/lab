@@ -76,6 +76,10 @@ Ou mudança de prioridade:
 ![Mudança de prioridade](../images/redmine/12.png)
 _Mudança de prioridade_
 
+## Abertura de chamados
+
+Em [ISSUES.md](./ISSUES.md) listamos os procedimentos para relatos de problemas ou solicitações de melhorias.
+
 ## Pendências ##
 
 1. Integração com sistemas de autenticação de alunos e pesquisadores do ITA;

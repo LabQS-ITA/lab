@@ -45,11 +45,12 @@ function backup_redis() {
 
 }
 
+
 function backup_volumes() {
 
     for VOLUME in `docker volume ls -q`
     do
-        docker run --rm -v "$VOLUME":/source-volume -v "$PWD":/target-volume busybox tar -zcvf /source-volume/"$VOLUME".tar.gz /target-volume
+        docker run --rm -v "$VOLUME":/source-volume -v ~/shared/vol:/target-volume busybox tar -zcvf /target-volume/"$VOLUME".tar.gz source-volume
     done
 
 }
@@ -74,3 +75,5 @@ backup_mongodb mongodb02
 backup_redis redis
 backup_redis redis01
 backup_redis redis02
+
+backup_volumes

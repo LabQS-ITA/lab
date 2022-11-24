@@ -69,6 +69,7 @@ cd common
 Existe um _script_ de atualização. Ele é necessário pois o _script_ de instalação (ver abaixo) irá modificar alguns arquivos inserindo senhas e nomes de domínios, e será necessário desfazer estas alterações para podermos atualizar os fontes.
 
 ```sh
+cd common
 ./upd
 ```
 

@@ -31,13 +31,24 @@ docker-compose -f create.yaml up --detach
 ./setup tst
 ```
 
-
 ## Atualização
 
 Existe um _script_ de atualização. Ele é necessário pois o _script_ de instalação (ver abaixo) irá modificar alguns arquivos inserindo senhas e nomes de domínios, e será necessário desfazer estas alterações para podermos atualizar os fontes.
 
 ```sh
 ./upd
+```
+
+## Configurações
+
+No arquivo `common/config` existem configurações de cada serviço, como por exemplo:
+
+```sh
+export HTTPD_HOST=172.16.1.200
+
+export POSTGRES_HOST=172.16.2.200
+export POSTGRES_HOST01=172.16.2.201
+export POSTGRES_HOST02=172.16.2.202
 ```
 
  ## Uso

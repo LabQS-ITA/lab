@@ -2,14 +2,48 @@
 
 ## Requisitos
 
-O Laboratório de Testes de Software roda sob **Linux** (testando com Alpine e Ubuntu) e necessita **Docker** e **Docker Composer** para ser instalado e executado.
+O Laboratório de Testes de Software roda sob **Linux** (testando com Alpine e Ubuntu) e necessita **Git**, **Docker**, **Docker Composer** para ser instalado e executado.
+
+### Docker
+
+Seguir as instruções em [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/).
+
+> **OBSERVAÇÃO** - A instalação numa VM sob Xen não necessita a utilização de `sudo`.
+
+### Git
+
+Instalar o **Git** a partir do repositório principal:
+
+```bash
+apt-get install -y git
+```
 
 ## Pré-instalação
 
 Basta clonar os fontes do repositório [GitHub](https://github.com/LabQS-ITA/lab.git).
 
 ```sh
-git clone https://github.com/LabQS-ITA/lab.git .
+git clone https://github.com/LabQS-ITA/lab.git LTS
+```
+
+## Configurações
+
+No arquivo `common/config` existem configurações de cada serviço, como por exemplo:
+
+```sh
+export HTTPD_HOST=172.16.1.200
+
+export POSTGRES_HOST=172.16.2.200
+export POSTGRES_HOST01=172.16.2.201
+export POSTGRES_HOST02=172.16.2.202
+```
+
+O funcionamento correto destas configurações de endereços IP é viabilizada pelo _script_ `common/create` que irá definir a rede e um volume comum para os certificados digitais. Deve ser executado uma única vez para definição inicial do ambiente de redes.
+
+```sh
+docker network create --driver bridge netlab01 --subnet='172.16.0.0/16'
+
+docker volume create -d local certificates
 ```
 
 ## Instalação
@@ -27,7 +61,6 @@ Após clonar o repositório contendo o projeto LTS, executar os seguintes comand
 
 ```sh
 cd common
-docker-compose -f create.yaml up --detach
 ./setup tst
 ```
 
@@ -39,17 +72,7 @@ Existe um _script_ de atualização. Ele é necessário pois o _script_ de insta
 ./upd
 ```
 
-## Configurações
-
-No arquivo `common/config` existem configurações de cada serviço, como por exemplo:
-
-```sh
-export HTTPD_HOST=172.16.1.200
-
-export POSTGRES_HOST=172.16.2.200
-export POSTGRES_HOST01=172.16.2.201
-export POSTGRES_HOST02=172.16.2.202
-```
+> **OBSERVAÇÃO** - Após uma atualização podemos re-executar o _script_ `common/setup` para recriar os serviços afetados.
 
  ## Uso
 

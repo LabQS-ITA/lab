@@ -11,6 +11,8 @@ services:
         ipv4_address: ${REDMINE_HOST}
     volumes:
       - $PWD/config/config.ru:/usr/src/redmine/config.ru
+      - $PWD/config/configuration.yml:/usr/src/redmine/config/configuration.yml
+      - redminedata:/usr/src/redmine/files
       - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
@@ -20,3 +22,8 @@ services:
       REDMINE_DB_USERNAME: redmine
       REDMINE_DB_PASSWORD: ${POSTGRES_PWD}
       RAILS_RELATIVE_URL_ROOT: /redmine
+
+volumes:
+  redminedata:
+    name: redminedata
+    driver: local

@@ -18,13 +18,13 @@ Os serviços não podem ser acessados fora da rede local.
 
 Para administração dos dados é possível se utilizar de um túnel SSH via VPN do ITA:
 
-```bash
+```sh
 ssh -p 2222 -fN -L 3306:172.1.9.201:3306 <usuário VPN ITA>@dev.labqs.ita.br
 ```
 
 Na rede local é possível acessar diretamente o console de cada serviço por meio da linha de comando:
 
-```bash
+```sh
 bash -c "docker exec -it mysql01 mysql --user=root --password=`awk -F'=' '/SVC_PWD_01/{ printf("%s\n",$2) }' .env` -P 3306"
 ```
 

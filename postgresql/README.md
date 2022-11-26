@@ -30,13 +30,13 @@ Os serviços não podem ser acessados fora da rede local.
 
 Para administração dos dados é possível se utilizar de um túnel SSH via VPN do ITA:
 
-```bash
+```sh
 ssh -p 2222 -fN -L 5432:172.1.9.201:5432 <usuário VPN ITA>@dev.labqs.ita.br
 ```
 
 Na rede local é possível acessar diretamente o console de cada serviço por meio da linha de comando:
 
-```bash
+```sh
 bash -c 'docker exec -it postgres01 psql --username=postgres'
 ```
 

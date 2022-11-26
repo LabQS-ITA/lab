@@ -18,7 +18,6 @@ services:
     volumes:
       - postgresdata:/var/lib/postgresql/data
       - $PWD/postgres/config:/etc/postgresql
-      - $PWD/postgres/config/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
       - $PWD/postgres/init:/docker-entrypoint-initdb.d
       - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
@@ -45,7 +44,6 @@ services:
     volumes:
       - postgresdata01:/var/lib/postgresql/data
       - $PWD/postgres01/config:/etc/postgresql
-      - $PWD/postgres01/config/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
       - $PWD/postgres01/init:/docker-entrypoint-initdb.d
       - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
@@ -72,7 +70,6 @@ services:
     volumes:
       - postgresdata02:/var/lib/postgresql/data
       - $PWD/postgres02/config:/etc/postgresql
-      - $PWD/postgres02/config/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
       - $PWD/postgres02/init:/docker-entrypoint-initdb.d
       - /usr/share/zoneinfo:/user/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

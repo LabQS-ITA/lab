@@ -18,13 +18,13 @@ Os serviços não podem ser acessados fora da rede local.
 
 Para administração dos dados é possível se utilizar de um túnel SSH via VPN do ITA:
 
-```bash
+```sh
 ssh -p 2222 -fN -L 27017:172.1.9.201:27017 <usuário VPN ITA>@dev.labqs.ita.br
 ```
 
 Na rede local é possível acessar diretamente o console de cada serviço por meio da linha de comando:
 
-```bash
+```sh
 bash -c "docker exec -it mongodb01 mongo mongodb://root:`awk -F'=' '/SVC_PWD_01/{ printf("%s\n",$2) }' .env`@localhost:27017"
 ```
 

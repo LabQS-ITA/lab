@@ -12,6 +12,8 @@ Seguir as instruções em [Install Docker Engine on Ubuntu](https://docs.docker.
 
 Passos extraídos da página acima (usar a página como referência e não os passos listados abaixo), aqui listados apenas como conveniência eliminando o comando `sudo`:
 
+#### Instalação para Ubuntu
+
 ```sh
 apt-get update && apt-get upgrade -y
 apt-get install -y ca-certificates curl gnupg lsb-release
@@ -20,6 +22,18 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 apt-get update
 apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+```
+
+#### Instalação para Debian
+
+```sh
+apt-get update && apt-get upgrade -y
+apt-get install -y ca-certificates curl gnupg lsb-release
+mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+apt-get update
+apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 ```
 
 ### Git

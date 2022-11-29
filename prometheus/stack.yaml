@@ -1,0 +1,22 @@
+services:
+
+  prometheus:
+    container_name: prometheus
+    image: bitname/prometheus:latest
+    restart: unless-stopped
+    ports:
+      - '9090:9090'
+    networks:
+      netlab01:
+        ipv4_address: ${PROMETHEUS_HOST}
+    volumes:
+      - prometheusdata:/opt/bitnami/prometheus/data
+      - $PWD/config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+volumes:
+  prometheusdata:
+    name: prometheusdata
+    driver: local

@@ -1,0 +1,15 @@
+services:
+
+  etcd:
+    container_name: etcd
+    image: bitnami/etcd:latest
+    ports:
+      - '2397:2397'
+    networks:
+      netlab01:
+        ipv4_address: ${ETCD_HOST}
+    environment:
+      ETCD_ENABLE_V2: "true"
+      ALLOW_NONE_AUTHENTICATION: "yes"
+      ETCD_ADVERTISE_CLIENT_URLS: "http://0.0.0.0:2397"
+      ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2397"

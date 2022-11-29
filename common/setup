@@ -172,6 +172,12 @@ echo '* memcached *'
 docker compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
+cd ../etcd
+echo '* Etcd *'
+
+docker compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
 cd ../rabbitmq
 echo '* RabbitMQ *'
 

@@ -8,7 +8,7 @@ services:
       - '3001:3001'
     networks:
       netlab01:
-        ipv4_address: ${PROMETHEUS_HOST}
+        ipv4_address: ${GRAFANA_HOST}
     volumes:
     volumes:
       - $PWD/config/grafana.ini:/etc/grafana/grafana.ini

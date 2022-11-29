@@ -2,7 +2,7 @@ services:
 
   prometheus:
     container_name: prometheus
-    image: bitname/prometheus:latest
+    image: bitnami/prometheus:latest
     restart: unless-stopped
     ports:
       - '9090:9090'

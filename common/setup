@@ -305,6 +305,18 @@ else
     docker compose -f stack.yaml -f ../common/use.yaml up --detach
 
 
+    cd ../prometheus
+    echo '* Prometheus *'
+
+    docker compose -f stack.yaml -f ../common/use.yaml up --detach
+
+
+    cd ../grafana
+    echo '* Grafana *'
+
+    docker compose -f stack.yaml -f ../common/use.yaml up --detach
+    
+
     cd ../portainer
     echo '* Portainer *'
 

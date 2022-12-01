@@ -27,3 +27,4 @@ volumes:
   redminedata:
     name: redminedata
     driver: local
+    external: true

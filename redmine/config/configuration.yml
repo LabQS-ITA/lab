@@ -15,11 +15,11 @@ default:
   email_delivery:
     delivery_method: :smtp
     smtp_settings:
-      address: "mail.ita.br"
+      address: "smtp.ita.br"
       port: 465
       authentication: :login
       domain: "ita.br"
-      user_name: "labqs"
+      user_name: "labqs@ita.br"
       password: "C0r0n@2022"
 
   # ==== Simple SMTP server at localhost

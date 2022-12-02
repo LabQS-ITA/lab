@@ -16,7 +16,7 @@ default:
     delivery_method: :smtp
     smtp_settings:
       address: "mail.ita.br"
-      port: 25
+      port: 465
       authentication: :login
       domain: "ita.br"
       user_name: "labqs@ita.br"

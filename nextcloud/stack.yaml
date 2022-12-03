@@ -35,4 +35,4 @@ volumes:
     driver: local
   flualfadata:
     name: flualfadata
-    driver: local
+    external: true

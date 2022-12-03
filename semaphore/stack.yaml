@@ -27,4 +27,4 @@ services:
       SEMAPHORE_ADMIN: maint
       SEMAPHORE_ADMIN_PASSWORD: ${SVC_PWD}
       SEMAPHORE_ADMIN_NAME: maint
-      SEMAPHORE_ADMIN_EMAIL: maint@ita.br
+      SEMAPHORE_ADMIN_EMAIL: labqs@ita.br

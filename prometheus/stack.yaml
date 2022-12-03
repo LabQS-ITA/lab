@@ -12,7 +12,7 @@ services:
     volumes:
       - prometheusdata:/opt/bitnami/prometheus/data
       - $PWD/config/prometheus.yml:/etc/prometheus/prometheus.yml
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
 

@@ -12,7 +12,7 @@ services:
         ipv4_address: ${LOCUST_HOST}
     volumes:
       - ${PWD}/config:/home/locust:rw
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     command: 

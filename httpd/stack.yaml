@@ -14,7 +14,7 @@ services:
       - $PWD/panel/static:/usr/local/apache2/htdocs:ro
       - $PWD/panel/config:/usr/local/apache2/conf:ro
       - certificates:/usr/local/apache2/certificates:ro
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:

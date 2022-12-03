@@ -13,7 +13,7 @@ services:
       - $PWD/config/config.ru:/usr/src/redmine/config.ru
       - $PWD/config/configuration.yml:/usr/src/redmine/config/configuration.yml
       - redminedata:/usr/src/redmine/files
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:

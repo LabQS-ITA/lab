@@ -19,7 +19,7 @@ services:
       - mongodata:/data/db:rw
       - $PWD/mongodb/config:/etc/mongo:ro
       - $PWD/mongodb/init:/docker-entrypoint-initdb.d:ro
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
@@ -46,7 +46,7 @@ services:
       - mongodata01:/data/db:rw
       - $PWD/mongodb01/config:/etc/mongo:ro
       - $PWD/mongodb01/init:/docker-entrypoint-initdb.d:ro
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
@@ -73,7 +73,7 @@ services:
       - mongodata02:/data/db:rw
       - $PWD/mongodb02/config/:/etc/mongo:ro
       - $PWD/mongodb02/init:/docker-entrypoint-initdb.d:ro
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:

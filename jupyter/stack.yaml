@@ -27,7 +27,7 @@ services:
       - $PWD/config/jupyterhub_config.py:/etc/jupyterhub/jupyterhub_config.py:ro
       - jupyterdata:/data
       - /var/run/docker.sock:/var/run/docker.sock
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:

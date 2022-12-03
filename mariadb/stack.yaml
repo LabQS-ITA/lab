@@ -19,7 +19,7 @@ services:
       - mariadata:/var/lib/mysql:rw
       - $PWD/mariadb/config:/etc/mysql/conf.d:ro
       - $PWD/mariadb/init:/docker-entrypoint-initdb.d:ro
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
@@ -46,7 +46,7 @@ services:
       - mariadata01:/var/lib/mysql:rw
       - $PWD/mariadb01/config:/etc/mysql/conf.d:ro
       - $PWD/mariadb01/init:/docker-entrypoint-initdb.d:ro
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
@@ -73,7 +73,7 @@ services:
       - mariadata02:/var/lib/mysql:rw
       - $PWD/mariadb02/config:/etc/mysql/conf.d:ro
       - $PWD/mariadb02/init:/docker-entrypoint-initdb.d:ro
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:

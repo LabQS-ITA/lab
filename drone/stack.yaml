@@ -12,7 +12,7 @@ services:
     volumes:
       - dronedata:/data
       - /var/run/docker.sock:/var/run/docker.sock
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
 

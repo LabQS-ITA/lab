@@ -14,6 +14,6 @@ services:
       - $PWD/config/grafana.ini:/etc/grafana/grafana.ini
       - $PWD/config/provisioning:/etc/grafana/provisioning
       - $PWD/config/dashboards:/var/lib/grafana/dashboards
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro

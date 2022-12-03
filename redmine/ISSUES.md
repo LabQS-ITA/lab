@@ -58,3 +58,18 @@ Aqui optamos por criar um novo relato para solicitar informações sobre possív
 Para manter o acompanhamento, foi criada uma relação entre os dois relatos
 
 ![Relacionamento entre relatos](../images/redmine/issues/11.png)
+
+## Fluxo de trabalho
+
+Na imagem abaixo podemos ver o fluxo de trabalho.
+
+1. Um chamado é aberto pelo autor (_reporter_)
+    1. A ocorrência é salva com situação **aberto**
+    2. Caso deseje o autor pode mudar a situação para **fechado**
+2. O desenvolvedor (_developer_) é notifidado
+    1. Muda a situação para **análise** e inicia seu trabalho, ou
+    2. Pode mudar a situação para **execução** diretamente, ou ainda
+    3. Pode encerrar mudando para **fechado**
+    4. Caso tenha optado seguir o fluxo de **análise**, **execução** poderá ao final encerrá-lo mudando para **fechado**
+    
+![Fluxo de trabalho](../images/redmine/redmine-workflow.png)

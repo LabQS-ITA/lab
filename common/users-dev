@@ -21,6 +21,7 @@ function create_operator() {
     create_user $1
 
     sudo usermod -a -G docker $1
+    sudo usermod -a -G users $1
 
 }
 
@@ -59,17 +60,6 @@ function nologin_operator() {
 # Pesquisadores STAMPS
 # create_operator gildarcio
 # create_operator jean
-
-# Apagar para usar nologin
-userdel -f carlos
-userdel -f finger
-userdel -f ramirez
-userdel -f alves
-userdel -f navas
-userdel -f carvalho
-userdel -f rodrigues
-userdel -f ribeiro
-userdel -f silva
 
 # Professores IA-PLN
 # create_nologin carlos

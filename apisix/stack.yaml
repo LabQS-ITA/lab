@@ -1,0 +1,16 @@
+services:
+
+  apisix:
+    container_name: apisix
+    image: apache/apisix:2.15.0-alpine
+    restart: always
+    ports:
+      - '9080:9080'
+    networks:
+      netlab01:
+        ipv4_address: ${APISIX_HOST}
+    volumes:
+      - $PWD/apisix/config.yml:/usr/local/apisix/conf/config.yaml:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro

@@ -74,7 +74,6 @@ services:
         ipv4_address: ${TAIGAPROTECTED_HOST}
     volumes: *default-volumes
     environment: *default-environment
-    environment: *default-environment
 
   taiga:
     container_name: taiga

@@ -10,7 +10,7 @@ services:
         ipv4_address: ${RABBITMQ_HOST01}
     volumes:
       - rabbitmqdata01:/var/lib/rabbitmq
-      - $PWD/config/rabbitmq01/enabled_plugins:/etc/rabbitmq/enabled_plugins:ro
+      - $PWD/config/rabbitmq01/enabled_plugins:/etc/rabbitmq/enabled_plugins:rw
       - $PWD/config/rabbitmq01/rabbitmq-env.conf:/etc/rabbitmq/rabbitmq-env.conf:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
@@ -28,7 +28,7 @@ services:
         ipv4_address: ${RABBITMQ_HOST02}
     volumes:
       - rabbitmqdata02:/var/lib/rabbitmq
-      - $PWD/config/rabbitmq02/enabled_plugins:/etc/rabbitmq/enabled_plugins:ro
+      - $PWD/config/rabbitmq02/enabled_plugins:/etc/rabbitmq/enabled_plugins:rw
       - $PWD/config/rabbitmq02/rabbitmq-env.conf:/etc/rabbitmq/rabbitmq-env.conf:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
@@ -48,7 +48,7 @@ services:
         ipv4_address: ${RABBITMQ_HOST}
     volumes:
       - rabbitmqdata:/var/lib/rabbitmq
-      - $PWD/config/rabbitmng/enabled_plugins:/etc/rabbitmq/enabled_plugins:ro
+      - $PWD/config/rabbitmng/enabled_plugins:/etc/rabbitmq/enabled_plugins:rw
       - $PWD/config/rabbitmng/20-user.conf:/etc/rabbitmq/conf.d/20-user.conf:ro
       - $PWD/config/rabbitmng/rabbitmq-env.conf:/etc/rabbitmq/rabbitmq-env.conf:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro

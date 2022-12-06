@@ -35,7 +35,7 @@ services:
     container_name: taiga-back
     image: taigaio/taiga-back:latest
     restart: unless-stopped
-    netwroks:
+    networks:
       netlab01:
         ipv4_address: ${TAIGABACK_HOST}
     volumes: *default-volumes
@@ -46,7 +46,7 @@ services:
     image: taigaio/taiga-back:latest
     restart: unless-stopped
     entrypoint: ["/taiga-back/docker/async_entrypoint.sh"]
-    netwroks:
+    networks:
       netlab01:
         ipv4_address: ${TAIGAASYNC_HOST}
     volumes: *default-volumes

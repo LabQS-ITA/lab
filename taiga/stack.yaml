@@ -20,11 +20,11 @@ x-environment:
   EMAIL_PORT: 587
   EMAIL_HOST_USER: "labqs@ita.br"
   EMAIL_HOST_PASSWORD: "C0r0n@2022"
-  RABBITMQ_USER: taiga
-  RABBITMQ_PASS: taiga
+  RABBITMQ_USER: maint
+  RABBITMQ_PASS: ${RABBITMQ_PWD}
   ENABLE_TELEMETRY: "True"
-  EVENTS_PUSH_BACKEND_URL: "amqp://taiga:taiga@rabbitmng:15672/taiga"
-  CELERY_BROKER_URL: "amqp://taiga:taiga@rabbitmng:15672/taiga"
+  EVENTS_PUSH_BACKEND_URL: "amqp://maint:${RABBITMQ_PWD}@rabbitmng:5672/taiga"
+  CELERY_BROKER_URL: "amqp://maint:${RABBITMQ_PWD}@rabbitmng:5672/taiga"
 
 x-volumes:
   &default-volumes

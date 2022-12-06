@@ -5,8 +5,8 @@ x-environment:
   POSTGRES_PASSWORD: ${POSTGRES_PWD}
   POSTGRES_HOST: postgres
   MAX_AGE: 360
-  SECRET_KEY: "taiga-back-secret-key"
-  TAIGA_SECRET_KEY: "taiga-back-secret-key"
+  SECRET_KEY: "${SVC_PWD}"
+  TAIGA_SECRET_KEY: "${SVC_PWD}"
   TAIGA_URL: "http://localhost:9002"
   TAIGA_WEBSOCKETS_URL: "ws://localhost:9002"
   TAIGA_SITES_SCHEME: "http"
@@ -30,7 +30,9 @@ x-volumes:
   &default-volumes
   - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
   - /etc/timezone:/etc/timezone:ro
-  - /etc/localtime:/etc/localtime:ro        
+  - /etc/localtime:/etc/localtime:ro
+
+
 services:
 
   taiga-back:
@@ -55,7 +57,7 @@ services:
     environment: *default-environment
 
   taiga-events:
-    container_name: taiga_events
+    container_name: taiga-events
     image: taigaio/taiga-events:latest
     restart: unless-stopped
     networks:
@@ -65,14 +67,13 @@ services:
     environment: *default-environment
 
   taiga-protected:
+    container_name: taiga-protected
     image: taigaio/taiga-protected:latest
-    environment:
-      MAX_AGE: 360
-      SECRET_KEY: "taiga-back-secret-key"
     networks:
       netlab01:
         ipv4_address: ${TAIGAPROTECTED_HOST}
     volumes: *default-volumes
+    environment: *default-environment
     environment: *default-environment
 
   taiga:

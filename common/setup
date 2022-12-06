@@ -331,8 +331,7 @@ else
     echo '* Taiga *'
 
     if [ $CONFIG_ENV == 'Y' ]; then
-        echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-        echo 'RABBITMQ_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../rabbitmq/.env) >> .env
+        echo 'SVC_PWD='$(openssl rand -hex 64) > .env
         echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
     fi
 

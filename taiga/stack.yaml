@@ -20,6 +20,7 @@ x-environment:
   EMAIL_PORT: 587
   EMAIL_HOST_USER: "labqs@ita.br"
   EMAIL_HOST_PASSWORD: "C0r0n@2022"
+  RABBITMQ_HOST: rabbitmng
   RABBITMQ_USER: maint
   RABBITMQ_PASS: ${RABBITMQ_PWD}
   ENABLE_TELEMETRY: "True"

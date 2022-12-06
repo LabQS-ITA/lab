@@ -99,6 +99,7 @@ if [ $CONFIG_ENV == 'Y' ]; then
     echo 'SVC_PWD='$(openssl rand -hex 8) > .env
     echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
     echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
+    echo 'SVC_PWD_03='$(openssl rand -hex 8) >> .env
 
     echo 'localhost:5432:*:postgres:'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env) > ./postgres/config/.pgpass
     chmod 0600 ./postgres/config/.pgpass
@@ -106,6 +107,8 @@ if [ $CONFIG_ENV == 'Y' ]; then
     chmod 0600 ./postgres01/config/.pgpass
     echo 'localhost:5432:*:postgres:'$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env) > ./postgres02/config/.pgpass
     chmod 0600 ./postgres02/config/.pgpass
+    echo 'localhost:5432:*:postgres:'$(awk -F'=' '$1 =="SVC_PWD_03" {print $2}' .env) > ./postgres03/config/.pgpass
+    chmod 0600 ./postgres03/config/.pgpass
 fi
 
 docker compose -f stack.yaml -f ../common/use.yaml up --detach

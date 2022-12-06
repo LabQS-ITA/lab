@@ -114,6 +114,6 @@ volumes:
   postgresdata02:
     name: postgresdata02
     driver: local
-postgresdata03:
+  postgresdata03:
     name: postgresdata03
     driver: local

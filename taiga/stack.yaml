@@ -57,7 +57,7 @@ services:
     image: taigaio/taiga-events:latest
     restart: unless-stopped
     networks:
-      -netlab01:
+      netlab01:
         ipv4_address: ${TAIGAEVENTS_HOST}
     volumes: *default-volumes
     environment: *default-environment
@@ -68,7 +68,7 @@ services:
       MAX_AGE: 360
       SECRET_KEY: "taiga-back-secret-key"
     networks:
-      -netlab01:
+      netlab01:
         ipv4_address: ${TAIGAPROTECTED_HOST}
     volumes: *default-volumes
     environment: *default-environment
@@ -80,7 +80,7 @@ services:
     ports:
       - '9092:9092'
     networks:
-      -netlab01:
+      netlab01:
         ipv4_address: ${TAIGA_HOST}
     volumes: *default-volumes
     environment: *default-environment

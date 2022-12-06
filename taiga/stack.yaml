@@ -1,0 +1,86 @@
+x-environment:
+  &default-environment
+  POSTGRES_DB: taiga
+  POSTGRES_USER: taiga
+  POSTGRES_PASSWORD: ${POSTGRES_PWD}
+  POSTGRES_HOST: postgres
+  MAX_AGE: 360
+  SECRET_KEY: "taiga-back-secret-key"
+  TAIGA_SECRET_KEY: "taiga-back-secret-key"
+  TAIGA_URL: "http://localhost:9002"
+  TAIGA_WEBSOCKETS_URL: "ws://localhost:9002"
+  TAIGA_SITES_SCHEME: "http"
+  TAIGA_SITES_DOMAIN: "localhost:9002"
+  TAIGA_SUBPATH: "/taiga"
+  EMAIL_BACKEND: "django.core.mail.backends.smtp.EmailBackend"
+  DEFAULT_FROM_EMAIL: "no-reply@example.com"
+  # EMAIL_USE_TLS: "False"
+  # EMAIL_USE_SSL: "False"
+  EMAIL_HOST: "smtp.ita.br"
+  EMAIL_PORT: 587
+  EMAIL_HOST_USER: "labqs@ita.br"
+  EMAIL_HOST_PASSWORD: "C0r0n@2022"
+  RABBITMQ_USER: maint
+  RABBITMQ_PASS: ${RABBITMQ_PWD}
+  ENABLE_TELEMETRY: "True"
+
+x-volumes:
+  &default-volumes
+  - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+  - /etc/timezone:/etc/timezone:ro
+  - /etc/localtime:/etc/localtime:ro        
+services:
+
+  taiga-back:
+    container_name: taiga-back
+    image: taigaio/taiga-back:latest
+    restart: unless-stopped
+    netwroks:
+      netlab01:
+        ipv4_address: ${TAIGABACK_HOST}
+    volumes: *default-volumes
+    environment: *default-environment
+
+  taiga-async:
+    container_name: taiga-async
+    image: taigaio/taiga-back:latest
+    restart: unless-stopped
+    entrypoint: ["/taiga-back/docker/async_entrypoint.sh"]
+    netwroks:
+      netlab01:
+        ipv4_address: ${TAIGAASYNC_HOST}
+    volumes: *default-volumes
+    environment: *default-environment
+
+  taiga-events:
+    container_name: taiga_events
+    image: taigaio/taiga-events:latest
+    restart: unless-stopped
+    networks:
+      -netlab01:
+        ipv4_address: ${TAIGAEVENTS_HOST}
+    volumes: *default-volumes
+    environment: *default-environment
+
+  taiga-protected:
+    image: taigaio/taiga-protected:latest
+    environment:
+      MAX_AGE: 360
+      SECRET_KEY: "taiga-back-secret-key"
+    networks:
+      -netlab01:
+        ipv4_address: ${TAIGAPROTECTED_HOST}
+    volumes: *default-volumes
+    environment: *default-environment
+
+  taiga:
+    container_name: taiga
+    image: taigaio/taiga-front:latest
+    restart: unless-stopped
+    ports:
+      - '9092:9092'
+    networks:
+      -netlab01:
+        ipv4_address: ${TAIGA_HOST}
+    volumes: *default-volumes
+    environment: *default-environment

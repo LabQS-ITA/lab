@@ -13,7 +13,7 @@ x-environment:
   TAIGA_SITES_DOMAIN: "localhost:9002"
   TAIGA_SUBPATH: "/taiga"
   EMAIL_BACKEND: "django.core.mail.backends.smtp.EmailBackend"
-  DEFAULT_FROM_EMAIL: "no-reply@example.com"
+  DEFAULT_FROM_EMAIL: "no-reply@ita.br"
   # EMAIL_USE_TLS: "False"
   # EMAIL_USE_SSL: "False"
   EMAIL_HOST: "smtp.ita.br"
@@ -22,7 +22,7 @@ x-environment:
   EMAIL_HOST_PASSWORD: "C0r0n@2022"
   RABBITMQ_USER: maint
   RABBITMQ_PASS: ${RABBITMQ_PWD}
-  ENABLE_TELEMETRY: "True"
+  ENABLE_TELEMETRY: "False"
   EVENTS_PUSH_BACKEND_URL: "amqp://maint:${RABBITMQ_PWD}@rabbitmng:5672/taiga"
   CELERY_BROKER_URL: "amqp://maint:${RABBITMQ_PWD}@rabbitmng:5672/taiga"
 

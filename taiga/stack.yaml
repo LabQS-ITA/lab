@@ -7,8 +7,8 @@ x-environment:
   MAX_AGE: 360
   SECRET_KEY: "${SVC_PWD}"
   TAIGA_SECRET_KEY: "${SVC_PWD}"
-  TAIGA_URL: "http://localhost:9002"
-  TAIGA_WEBSOCKETS_URL: "ws://localhost:9002"
+  TAIGA_URL: "https://${LAB_DOMAIN}"
+  TAIGA_WEBSOCKETS_URL: "ws://${LAB_DOMAIN}"
   TAIGA_SITES_SCHEME: "https"
   TAIGA_SITES_DOMAIN: "${LAB_DOMAIN}"
   TAIGA_SUBPATH: "/taiga"

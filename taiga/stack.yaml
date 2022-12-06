@@ -22,7 +22,7 @@ x-environment:
   EMAIL_HOST_PASSWORD: "C0r0n@2022"
   RABBITMQ_USER: maint
   RABBITMQ_PASS: ${RABBITMQ_PWD}
-  ENABLE_TELEMETRY: "False"
+  ENABLE_TELEMETRY: "True"
   EVENTS_PUSH_BACKEND_URL: "amqp://maint:${RABBITMQ_PWD}@rabbitmng:5672/taiga"
   CELERY_BROKER_URL: "amqp://maint:${RABBITMQ_PWD}@rabbitmng:5672/taiga"
 
@@ -81,7 +81,7 @@ services:
     image: taigaio/taiga-front:latest
     restart: unless-stopped
     ports:
-      - '9092:9092'
+      - '9092:80'
     networks:
       netlab01:
         ipv4_address: ${TAIGA_HOST}

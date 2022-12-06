@@ -3,7 +3,7 @@ x-environment:
   POSTGRES_DB: taiga
   POSTGRES_USER: taiga
   POSTGRES_PASSWORD: ${POSTGRES_PWD}
-  POSTGRES_HOST: postgres
+  POSTGRES_HOST: postgres03
   MAX_AGE: 360
   SECRET_KEY: "${SVC_PWD}"
   TAIGA_SECRET_KEY: "${SVC_PWD}"

@@ -23,8 +23,8 @@ x-environment:
   RABBITMQ_USER: maint
   RABBITMQ_PASS: ${RABBITMQ_PWD}
   ENABLE_TELEMETRY: "True"
-  EVENTS_PUSH_BACKEND_URL: "amqp://maint:${RABBITMQ_PWD}@rabbitmng:15672/taiga"
-  CELERY_BROKER_URL: "amqp://maint:${RABBITMQ_PWD}@rabbitmng:15672/taiga"
+  EVENTS_PUSH_BACKEND_URL: "amqp://maint:${RABBITMQ_PWD}@rabbitmq01:15672/taiga"
+  CELERY_BROKER_URL: "amqp://maint:${RABBITMQ_PWD}@rabbitmq01:15672/taiga"
 
 x-volumes:
   &default-volumes

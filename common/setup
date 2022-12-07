@@ -86,7 +86,7 @@ fi
 echo 'Certificar que certbot está parado'
 docker stop certbot || true
 
-docker compose -f stack.yaml -f ../common/use.yaml up --detach
+docker compose -f stack.yaml -f ../common/use.yaml up --detach --add-host=host.docker.internal:host-gateway
 
 docker stop httpd
 docker start httpd

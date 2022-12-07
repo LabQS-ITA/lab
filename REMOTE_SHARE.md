@@ -87,4 +87,6 @@ A pasta publicada no _host_ externo via configuração da criação do container
 sftp -P 2222 gomes@dev.labqs.ita.br:/export/dist/flualfa
 ```
 
+> **Obs**.: a senha no servidor remoto não é a mesma da **VPN**.
+
 ![Pasta remota](./images/01-sftp-export.png)

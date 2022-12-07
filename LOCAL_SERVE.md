@@ -100,7 +100,9 @@ Usando o _browser_ acessar sua aplicação remotamente:
 
 ## Opção de acessar o servidor de banco de dados remoto
 
-Caso tenha *VPN* disponível, é possível mapear o servidor Postgres e conectar a aplicação local ao banco de dados remoto. Para isto basta criar um túnel na máquina local (substituindo `<usuário_vpn>` pelo seu usuário):
+Caso tenha *VPN* disponível, é possível mapear o servidor Postgres e conectar a aplicação local ao banco de dados remoto. Para isto basta criar um túnel na máquina local (substituindo `<usuário_vpn>` pelo seu usuário).
+
+> **Obs**.: a senha no servidor remoto não é a mesma da **VPN**.
 
 ```sh
 ssh -p 2222 -fN -L 5432:172.16.2.201:5432 <usuário_vpn>@test.labqs.ita.br

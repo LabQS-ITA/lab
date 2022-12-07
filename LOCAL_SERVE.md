@@ -46,7 +46,7 @@ O serviço *http* deve ser configurado corretamente para acessar a aplicação l
       - host.docker.internal:172.16.0.1
 ```
 
-> *Obs*.: o endereço `172.16.0.1` corresponde ao _gateway_ da rede *netlab01* criada no script *create*:
+> **Obs**.: o endereço `172.16.0.1` corresponde ao _gateway_ da rede *netlab01* criada no script *create*:
 > ```sh
 > docker network create --driver bridge netlab01 --subnet='172.16.0.0/16'
 > ```
@@ -97,3 +97,13 @@ Usando o _browser_ acessar sua aplicação local:
 Usando o _browser_ acessar sua aplicação remotamente:
 
 `https://test.labqs.ita.br/localhost`
+
+## Opção de acessar o servidor de banco de dados remoto
+
+Caso tenha *VPN* disponível, é possível mapear o servidor Postgres e conectar a aplicação local ao banco de dados remoto. Para isto basta criar um túnel na máquina local (substituindo `<usuário_vpn>` pelo seu usuário):
+
+```sh
+ssh -p 2222 -fN -L 5432:172.16.2.201:5432 <usuário_vpn>@test.labqs.ita.br
+```
+
+> **Obs**.: Isto só funciona se a aplicação for executada sob o mesmo contexto do túnel. É possível que em alguns sistemas operacionais o contexto da linha de comando seja diferente do contexto do ambiente de execução da sua aplicação.

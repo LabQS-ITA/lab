@@ -84,7 +84,12 @@ A pasta publicada no _host_ externo via configuração da criação do container
 ```
 
 ```sh
-sftp -P 2222 gomes@dev.labqs.ita.br:/export/dist/flualfa
+sftp -P 2222 <usuario no servidor dev>@dev.labqs.ita.br:/export/dist/flualfa
+```
+
+```sh
+mkdir -p /mnt/dev.labqs
+sudo mount -t nfs dev.labqs.ita.br:/export /mnt/dev.labqs
 ```
 
 > **Obs**.: a senha no servidor remoto não é a mesma da **VPN**.

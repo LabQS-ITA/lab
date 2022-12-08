@@ -14,8 +14,8 @@ echo "Configurando ambiente $LAB_ENV"
 if [ "$LAB_ENV" == "tst.labqs" ]; then
 
     export SCHEDULE_BACKUP="0 0 * * 6"
-    export SCHEDULE_RSYNC="0 2 * * 6"
-    export SCHEDULE_CLEANUP="0 4 * * 6"
+    export SCHEDULE_RSYNC="0 2 * * 1-6"
+    export SCHEDULE_CLEANUP="0 4 * * 1-6"
 
 elif [ "$LAB_ENV" == "dev.labqs" ]; then
 

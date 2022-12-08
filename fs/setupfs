@@ -2,9 +2,9 @@
 set -euo pipefail
 
 
-mkdir /export
-mkdir /import
-cd /export
+mkdir -p /export
+mkdir -p /import
+mkdir -p /replica
 
 if [[ $# -ne 1 && $# -ne 2 ]]; then
 
@@ -15,17 +15,17 @@ if [[ $# -ne 1 && $# -ne 2 ]]; then
 elif [ "$1" == "tst" ]; then
 
     # Servidor do lab
-    echo "tst" > lab
+    echo "tst.labqs" > /export/lab
     
 elif [ "$1" == "dev" ]; then
 
     # Servidores de desenvolvimento e testes
-    ln -s lab dev
+    echo "dev.labqs" > /export/lab
 
 elif [ "$1" == "hom" ]; then
 
     # Servidores de homologação
-    echo "hom" > lab
+    echo "hom.labqs" > /export/lab
 
 else
 
@@ -34,7 +34,5 @@ else
     exit 1
 
 fi
-
-ln -s lab tst
 
 exit 0

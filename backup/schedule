@@ -3,11 +3,38 @@
 
 crontab -r
 
+LAB_ENV = `cat /export/lab`
+if [ "$LAB_ENV" == "tst.labqs" ]; then
+
+    SCHEDULE_BACKUP = "0 0 * * 6"
+    SCHEDULE_RSYNC = "0 2 * * 6"
+    SCHEDULE_CLEANUP = "0 4 * * 6"
+
+elif [ "$LAB_ENV" == "dev.labqs" ]; then
+
+    SCHEDULE_BACKUP = "0 0 * * 1-5"
+    SCHEDULE_RSYNC = "0 2 * * 1-5"
+    SCHEDULE_CLEANUP = "0 4 * * 1-5"
+
+elif [ "$LAB_ENV" == "hom.labqs" ]; then
+
+    SCHEDULE_BACKUP = "0 0 * * 1-5"
+    SCHEDULE_RSYNC = "0 2 * * 1-5"
+    SCHEDULE_CLEANUP = "0 4 * * 1-5"
+
+else 
+
+    echo "Configuração "$LAB_ENV" incorreta no arquivo /export/lab"
+
+    exit 1
+
+fi
+
 TEMPFILE=`mktemp` && {
     crontab -l 2>/dev/null > $TEMPFILE
-    echo "0 0 * * 6 /home/gpes/LTS/backup/backup" >> $TEMPFILE
-    echo "0 2 * * 0-5 /usr/bin/rsync -r /home/gpes/shared/bkp/ /home/gpes/shared/in/tst/bkp" >> $TEMPFILE
-    echo "0 4 * * * find /home/gpes/shared/bkp/* -mtime +90 -exec rm {} \;" >> $TEMPFILE
+    echo "$SCHEDULE_BACKUP /home/gpes/LTS/backup/backup" >> $TEMPFILE
+    echo "$SCHEDULE_RSYNC /usr/bin/rsync -r /import /replica" >> $TEMPFILE
+    echo "$SCHEDULE_CLEANUP find /export/bkp/* -mtime +90 -exec rm {} \;" >> $TEMPFILE
     crontab $TEMPFILE
     rm -f $TEMPFILE
 }

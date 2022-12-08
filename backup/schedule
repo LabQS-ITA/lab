@@ -4,6 +4,8 @@
 crontab -r
 
 set LAB_ENV = `cat /export/lab`
+echo "Configurando ambiente $LAB_ENV"
+
 if [ "$LAB_ENV" == "tst.labqs" ]; then
 
     SCHEDULE_BACKUP = "0 0 * * 6"

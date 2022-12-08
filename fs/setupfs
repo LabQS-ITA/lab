@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+
+mkdir /export
+mkdir /import
+cd /export
+
+if [[ $# -ne 1 && $# -ne 2 ]]; then
+
+    echo "Informe [ dev | tst | hom ]"
+
+    exit 1
+
+elif [ "$1" == "tst" ]; then
+
+    # Servidor do lab
+    echo "tst" > lab
+    
+elif [ "$1" == "dev" ]; then
+
+    # Servidores de desenvolvimento e testes
+    ln -s lab dev
+
+elif [ "$1" == "hom" ]; then
+
+    # Servidores de homologação
+    echo "hom" > lab
+
+else
+
+    echo "Argumento $1 incorreto. Use [ dev | tst | hom ]"
+
+    exit 1
+
+fi
+
+ln -s lab tst
+
+exit 0

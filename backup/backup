@@ -55,6 +55,11 @@ function backup_volumes() {
 
 }
 
+if [ "$EUID" -ne 0 ]
+    then echo "Execute como root"
+    exit 2
+fi
+
 for c in $(docker ps -a --format '{{.Names}}');
 do
     backup_container $c

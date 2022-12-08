@@ -3,7 +3,7 @@
 
 crontab -r
 
-LAB_ENV = `cat /export/lab`
+set LAB_ENV = `cat /export/lab`
 if [ "$LAB_ENV" == "tst.labqs" ]; then
 
     SCHEDULE_BACKUP = "0 0 * * 6"

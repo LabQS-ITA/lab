@@ -10,7 +10,7 @@ sudo systemctl start nfs-kernel-server.service
 `/etc/exports`
 
 ```
-/export     *(rw,async,no_subtree_check,no_root_squash)
+/export       	161.24.23.0/24(rw,async,wdelay,no_root_squash,no_subtree_check,sec=sys,rw,secure,no_root_squash,no_all_squash)
 ```
 
 

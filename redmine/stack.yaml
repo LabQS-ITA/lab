@@ -27,3 +27,7 @@ volumes:
   redminedata:
     name: redminedata
     driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/redminedata/_data
+      o: bind

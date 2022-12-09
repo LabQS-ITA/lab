@@ -20,3 +20,7 @@ volumes:
   prometheusdata:
     name: prometheusdata
     driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/prometheusdata/_data
+      o: bind

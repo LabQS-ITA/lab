@@ -43,3 +43,7 @@ volumes:
   jupyterdata:
     name: jupyterdata
     driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/jupyterdata/_data
+      o: bind

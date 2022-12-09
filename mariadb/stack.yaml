@@ -85,9 +85,21 @@ volumes:
   mariadata:
     name: mariadbdata
     driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/mariadbdata/_data
+      o: bind
   mariadata01:
     name: mariadbdata01
     driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/mariadbdata01/_data
+      o: bind
   mariadata02:
     name: mariadbdata02
     driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/mariadbdata02/_data
+      o: bind

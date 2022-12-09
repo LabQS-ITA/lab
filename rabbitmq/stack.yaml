@@ -61,9 +61,21 @@ volumes:
   rabbitmqdata:
     name: rabbitmqdata
     driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/rabbitmqdata/_data
+      o: bind
   rabbitmqdata01:
     name: rabbitmqdata01
     driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/rabbitmqdata01/_data
+      o: bind
   rabbitmqdata02:
     name: rabbitmqdata02
     driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/rabbitmqdata02/_data
+      o: bind

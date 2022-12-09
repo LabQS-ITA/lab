@@ -47,3 +47,7 @@ volumes:
   registrydata:
     name: registrydata
     driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/registrydata/_data
+      o: bind

@@ -82,9 +82,21 @@ volumes:
   redisdata:
     name: redisdata
     driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/redisdata/_data
+      o: bind
   redisdata01:
     name: redisdata01
     driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/redisdata01/_data
+      o: bind
   redisdata02:
     name: redisdata02
     driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/redisdata02/_data
+      o: bind

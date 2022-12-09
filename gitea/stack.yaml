@@ -34,3 +34,7 @@ volumes:
   giteadata:
     name: giteadata
     driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/giteadata/_data
+      o: bind

@@ -33,3 +33,7 @@ volumes:
   portainerdata:
     name: portainerdata
     driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/portainerdata/_data
+      o: bind

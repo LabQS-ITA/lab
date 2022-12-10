@@ -10,7 +10,6 @@ services:
       netlab01:
         ipv4_address: ${GRAFANA_HOST}
     volumes:
-    volumes:
       - $PWD/config/grafana.ini:/etc/grafana/grafana.ini
       - $PWD/config/provisioning:/etc/grafana/provisioning
       - $PWD/config/dashboards:/var/lib/grafana/dashboards

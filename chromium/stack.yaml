@@ -1,0 +1,17 @@
+services:
+
+  chromium:
+    container_name: chromium
+    image: zenika/alpine-chrome:latest
+    restart: unless-stopped
+    ports:
+      - '9222:9222'
+    networks:
+      netlab01:
+        ipv4_address: ${CHROMIUM_HOST}
+    command: [chromium-browser, 
+      "--headless", 
+      "--disable-gpu", 
+      "--no-sandbox", 
+      "--remote-debugging-address=0.0.0.0", 
+      "--remote-debugging-port=9222"]

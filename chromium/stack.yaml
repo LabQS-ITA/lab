@@ -9,6 +9,10 @@ services:
     networks:
       netlab01:
         ipv4_address: ${CHROMIUM_HOST}
+    volumes:
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     command: [chromium-browser, 
       "--headless", 
       "--disable-gpu", 

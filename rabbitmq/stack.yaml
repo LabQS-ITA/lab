@@ -60,22 +60,14 @@ services:
 volumes:
   rabbitmqdata:
     name: rabbitmqdata
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/gpes/VOLUMES/docker/volumes/rabbitmqdata/_data
-      o: bind
+    external: true
   rabbitmqdata01:
     name: rabbitmqdata01
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/gpes/VOLUMES/docker/volumes/rabbitmqdata01/_data
-      o: bind
+    external: true
   rabbitmqdata02:
     name: rabbitmqdata02
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/gpes/VOLUMES/docker/volumes/rabbitmqdata02/_data
-      o: bind
+    external: true
+
+networks:
+  netlab01:
+    external: true

@@ -1,0 +1,190 @@
+volumes:
+
+  certificates:
+    name: certificates
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/certificates/_data
+      o: bind
+
+  dronedata:
+    name: dronedata
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/dronedata/_data
+      o: bind
+
+  giteadata:
+    name: giteadata
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/giteadata/_data
+      o: bind
+
+  jupyterdata:
+    name: jupyterdata
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/jupyterdata/_data
+      o: bind
+
+  mariadata:
+    name: mariadbdata
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/mariadbdata/_data
+      o: bind
+  mariadata01:
+    name: mariadbdata01
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/mariadbdata01/_data
+      o: bind
+  mariadata02:
+    name: mariadbdata02
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/mariadbdata02/_data
+      o: bind
+
+  mongodata:
+    name: mongodata
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/mongodata/_data
+      o: bind
+  mongodata01:
+    name: mongodata01
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/mongodata01/_data
+      o: bind
+  mongodata02:
+    name: mongodata02
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/mongodata02/_data
+      o: bind
+
+  nextclouddata:
+    name: nextclouddata
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/nextclouddata/_data
+      o: bind
+
+  portainerdata:
+    name: portainerdata
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/portainerdata/_data
+      o: bind
+
+  postgresdata:
+    name: postgresdata
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/postgresdata/_data
+      o: bind
+  postgresdata01:
+    name: postgresdata01
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/postgresdata01/_data
+      o: bind
+  postgresdata02:
+    name: postgresdata02
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/postgresdata02/_data
+      o: bind
+  postgresdata03:
+    name: postgresdata03
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/postgresdata03
+      o: bind
+
+  prometheusdata:
+    name: prometheusdata
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/prometheusdata/_data
+      o: bind
+
+  rabbitmqdata:
+    name: rabbitmqdata
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/rabbitmqdata/_data
+      o: bind
+  rabbitmqdata01:
+    name: rabbitmqdata01
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/rabbitmqdata01/_data
+      o: bind
+  rabbitmqdata02:
+    name: rabbitmqdata02
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/rabbitmqdata02/_data
+      o: bind
+
+  redisdata:
+    name: redisdata
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/redisdata/_data
+      o: bind
+  redisdata01:
+    name: redisdata01
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/redisdata01/_data
+      o: bind
+  redisdata02:
+    name: redisdata02
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/redisdata02/_data
+      o: bind
+
+  redminedata:
+    name: redminedata
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/redminedata/_data
+      o: bind
+
+  registrydata:
+    name: registrydata
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/registrydata/_data
+      o: bind

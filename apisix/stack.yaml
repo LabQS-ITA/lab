@@ -14,3 +14,7 @@ services:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
+
+networks:
+  netlab01:
+    external: true

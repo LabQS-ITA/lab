@@ -2,5 +2,3 @@
 set -euo pipefail
 
 docker network create --driver bridge netlab01 --subnet='172.16.0.0/16'
-
-docker volume create -d local -o type=none -o device=/home/gpes/VOLUMES/docker/volumes/certificates/_data -o o=bind certificates

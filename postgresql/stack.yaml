@@ -107,29 +107,17 @@ services:
 volumes:
   postgresdata:
     name: postgresdata
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/gpes/VOLUMES/docker/volumes/postgresdata/_data
-      o: bind
+    external: true
   postgresdata01:
     name: postgresdata01
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/gpes/VOLUMES/docker/volumes/postgresdata01/_data
-      o: bind
+    external: true
   postgresdata02:
     name: postgresdata02
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/gpes/VOLUMES/docker/volumes/postgresdata02/_data
-      o: bind
+    external: true
   postgresdata03:
     name: postgresdata03
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/gpes/VOLUMES/docker/volumes/postgresdata03
-      o: bind
+    external: true
+
+networks:
+  netlab01:
+    external: true

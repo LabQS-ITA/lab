@@ -32,11 +32,11 @@ services:
 volumes:
   nextclouddata:
     name: nextclouddata
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/gpes/VOLUMES/docker/volumes/nextclouddata/_data
-      o: bind
+    external: true
   flualfadata:
     name: flualfadata
+    external: true
+
+networks:
+  netlab01:
     external: true

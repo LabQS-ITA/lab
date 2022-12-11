@@ -1,8 +1,0 @@
-networks:
-  netlab01:
-    external: true
-
-volumes:
-  certificates:
-    name: certificates
-    external: true

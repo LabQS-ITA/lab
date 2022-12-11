@@ -81,22 +81,14 @@ services:
 volumes:
   redisdata:
     name: redisdata
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/gpes/VOLUMES/docker/volumes/redisdata/_data
-      o: bind
+    external: true
   redisdata01:
     name: redisdata01
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/gpes/VOLUMES/docker/volumes/redisdata01/_data
-      o: bind
+    external: true
   redisdata02:
     name: redisdata02
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/gpes/VOLUMES/docker/volumes/redisdata02/_data
-      o: bind
+    external: true
+
+networks:
+  netlab01:
+    external: true

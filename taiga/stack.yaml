@@ -86,3 +86,7 @@ services:
         ipv4_address: ${TAIGA_HOST}
     volumes: *default-volumes
     environment: *default-environment
+
+networks:
+  netlab01:
+    external: true

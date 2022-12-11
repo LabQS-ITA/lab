@@ -18,3 +18,7 @@ services:
       ALLOW_NONE_AUTHENTICATION: 'yes'
       ETCD_ADVERTISE_CLIENT_URLS: 'http://0.0.0.0:2379'
       ETCD_LISTEN_CLIENT_URLS: 'http://0.0.0.0:2379'
+
+networks:
+  netlab01:
+    external: true

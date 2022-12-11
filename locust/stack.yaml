@@ -27,3 +27,7 @@ services:
     command: '--worker --master-host locust'
     depends_on:
       - 'master'
+
+networks:
+  netlab01:
+    external: true

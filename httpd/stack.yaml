@@ -23,3 +23,12 @@ services:
       LAB_DOMAIN: ${LAB_DOMAIN}
       CI_LAB_DOMAIN: ${CI_LAB_DOMAIN}
       CM_LAB_DOMAIN: ${CM_LAB_DOMAIN}
+
+volumes:
+  certificates:
+    name: certificates
+    external: true
+
+networks:
+  netlab01:
+    external: true

@@ -28,3 +28,7 @@ services:
       SEMAPHORE_ADMIN_PASSWORD: ${SVC_PWD}
       SEMAPHORE_ADMIN_NAME: maint
       SEMAPHORE_ADMIN_EMAIL: labqs@ita.br
+
+networks:
+  netlab01:
+    external: true

@@ -84,22 +84,14 @@ services:
 volumes:
   mongodata:
     name: mongodata
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/gpes/VOLUMES/docker/volumes/mongodata/_data
-      o: bind
+    external: true
   mongodata01:
     name: mongodata01
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/gpes/VOLUMES/docker/volumes/mongodata01/_data
-      o: bind
+    external: true
   mongodata02:
     name: mongodata02
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/gpes/VOLUMES/docker/volumes/mongodata02/_data
-      o: bind
+    external: true
+
+networks:
+  netlab01:
+    external: true

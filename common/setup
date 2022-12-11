@@ -86,7 +86,7 @@ fi
 echo 'Certificar que certbot está parado'
 docker stop certbot || true
 
-docker compose -f stack.yaml -f ../common/use.yaml up --detach
+docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
 
 docker stop httpd
 docker start httpd
@@ -111,7 +111,7 @@ if [ $CONFIG_ENV == 'Y' ]; then
     chmod 0600 ./postgres03/config/.pgpass
 fi
 
-docker compose -f stack.yaml -f ../common/use.yaml up --detach
+docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
 
 
 cd ../mongodb
@@ -130,7 +130,7 @@ if [ $CONFIG_ENV == 'Y' ]; then
     chmod 0600 ./mongodb02/config/.mdbpass
 fi
 
-docker compose -f stack.yaml -f ../common/use.yaml up --detach
+docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
 
 
 cd ../mariadb
@@ -154,7 +154,7 @@ if [ $CONFIG_ENV == 'Y' ]; then
     echo 'password = '$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env) >> mariadb02/config/autologin.cnf
 fi
 
-docker compose -f stack.yaml -f ../common/use.yaml up --detach
+docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
 
 
 cd ../redis
@@ -166,19 +166,19 @@ if [ $CONFIG_ENV == 'Y' ]; then
     echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 fi
 
-docker compose -f stack.yaml -f ../common/use.yaml up --detach
+docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
 
 
 cd ../memcached
 echo '* memcached *'
 
-docker compose -f stack.yaml -f ../common/use.yaml up --detach
+docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
 
 
 cd ../etcd
 echo '* Etcd *'
 
-docker compose -f stack.yaml -f ../common/use.yaml up --detach
+docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
 
 
 cd ../rabbitmq
@@ -190,7 +190,7 @@ fi
 
 sed -i 's/@SVC_PWD/'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env)'/g' config/rabbitmng/20-user.conf
 
-docker compose -f stack.yaml -f ../common/use.yaml up --detach
+docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
 
 
 cd ../nextcloud
@@ -202,7 +202,7 @@ if [ $CONFIG_ENV == 'Y' ]; then
     echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
 fi
 
-docker compose -f stack.yaml -f ../common/use.yaml up --detach
+docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
 
 
 if [ $1 == "hom" ]; then
@@ -210,7 +210,7 @@ if [ $1 == "hom" ]; then
     cd ../portainer
     echo '* Portainer *'
 
-    docker compose -f stack.yaml -f ../common/use.yaml up  --detach portainer_agent
+    docker compose -f stack.yaml -f ../common/volumes.yaml up  --detach portainer_agent
 
 else
 
@@ -224,7 +224,7 @@ else
         echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) > .env
     fi
 
-    docker compose -f stack.yaml -f ../common/use.yaml up --detach
+    docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
 
 
     cd ../drone
@@ -244,7 +244,7 @@ else
         echo 'SVC_PWD='$(openssl rand -hex 16) >> .env
     fi
 
-    docker compose -f stack.yaml -f ../common/use.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans
+    docker compose -f stack.yaml -f ../common/volumes.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans
 
 
     cd ../cherrybomb
@@ -262,7 +262,7 @@ else
     fi
 
     docker build --tag labqs/jupyterlab --file Dockerfile.jupyterlab --rm .
-    docker compose -f stack.yaml -f ../common/use.yaml up --build --detach jupyterhub
+    docker compose -f stack.yaml -f ../common/volumes.yaml up --build --detach jupyterhub
     
 
     cd ../semaphore
@@ -273,7 +273,7 @@ else
         echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
     fi
 
-    docker compose -f stack.yaml -f ../common/use.yaml up --build --detach
+    docker compose -f stack.yaml -f ../common/volumes.yaml up --build --detach
 
 
     cd ../registry
@@ -288,13 +288,13 @@ else
 
     sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' config/config.yml
 
-    docker compose -f stack.yaml -f ../common/use.yaml up --detach
+    docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
 
 
     cd ../locust
     echo '* Locust *'
 
-    # docker compose -f stack.yaml -f ../common/use.yaml up --scale worker=2 --detach --remove-orphans
+    # docker compose -f stack.yaml -f ../common/volumes.yaml up --scale worker=2 --detach --remove-orphans
     # docker stop $(docker ps -qa -f 'name=locust*')
 
 
@@ -305,28 +305,28 @@ else
         echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) > .env
     fi
 
-    docker compose -f stack.yaml -f ../common/use.yaml up --detach
+    docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
 
 
     cd ../prometheus
     echo '* Prometheus *'
 
-    docker compose -f stack.yaml -f ../common/use.yaml up --detach
+    docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
 
 
     cd ../grafana
     echo '* Grafana *'
 
-    docker compose -f stack.yaml -f ../common/use.yaml up --detach
+    docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
     
 
     cd ../portainer
     echo '* Portainer *'
 
     if [ $1 == "dev" ]; then
-        docker compose -f stack.yaml -f ../common/use.yaml up --detach
+        docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
     else
-        docker compose -f stack.yaml -f ../common/use.yaml up  --detach portainer_agent
+        docker compose -f stack.yaml -f ../common/volumes.yaml up  --detach portainer_agent
     fi
 
 
@@ -340,6 +340,6 @@ else
         echo 'LAB_DOMAIN='$LAB_DOMAIN >> .env
     fi
 
-    docker compose -f stack.yaml -f ../common/use.yaml up --detach
+    docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
 
 fi

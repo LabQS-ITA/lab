@@ -17,7 +17,7 @@ services:
         ipv4_address: ${MONGODB_HOST}
     volumes:
       - mongodata:/data/db:rw
-      - $PWD/mongodb/config/:/data/configdb:ro
+      - $PWD/mongodb/config/:/data/configdb
       - $PWD/mongodb/init:/docker-entrypoint-initdb.d:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
@@ -44,7 +44,7 @@ services:
         ipv4_address: ${MONGODB_HOST01}
     volumes:
       - mongodata01:/data/db:rw
-      - $PWD/mongodb01/config/:/data/configdb:ro
+      - $PWD/mongodb01/config/:/data/configdb
       - $PWD/mongodb01/init:/docker-entrypoint-initdb.d:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
@@ -71,7 +71,7 @@ services:
         ipv4_address: ${MONGODB_HOST02}
     volumes:
       - mongodata02:/data/db:rw
-      - $PWD/mongodb02/config/:/data/configdb:ro
+      - $PWD/mongodb02/config/:/data/configdb
       - $PWD/mongodb02/init:/docker-entrypoint-initdb.d:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

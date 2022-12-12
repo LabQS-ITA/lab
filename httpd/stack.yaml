@@ -20,6 +20,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
+      DOCKER_SCAN_SUGGEST: false
       LAB_DOMAIN: ${LAB_DOMAIN}
       CI_LAB_DOMAIN: ${CI_LAB_DOMAIN}
       CM_LAB_DOMAIN: ${CM_LAB_DOMAIN}

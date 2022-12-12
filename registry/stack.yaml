@@ -36,10 +36,11 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
-      - REGISTRY_TITLE=LabQS Docker Registry
-      - NGINX_PROXY_PASS_URL=http://${REGISTRY_HOST}:5000
-      - SINGLE_REGISTRY=true
-      - DELETE_IMAGES=true
+      DOCKER_SCAN_SUGGEST: false
+      REGISTRY_TITLE: LabQS Docker Registry
+      NGINX_PROXY_PASS_URL: http://${REGISTRY_HOST}:5000
+      SINGLE_REGISTRY: true
+      DELETE_IMAGES: true
     depends_on:
       - registrydb
 

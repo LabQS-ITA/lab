@@ -16,6 +16,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
+      DOCKER_SCAN_SUGGEST: false
       DRONE_AGENTS_ENABLED: 'true'
       DRONE_LOGS_DEBUG: 'true'
       DRONE_LOGS_TRACE: 'true'
@@ -46,6 +47,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
+      DOCKER_SCAN_SUGGEST: false
       DRONE_RPC_PROTO: https
       DRONE_RPC_HOST: ${CI_LAB_DOMAIN}
       DRONE_RPC_SECRET: ${SVC_PWD}
@@ -70,6 +72,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
+      DOCKER_SCAN_SUGGEST: false
       DRONE_RPC_PROTO: https
       DRONE_RPC_HOST: ${CI_LAB_DOMAIN}
       DRONE_RPC_SECRET: ${SVC_PWD}

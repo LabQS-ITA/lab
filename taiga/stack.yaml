@@ -1,5 +1,6 @@
 x-environment:
   &default-environment
+  DOCKER_SCAN_SUGGEST: false
   POSTGRES_DB: taiga
   POSTGRES_USER: taiga
   POSTGRES_PASSWORD: ${POSTGRES_PWD}

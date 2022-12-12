@@ -22,6 +22,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
+      DOCKER_SCAN_SUGGEST: false
       REDIS_REPLICATION_MODE: master
       REDISCLI_AUTH: ${SVC_PWD}
     command: ["redis-server", "--requirepass", "${SVC_PWD}", "--appendonly", "yes"]
@@ -48,6 +49,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
+      DOCKER_SCAN_SUGGEST: false
       REDIS_REPLICATION_MODE: master
       REDISCLI_AUTH: ${SVC_PWD_01}
     command: ["redis-server", "--requirepass", "${SVC_PWD_01}", "--appendonly", "yes"]
@@ -74,6 +76,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
+      DOCKER_SCAN_SUGGEST: false
       REDIS_REPLICATION_MODE: master
       REDISCLI_AUTH: ${SVC_PWD_02}
     command: ["redis-server", "--requirepass", "${SVC_PWD_02}", "--appendonly", "yes"]

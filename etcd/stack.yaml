@@ -14,6 +14,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
+      DOCKER_SCAN_SUGGEST: false
       ETCD_ENABLE_V2: 'true'
       ALLOW_NONE_AUTHENTICATION: 'yes'
       ETCD_ADVERTISE_CLIENT_URLS: 'http://0.0.0.0:2379'

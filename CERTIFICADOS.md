@@ -110,3 +110,5 @@ networks:
   netlab01:
     external: true
 ```
+
+Após a recriação do certificado re-iniciar o serviço **HTTPD* com o _script_ `setup`.

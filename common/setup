@@ -133,28 +133,28 @@ docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
 # docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
 
 
-cd ../mariadb
-echo '* MariaDB *'
+# cd ../mariadb
+# echo '* MariaDB *'
 
-if [ $CONFIG_ENV == 'Y' ]; then
-    echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-    echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
-    echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
+# if [ $CONFIG_ENV == 'Y' ]; then
+#     echo 'SVC_PWD='$(openssl rand -hex 8) > .env
+#     echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
+#     echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 
-    echo '[client]' > mariadb/config/autologin.cnf
-    echo 'user = root' >> mariadb/config/autologin.cnf
-    echo 'password = '$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env) >> mariadb/config/autologin.cnf
+#     echo '[client]' > mariadb/config/autologin.cnf
+#     echo 'user = root' >> mariadb/config/autologin.cnf
+#     echo 'password = '$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env) >> mariadb/config/autologin.cnf
 
-    echo '[client]' > mariadb01/config/autologin.cnf
-    echo 'user = root' >> mariadb01/config/autologin.cnf
-    echo 'password = '$(awk -F'=' '$1 =="SVC_PWD_01" {print $2}' .env) >> mariadb01/config/autologin.cnf
+#     echo '[client]' > mariadb01/config/autologin.cnf
+#     echo 'user = root' >> mariadb01/config/autologin.cnf
+#     echo 'password = '$(awk -F'=' '$1 =="SVC_PWD_01" {print $2}' .env) >> mariadb01/config/autologin.cnf
 
-    echo '[client]' > mariadb02/config/autologin.cnf
-    echo 'user = root' >> mariadb02/config/autologin.cnf
-    echo 'password = '$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env) >> mariadb02/config/autologin.cnf
-fi
+#     echo '[client]' > mariadb02/config/autologin.cnf
+#     echo 'user = root' >> mariadb02/config/autologin.cnf
+#     echo 'password = '$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env) >> mariadb02/config/autologin.cnf
+# fi
 
-docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
+# docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
 
 
 cd ../redis

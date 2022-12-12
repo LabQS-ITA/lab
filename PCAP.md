@@ -8,6 +8,25 @@ Iniciar a captura de tráfego de rede na aplicação e iniciar os textes via _br
 docker exec -it flualfagovbr tcpdump -i any -w /dist/flualfa/dump-$(date +%F-%H%M).pcap
 ```
 
+Pode ser necessário também capturar o tráfego no servidor **HTTP**.
+
+```sh
+docker exec -it httpd tcpdump -i any -w /usr/local/apache2/dump-$(date +%F-%H%M).pcap
+```
+
+> **Obs**.: o servidor **HTTP** não compartilha pasta nem possui o utilitário **tcpdump** instalado
+>
+> ```sh
+> apt-get update
+> apt-get install tcpdump -y
+> ```
+>
+> Após a captura o arquivo pode ser copiado para o servidor
+>
+> ```sh
+> docker cp httpd:/usr/local/apache2/dump-2022-12-12-1428.pcap /export/dist/flualfa
+> ```
+
 Ao final do teste, interromper a captura e obter o arquivo gerado remotamente na pasta da aplicação vi *SFTP*.
 
 Utilizando a sua ferramenta de análise predileta, analisar o tráfego gerado pelo teste:

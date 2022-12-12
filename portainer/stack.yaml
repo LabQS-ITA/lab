@@ -16,7 +16,6 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
-      DOCKER_SCAN_SUGGEST: false
 
   portainer_agent:
     container_name: portainer_agent
@@ -30,8 +29,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/lib/docker/volumes:/var/lib/docker/volumes
-    environment:
-      DOCKER_SCAN_SUGGEST: false
 
 volumes:
   portainerdata:

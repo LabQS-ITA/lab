@@ -23,7 +23,6 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
-      DOCKER_SCAN_SUGGEST: false
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: ${SVC_PWD}
     command: --config /etc/mongo/custom.conf
@@ -51,7 +50,6 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
-      DOCKER_SCAN_SUGGEST: false
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: ${SVC_PWD_01}
     command: --config /etc/mongo/custom.conf
@@ -79,7 +77,6 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
-      DOCKER_SCAN_SUGGEST: false
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: ${SVC_PWD_02}
     command: --config /etc/mongo/custom.conf

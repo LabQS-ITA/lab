@@ -17,7 +17,6 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
-      DOCKER_SCAN_SUGGEST: false
       REDIS_HOST: redis
       REDIS_HOST_PASSWORD: ${REDIS_PWD}
       POSTGRES_DB: nextcloud

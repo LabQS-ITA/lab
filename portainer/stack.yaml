@@ -15,7 +15,6 @@ services:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-    environment:
 
   portainer_agent:
     container_name: portainer_agent

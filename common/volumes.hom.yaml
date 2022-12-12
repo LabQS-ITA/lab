@@ -1,0 +1,70 @@
+volumes:
+
+  certificates:
+    name: certificates
+    driver: local
+
+  mariadata:
+    name: mariadbdata
+    driver: local
+  mariadata01:
+    name: mariadbdata01
+    driver: local
+  mariadata02:
+    name: mariadbdata02
+    driver: local
+
+  mongodata:
+    name: mongodata
+    driver: local
+  mongodata01:
+    name: mongodata01
+    driver: local
+  mongodata02:
+    name: mongodata02
+    driver: local
+
+  nextclouddata:
+    name: nextclouddata
+    driver: local
+
+  postgresdata:
+    name: postgresdata
+    driver: local
+  postgresdata01:
+    name: postgresdata01
+    driver: local
+  postgresdata02:
+    name: postgresdata02
+    driver: local
+  postgresdata03:
+    name: postgresdata03
+    driver: local
+
+  prometheusdata:
+    name: prometheusdata
+    driver: local
+
+  rabbitmqdata:
+    name: rabbitmqdata
+    driver: local
+  rabbitmqdata01:
+    name: rabbitmqdata01
+    driver: local
+  rabbitmqdata02:
+    name: rabbitmqdata02
+    driver: local
+
+  redisdata:
+    name: redisdata
+    driver: local
+  redisdata01:
+    name: redisdata01
+    driver: local
+  redisdata02:
+    name: redisdata02
+    driver: local
+
+  redminedata:
+    name: redminedata
+    driver: local

@@ -114,23 +114,23 @@ fi
 docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
 
 
-cd ../mongodb
-echo '* MongoDB *'
+# cd ../mongodb
+# echo '* MongoDB *'
 
-if [ $CONFIG_ENV == 'Y' ]; then
-    echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-    echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
-    echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
+# if [ $CONFIG_ENV == 'Y' ]; then
+#     echo 'SVC_PWD='$(openssl rand -hex 8) > .env
+#     echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
+#     echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
 
-    echo 'uri: "mongodb://root:'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env)'@localhost:27017"' > ./mongodb/config/.mdbpass
-    chmod 0600 ./mongodb/config/.mdbpass
-    echo 'uri: "mongodb://root:'$(awk -F'=' '$1 =="SVC_PWD_01" {print $2}' .env)'@localhost:27017"' > ./mongodb01/config/.mdbpass
-    chmod 0600 ./mongodb01/config/.mdbpass
-    echo 'uri: "mongodb://root:'$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env)'@localhost:27017"' > ./mongodb02/config/.mdbpass
-    chmod 0600 ./mongodb02/config/.mdbpass
-fi
+#     echo 'uri: "mongodb://root:'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env)'@localhost:27017"' > ./mongodb/config/.mdbpass
+#     chmod 0600 ./mongodb/config/.mdbpass
+#     echo 'uri: "mongodb://root:'$(awk -F'=' '$1 =="SVC_PWD_01" {print $2}' .env)'@localhost:27017"' > ./mongodb01/config/.mdbpass
+#     chmod 0600 ./mongodb01/config/.mdbpass
+#     echo 'uri: "mongodb://root:'$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env)'@localhost:27017"' > ./mongodb02/config/.mdbpass
+#     chmod 0600 ./mongodb02/config/.mdbpass
+# fi
 
-docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
+# docker compose -f stack.yaml -f ../common/volumes.yaml up --detach
 
 
 cd ../mariadb

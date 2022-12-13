@@ -169,28 +169,28 @@ fi
 docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
 
 
-cd ../memcached
-echo '* memcached *'
+# cd ../memcached
+# echo '* memcached *'
 
-docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
-
-
-cd ../etcd
-echo '* Etcd *'
-
-docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+# docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
 
 
-cd ../rabbitmq
-echo '* RabbitMQ *'
+# cd ../etcd
+# echo '* Etcd *'
 
-if [ $CONFIG_ENV == 'Y' ]; then
-     echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-fi
+# docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
 
-sed -i 's/@SVC_PWD/'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env)'/g' config/rabbitmng/20-user.conf
 
-docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+# cd ../rabbitmq
+# echo '* RabbitMQ *'
+
+# if [ $CONFIG_ENV == 'Y' ]; then
+#      echo 'SVC_PWD='$(openssl rand -hex 8) > .env
+# fi
+
+# sed -i 's/@SVC_PWD/'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env)'/g' config/rabbitmng/20-user.conf
+
+# docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
 
 
 cd ../nextcloud
@@ -247,10 +247,10 @@ else
     docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans
 
 
-    cd ../cherrybomb
-    echo '* Cherrybomb *'
+    # cd ../cherrybomb
+    # echo '* Cherrybomb *'
 
-    docker build --tag labqs/cherrybomb --rm .
+    # docker build --tag labqs/cherrybomb --rm .
 
 
     cd ../jupyter
@@ -276,19 +276,19 @@ else
     docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --build --detach
 
 
-    cd ../registry
-    echo '* registry *'
+    # cd ../registry
+    # echo '* registry *'
 
-    if [ $CONFIG_ENV == 'Y' ]; then
-        echo 'REGISTRY_HTTP_SECRET='$(openssl rand -hex 8) > .env
-        echo 'REDIS_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../redis/.env) >> .env
+    # if [ $CONFIG_ENV == 'Y' ]; then
+    #     echo 'REGISTRY_HTTP_SECRET='$(openssl rand -hex 8) > .env
+    #     echo 'REDIS_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../redis/.env) >> .env
 
-        docker run --rm --entrypoint htpasswd httpd -Bbn maint $(awk -F'=' '$1 =="REGISTRY_HTTP_SECRET" {print $2}' ./.env) > .htpasswd
-    fi
+    #     docker run --rm --entrypoint htpasswd httpd -Bbn maint $(awk -F'=' '$1 =="REGISTRY_HTTP_SECRET" {print $2}' ./.env) > .htpasswd
+    # fi
 
-    sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' config/config.yml
+    # sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' config/config.yml
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    # docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
 
 
     # cd ../locust
@@ -308,16 +308,16 @@ else
     docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
 
 
-    cd ../prometheus
-    echo '* Prometheus *'
+    # cd ../prometheus
+    # echo '* Prometheus *'
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    # docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
 
 
-    cd ../grafana
-    echo '* Grafana *'
+    # cd ../grafana
+    # echo '* Grafana *'
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    # docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
     
 
     cd ../portainer
@@ -330,16 +330,16 @@ else
     fi
 
 
-    cd ../taiga
-    echo '* Taiga *'
+    # cd ../taiga
+    # echo '* Taiga *'
 
-    if [ $CONFIG_ENV == 'Y' ]; then
-        echo 'SVC_PWD='$(openssl rand -hex 64) > .env
-        echo 'RABBITMQ_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../rabbitmq/.env) >> .env
-        echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD_03" {print $2}' ../postgresql/.env) >> .env
-        echo 'LAB_DOMAIN='$LAB_DOMAIN >> .env
-    fi
+    # if [ $CONFIG_ENV == 'Y' ]; then
+    #     echo 'SVC_PWD='$(openssl rand -hex 64) > .env
+    #     echo 'RABBITMQ_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../rabbitmq/.env) >> .env
+    #     echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD_03" {print $2}' ../postgresql/.env) >> .env
+    #     echo 'LAB_DOMAIN='$LAB_DOMAIN >> .env
+    # fi
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    # docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
 
 fi

@@ -325,16 +325,16 @@ else
     docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
 
 
-    # cd ../prometheus
-    # echo '* Prometheus *'
+    cd ../prometheus
+    echo '* Prometheus *'
 
-    # docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
 
 
-    # cd ../grafana
-    # echo '* Grafana *'
+    cd ../grafana
+    echo '* Grafana *'
 
-    # docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
     
 
     cd ../portainer

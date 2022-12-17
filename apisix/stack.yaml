@@ -6,6 +6,7 @@ services:
     restart: unless-stopped
     ports:
       - '9080:9080'
+      - '9180:9180'
     networks:
       netlab01:
         ipv4_address: ${APISIX_HOST}

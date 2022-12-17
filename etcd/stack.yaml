@@ -6,6 +6,7 @@ services:
     restart: unless-stopped
     ports:
       - '2379:2379'
+      - '2380:2380'
     networks:
       netlab01:
         ipv4_address: ${ETCD_HOST}

@@ -205,12 +205,6 @@ fi
 docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
 
 
-cd ../apisix
-echo '* Apisix *'
-
-docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
-
-
 cd ../hasura
 echo '* Hasura *'
 

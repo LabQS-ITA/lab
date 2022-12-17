@@ -4,11 +4,14 @@ conf:
   allow_list:
     - 172.16.0.0/16
   etcd:
-    host:
-      - 'http://etcd:2379'
-    prefix: '/apisix'
-    timeout: 30
-  log:
+    endpoints:
+      - etcd2379
+    mtls:
+      key_file: ""
+      cert_file: ""
+      ca_file: ""
+    prefix: /apisix
+   log:
     error_log:
       level: warn
       file_path:

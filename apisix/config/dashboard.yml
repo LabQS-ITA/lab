@@ -5,7 +5,7 @@ conf:
     - 172.16.0.0/16
   etcd:
     endpoints:
-      - etcd2379
+      - etcd:2379
     prefix: /apisix
    log:
     error_log:

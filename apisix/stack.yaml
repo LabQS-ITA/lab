@@ -20,7 +20,7 @@ services:
     image: apache/apisix-dashboard:lates
     restart: unless-stopped
     ports:
-      '9000:9000'
+      - '9000:9000'
     networks:
       netlab01:
         ipv4_address: ${APISIX_DASHBOARD_HOST}

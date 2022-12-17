@@ -6,6 +6,7 @@ conf:
   etcd:
     endpoints:
       - etcd:2379
+    prefix: /apisix
    log:
     error_log:
       level: warn

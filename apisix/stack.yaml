@@ -10,7 +10,7 @@ services:
       netlab01:
         ipv4_address: ${APISIX_HOST}
     volumes:
-      - $PWD/apisix/config/config.yml:/usr/local/apisix/conf/config.yaml:ro
+      - $PWD/config/config.yml:/usr/local/apisix/conf/config.yaml:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro

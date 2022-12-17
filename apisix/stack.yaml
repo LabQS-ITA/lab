@@ -3,14 +3,29 @@ services:
   apisix:
     container_name: apisix
     image: apache/apisix:2.15.0-alpine
-    restart: always
+    restart: unless-stopped
     ports:
       - '9080:9080'
     networks:
       netlab01:
         ipv4_address: ${APISIX_HOST}
     volumes:
-      - $PWD/config/config.yml:/usr/local/apisix/conf/config.yaml:ro
+      - $PWD/config/apisix.yml:/usr/local/apisix/conf/config.yaml:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+  dashboard:
+    container_name: dashboard
+    image: apache/apisix-dashboard:lates
+    restart: unless-stopped
+    ports:
+      '9000:9000'
+    networks:
+      netlab01:
+        ipv4_address: ${APISIX_DASHBOARD_HOST}
+    volumes:
+      # - $PWD/config/dashboard.yml:/usr/local/apisix-dashboard/conf/conf.yaml:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro

@@ -31,8 +31,8 @@ conf:
   #   key:  "/tmp/cert/example.key"  # Path of your SSL key.
 
   allow_list:             # If we don't set any IP list, then any IP access is allowed by default.
-    - 127.0.0.1           # The rules are checked in sequence until the first match is found.
-    - ::1                 # In this example, access is allowed only for IPv4 network 127.0.0.1, and for IPv6 network ::1.
+    - 172.16.0.0/16           # The rules are checked in sequence until the first match is found.
+    # - ::1                 # In this example, access is allowed only for IPv4 network 127.0.0.1, and for IPv6 network ::1.
                           # It also support CIDR like 192.168.1.0/24 and 2001:0db8::/32
   etcd:
     endpoints:            # supports defining multiple etcd host addresses for an etcd cluster

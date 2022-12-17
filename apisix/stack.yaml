@@ -25,7 +25,7 @@ services:
       netlab01:
         ipv4_address: ${APISIX_DASHBOARD_HOST}
     volumes:
-      # - $PWD/config/dashboard.yml:/usr/local/apisix-dashboard/conf/conf.yaml:ro
+      - $PWD/config/dashboard.yml:/usr/local/apisix-dashboard/conf/conf.yaml:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro

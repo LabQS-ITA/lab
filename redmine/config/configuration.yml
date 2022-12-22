@@ -20,7 +20,7 @@ default:
       authentication: :login
       domain: "ita.br"
       user_name: "labqs@ita.br"
-      password: "C0r0n@2022"
+      password: "C0r0n@2023"
 
   # ==== Simple SMTP server at localhost
   #

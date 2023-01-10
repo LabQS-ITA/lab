@@ -48,6 +48,10 @@ volumes:
     name: portainerdata
     driver: local
 
+  portainerdata:
+    name: portainerdata
+    driver: local
+
   postgresdata:
     name: postgresdata
     driver: local

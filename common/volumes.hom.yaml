@@ -32,6 +32,10 @@ volumes:
     name: nextclouddata
     driver: local
 
+  portainerdata:
+    name: portainerdata
+    driver: local
+
   postgresdata:
     name: postgresdata
     driver: local

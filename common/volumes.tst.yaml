@@ -1,5 +1,9 @@
 volumes:
 
+  flualfadata:
+    name: flualfadata
+    driver: local
+
   certificates:
     name: certificates
     driver: local

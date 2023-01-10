@@ -1,5 +1,13 @@
 volumes:
 
+  flualfadata:
+    name: flualfadata
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/flualfadata/_data
+      o: bind
+
   certificates:
     name: certificates
     driver: local

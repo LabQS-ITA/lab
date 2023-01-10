@@ -221,7 +221,7 @@ if [ $1 == "hom" ]; then
     cd ../portainer
     echo '* Portainer *'
 
-    docker compose -f stack.yaml -f up  --detach portainer_agent
+    docker compose -f stack.yaml up  --detach portainer_agent
 
 else
 

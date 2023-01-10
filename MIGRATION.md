@@ -113,7 +113,6 @@ Uma vez criados os serviços é necessário mapear as portas do servidor host pa
 sudo iptables -t nat -A PREROUTING -i enp2s0f0 -p tcp -m tcp --dport 80 -j DNAT --to-destination 172.31.100.1:80
 sudo iptables -t nat -A PREROUTING -i enp2s0f0 -p tcp -m tcp --dport 443 -j DNAT --to-destination 172.31.100.1:443
 sudo iptables-save | sudo tee /etc/iptables/rules.v4
-sudo ip6tables-save | sudo tee /etc/iptables/rules.v6
 ```
 
 ### Migrar certificados

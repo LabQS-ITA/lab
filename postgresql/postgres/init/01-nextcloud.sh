@@ -5,6 +5,7 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-E
     CREATE USER nextcloud;
     CREATE DATABASE nextcloud;
     GRANT ALL PRIVILEGES ON DATABASE nextcloud TO nextcloud;
+    GRANT ALL ON SCHEMA public TO nextcloud;
     ALTER USER nextcloud SET timezone='America/Sao_Paulo';
 EOSQL
 

@@ -2,7 +2,7 @@ services:
 
   postgres:
     container_name: postgres
-    image: postgres
+    image: postgres:14
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "sh -c 'pg_isready -U postgres -d postgres'"]
@@ -28,7 +28,7 @@ services:
 
   postgres01:
     container_name: postgres01
-    image: postgres
+    image: postgres:14
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "sh -c 'pg_isready -U postgres -d postgres'"]
@@ -54,7 +54,7 @@ services:
 
   postgres02:
     container_name: postgres02
-    image: postgres
+    image: postgres:14
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "sh -c 'pg_isready -U postgres -d postgres'"]
@@ -80,7 +80,7 @@ services:
 
   postgres03:
     container_name: postgres03
-    image: postgres:12.13
+    image: postgres:14:12.13
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "sh -c 'pg_isready -U postgres -d postgres'"]

@@ -45,7 +45,7 @@ if [ $# -eq 2 ]; then
         read -p "Confirme [S/N]: " -n1 CONFIG_OPT
         CONFIG_OPT=${CONFIG_OPT:-N}
         if [[ $CONFIG_OPT =~ ^[Ss]$ ]]; then
-            echo 'Todos os ambientes serão configurados'
+            echo '\nTodos os ambientes serão configurados'
             CONFIG_ENV="Y"
         fi
     else

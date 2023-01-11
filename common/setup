@@ -83,6 +83,23 @@ if [ $1 == "hom" ]; then
 
 fi
 
+if [ "$1" == "tst" ]; then
+
+    # Servidor do lab
+    sed -i 's/@LAB_SERVICE/Teste/g' ../httpd/panel/static/index.html
+    
+elif [ "$1" == "dev" ]; then
+
+    # Servidores de desenvolvimento e testes
+    sed -i 's/@LAB_SERVICE/Desenvolvimento/g' ../httpd/panel/static/index.html
+    
+elif [ "$1" == "hom" ]; then
+
+    # Servidores de homologação
+    sed -i 's/@LAB_SERVICE/Homologação/g' ../httpd/panel/static/index.html
+    
+fi
+
 echo 'Certificar que certbot está parado'
 docker stop certbot || true
 

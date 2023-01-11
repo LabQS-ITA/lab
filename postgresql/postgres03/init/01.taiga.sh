@@ -5,7 +5,7 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-E
     CREATE USER taiga;
     CREATE DATABASE taiga;
     GRANT ALL PRIVILEGES ON DATABASE taiga TO taiga;
-    GRANT ALL ON SCHEMA public TO taiga;
+    GRANT ALL PRIVILEGES ON SCHEMA public TO taiga;
     ALTER USER taiga SET timezone='America/Sao_Paulo';
 EOSQL
 

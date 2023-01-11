@@ -4,8 +4,7 @@ set -e
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
     CREATE USER semaphore;
     CREATE DATABASE semaphore;
-    GRANT ALL PRIVILEGES ON DATABASE semaphore TO semaphore;
-    GRANT ALL PRIVILEGES ON SCHEMA public TO semaphore;
+    ALTER DATABASE semaphore OWNER TO semaphore;
     ALTER USER semaphore SET timezone='America/Sao_Paulo';
 EOSQL
 

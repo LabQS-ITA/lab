@@ -4,8 +4,7 @@ set -e
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
     CREATE USER redmine;
     CREATE DATABASE redmine;
-    GRANT ALL PRIVILEGES ON DATABASE redmine TO redmine;
-    GRANT ALL PRIVILEGES ON SCHEMA public TO redmine;
+    ALTER DATABASE redmine OWNER TO redmine;
     ALTER USER redmine SET timezone='America/Sao_Paulo';
 EOSQL
 

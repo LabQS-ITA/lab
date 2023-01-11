@@ -4,8 +4,7 @@ set -e
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
     CREATE USER gitea;
     CREATE DATABASE gitea;
-    GRANT ALL PRIVILEGES ON DATABASE gitea TO gitea;
-    GRANT ALL PRIVILEGES ON SCHEMA public TO gitea;
+    ALTER DATABASE gitea OWNER TO gitea;
     ALTER USER gitea SET timezone='America/Sao_Paulo';
 EOSQL
 

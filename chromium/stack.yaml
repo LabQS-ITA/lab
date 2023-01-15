@@ -3,8 +3,8 @@ services:
   chromium:
     container_name: chromium
     environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
+      - PUID
+      - PGID
     build:
       context: .
       dockerfile: Dockerfile

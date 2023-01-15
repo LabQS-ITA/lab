@@ -275,12 +275,6 @@ else
     docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans
 
 
-    # cd ../cherrybomb
-    # echo '* Cherrybomb *'
-
-    # docker build --tag labqs/cherrybomb --rm .
-
-
     cd ../jupyter
     echo '* Jupyter Notebook *'
 

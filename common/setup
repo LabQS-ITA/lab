@@ -242,6 +242,12 @@ if [ $1 == "hom" ]; then
 
 else
 
+    cd ../chromium
+    echo '* Chromium *'
+
+    docker compose -f stack.yaml up --detach
+    
+
     cd ../gitea
     echo '* Gitea *'
 

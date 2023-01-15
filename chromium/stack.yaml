@@ -2,7 +2,7 @@ services:
 
   chromium:
     container_name: chromium
-    image: zenika/alpine-chrome:latest
+    image: labqs/chromium:latest
     restart: unless-stopped
     ports:
       - '9222:9222'

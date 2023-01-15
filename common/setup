@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+function setuserenv() {
+
+    echo 'PUID='$(id -u) > .env
+    echo 'PGID='$(id -g) >> .env
+
+}
 
 if [[ $# -ne 1 && $# -ne 2 ]]; then
 
@@ -63,9 +69,6 @@ else
 fi
 
 source ./config
-
-echo 'PUID='$(id -u) > .env.user
-echo 'PGID='$(id -g) >> .env.user
 
 echo "Registrar domínios $(tput setaf 1)"$LAB_DOMAIN"$(tput sgr0)"
 
@@ -248,6 +251,8 @@ else
     cd ../chromium
     echo '* Chromium *'
 
+    setuserenv
+    
     docker compose -f stack.yaml build
 
 

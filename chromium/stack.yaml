@@ -16,15 +16,16 @@ services:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-    command: [chromium-browser, 
-      "--headless", 
-      "--disable-gpu", 
-      "--no-sandbox", 
-      "--remote-debugging-address=0.0.0.0", 
-      "--remote-debugging-port=9222"]
+    command: 
+      - chromium-browser
+      - "--headless"
+      - "--disable-gpu"
+      - "--no-sandbox"
+      - "--remote-debugging-address=0.0.0.0"
+      - "--remote-debugging-port=9222"
     environment:
-      - PUID=${HOST_UID}
-      - PGID=${HOST_GID}
+      - PUID=1005
+      - PGID=1005
 
 networks:
   netlab01:

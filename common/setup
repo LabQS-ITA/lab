@@ -243,8 +243,6 @@ else
 
     cd ../chromium
     echo '* Chromium *'
-
-    echo 'User '$PUID':'$PGID
     
     docker compose -f stack.yaml build
 

@@ -9,8 +9,11 @@ RUN apk upgrade --no-cache --available \
       --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing \
       font-wqy-zenhei
 
-RUN mkdir -p /usr/src/app
+RUN mkdir -p /usr/src/app \
+    && adduser -D chrome \
+    && chown -R chrome:chrome /usr/src/app
 
+USER chrome
 WORKDIR /usr/src/app
 
 ENV CHROME_BIN=/usr/bin/chromium-browser \

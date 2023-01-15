@@ -248,7 +248,7 @@ else
     cd ../chromium
     echo '* Chromium *'
 
-    docker compose --env-file ../common/.env.user -f stack.yaml build
+    docker compose -f stack.yaml build
 
 
     cd ../gitea

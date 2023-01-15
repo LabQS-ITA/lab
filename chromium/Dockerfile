@@ -9,7 +9,7 @@ RUN apk upgrade --no-cache --available \
       --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing \
       font-wqy-zenhei
 
-RUN mkdir -p /var/run/dbus/ \
+RUN mkdir -p /var/run/dbus/system_bus_socket \
     && mkdir -p /usr/src/app \
     && adduser -D chrome \
     && chown -R chrome:chrome /usr/src/app

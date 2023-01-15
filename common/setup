@@ -245,7 +245,7 @@ else
     cd ../chromium
     echo '* Chromium *'
 
-    docker compose -f stack.yaml up --build --detach
+    docker compose -f stack.yaml up --build
 
 
     cd ../gitea

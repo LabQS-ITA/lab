@@ -69,6 +69,3 @@ export TAIGAEVENTS_HOST=172.16.24.203
 export TAIGAPROTECTED_HOST=172.16.24.204
 
 export CHROMIUM_HOST=172.16.25.200
-
-export PUID=$(id -u)
-export PGID=$(id -g)

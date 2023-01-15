@@ -5,8 +5,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      target: chromiumbase
-      target: chromium
     image: labqs/chromium:latest
     restart: unless-stopped
     ports:

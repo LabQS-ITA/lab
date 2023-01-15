@@ -245,7 +245,7 @@ else
     cd ../chromium
     echo '* Chromium *'
 
-    docker compose -u $(id -u):$(id -g) -f stack.yaml build
+    docker compose -f stack.yaml build
 
 
     cd ../gitea

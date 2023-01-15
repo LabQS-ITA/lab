@@ -64,6 +64,9 @@ fi
 
 source ./config
 
+echo 'PUID=$(id -u)' > .env.user
+echo 'PGID=$(id -g)' >> .env.user
+
 echo "Registrar domínios $(tput setaf 1)"$LAB_DOMAIN"$(tput sgr0)"
 
 sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
@@ -245,7 +248,7 @@ else
     cd ../chromium
     echo '* Chromium *'
 
-    docker compose -f stack.yaml build
+    docker compose --env-file ../common/.env.user -f stack.yaml build
 
 
     cd ../gitea

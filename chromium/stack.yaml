@@ -2,6 +2,9 @@ services:
 
   chromium:
     container_name: chromium
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
     build:
       context: .
       dockerfile: Dockerfile
@@ -23,9 +26,6 @@ services:
       - "--no-sandbox"
       - "--remote-debugging-address=0.0.0.0"
       - "--remote-debugging-port=9222"
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
 
 networks:
   netlab01:

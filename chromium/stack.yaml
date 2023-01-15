@@ -24,8 +24,8 @@ services:
       - "--remote-debugging-address=0.0.0.0"
       - "--remote-debugging-port=9222"
     environment:
-      - PUID=1005
-      - PGID=1005
+      - PUID
+      - PGID
 
 networks:
   netlab01:

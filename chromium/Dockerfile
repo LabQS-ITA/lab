@@ -1,4 +1,4 @@
-FROM alpine:3.17
+FROM alpine:3.17 as chromiumbase
 
 # Installs latest Chromium package.
 RUN apk upgrade --no-cache --available \

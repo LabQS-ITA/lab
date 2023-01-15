@@ -2,6 +2,10 @@ services:
 
   chromium:
     container_name: chromium
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: chromium
     image: labqs/chromium:latest
     restart: unless-stopped
     ports:

@@ -360,7 +360,7 @@ else
     if [ $1 == "dev" ]; then
         docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
     else
-        docker compose -f stack.yaml -f ../common/volumes.$1.yaml up  --detach portainer_agent
+        docker compose -f agent.yaml -f ../common/volumes.$1.yaml up  --detach
     fi
 
 

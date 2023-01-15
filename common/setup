@@ -1,13 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-function setuserenv() {
-
-    echo 'PUID='$(id -u) > .env
-    echo 'PGID='$(id -g) >> .env
-
-}
-
 if [[ $# -ne 1 && $# -ne 2 ]]; then
 
     echo "Informe [ dev | tst | hom ]"
@@ -251,7 +244,7 @@ else
     cd ../chromium
     echo '* Chromium *'
 
-    setuserenv
+    echo 'User '$PUID':'$PGID
     
     docker compose -f stack.yaml build
 

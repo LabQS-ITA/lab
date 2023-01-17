@@ -348,7 +348,7 @@ else
     if [ $1 == "dev" ]; then
         docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
     else
-        docker compose -f agent.yaml -f ../common/volumes.$1.yaml up  --detach
+        docker compose -f agent.yaml up  --detach
     fi
 
 

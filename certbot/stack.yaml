@@ -26,10 +26,9 @@ services:
       # - '-d ${CERT_DOMAINS}'
       - '--dry-run'
 
-volumes:
-  certificates:
-    name: certificates
-    external: true
+certificates:
+  name: certificates
+  driver: local
 
 networks:
   netlab01:

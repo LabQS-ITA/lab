@@ -72,9 +72,10 @@ source ./config
 
 echo "Registrar domínios $(tput setaf 1)"$LAB_DOMAIN"$(tput sgr0)"
 
+sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' ../httpd/panel/static/index.html
 sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
 sed -i 's/@CM_LAB_DOMAIN/'$CM_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
-sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' ../httpd/panel/static/index.html
+sed -i 's/@IA_LAB_DOMAIN/'$IA_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
 
 
 cd ../httpd

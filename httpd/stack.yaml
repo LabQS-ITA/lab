@@ -23,6 +23,7 @@ services:
       LAB_DOMAIN: ${LAB_DOMAIN}
       CI_LAB_DOMAIN: ${CI_LAB_DOMAIN}
       CM_LAB_DOMAIN: ${CM_LAB_DOMAIN}
+      IA_LAB_DOMAIN: ${IA_LAB_DOMAIN}
 
 volumes:
   certificates:

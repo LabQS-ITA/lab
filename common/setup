@@ -92,12 +92,6 @@ if [ $1 == "hom" ] || [ $1 == "ia" ]; then
     rm panel/config/sites/001-ci.conf || true
     rm panel/config/sites/002-cm.conf || true
 
-elif [ $1 == "tst" ] || [ $1 == "dev" ]; then
-
-    echo "Desabilitar proxy para "$IA_LAB_DOMAIN
-
-    rm panel/config/sites/003-ia.conf || true
-
 fi
 
 if [ "$1" == "tst" ]; then

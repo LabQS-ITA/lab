@@ -54,7 +54,7 @@ cd ../certbot
 echo '* Letsencrypt certbot *'
 
 echo 'Certificar que apache está parado'
-docker stop httpd
+docker stop httpd || true
 
 if [ "$1" == "hom" ]; then
     export CERT_DOMAINS=$LAB_DOMAIN

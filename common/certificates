@@ -4,7 +4,7 @@ set -euo pipefail
 
 if [[ $# -ne 1 ]]; then
 
-    echo "Informe [ dev | tst | hom ]"
+    echo "Informe [ dev | tst | hom | ia ]"
 
     exit 1
 
@@ -28,6 +28,14 @@ elif [ "$1" == "hom" ]; then
 
     # Servidores de homologação
     export LAB_DOMAIN=labqs.ita.br
+    export CI_LAB_DOMAIN=ci.labqs.ita.br
+    export CM_LAB_DOMAIN=cm.labqs.ita.br
+    export IA_LAB_DOMAIN=ia.labqs.ita.br
+
+elif [ "$1" == "ia" ]; then
+
+    # Servidores de homologação
+    export LAB_DOMAIN=ia.labqs.ita.br
     export CI_LAB_DOMAIN=ci.labqs.ita.br
     export CM_LAB_DOMAIN=cm.labqs.ita.br
     export IA_LAB_DOMAIN=ia.labqs.ita.br

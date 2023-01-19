@@ -776,7 +776,11 @@ c.DockerSpawner.extra_create_kwargs.update({ 'command': spawn_cmd })
 
 notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR', '/home/jovyan/work')
 c.DockerSpawner.notebook_dir = notebook_dir
-c.DockerSpawner.volumes = { 'jupyterhub-user-{username}': notebook_dir }
+c.DockerSpawner.volumes = { 
+    'jupyterhub-user-{username}': notebook_dir,
+    'jupyterhub-shared': '/home/jovyan/work/shared',
+    'jupyterhub-data': '/home/jovyan/work/data'
+}
 
 network_name = os.environ.get('DOCKER_NETWORK_NAME', 'bridge')
 c.DockerSpawner.use_internal_ip = True

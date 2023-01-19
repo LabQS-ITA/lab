@@ -1,6 +1,6 @@
 FROM nvidia/cuda:11.6.2-base-ubuntu20.04
 
-FROM jupyter/tensorflow-notebook:latest as jupyterlabbase
+FROM jupyter/scipy-notebook:latest as jupyterlabbase
 
 # Fix: https://github.com/hadolint/hadolint/wiki/DL4006
 # Fix: https://github.com/koalaman/shellcheck/wiki/SC3014
@@ -59,7 +59,8 @@ RUN mamba install --quiet --yes \
     'psycopg2' \
     'sqlalchemy' \
     'sshtunnel' \
-    'texinfo' && \
+    'texinfo' \
+    'tensorflow-gpu' && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"

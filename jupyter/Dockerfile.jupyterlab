@@ -1,3 +1,5 @@
+FROM nvidia/cuda:11.6.2-base-ubuntu20.04
+
 FROM jupyter/tensorflow-notebook:latest as jupyterlabbase
 
 # Fix: https://github.com/hadolint/hadolint/wiki/DL4006

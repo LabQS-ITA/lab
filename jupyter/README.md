@@ -12,8 +12,8 @@
 
 ### Criar imagem
 ```
-docker build --tag labqs/gputest:numba --rm --file Dockerfile.test_numba_GPU
-docker build --tag labqs/gputest:tensor --rm --file Dockerfile.test_tensor_GPU
+docker build --tag labqs/gputest:numba --rm --file Dockerfile.test_numba_GPU .
+docker build --tag labqs/gputest:tensor --rm --file Dockerfile.test_tensor_GPU .
 ```
 
 ### Executar teste

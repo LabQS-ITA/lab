@@ -12,5 +12,4 @@ RUN pip3 install -r /app/requirements_verbose.txt
 COPY app/ /app/
 WORKDIR /app
 
-CMD ["python3", "numba_test_driver.py"]
 CMD ["python3", "tensor_test_driver.py"]

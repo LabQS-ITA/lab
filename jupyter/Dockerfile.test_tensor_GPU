@@ -1,0 +1,16 @@
+FROM tensorflow/tensorflow:latest
+
+#set up environment
+RUN apt-get update && apt-get install --no-install-recommends --no-install-suggests -y curl
+RUN apt-get -y install --allow-unauthenticated unzip
+RUN apt-get -y install --allow-unauthenticated python3
+RUN apt-get -y install --allow-unauthenticated python3-pip
+COPY app/requirements_verbose.txt /app/requirements_verbose.txt
+RUN pip3 install -r /app/requirements_verbose.txt
+
+#copies the applicaiton from local path to container path
+COPY app/ /app/
+WORKDIR /app
+
+CMD ["python3", "numba_test_driver.py"]
+CMD ["python3", "tensor_test_driver.py"]

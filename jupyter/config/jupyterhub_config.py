@@ -752,6 +752,12 @@ c.JupyterHub.named_server_limit_per_user = 5
 # c.JupyterHub.shutdown_on_logout = False
 c.JupyterHub.shutdown_on_logout = True
 
+# Setting this to true provides a separate, private /dev for each user. This prevents the user 
+# from directly accessing hardware devices, which could be a potential source of security
+# issues. /dev/null, /dev/zero, /dev/random and the ttyp pseudo-devices will be mounted already, 
+# so most users should see no change when this is enabled.
+c.SystemdSpawner.isolate_devices = False
+
 ## The class to use for spawning single-user servers.
 #  
 #          Should be a subclass of :class:`jupyterhub.spawner.Spawner`.

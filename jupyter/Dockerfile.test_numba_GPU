@@ -7,8 +7,8 @@ RUN apt-get update && apt-get install --no-install-recommends --no-install-sugge
 RUN apt-get -y install --allow-unauthenticated unzip
 RUN apt-get -y install --allow-unauthenticated python3
 RUN apt-get -y install --allow-unauthenticated python3-pip
-COPY app/requirements_verbose.txt /app/requirements_verbose.txt
-RUN pip3 install -r /app/requirements_verbose.txt
+COPY app/requirements_numba.txt /app/requirements_numba.txt
+RUN pip3 install -r /app/requirements_numba.txt
 
 #copies the applicaiton from local path to container path
 COPY app/ /app/

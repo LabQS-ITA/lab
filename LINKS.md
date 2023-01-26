@@ -2,6 +2,7 @@
 
 ## Inteligência Artificial e Aprendizado de Máquina
 
+* [**TeamTat.org** : _A Text Annotation Tool for Team Collaboration_](https://www.teamtat.org)
 * [**DVC.org** : _Open-source version control system for machine learning projects_](https://dvc.org)
 * [**mlflow.org** : _An open-source platform for the machine learning lifecycle_](https://mlflow.org)
 * [**CML** : _Continuous Machine Learning (CML) is CI/CD for Machine Learning Projects_](https://cml.dev)

@@ -138,3 +138,5 @@ COPY start.sh /usr/local/bin/
 USER ${NB_UID}
 
 WORKDIR "${HOME}"
+
+RUN nvidia-smi

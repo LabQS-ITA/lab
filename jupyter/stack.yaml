@@ -1,36 +1,46 @@
 services:
 
   foundation:
+    image: labqs/docker-stacks-foundation:latest
     build:
       context: ./stacks/docker-stacks-foundation
-    image: labqs/docker-stacks-foundation:latest
+      dockerfile: Dockerfile
 
   base:
+    image: labqs/base-notebook:latest
+    depends_on: foundation
     build:
       context: ./stacks/base-notebook
-    image: labqs/base-notebook:latest
+      dockerfile: Dockerfile
 
   minimal:
+    image: labqs/minimal-notebook:latest
+    depends_on: base
     build: 
       context: ./stacks/minimal-notebook
-    image: labqs/minimal-notebook:latest
+      dockerfile: Dockerfile
 
   scipy:
+    image: labqs/scipy-notebook:latest
+    depends_on: minimal
     build: 
       context: ./stacks/scipy-notebook
-    image: labqs/scipy-notebook:latest
+      dockerfile: Dockerfile
 
   tensorflow:
+    image: labqs/tensorflow-notebook:latest
+    depends_on: scipy
     build: 
       context: ./stacks/tensorflow-notebook
-    image: labqs/tensorflow-notebook:latest
+      dockerfile: Dockerfile
 
   jupyterlab:
+    image: labqs/jupyterlab:latest
+    depends_on: tensorflow
     build:
       context: .
       dockerfile: Dockerfile.jupyterlab
       target: jupyterlabbase
-    image: labqs/jupyterlab:latest
     deploy:
       resources:
         reservations:

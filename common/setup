@@ -273,16 +273,16 @@ if [ $1 == "hom" ] || [ $1 == "ia" ]; then
         cd docker-stacks-foundation
         docker build --tag labqs/docker-stacks-foundation --rm .
 
-        cd ../base
+        cd ../base-notebook
         docker build --tag labqs/base-notebook --rm .
 
-        cd ../minimal
+        cd ../minimal-notebook
         docker build --tag labqs/minimal-notebook --rm .
 
-        cd ../scipy
+        cd ../scipy-notebook
         docker build --tag labqs/scipy-notebook --rm .
 
-        cd ../tensorflow
+        cd ../tensorflow-notebook
         docker build --tag labqs/tensorflow-notebook --rm .
 
         docker build --tag labqs/jupyterlab --file Dockerfile.jupyterlab --rm .

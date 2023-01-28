@@ -1,4 +1,4 @@
-FROM jupyter/scipy-notebook:latest as jupyterlabbase
+FROM labqs/tensorflow-notebook:latest as jupyterlabbase
 
 # Fix: https://github.com/hadolint/hadolint/wiki/DL4006
 # Fix: https://github.com/koalaman/shellcheck/wiki/SC3014
@@ -57,8 +57,7 @@ RUN mamba install --quiet --yes \
     'psycopg2' \
     'sqlalchemy' \
     'sshtunnel' \
-    'texinfo' \
-    'tensorflow' && \
+    'texinfo' && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"

@@ -260,5 +260,3 @@ else
     _log "Executing the command:" "${cmd[@]}"
     exec "${cmd[@]}"
 fi
-
-nvidia-smi

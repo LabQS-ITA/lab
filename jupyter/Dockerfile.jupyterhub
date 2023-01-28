@@ -3,6 +3,8 @@ FROM jupyterhub/jupyterhub:latest as jupyterhubbase
 ARG GPES_PASSWORD=s3cr37
 ARG GPES_DEV_PASSWORD=s3cr37
 
+ENV NVIDIA_VISIBLE_DEVICES all
+
 RUN pip install --upgrade pip
 
 RUN pip install jupyter_server --upgrade

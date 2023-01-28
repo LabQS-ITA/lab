@@ -1,36 +1,6 @@
 services:
 
-  foundation:
-    build:
-      context: ./stacks/docker-stacks-foundation
-      dockerfile: Dockerfile
-
-  base:
-    depends_on: foundation
-    build:
-      context: ./stacks/base-notebook
-      dockerfile: Dockerfile
-
-  minimal:
-    depends_on: base
-    build: 
-      context: ./stacks/minimal-notebook
-      dockerfile: Dockerfile
-
-  scipy:
-    depends_on: minimal
-    build: 
-      context: ./stacks/scipy-notebook
-      dockerfile: Dockerfile
-
-  tensorflow:
-    depends_on: scipy
-    build: 
-      context: ./stacks/tensorflow-notebook
-      dockerfile: Dockerfile
-
   jupyterlab:
-    depends_on: tensorflow
     build:
       context: .
       dockerfile: Dockerfile.jupyterlab

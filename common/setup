@@ -268,6 +268,23 @@ if [ $1 == "hom" ] || [ $1 == "ia" ]; then
             echo 'SVC_DEV_PWD='$(openssl rand -hex 8) >> .env
         fi
 
+        cd stacks
+
+        cd docker-stacks-foundation
+        docker build --tag labqs/docker-stacks-foundation --rm .
+
+        cd ../base
+        docker build --tag labqs/base-notebook --rm .
+
+        cd ../minimal
+        docker build --tag labqs/minimal-notebook --rm .
+
+        cd ../scipy
+        docker build --tag labqs/scipy-notebook --rm .
+
+        cd ../tensorflow
+        docker build --tag labqs/tensorflow-notebook --rm .
+
         docker build --tag labqs/jupyterlab --file Dockerfile.jupyterlab --rm .
         docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --build --detach jupyterhub
     fi

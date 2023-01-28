@@ -1,4 +1,4 @@
-# Jupyter Notebook Scientific Python Stack
+# Custom Jupyter Notebook Scientific Python Stack
 
 [![docker pulls](https://img.shields.io/docker/pulls/jupyter/scipy-notebook.svg)](https://hub.docker.com/r/jupyter/scipy-notebook/)
 [![docker stars](https://img.shields.io/docker/stars/jupyter/scipy-notebook.svg)](https://hub.docker.com/r/jupyter/scipy-notebook/)

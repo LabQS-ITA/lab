@@ -1,4 +1,4 @@
-# Minimal Jupyter Notebook Stack
+# Custom Minimal Jupyter Notebook Stack
 
 [![docker pulls](https://img.shields.io/docker/pulls/jupyter/minimal-notebook.svg)](https://hub.docker.com/r/jupyter/minimal-notebook/)
 [![docker stars](https://img.shields.io/docker/stars/jupyter/minimal-notebook.svg)](https://hub.docker.com/r/jupyter/minimal-notebook/)

@@ -1,4 +1,4 @@
-# Jupyter Notebook Deep Learning Stack
+# Custom Jupyter Notebook Deep Learning Stack
 
 [![docker pulls](https://img.shields.io/docker/pulls/jupyter/tensorflow-notebook.svg)](https://hub.docker.com/r/jupyter/tensorflow-notebook/)
 [![docker stars](https://img.shields.io/docker/stars/jupyter/tensorflow-notebook.svg)](https://hub.docker.com/r/jupyter/tensorflow-notebook/)

@@ -1,4 +1,4 @@
-# Base Jupyter Notebook Stack
+# Custom Base Jupyter Notebook Stack
 
 [![docker pulls](https://img.shields.io/docker/pulls/jupyter/base-notebook.svg)](https://hub.docker.com/r/jupyter/base-notebook/)
 [![docker stars](https://img.shields.io/docker/stars/jupyter/base-notebook.svg)](https://hub.docker.com/r/jupyter/base-notebook/)

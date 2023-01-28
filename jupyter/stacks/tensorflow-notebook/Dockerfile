@@ -4,7 +4,7 @@ ARG OWNER=labqs
 ARG BASE_CONTAINER=$OWNER/scipy-notebook
 FROM $BASE_CONTAINER
 
-LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
+LABEL maintainer="LabQS Project <https://github.com/labqs-ita>"
 
 # Fix: https://github.com/hadolint/hadolint/wiki/DL4006
 # Fix: https://github.com/koalaman/shellcheck/wiki/SC3014

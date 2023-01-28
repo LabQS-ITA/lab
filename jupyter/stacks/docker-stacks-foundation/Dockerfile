@@ -11,7 +11,8 @@ ARG ROOT_CONTAINER=nvidia/cuda:12.0.0-base-ubuntu20.04
 
 FROM $ROOT_CONTAINER
 
-LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
+LABEL maintainer="LabQS Project <https://github.com/labqs-ita>"
+
 ARG NB_USER="jovyan"
 ARG NB_UID="1000"
 ARG NB_GID="100"

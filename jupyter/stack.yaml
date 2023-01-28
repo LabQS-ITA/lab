@@ -1,23 +1,28 @@
 services:
 
   foundation:
-    build: ./stacks/docker-stacks-foundation
+    build:
+      context: ./stacks/docker-stacks-foundation
     image: labqs/docker-stacks-foundation:latest
 
   base:
-    build: ./stacks/base-notebook
+    build:
+      context: ./stacks/base-notebook
     image: labqs/base-notebook:latest
 
   minimal:
-    build: ./stacks/minimal-notebook
+    build: 
+      context: ./stacks/minimal-notebook
     image: labqs/minimal-notebook:latest
 
   scipy:
-    build: ./stacks/scipy-notebook
+    build: 
+      context: ./stacks/scipy-notebook
     image: labqs/scipy-notebook:latest
 
   tensorflow:
-    build: ./stacks/tensorflow-notebook
+    build: 
+      context: ./stacks/tensorflow-notebook
     image: labqs/tensorflow-notebook:latest
 
   jupyterlab:

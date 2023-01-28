@@ -42,7 +42,6 @@ services:
       DOCKER_NOTEBOOK_DIR: /home/jovyan/work
       DOCKER_SPAWN_CMD: start-singleuser.sh
       NOTEBOOK_ARGS: "--gpus all"
-
     command: [ "jupyterhub", "-f", "/etc/jupyterhub/jupyterhub_config.py" ]
 
 volumes:

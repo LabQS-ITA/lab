@@ -1078,7 +1078,9 @@ c.SystemUserSpawner.run_as_root = True
 #      such as JUPYTERHUB_API_URL.
 #  Default: {}
 c.Spawner.environment = {
-    "TF_XLA_FLAGS": "--tf_xla_enable_xla_devices",
+    'XLA_FLAGS': '–xla_gpu_cuda_data_dir=/usr/local/cuda/',
+    'TF_XLA_FLAGS': '--tf_xla_enable_xla_devices',
+    'TF_ENABLE_ONEDNN_OPTS': '0',
 }
 
 ## Timeout (in seconds) before giving up on a spawned HTTP server

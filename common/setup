@@ -288,7 +288,7 @@ if [ $1 == "hom" ] || [ $1 == "ia" ]; then
         cd ../..
 
         docker build --tag labqs/jupyterlab --file Dockerfile.jupyterlab --rm .
-        docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --build --tag labqs/jupyterhub --detach jupyterhub
+        docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --build --detach jupyterhub
     fi
 
 else

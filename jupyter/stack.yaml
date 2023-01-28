@@ -1,41 +1,35 @@
 services:
 
   foundation:
-    image: labqs/docker-stacks-foundation:latest
     build:
       context: ./stacks/docker-stacks-foundation
       dockerfile: Dockerfile
 
   base:
-    image: labqs/base-notebook:latest
     depends_on: foundation
     build:
       context: ./stacks/base-notebook
       dockerfile: Dockerfile
 
   minimal:
-    image: labqs/minimal-notebook:latest
     depends_on: base
     build: 
       context: ./stacks/minimal-notebook
       dockerfile: Dockerfile
 
   scipy:
-    image: labqs/scipy-notebook:latest
     depends_on: minimal
     build: 
       context: ./stacks/scipy-notebook
       dockerfile: Dockerfile
 
   tensorflow:
-    image: labqs/tensorflow-notebook:latest
     depends_on: scipy
     build: 
       context: ./stacks/tensorflow-notebook
       dockerfile: Dockerfile
 
   jupyterlab:
-    image: labqs/jupyterlab:latest
     depends_on: tensorflow
     build:
       context: .
@@ -58,7 +52,6 @@ services:
       args:
       - GPES_PASSWORD=${SVC_PWD}
       - GPES_DEV_PASSWORD=${SVC_DEV_PWD}
-    image: labqs/jupyterhub:latest
     restart: unless-stopped
     ports:
       - '8000:8000'

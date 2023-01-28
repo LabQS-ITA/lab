@@ -1077,7 +1077,9 @@ c.SystemUserSpawner.run_as_root = True
 #      allowing override of 'default' env variables,
 #      such as JUPYTERHUB_API_URL.
 #  Default: {}
-c.Spawner.environment = {}
+c.Spawner.environment = {
+    "TF_XLA_FLAGS": "--tf_xla_enable_xla_devices",
+}
 
 ## Timeout (in seconds) before giving up on a spawned HTTP server
 #  

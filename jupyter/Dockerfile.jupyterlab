@@ -59,12 +59,7 @@ RUN mamba install --quiet --yes -c 'pytorch' -c 'nvidia' -c 'conda-forge' \
     'psycopg2' \
     'sqlalchemy' \
     'sshtunnel' \
-    'texinfo' \
-    'pytorch' \
-    'torchvision' \
-    'torchaudio' \
-    'cudatoolkit=11.7' \
-    'pytorch-cuda=11.7' && \
+    'texinfo' && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"

@@ -768,12 +768,36 @@ c.JupyterHub.shutdown_on_logout = True
 # c.JupyterHub.spawner_class = 'jupyterhub.spawner.LocalProcessSpawner'
 c.JupyterHub.spawner_class = 'dockerspawner.DockerSpawner'
 
-container_image = os.environ.get('DOCKER_NOTEBOOK_IMAGE', 'jupyter/minimal-notebook:latest')
+container_image = os.environ.get('DOCKER_NOTEBOOK_IMAGE', 'labqs/tensorflow-notebook:latest')
 c.DockerSpawner.container_image = container_image
 
+# ANTES
+# spawn_cmd = os.environ.get('DOCKER_SPAWN_CMD', 'start-singleuser.sh')
+# c.DockerSpawner.extra_create_kwargs.update({ 'command': spawn_cmd })
+# c.DockerSpawner.extra_host_config = {
+#     'runtime': 'nvidia', 'privileged': True
+# }
+
+# DEPOIS
+c.DockerSpawner.extra_create_kwargs = {
+    'volume_driver': 'nvidia-docker',
+}
 spawn_cmd = os.environ.get('DOCKER_SPAWN_CMD', 'start-singleuser.sh')
 c.DockerSpawner.extra_create_kwargs.update({ 'command': spawn_cmd })
-c.DockerSpawner.extra_host_config = {'runtime': 'nvidia', 'privileged': True}
+c.DockerSpawner.extra_host_config = {
+    'runtime': 'nvidia', 'privileged': True,
+    'devices': [
+        '/dev/nvidiactl',
+        '/dev/nvidia-uvm',
+        '/dev/nvidia-uvm-tools',
+        '/dev/nvidia0',
+    ],
+}
+# c.DockerSpawner.read_only_volumes = {
+#     'nvidia_driver_525.78.01': '/sys/module/nvidia',
+# }
+
+
 
 notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR', '/home/jovyan/work')
 c.DockerSpawner.notebook_dir = notebook_dir

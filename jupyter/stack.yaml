@@ -12,6 +12,8 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+    environment:
+      JUPYTER_HOST: ${JUPYTER_HOST}
 
   jupyterhub:
     container_name: jupyter

@@ -7,7 +7,8 @@
 
 # Setup GPU support
 # https://tustunkok.github.io/tutorial/notes-to-myself/vps/2020/05/16/how-to-create-a-gpu-powered-containerized-multi-user-jupyterhub-research-server.html
-ARG ROOT_CONTAINER=nvidia/cuda:12.0.0-base-ubuntu20.04
+# ARG ROOT_CONTAINER=nvidia/cuda:12.0.0-base-ubuntu20.04
+ARG ROOT_CONTAINER=nvidia/cuda:11.7.1-base-ubuntu20.04
 
 FROM $ROOT_CONTAINER
 

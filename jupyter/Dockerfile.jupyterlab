@@ -64,6 +64,15 @@ RUN mamba install --quiet --yes \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
+RUN mamba install --quiet --yes -c 'pytorch' -c 'nvidia'
+    'pytorch' \
+    'torchvision' \
+    'torchaudio' \
+    'pytorch-cuda=11.7' && \
+    mamba clean --all -f -y && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
+
 RUN mamba install --quiet --yes -c 'conda-forge/label/gcc7'  \
     'xeus-cling' && \
     mamba clean --all -f -y && \

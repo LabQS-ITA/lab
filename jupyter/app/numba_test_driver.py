@@ -1,4 +1,4 @@
-from numba import jit, cuda
+from numba import cuda
 import numpy as np
 # to measure exec time
 from timeit import default_timer as timer
@@ -9,7 +9,7 @@ def func(a):
         a[i]+= 1
 
 # function optimized to run on gpu
-@jit(target_backend='cuda')
+@cuda('void(float64[:]', device=True, inline=True)
 def func2(a):
     for i in range(100000000):
         a[i]+= 1

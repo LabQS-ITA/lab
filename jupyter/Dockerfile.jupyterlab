@@ -59,12 +59,7 @@ RUN mamba install --quiet --yes \
     'psycopg2' \
     'sqlalchemy' \
     'sshtunnel' \
-    'texinfo' && \
-    mamba clean --all -f -y && \
-    fix-permissions "${CONDA_DIR}" && \
-    fix-permissions "/home/${NB_USER}"
-
-RUN mamba install --quiet --yes -c 'pytorch' -c 'nvidia'
+    'texinfo' \
     'pytorch' \
     'torchvision' \
     'torchaudio' \

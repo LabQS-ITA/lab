@@ -779,9 +779,9 @@ c.DockerSpawner.container_image = container_image
 # }
 
 # DEPOIS
-c.DockerSpawner.extra_create_kwargs = {
-    'volume_driver': 'nvidia-docker',
-}
+# c.DockerSpawner.extra_create_kwargs = {
+#     'volume_driver': 'nvidia-docker',
+# }
 spawn_cmd = os.environ.get('DOCKER_SPAWN_CMD', 'start-singleuser.sh')
 c.DockerSpawner.extra_create_kwargs.update({ 'command': spawn_cmd })
 c.DockerSpawner.extra_host_config = {

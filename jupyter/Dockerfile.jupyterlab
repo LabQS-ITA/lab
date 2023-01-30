@@ -21,7 +21,8 @@ RUN apt-get update && \
     unixodbc-dev \
     r-cran-rodbc \
     gfortran \
-    gcc && \
+    gcc \
+    nvidia-cuda-toolkit && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 USER ${NB_UID}
@@ -57,7 +58,6 @@ RUN mamba install --quiet --yes -c 'pytorch' -c 'nvidia' -c 'conda-forge' \
     'python-decouple' \
     'webdav4' \
     'psycopg2' \
-    'sqlalchemy' \
     'sshtunnel' \
     'texinfo' && \
     mamba clean --all -f -y && \

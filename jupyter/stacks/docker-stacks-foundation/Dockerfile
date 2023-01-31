@@ -7,7 +7,7 @@
 
 # Setup GPU support
 # https://tustunkok.github.io/tutorial/notes-to-myself/vps/2020/05/16/how-to-create-a-gpu-powered-containerized-multi-user-jupyterhub-research-server.html
-ARG ROOT_CONTAINER=nvidia/cuda:11.7.1-base-ubuntu20.04
+ARG ROOT_CONTAINER=nvidia/cuda:11.7.1-runtime-ubuntu20.04
 
 FROM $ROOT_CONTAINER
 
@@ -44,11 +44,6 @@ RUN apt-get update --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
     locale-gen
-    
-# Install CUDNN drivers 
-RUN wget --quiet https://labqs.ita.br/nextcloud/s/WHsiARx44BDWEfK/download/nvidia-driver-local-repo-ubuntu2004-515.86.01_1.0-1_amd64.deb && \
-    dpkg --install --force-all nvidia-driver-local-repo-ubuntu2004-515.86.01_1.0-1_amd64.deb && \
-    rm nvidia-driver-local-repo-ubuntu2004-515.86.01_1.0-1_amd64.deb
 
 # Configure environment
 ENV CONDA_DIR=/opt/conda \

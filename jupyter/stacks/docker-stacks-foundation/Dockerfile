@@ -79,7 +79,7 @@ RUN echo "auth requisite pam_deny.so" >> /etc/pam.d/su && \
     fix-permissions "${HOME}" && \
     fix-permissions "${CONDA_DIR}"
 
-RUN wget https://labqs.ita.br/nextcloud/s/WHsiARx44BDWEfK/download/nvidia-driver-local-repo-ubuntu2004-515.86.01_1.0-1_amd64.deb
+RUN wget --quiet https://labqs.ita.br/nextcloud/s/WHsiARx44BDWEfK/download/nvidia-driver-local-repo-ubuntu2004-515.86.01_1.0-1_amd64.deb
 RUN dpkg --install nvidia-driver-local-repo-ubuntu2004-515.86.01_1.0-1_amd64.deb && \
     rm nvidia-driver-local-repo-ubuntu2004-515.86.01_1.0-1_amd64.deb
 

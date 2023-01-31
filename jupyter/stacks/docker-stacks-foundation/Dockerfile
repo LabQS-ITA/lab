@@ -46,10 +46,8 @@ RUN apt-get update --yes && \
     locale-gen
     
 # Install CUDNN drivers 
-RUN wget --quiet https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.0-1_all.deb && \
-    wget --quiet https://labqs.ita.br/nextcloud/s/WHsiARx44BDWEfK/download/nvidia-driver-local-repo-ubuntu2004-515.86.01_1.0-1_amd64.deb && \
-    dpkg --install cuda-keyring_1.0-1_all.deb && \
-    dpkg --install nvidia-driver-local-repo-ubuntu2004-515.86.01_1.0-1_amd64.deb && \
+RUN wget --quiet https://labqs.ita.br/nextcloud/s/WHsiARx44BDWEfK/download/nvidia-driver-local-repo-ubuntu2004-515.86.01_1.0-1_amd64.deb && \
+    dpkg --install --force-all nvidia-driver-local-repo-ubuntu2004-515.86.01_1.0-1_amd64.deb && \
     rm nvidia-driver-local-repo-ubuntu2004-515.86.01_1.0-1_amd64.deb
 
 # Configure environment

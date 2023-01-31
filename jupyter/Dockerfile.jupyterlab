@@ -14,8 +14,8 @@ RUN apt-get update && \
     apt-get install --yes --no-install-recommends \
     software-properties-common \
     libzmq3-dev \
-    nodejs \
-    npm \
+    # nodejs \
+    # npm \
     fonts-dejavu \
     unixodbc \
     unixodbc-dev \
@@ -27,8 +27,8 @@ RUN apt-get update && \
 
 USER ${NB_UID}
 
-RUN npm install -g ijavascript && \
-    ijsinstall
+# RUN npm install -g ijavascript && \
+#     ijsinstall
 
 # R packages including IRKernel which gets installed globally.
 # r-e1071: dependency of the caret R package

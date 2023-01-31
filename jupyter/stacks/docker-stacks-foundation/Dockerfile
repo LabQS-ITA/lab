@@ -44,6 +44,11 @@ RUN apt-get update --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
     locale-gen
+    
+# Install CUDNN drivers 
+RUN wget --quiet https://labqs.ita.br/nextcloud/s/WHsiARx44BDWEfK/download/nvidia-driver-local-repo-ubuntu2004-515.86.01_1.0-1_amd64.deb && \
+    dpkg --install nvidia-driver-local-repo-ubuntu2004-515.86.01_1.0-1_amd64.deb && \
+    rm nvidia-driver-local-repo-ubuntu2004-515.86.01_1.0-1_amd64.deb
 
 # Configure environment
 ENV CONDA_DIR=/opt/conda \
@@ -78,11 +83,6 @@ RUN echo "auth requisite pam_deny.so" >> /etc/pam.d/su && \
     chmod g+w /etc/passwd && \
     fix-permissions "${HOME}" && \
     fix-permissions "${CONDA_DIR}" 
-    
-# Install CUDNN drivers 
-# RUN wget --quiet https://labqs.ita.br/nextcloud/s/WHsiARx44BDWEfK/download/nvidia-driver-local-repo-ubuntu2004-515.86.01_1.0-1_amd64.deb && \
-#     dpkg --install nvidia-driver-local-repo-ubuntu2004-515.86.01_1.0-1_amd64.deb && \
-#     rm nvidia-driver-local-repo-ubuntu2004-515.86.01_1.0-1_amd64.deb
 
 USER ${NB_UID}
 

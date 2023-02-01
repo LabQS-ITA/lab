@@ -1097,8 +1097,6 @@ c.SystemUserSpawner.run_as_root = True
 #      such as JUPYTERHUB_API_URL.
 #  Default: {}
 c.Spawner.environment = {
-    'XLA_FLAGS': '–xla_gpu_cuda_data_dir=/usr/local/cuda/',
-    'TF_XLA_FLAGS': '--tf_xla_enable_xla_devices',
     'TF_ENABLE_ONEDNN_OPTS': '0',
     'NVIDIA_VISIBLE_DEVICES': 'all',
     'LD_LIBRARY_PATH': '/usr/local/cuda/lib64',

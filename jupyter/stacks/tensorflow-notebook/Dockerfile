@@ -11,8 +11,13 @@ LABEL maintainer="LabQS Project <https://github.com/labqs-ita>"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Install Tensorflow
-RUN mamba install --quiet --yes \
+# RUN mamba install --quiet --yes \
+#     'tensorflow' && \
+#     mamba clean --all -f -y && \
+#     fix-permissions "${CONDA_DIR}" && \
+#     fix-permissions "/home/${NB_USER}"
+
+RUN pip3 install \
     'tensorflow' && \
-    mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"

@@ -1101,6 +1101,7 @@ c.Spawner.environment = {
     'TF_XLA_FLAGS': '--tf_xla_enable_xla_devices',
     'TF_ENABLE_ONEDNN_OPTS': '0',
     'NVIDIA_VISIBLE_DEVICES': 'all',
+    'LD_LIBRARY_PATH': '/usr/local/cuda/lib64',
 }
 
 ## Timeout (in seconds) before giving up on a spawned HTTP server

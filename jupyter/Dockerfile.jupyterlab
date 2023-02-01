@@ -76,8 +76,7 @@ RUN mamba install --quiet --yes \
 RUN pip3 install \
     'pytorch' \
     'torchvision' \
-    'torchaudio' \
-    'pytorch-cuda==11.7' && \
+    'torchaudio' && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 

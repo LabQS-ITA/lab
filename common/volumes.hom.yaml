@@ -33,10 +33,6 @@ volumes:
     name: postgresdata03
     driver: local
 
-  prometheusdata:
-    name: prometheusdata
-    driver: local
-
   rabbitmqdata:
     name: rabbitmqdata
     driver: local

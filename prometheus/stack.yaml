@@ -10,16 +10,10 @@ services:
       netlab01:
         ipv4_address: ${PROMETHEUS_HOST}
     volumes:
-      - prometheusdata:/opt/bitnami/prometheus/data
       - $PWD/config/prometheus.yml:/etc/prometheus/prometheus.yml
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-
-volumes:
-  prometheusdata:
-    name: prometheusdata
-    external: true
 
 networks:
   netlab01:

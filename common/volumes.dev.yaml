@@ -101,14 +101,6 @@ volumes:
       device: /home/gpes/VOLUMES/docker/volumes/postgresdata03
       o: bind
 
-  prometheusdata:
-    name: prometheusdata
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/gpes/VOLUMES/docker/volumes/prometheusdata/_data
-      o: bind
-
   rabbitmqdata:
     name: rabbitmqdata
     driver: local

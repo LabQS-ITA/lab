@@ -8,7 +8,7 @@ mkdir -p /replica
 
 if [[ $# -ne 1 && $# -ne 2 ]]; then
 
-    echo "Informe [ dev | tst | hom ]"
+    echo "Informe { dev | tst | hom | ia }"
 
     exit 1
 
@@ -27,9 +27,14 @@ elif [ "$1" == "hom" ]; then
     # Servidores de homologação
     echo "hom.labqs" > /export/lab
 
+elif [ "$1" == "ia" ]; then
+
+    # Servidores de homologação
+    echo "ia.labqs" > /export/lab
+
 else
 
-    echo "Argumento $1 incorreto. Use [ dev | tst | hom ]"
+    echo "Argumento $1 incorreto. Use [ dev | tst | hom | ia ]"
 
     exit 1
 

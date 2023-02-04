@@ -3,7 +3,7 @@ set -euo pipefail
 
 if [[ $# -ne 1 && $# -ne 2 ]]; then
 
-    echo "Informe [ dev | tst | hom | ia ]"
+    echo "Informe { dev | tst | hom | ia } [ config ]"
 
     exit 1
 

@@ -1,2 +1,3 @@
-/import/dev.labqs dev.labqs.ita.br:/export
-/import/tst.labqs test.labqs.ita.br:/export
+/import/dev.labqs labqs.ita.br:/export
+/import/tst.labqs labqs.ita.br:/export
+/import/ia.labqs labqs.ita.br:/export

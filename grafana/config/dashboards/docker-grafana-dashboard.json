@@ -45,7 +45,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "#d44a3a"
             ],
-            "datasource": "apisix",
+            "datasource": "docker",
             "description": "",
             "fieldConfig": {
                 "defaults": {
@@ -106,7 +106,7 @@
             "tableColumn": "",
             "targets": [
                 {
-                    "expr": "sum(apisix_nginx_http_current_connections{state=\"total\", instance=~\"$instance\"})",
+                    "expr": "sum(docker_nginx_http_current_connections{state=\"total\", instance=~\"$instance\"})",
                     "intervalFactor": 2,
                     "legendFormat": "Total",
                     "refId": "A"
@@ -136,7 +136,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "#d44a3a"
             ],
-            "datasource": "apisix",
+            "datasource": "docker",
             "description": "",
             "fieldConfig": {
                 "defaults": {
@@ -197,7 +197,7 @@
             "tableColumn": "",
             "targets": [
                 {
-                    "expr": "sum(apisix_nginx_http_current_connections{state=\"accepted\", instance=~\"$instance\"})",
+                    "expr": "sum(docker_nginx_http_current_connections{state=\"accepted\", instance=~\"$instance\"})",
                     "intervalFactor": 2,
                     "legendFormat": "Accepted",
                     "refId": "A"
@@ -227,7 +227,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "#d44a3a"
             ],
-            "datasource": "apisix",
+            "datasource": "docker",
             "description": "",
             "fieldConfig": {
                 "defaults": {
@@ -288,7 +288,7 @@
             "tableColumn": "",
             "targets": [
                 {
-                    "expr": "sum(apisix_nginx_http_current_connections{state=\"handled\", instance=~\"$instance\"})",
+                    "expr": "sum(docker_nginx_http_current_connections{state=\"handled\", instance=~\"$instance\"})",
                     "intervalFactor": 2,
                     "legendFormat": "Total",
                     "refId": "A"
@@ -314,7 +314,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "apisix",
+            "datasource": "docker",
             "fieldConfig": {
                 "defaults": {
                     "custom": {},
@@ -360,7 +360,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "sum(apisix_nginx_http_current_connections{state=~\"active|reading|writing|waiting\", instance=~\"$instance\"}) by (state)",
+                    "expr": "sum(docker_nginx_http_current_connections{state=~\"active|reading|writing|waiting\", instance=~\"$instance\"}) by (state)",
                     "instant": false,
                     "interval": "",
                     "intervalFactor": 1,
@@ -413,7 +413,7 @@
         },
         {
             "collapsed": false,
-            "datasource": "apisix",
+            "datasource": "docker",
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -430,7 +430,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "apisix",
+            "datasource": "docker",
             "fieldConfig": {
                 "defaults": {
                     "custom": {},
@@ -478,7 +478,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "sum(rate(apisix_bandwidth{instance=~\"$instance\"}[30s])) by (type)",
+                    "expr": "sum(rate(docker_bandwidth{instance=~\"$instance\"}[30s])) by (type)",
                     "legendFormat": "{{type}}",
                     "refId": "A"
                 }
@@ -530,7 +530,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "apisix",
+            "datasource": "docker",
             "fieldConfig": {
                 "defaults": {
                     "custom": {},
@@ -578,12 +578,12 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "sum(irate(apisix_bandwidth{type=\"ingress\", service =~\"$service\",route=~\"$route\",instance=~\"$instance\"}[1m])) by (service)",
+                    "expr": "sum(irate(docker_bandwidth{type=\"ingress\", service =~\"$service\",route=~\"$route\",instance=~\"$instance\"}[1m])) by (service)",
                     "legendFormat": "service:{{service}}",
                     "refId": "A"
                 },
                 {
-                    "expr": "sum(irate(apisix_bandwidth{type=\"ingress\", service =~\"$service\",route=~\"$route\",instance=~\"$instance\"}[1m])) by (route)",
+                    "expr": "sum(irate(docker_bandwidth{type=\"ingress\", service =~\"$service\",route=~\"$route\",instance=~\"$instance\"}[1m])) by (route)",
                     "legendFormat": "route:{{route}}",
                     "refId": "B"
                 }
@@ -635,7 +635,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "apisix",
+            "datasource": "docker",
             "fieldConfig": {
                 "defaults": {
                     "custom": {},
@@ -683,13 +683,13 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "sum(rate(apisix_bandwidth{type=\"egress\", service =~\"$service\",route=~\"$route\",instance=~\"$instance\"}[1m])) by (service)",
+                    "expr": "sum(rate(docker_bandwidth{type=\"egress\", service =~\"$service\",route=~\"$route\",instance=~\"$instance\"}[1m])) by (service)",
                     "interval": "",
                     "legendFormat": "service:{{service}}",
                     "refId": "A"
                 },
                 {
-                    "expr": "sum(rate(apisix_bandwidth{type=\"egress\", service =~\"$service\",route=~\"$route\",instance=~\"$instance\"}[1m])) by (route)",
+                    "expr": "sum(rate(docker_bandwidth{type=\"egress\", service =~\"$service\",route=~\"$route\",instance=~\"$instance\"}[1m])) by (route)",
                     "legendFormat": "route:{{route}}",
                     "refId": "B"
                 }
@@ -738,7 +738,7 @@
         },
         {
             "collapsed": false,
-            "datasource": "apisix",
+            "datasource": "docker",
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -759,7 +759,7 @@
             "cacheTimeout": null,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "apisix",
+            "datasource": "docker",
             "description": "",
             "fieldConfig": {
                 "defaults": {
@@ -811,7 +811,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "sum(rate(apisix_http_status{service=~\"$service\",route=~\"$route\",instance=~\"$instance\"}[1m])) by (code)",
+                    "expr": "sum(rate(docker_http_status{service=~\"$service\",route=~\"$route\",instance=~\"$instance\"}[1m])) by (code)",
                     "instant": false,
                     "interval": "",
                     "intervalFactor": 1,
@@ -867,7 +867,7 @@
             "cacheTimeout": null,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "apisix",
+            "datasource": "docker",
             "description": "",
             "fieldConfig": {
                 "defaults": {
@@ -923,7 +923,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "sum(rate(apisix_http_status{service=~\"$service\",route=~\"$route\",instance=~\"$instance\"}[1m])) by (service)",
+                    "expr": "sum(rate(docker_http_status{service=~\"$service\",route=~\"$route\",instance=~\"$instance\"}[1m])) by (service)",
                     "instant": false,
                     "interval": "",
                     "intervalFactor": 1,
@@ -931,7 +931,7 @@
                     "refId": "A"
                 },
                 {
-                    "expr": "sum(rate(apisix_http_status{service=~\"$service\",route=~\"$route\",instance=~\"$instance\"}[1m])) by (route)",
+                    "expr": "sum(rate(docker_http_status{service=~\"$service\",route=~\"$route\",instance=~\"$instance\"}[1m])) by (route)",
                     "interval": "",
                     "legendFormat": "route:{{route}}",
                     "refId": "D"
@@ -984,7 +984,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "apisix",
+            "datasource": "docker",
             "fieldConfig": {
                 "defaults": {
                     "custom": {},
@@ -1041,20 +1041,20 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "histogram_quantile(0.90, sum(rate(apisix_http_latency_bucket{type=~\"request\",service=~\"$service\",consumer=~\"$consumer\",node=~\"$node\"}[1m])) by (le))",
+                    "expr": "histogram_quantile(0.90, sum(rate(docker_http_latency_bucket{type=~\"request\",service=~\"$service\",consumer=~\"$consumer\",node=~\"$node\"}[1m])) by (le))",
                     "format": "time_series",
                     "interval": "",
                     "legendFormat": "P90",
                     "refId": "A"
                 },
                 {
-                    "expr": "histogram_quantile(0.95, sum(rate(apisix_http_latency_bucket{type=~\"request\",service=~\"$service\",consumer=~\"$consumer\",node=~\"$node\"}[1m])) by (le))",
+                    "expr": "histogram_quantile(0.95, sum(rate(docker_http_latency_bucket{type=~\"request\",service=~\"$service\",consumer=~\"$consumer\",node=~\"$node\"}[1m])) by (le))",
                     "interval": "",
                     "legendFormat": "P95",
                     "refId": "B"
                 },
                 {
-                    "expr": "histogram_quantile(0.99, sum(rate(apisix_http_latency_bucket{type=~\"request\",service=~\"$service\",consumer=~\"$consumer\",node=~\"$node\"}[1m])) by (le))",
+                    "expr": "histogram_quantile(0.99, sum(rate(docker_http_latency_bucket{type=~\"request\",service=~\"$service\",consumer=~\"$consumer\",node=~\"$node\"}[1m])) by (le))",
                     "interval": "",
                     "legendFormat": "P99",
                     "refId": "C"
@@ -1106,7 +1106,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "apisix",
+            "datasource": "docker",
             "description": "",
             "fieldConfig": {
                 "defaults": {
@@ -1164,7 +1164,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "histogram_quantile(0.90, sum(rate(apisix_http_latency_bucket{type=~\"apisix\",service=~\"$service\",consumer=~\"$consumer\",node=~\"$node\"}[1m])) by (le))",
+                    "expr": "histogram_quantile(0.90, sum(rate(docker_http_latency_bucket{type=~\"docker\",service=~\"$service\",consumer=~\"$consumer\",node=~\"$node\"}[1m])) by (le))",
                     "format": "time_series",
                     "instant": false,
                     "interval": "",
@@ -1173,13 +1173,13 @@
                     "refId": "A"
                 },
                 {
-                    "expr": "histogram_quantile(0.95, sum(rate(apisix_http_latency_bucket{type=~\"apisix\",service=~\"$service\",consumer=~\"$consumer\",node=~\"$node\"}[1m])) by (le))",
+                    "expr": "histogram_quantile(0.95, sum(rate(docker_http_latency_bucket{type=~\"docker\",service=~\"$service\",consumer=~\"$consumer\",node=~\"$node\"}[1m])) by (le))",
                     "interval": "",
                     "legendFormat": "P95",
                     "refId": "B"
                 },
                 {
-                    "expr": "histogram_quantile(0.99, sum(rate(apisix_http_latency_bucket{type=~\"apisix\",service=~\"$service\",consumer=~\"$consumer\",node=~\"$node\"}[1m])) by (le))",
+                    "expr": "histogram_quantile(0.99, sum(rate(docker_http_latency_bucket{type=~\"docker\",service=~\"$service\",consumer=~\"$consumer\",node=~\"$node\"}[1m])) by (le))",
                     "interval": "",
                     "legendFormat": "P99",
                     "refId": "C"
@@ -1189,7 +1189,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "APISIX Latency",
+            "title": "docker Latency",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1231,7 +1231,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "apisix",
+            "datasource": "docker",
             "fieldConfig": {
                 "defaults": {
                     "custom": {},
@@ -1288,20 +1288,20 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "histogram_quantile(0.90, sum(rate(apisix_http_latency_bucket{type=~\"upstream\",service=~\"$service\",consumer=~\"$consumer\",node=~\"$node\"}[1m])) by (le))",
+                    "expr": "histogram_quantile(0.90, sum(rate(docker_http_latency_bucket{type=~\"upstream\",service=~\"$service\",consumer=~\"$consumer\",node=~\"$node\"}[1m])) by (le))",
                     "format": "time_series",
                     "interval": "",
                     "legendFormat": "P90",
                     "refId": "A"
                 },
                 {
-                    "expr": "histogram_quantile(0.95, sum(rate(apisix_http_latency_bucket{type=~\"upstream\",service=~\"$service\",consumer=~\"$consumer\",node=~\"$node\"}[1m])) by (le))",
+                    "expr": "histogram_quantile(0.95, sum(rate(docker_http_latency_bucket{type=~\"upstream\",service=~\"$service\",consumer=~\"$consumer\",node=~\"$node\"}[1m])) by (le))",
                     "interval": "",
                     "legendFormat": "P95",
                     "refId": "B"
                 },
                 {
-                    "expr": "histogram_quantile(0.99, sum(rate(apisix_http_latency_bucket{type=~\"upstream\",service=~\"$service\",consumer=~\"$consumer\",node=~\"$node\"}[1m])) by (le))",
+                    "expr": "histogram_quantile(0.99, sum(rate(docker_http_latency_bucket{type=~\"upstream\",service=~\"$service\",consumer=~\"$consumer\",node=~\"$node\"}[1m])) by (le))",
                     "interval": "",
                     "legendFormat": "P99",
                     "refId": "C"
@@ -1350,7 +1350,7 @@
         },
         {
             "collapsed": false,
-            "datasource": "apisix",
+            "datasource": "docker",
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -1367,7 +1367,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "apisix",
+            "datasource": "docker",
             "fieldConfig": {
                 "defaults": {
                     "custom": {},
@@ -1413,7 +1413,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "sum(apisix_etcd_modify_indexes{key=~\"consumers|global_rules|max_modify_index|prev_index|protos|routes|services|ssls|stream_routes|upstreams|x_etcd_index\"}) by (key)",
+                    "expr": "sum(docker_etcd_modify_indexes{key=~\"consumers|global_rules|max_modify_index|prev_index|protos|routes|services|ssls|stream_routes|upstreams|x_etcd_index\"}) by (key)",
                     "interval": "",
                     "intervalFactor": 1,
                     "legendFormat": "{{key}}",
@@ -1464,7 +1464,7 @@
             }
         },
         {
-            "datasource": "apisix",
+            "datasource": "docker",
             "fieldConfig": {
                 "defaults": {
                     "custom": {},
@@ -1513,7 +1513,7 @@
             "pluginVersion": "7.3.7",
             "targets": [
                 {
-                    "expr": "sum(apisix_etcd_reachable{instance=~\"$instance\"})",
+                    "expr": "sum(docker_etcd_reachable{instance=~\"$instance\"})",
                     "interval": "",
                     "legendFormat": "",
                     "refId": "A"
@@ -1525,7 +1525,7 @@
             "type": "stat"
         },
         {
-            "datasource": "apisix",
+            "datasource": "docker",
             "fieldConfig": {
                 "defaults": {
                     "custom": {},
@@ -1570,7 +1570,7 @@
             "pluginVersion": "7.3.7",
             "targets": [
                 {
-                    "expr": "sum(apisix_nginx_metric_errors_total{instance=~\"$instance\"})",
+                    "expr": "sum(docker_nginx_metric_errors_total{instance=~\"$instance\"})",
                     "interval": "",
                     "legendFormat": "",
                     "refId": "A"
@@ -1591,8 +1591,8 @@
             {
                 "allValue": ".*",
                 "current": {},
-                "datasource": "apisix",
-                "definition": "label_values(apisix_http_status,service)",
+                "datasource": "docker",
+                "definition": "label_values(docker_http_status,service)",
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
@@ -1600,7 +1600,7 @@
                 "multi": true,
                 "name": "service",
                 "options": [],
-                "query": "label_values(apisix_http_status,service)",
+                "query": "label_values(docker_http_status,service)",
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
@@ -1614,8 +1614,8 @@
             {
                 "allValue": ".*",
                 "current": {},
-                "datasource": "apisix",
-                "definition": "label_values(apisix_http_status,route)",
+                "datasource": "docker",
+                "definition": "label_values(docker_http_status,route)",
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
@@ -1623,7 +1623,7 @@
                 "multi": true,
                 "name": "route",
                 "options": [],
-                "query": "label_values(apisix_http_status,route)",
+                "query": "label_values(docker_http_status,route)",
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
@@ -1637,8 +1637,8 @@
             {
                 "allValue": ".*",
                 "current": {},
-                "datasource": "apisix",
-                "definition": "label_values(apisix_nginx_http_current_connections,instance)",
+                "datasource": "docker",
+                "definition": "label_values(docker_nginx_http_current_connections,instance)",
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
@@ -1646,7 +1646,7 @@
                 "multi": true,
                 "name": "instance",
                 "options": [],
-                "query": "label_values(apisix_http_status,instance)",
+                "query": "label_values(docker_http_status,instance)",
                 "refresh": 2,
                 "regex": ".*",
                 "skipUrlSync": false,
@@ -1660,8 +1660,8 @@
             {
                 "allValue": ".*",
                 "current": {},
-                "datasource": "apisix",
-                "definition": "label_values(apisix_http_status,consumer)",
+                "datasource": "docker",
+                "definition": "label_values(docker_http_status,consumer)",
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
@@ -1669,7 +1669,7 @@
                 "multi": true,
                 "name": "consumer",
                 "options": [],
-                "query": "label_values(apisix_http_status,consumer)",
+                "query": "label_values(docker_http_status,consumer)",
                 "refresh": 2,
                 "regex": ".*",
                 "skipUrlSync": false,
@@ -1683,8 +1683,8 @@
             {
                 "allValue": ".*",
                 "current": {},
-                "datasource": "apisix",
-                "definition": "label_values(apisix_http_status,node)",
+                "datasource": "docker",
+                "definition": "label_values(docker_http_status,node)",
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
@@ -1692,7 +1692,7 @@
                 "multi": true,
                 "name": "node",
                 "options": [],
-                "query": "label_values(apisix_http_status,node)",
+                "query": "label_values(docker_http_status,node)",
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
@@ -1724,7 +1724,7 @@
         ]
     },
     "timezone": "",
-    "title": "Apache APISIX",
+    "title": "Apache docker",
     "uid": "bLlNuRLWz",
     "version": 13
 }

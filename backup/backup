@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+
+if [ "$EUID" -ne 0 ]
+    then echo "Execute como root"
+    exit 2
+fi
+
+
+export LAB_ENV=$(cat /export/lab)
+
+
 function backup_container {
 
     docker export $c | gzip --fast > /export/bkp/bkp_$1_$(date +%F-%H%M).docker.gz
@@ -45,7 +55,6 @@ function backup_redis() {
 
 }
 
-
 function backup_volumes() {
 
     for VOLUME in `docker volume ls -q`
@@ -55,10 +64,6 @@ function backup_volumes() {
 
 }
 
-if [ "$EUID" -ne 0 ]
-    then echo "Execute como root"
-    exit 2
-fi
 
 for c in $(docker ps -a --format '{{.Names}}');
 do
@@ -67,16 +72,18 @@ done
 
 mkdir -p /export/bkp
 
-backup_postgres postgres
-backup_postgres postgres01
-backup_postgres postgres02
+if [ "$LAB_ENV" != "ia.labqs" ]; then
+    backup_postgres postgres
+    backup_postgres postgres01
+    backup_postgres postgres02
 
-backup_mariadb mariadb
+    backup_mariadb mariadb
 
-backup_mongodb mongodb
+    backup_mongodb mongodb
 
-backup_redis redis
-backup_redis redis01
-backup_redis redis02
+    backup_redis redis
+    backup_redis redis01
+    backup_redis redis02
+fi
 
 backup_volumes

@@ -3,8 +3,6 @@ set -euo pipefail
 
 
 mkdir -p /export
-mkdir -p /import
-mkdir -p /replica
 
 if [[ $# -ne 1 && $# -ne 2 ]]; then
 
@@ -23,6 +21,10 @@ elif [ "$1" == "dev" ]; then
     echo "dev.labqs" > /export/lab
 
 elif [ "$1" == "hom" ]; then
+
+    mkdir -p /import
+    mkdir -p /replica
+    mkdir -p /storage
 
     # Servidores de homologação
     echo "hom.labqs" > /export/lab

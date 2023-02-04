@@ -87,7 +87,7 @@ echo '* Apache HTTPD *'
 
 if [ $1 == "hom" ] || [ $1 == "ia" ]; then
 
-    echo "Desabilitar proxy para "$CI_LAB_DOMAIN" e "$CM_LAB_DOMAIN
+    echo "Desabilitar proxy para "$CI_LAB_DOMAIN" e "$CM_LAB_DOMAIN" se existirem"
 
     rm panel/config/sites/001-ci.conf || true
     rm panel/config/sites/002-cm.conf || true

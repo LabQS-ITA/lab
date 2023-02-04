@@ -3,8 +3,9 @@
 ## Server
 
 ```sh
-sudo apt install -y nfs-kernel-server
+sudo apt install -y nfs-kernel-server autofs
 sudo systemctl start nfs-kernel-server.service
+sudo systemctl start autofs
 ```
 
 `/etc/exports`
@@ -14,6 +15,44 @@ sudo systemctl start nfs-kernel-server.service
 ```
 
 
+##  Configurar auto-fs
+
+### Para todos servidores
+
+`/etc/auto.nfs`
+
+```
+/import/hom.labqs labqs.ita.br:/export
+```
+
+`/etc/auto.master.d/nfs.autofs`
+
+```
+/- /etc/auto.nfs
+```
+
+### Para servidor de storage
+
+`/etc/auto.nfs`
+
+```
+/import/dev.labqs labqs.ita.br:/export
+/import/test.labqs labqs.ita.br:/export
+/import/ia.labqs labqs.ita.br:/export
+```
+
+
 ## Criar sistema de arquivos
 
 Executar o script [setupfs](./fs/setupfs) para cada ambiente.
+
+
+## Mostrar sistema de arquivos
+
+```
+showmount --export
+```
+
+```
+mount | grep nfs
+```

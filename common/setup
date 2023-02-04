@@ -148,47 +148,31 @@ if [ $1 != "ia" ]; then
     docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
 
 
-    # cd ../mongodb
-    # echo '* MongoDB *'
+    cd ../mongodb
+    echo '* MongoDB *'
 
-    # if [ $CONFIG_ENV == 'Y' ]; then
-    #     echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-    #     echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
-    #     echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
+    if [ $CONFIG_ENV == 'Y' ]; then
+        echo 'SVC_PWD='$(openssl rand -hex 8) > .env
 
-    #     echo 'uri: "mongodb://root:'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env)'@localhost:27017"' > ./mongodb/config/.mdbpass
-    #     chmod 0600 ./mongodb/config/.mdbpass
-    #     echo 'uri: "mongodb://root:'$(awk -F'=' '$1 =="SVC_PWD_01" {print $2}' .env)'@localhost:27017"' > ./mongodb01/config/.mdbpass
-    #     chmod 0600 ./mongodb01/config/.mdbpass
-    #     echo 'uri: "mongodb://root:'$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env)'@localhost:27017"' > ./mongodb02/config/.mdbpass
-    #     chmod 0600 ./mongodb02/config/.mdbpass
-    # fi
+        echo 'uri: "mongodb://root:'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env)'@localhost:27017"' > ./mongodb/config/.mdbpass
+        chmod 0600 ./mongodb/config/.mdbpass
+    fi
 
-    # docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
 
 
-    # cd ../mariadb
-    # echo '* MariaDB *'
+    cd ../mariadb
+    echo '* MariaDB *'
 
-    # if [ $CONFIG_ENV == 'Y' ]; then
-    #     echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-    #     echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
-    #     echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
+    if [ $CONFIG_ENV == 'Y' ]; then
+        echo 'SVC_PWD='$(openssl rand -hex 8) > .env
 
-    #     echo '[client]' > mariadb/config/autologin.cnf
-    #     echo 'user = root' >> mariadb/config/autologin.cnf
-    #     echo 'password = '$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env) >> mariadb/config/autologin.cnf
+        echo '[client]' > mariadb/config/autologin.cnf
+        echo 'user = root' >> mariadb/config/autologin.cnf
+        echo 'password = '$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env) >> mariadb/config/autologin.cnf
+    fi
 
-    #     echo '[client]' > mariadb01/config/autologin.cnf
-    #     echo 'user = root' >> mariadb01/config/autologin.cnf
-    #     echo 'password = '$(awk -F'=' '$1 =="SVC_PWD_01" {print $2}' .env) >> mariadb01/config/autologin.cnf
-
-    #     echo '[client]' > mariadb02/config/autologin.cnf
-    #     echo 'user = root' >> mariadb02/config/autologin.cnf
-    #     echo 'password = '$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env) >> mariadb02/config/autologin.cnf
-    # fi
-
-    # docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
 
 
     cd ../redis

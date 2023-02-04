@@ -41,6 +41,12 @@ sudo systemctl start autofs
 /import/ia.labqs labqs.ita.br:/export
 ```
 
+### Executar após atualização da configuração
+
+```
+sudo systemctl reload autofs
+```
+
 
 ## Criar sistema de arquivos
 

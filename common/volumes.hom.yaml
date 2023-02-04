@@ -11,21 +11,9 @@ volumes:
   mariadata:
     name: mariadbdata
     driver: local
-  mariadata01:
-    name: mariadbdata01
-    driver: local
-  mariadata02:
-    name: mariadbdata02
-    driver: local
 
   mongodata:
     name: mongodata
-    driver: local
-  mongodata01:
-    name: mongodata01
-    driver: local
-  mongodata02:
-    name: mongodata02
     driver: local
 
   nextclouddata:

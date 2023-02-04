@@ -47,20 +47,6 @@ volumes:
       type: none
       device: /home/gpes/VOLUMES/docker/volumes/mariadbdata/_data
       o: bind
-  mariadata01:
-    name: mariadbdata01
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/gpes/VOLUMES/docker/volumes/mariadbdata01/_data
-      o: bind
-  mariadata02:
-    name: mariadbdata02
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/gpes/VOLUMES/docker/volumes/mariadbdata02/_data
-      o: bind
 
   mongodata:
     name: mongodata
@@ -68,20 +54,6 @@ volumes:
     driver_opts:
       type: none
       device: /home/gpes/VOLUMES/docker/volumes/mongodata/_data
-      o: bind
-  mongodata01:
-    name: mongodata01
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/gpes/VOLUMES/docker/volumes/mongodata01/_data
-      o: bind
-  mongodata02:
-    name: mongodata02
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/gpes/VOLUMES/docker/volumes/mongodata02/_data
       o: bind
 
   nextclouddata:

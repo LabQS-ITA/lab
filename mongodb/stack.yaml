@@ -27,69 +27,9 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${SVC_PWD}
     command: --config /etc/mongo/custom.conf
 
-  mongodb01:
-    container_name: mongodb01
-    image: mongo:4.4.14-focal
-    restart: unless-stopped
-    healthcheck:
-      test: echo 'db.runCommand("ping").ok' | mongo ${MONGODB_HOST}:27017/local --quiet
-      interval: 30s
-      timeout: 10s
-      retries: 5
-      start_period: 90s
-    ports:
-      - '27021:27017'
-    networks:
-      netlab01:
-        ipv4_address: ${MONGODB_HOST01}
-    volumes:
-      - mongodata01:/data/db:rw
-      - $PWD/mongodb01/config/:/data/configdb
-      - $PWD/mongodb01/init:/docker-entrypoint-initdb.d:ro
-      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: ${SVC_PWD_01}
-    command: --config /etc/mongo/custom.conf
-
-  mongodb02:
-    container_name: mongodb02
-    image: mongo:4.4.14-focal
-    restart: unless-stopped
-    healthcheck:
-      test: echo 'db.runCommand("ping").ok' | mongo ${MONGODB_HOST}:27017/local --quiet
-      interval: 30s
-      timeout: 10s
-      retries: 5
-      start_period: 90s
-    ports:
-      - '27022:27017'
-    networks:
-      netlab01:
-        ipv4_address: ${MONGODB_HOST02}
-    volumes:
-      - mongodata02:/data/db:rw
-      - $PWD/mongodb02/config/:/data/configdb
-      - $PWD/mongodb02/init:/docker-entrypoint-initdb.d:ro
-      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: ${SVC_PWD_02}
-    command: --config /etc/mongo/custom.conf
-
 volumes:
   mongodata:
     name: mongodata
-    external: true
-  mongodata01:
-    name: mongodata01
-    external: true
-  mongodata02:
-    name: mongodata02
     external: true
 
 networks:

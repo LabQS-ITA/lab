@@ -30,6 +30,7 @@ volumes:
   certificates:
     name: certificates
     driver: local
+    external: true
 
 networks:
   netlab01:

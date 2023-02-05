@@ -23,9 +23,6 @@ services:
       - '--web.route-prefix=prometheus'
       - '--web.external-url=http://${LAB_DOMAIN}/prometheus'
 
-
-
-
 networks:
   netlab01:
     external: true

@@ -2,7 +2,7 @@ services:
 
   juice:
     container_name: juice
-    image: juicelabs/server:2023.02.06-2303.70702476-ubuntu-20
+    image: juicelabs/server:2022-12-23-2154-7c6e2773-ubuntu-20
     restart: unless-stopped
     ports:
       - '43210:43210'

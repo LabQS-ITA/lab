@@ -9,7 +9,7 @@ services:
       target: juicebase
     restart: unless-stopped
     ports:
-      - '8085:3000'
+      - '43210:43210'
     networks:
       netlab01:
         ipv4_address: ${JUICE_HOST}

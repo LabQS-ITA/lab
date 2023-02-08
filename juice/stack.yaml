@@ -4,6 +4,13 @@ services:
     container_name: juice
     image: juicelabs/server:2022-12-23-2154-7c6e2773-ubuntu-20
     restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
     ports:
       - '43210:43210'
     networks:

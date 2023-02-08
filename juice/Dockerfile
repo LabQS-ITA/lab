@@ -5,7 +5,7 @@ ARG VIDEOSDK_VERSION=12.0.16
 FROM 597595123756.dkr.ecr.us-east-2.amazonaws.com/juicelabs/nvidia/video-codec:${VIDEOSDK_VERSION} AS video-codec
 
 
-FROM nvidia/cuda:11.7.1-cudnn8-runtime-ubuntu20.04
+FROM nvidia/cuda:11.7.1-cudnn8-runtime-ubuntu20.04 as juicebase
 
 ENV DEBIAN_FRONTEND=noninteractive
 

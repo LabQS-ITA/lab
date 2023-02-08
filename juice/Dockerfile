@@ -2,7 +2,7 @@
 # The zip file requires a license agreement to be accepted for download
 # Retrieved from https://developer.nvidia.com/nvidia-video-codec-sdk
 ARG VIDEOSDK_VERSION=12.0.16
-FROM 597595123756.dkr.ecr.us-east-2.amazonaws.com/juicelabs/nvidia/video-codec:${VIDEOSDK_VERSION} AS video-codec
+FROM  https://labqs.ita.br/nextcloud/s/BFcAiECKF7tYAin AS video-codec
 
 
 FROM nvidia/cuda:11.7.1-cudnn8-runtime-ubuntu20.04 as juicebase

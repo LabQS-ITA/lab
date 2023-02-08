@@ -8,7 +8,7 @@ FROM nvidia/cuda:11.7.1-cudnn8-runtime-ubuntu20.04 as juicebase
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
-    apt-get install -y software-properties-common wget unzip
+    apt-get install -y software-properties-common wget unzip pciutils
 
 # Install libstdc++-10
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test && \
@@ -17,8 +17,14 @@ RUN add-apt-repository ppa:ubuntu-toolchain-r/test && \
 # Install opengl support
 RUN apt-get install -y libglvnd0 libgl1 libegl1
 
-# Install vulkan support
-RUN apt-get install -y libvulkan1
+# Install vulkan sdk
+RUN mkdir /opt/vulkansdk/ && \
+    cd /opt/vulkansdk/ && \
+    wget https://sdk.lunarg.com/sdk/download/1.3.236.0/linux/vulkansdk-linux-x86_64-1.3.236.0.tar.gz && \
+    tar -xf vulkansdk-linux-x86_64-1.3.236.0.tar.gz && \
+    rm -f vulkansdk-linux-x86_64-1.3.236.0.tar.gz
+
+ENV VULKAN_SDK /opt/vulkansdk/1.3.236.0/x86_64/
 
 # Largely pulled from https://gitlab.com/nvidia/container-images/video-codec-sdk/-/blob/master/ubuntu18.04/Dockerfile
 ARG VIDEOSDK_VERSION
@@ -51,32 +57,27 @@ LABEL "juicelabs.co/vulkan/api_version"=${VK_API_VERSION}
 RUN sed -e "s/<<VK_API_VERSION>>/${VK_API_VERSION}/" /usr/share/vulkan/icd.d/nvidia_icd.json
 
 # Finally, Juice installation
-RUN useradd -ms /bin/bash juice
-
-USER juice
-
-ARG OS_NAME
 ARG JUICE_VERSION
 ENV JUICE_VERSION=${JUICE_VERSION}
 LABEL "juicelabs.co/version"=${JUICE_VERSION}
-RUN wget -O ~/JuiceServer.tar.gz https://github.com/Juice-Labs/Juice-Labs/releases/download/${JUICE_VERSION}/JuiceServer-${OS_NAME}.tar.gz
+RUN wget -O ~/JuiceServer.tar.gz https://github.com/Juice-Labs/Juice-Labs/releases/download/${JUICE_VERSION}/JuiceServer-linux.tar.gz
 
 ARG PORT=43210
 EXPOSE ${PORT}
 ENV PORT=${PORT}
 
-ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda/lib64:/usr/local/cuda/lib64/stubs:/home/juice
+ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda/lib64:/usr/local/cuda/lib64/stubs:${VULKAN_SDK}/lib:/root
 ENV FONTCONFIG_PATH=/etc/fonts
 
 ENV NVIDIA_DISABLE_REQUIRE=1
 ENV NVIDIA_DRIVER_CAPABILITIES=compute,graphics,utility,video
 
-WORKDIR /home/juice
+WORKDIR /root
 
 RUN tar -xf JuiceServer.tar.gz && \
     ./setup.sh
 
-WORKDIR /home/juice/agent
+WORKDIR /root/agent
 
 ENTRYPOINT ["/bin/bash", "-c", "../node/bin/node dist/bin/main.js --launcher ../Renderer_Win --port $PORT ${@}", "--"]
 

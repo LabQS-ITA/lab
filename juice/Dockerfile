@@ -5,7 +5,7 @@ ARG VIDEOSDK_VERSION=12.0.16
 FROM 597595123756.dkr.ecr.us-east-2.amazonaws.com/juicelabs/nvidia/video-codec:${VIDEOSDK_VERSION} AS video-codec
 
 
-FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu20.04
+FROM nvidia/cuda:11.7.1-cudnn8-runtime-ubuntu20.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -82,4 +82,4 @@ WORKDIR /home/juice/agent
 
 ENTRYPOINT ["/bin/bash", "-c", "../node/bin/node dist/bin/main.js --launcher ../Renderer_Win --port $PORT ${@}", "--"]
 
-LABEL maintainer="JUICE TECHNOLOGIES <juicelabs.co>"
+LABEL maintainer="LabQS Project <https://github.com/labqs-ita>"

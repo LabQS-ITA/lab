@@ -2,8 +2,6 @@
 # The zip file requires a license agreement to be accepted for download
 # Retrieved from https://developer.nvidia.com/nvidia-video-codec-sdk
 ARG VIDEOSDK_VERSION=12.0.16
-FROM  https://labqs.ita.br/nextcloud/s/BFcAiECKF7tYAin AS video-codec
-
 
 FROM nvidia/cuda:11.7.1-cudnn8-runtime-ubuntu20.04 as juicebase
 
@@ -27,7 +25,7 @@ ARG VIDEOSDK_VERSION
 
 RUN mkdir -p /opt/nvidia/video-sdk
 WORKDIR /opt/nvidia/video-sdk
-COPY --from=video-codec /Video_Codec_SDK_${VIDEOSDK_VERSION}.zip /opt/nvidia/video-sdk
+RUN wget https://labqs.ita.br/nextcloud/s/BFcAiECKF7tYAin/download/Video_Codec_SDK_${VIDEOSDK_VERSION}.zip
 RUN unzip -j Video_Codec_SDK_${VIDEOSDK_VERSION}.zip \
           Video_Codec_SDK_${VIDEOSDK_VERSION}/Interface/cuviddec.h \
           Video_Codec_SDK_${VIDEOSDK_VERSION}/Interface/nvcuvid.h \

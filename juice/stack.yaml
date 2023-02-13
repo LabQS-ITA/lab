@@ -2,14 +2,17 @@ services:
 
   juice:
     container_name: juice
-    image: labqs/juice:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
-      target: juicebase
+    image: juicelabs/server:2022-12-23-2154-7c6e2773-ubuntu-20
     restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
     ports:
-      - '8085:3000'
+      - '43210:43210'
     networks:
       netlab01:
         ipv4_address: ${JUICE_HOST}

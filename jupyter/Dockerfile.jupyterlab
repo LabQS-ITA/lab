@@ -8,6 +8,11 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 USER root
 
+# OpenVPN
+RUN curl -fsSL https://swupdate.openvpn.net/repos/openvpn-repo-pkg-key.pub | gpg --dearmor > /etc/apt/trusted.gpg.d/openvpn-repo-pkg-keyring.gpg \
+    curl -fsSL https://swupdate.openvpn.net/community/openvpn3/repos/openvpn3-focal.list >/etc/apt/sources.list.d/openvpn3.list \
+    apt update
+
 # JavaScript/R pre-requisites
 RUN apt-get update && \
     apt-get upgrade --yes && \
@@ -22,7 +27,9 @@ RUN apt-get update && \
     r-cran-rodbc \
     gfortran \
     gcc \
-    nvidia-cuda-toolkit && \
+    nvidia-cuda-toolkit \
+    apt-transport-https \
+    openvpn3 && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 USER ${NB_UID}

@@ -9,7 +9,8 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 USER root
 
 # OpenVPN
-RUN apt-get install --yes --no-install-recommends curl && \
+RUN apt-get update && \
+    apt-get install --yes --no-install-recommends curl && \
     curl -fsSL https://swupdate.openvpn.net/repos/openvpn-repo-pkg-key.pub | gpg --dearmor > /etc/apt/trusted.gpg.d/openvpn-repo-pkg-keyring.gpg && \
     curl -fsSL https://swupdate.openvpn.net/community/openvpn3/repos/openvpn3-focal.list >/etc/apt/sources.list.d/openvpn3.list
 

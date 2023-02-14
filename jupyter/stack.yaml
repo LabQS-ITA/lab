@@ -12,9 +12,6 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
-    volumes:
-      - jupytershared:/home/jovyan/shared:rw
-      - jupyterdata:/home/jovyan/data:ro
     environment:
       JUPYTER_HOST: ${JUPYTER_HOST}
 

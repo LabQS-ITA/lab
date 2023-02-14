@@ -12,6 +12,9 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+    volumes:
+      - jupyterdata:/home/jovyan/data
+      - jupytershared:/home/jovyan/shared
     environment:
       JUPYTER_HOST: ${JUPYTER_HOST}
 
@@ -45,6 +48,9 @@ services:
     command: [ "jupyterhub", "-f", "/etc/jupyterhub/jupyterhub_config.py" ]
 
 volumes:
+  flualfadata:
+    name: flualfadata
+    external: true
   jupyterdata:
     name: jupyterdata
     external: true

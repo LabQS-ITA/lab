@@ -40,6 +40,14 @@ volumes:
       device: /home/gpes/VOLUMES/docker/volumes/jupyterdata/_data
       o: bind
 
+  jupytershared:
+    name: jupytershared
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/jupytershared/_data
+      o: bind
+
   mariadata:
     name: mariadbdata
     driver: local

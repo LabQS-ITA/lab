@@ -5,7 +5,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /volumes/flualfadata/_data
+      device: /import/flualfadata/documents
       o: bind
 
   certificates:

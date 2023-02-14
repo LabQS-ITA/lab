@@ -805,6 +805,7 @@ c.DockerSpawner.volumes = {
     'jupyterhub-user-{username}': notebook_dir,
     'jupyterdata': {"bind": '/home/jovyan/work/data', "mode": "ro"},
     'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
+    'flualfadata': {"bind": "/home/jovyan/work/flualfadata", "mode": "ro"},
 }
 
 network_name = os.environ.get('DOCKER_NETWORK_NAME', 'bridge')

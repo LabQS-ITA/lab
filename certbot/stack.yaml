@@ -26,11 +26,6 @@ services:
       - '-d ${CERT_DOMAINS}'
       - '--dry-run'
 
-volumes:
-  certificates:
-    name: certificates
-    external: true
-
 networks:
   netlab01:
     external: true

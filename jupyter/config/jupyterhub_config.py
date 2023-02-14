@@ -803,8 +803,8 @@ notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR', '/home/jovyan')
 c.DockerSpawner.notebook_dir = notebook_dir
 c.DockerSpawner.volumes = { 
     'jupyterhub-user-{username}': notebook_dir,
-    'jupytershared': {"bind": '/home/jovyan/shared', "mode": "rw"},
-    'jupyterdata': {"bind": '/home/jovyan/data', "mode": "ro"},
+    'jupyterdata': {"bind": '/home/jovyan/work/data', "mode": "ro"},
+    'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
 }
 
 network_name = os.environ.get('DOCKER_NETWORK_NAME', 'bridge')

@@ -13,8 +13,8 @@ services:
               count: 1
               capabilities: [gpu]
     volumes:
-      - jupyterdata:/home/jovyan/data
-      - jupytershared:/home/jovyan/shared
+      - jupytershared:/home/jovyan/shared:rw
+      - jupyterdata:/home/jovyan/data:ro
     environment:
       JUPYTER_HOST: ${JUPYTER_HOST}
 

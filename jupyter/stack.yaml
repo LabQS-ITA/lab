@@ -47,17 +47,6 @@ services:
       DOCKER_SPAWN_CMD: start-singleuser.sh
     command: [ "jupyterhub", "-f", "/etc/jupyterhub/jupyterhub_config.py" ]
 
-volumes:
-  flualfadata:
-    name: flualfadata
-    external: true
-  jupyterdata:
-    name: jupyterdata
-    external: true
-  jupytershared:
-    name: jupytershared
-    external: true
-
 networks:
   netlab01:
     external: true

@@ -3,6 +3,7 @@ volumes:
   flualfadata:
     name: flualfadata
     driver: local
+    external: true
     driver_opts:
       type: none
       device: /volumes/flualfadata/_data
@@ -11,10 +12,12 @@ volumes:
   certificates:
     name: certificates
     driver: local
+    external: true
 
   jupyterdata:
     name: jupyterdata
     driver: local
+    external: true
     driver_opts:
       type: none
       device: /volumes/jupyterdata/_data
@@ -23,6 +26,7 @@ volumes:
   jupytershared:
     name: jupytershared
     driver: local
+    external: true
     driver_opts:
       type: none
       device: /volumes/jupyterdata/_data

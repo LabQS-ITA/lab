@@ -799,12 +799,12 @@ c.DockerSpawner.extra_host_config = {
 
 
 
-notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR', '/home/jovyan/work')
+notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR', '/home/jovyan')
 c.DockerSpawner.notebook_dir = notebook_dir
 c.DockerSpawner.volumes = { 
     'jupyterhub-user-{username}': notebook_dir,
-    '/volumes/jupytershared/_data': {"bind": '/home/jovyan/shared', "mode": "rw"},
-    '/volumes/jupyterdata/_data': {"bind": '/home/jovyan/data', "mode": "ro"},
+    'jupyterhub-data': {"bind": '/home/jovyan/shared', "mode": "rw"},
+    'jupyterhub-shared': {"bind": '/home/jovyan/data', "mode": "ro"},
 }
 
 network_name = os.environ.get('DOCKER_NETWORK_NAME', 'bridge')

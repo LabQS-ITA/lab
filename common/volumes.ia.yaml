@@ -5,7 +5,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /volumes/jupyterdata/_data
+      device: /volumes/flualfadata/_data
       o: bind
 
   certificates:

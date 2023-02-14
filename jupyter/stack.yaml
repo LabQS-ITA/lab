@@ -32,8 +32,6 @@ services:
         ipv4_address: ${JUPYTER_HOST}
     volumes:
       - $PWD/config/jupyterhub_config.py:/etc/jupyterhub/jupyterhub_config.py:ro
-      - jupyterdata:/home/jovyan/data:ro
-      - jupytershared:/home/jovyan/shared:rw
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

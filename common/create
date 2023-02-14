@@ -2,3 +2,9 @@
 set -euo pipefail
 
 docker network create --driver bridge netlab01 --subnet='172.16.0.0/16'
+
+if [ $1 == "ia" ]; then
+    docker volume create -d local -o type=none -o device=/volumes/flualfadata/_data -o o=bind flualfadata
+    docker volume create -d local -o type=none -o device=/volumes/jupyterdata/_data -o o=bind jupyterdata
+    docker volume create -d local -o type=none -o device=/volumes/jupytershared/_data -o o=bind jupytershared
+fi

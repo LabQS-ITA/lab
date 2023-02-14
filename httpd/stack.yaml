@@ -25,10 +25,6 @@ services:
       CM_LAB_DOMAIN: ${CM_LAB_DOMAIN}
       IA_LAB_DOMAIN: ${IA_LAB_DOMAIN}
 
-volumes:
-  certificates:
-    external: true
-
 networks:
   netlab01:
     external: true

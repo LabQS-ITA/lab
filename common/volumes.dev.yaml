@@ -10,7 +10,6 @@ volumes:
 
   certificates:
     name: certificates
-    driver: local
     external: true
     driver_opts:
       type: none

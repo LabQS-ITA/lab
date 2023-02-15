@@ -59,6 +59,12 @@ O serviço pode ser acessado por máquinas na rede local através do nome (`post
 
 Os dados de cada ambiente são mantidos numa pasta com o mesmo nome do serviço, **fora de controle de versão**, e sob um regime de _backup_ automatizado (ver [Serviço de cópias de segurança de dados do Laboratório de Testes de Software](../backup/README.md)).
 
+### Volumes de dados
+
+```bash
+docker volume create -d local -o type=none -o device="/home/gpes/VOLUMES/postgresdata01/_data" -o o=bind postgresdata03
+```
+
 ## Autologin
 
 O usuário `postgres` possui auto-login configurado no arquivo `config/.pgpass` do container correspondente (criado pelo script `common\setup`). Isto permite ao backup rodar via linha de comando sem inserção de senha.

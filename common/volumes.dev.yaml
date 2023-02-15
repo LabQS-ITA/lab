@@ -10,7 +10,7 @@ volumes:
 
   certificates:
     name: certificates
-    external: true
+    driver: local
     driver_opts:
       type: none
       device: /home/gpes/VOLUMES/docker/volumes/certificates/_data

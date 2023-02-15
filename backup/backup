@@ -64,6 +64,12 @@ function backup_volumes() {
 
 }
 
+function backup_env() {
+
+    find /home/gpes/LTS -name *.env -type f -exec tar cvzf /export/bkp/env.tar.gz {} +
+
+}
+
 
 for c in $(docker ps -a --format '{{.Names}}');
 do

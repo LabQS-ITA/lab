@@ -62,7 +62,8 @@ Os dados de cada ambiente são mantidos numa pasta com o mesmo nome do serviço,
 ### Volumes de dados
 
 ```bash
-docker volume create -d local -o type=none -o device="/home/gpes/VOLUMES/postgresdata01/_data" -o o=bind postgresdata03
+mkdir  -p /home/gpes/VOLUMES/docker/volumes/postgresdata03/_data
+docker volume create -d local -o type=none -o device="/home/gpes/VOLUMES/docker/volumes/postgresdata03/_data" -o o=bind postgresdata03
 ```
 
 ## Autologin

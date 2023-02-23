@@ -803,7 +803,7 @@ c.DockerSpawner.notebook_dir = notebook_dir
 
 mec_team = ['aline', 'wesley', 'gpes']
 
-if any(u in os.environ.get('JUPYTERHUB_USER', '') for u in mec_team):
+if os.environ.get('JUPYTERHUB_USER', '') in mec_team:
     c.DockerSpawner.volumes = { 
         'jupyterhub-user-{username}': notebook_dir,
         'jupyterdata': {"bind": '/home/jovyan/work/data', "mode": "ro"},

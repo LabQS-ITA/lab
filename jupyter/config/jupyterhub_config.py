@@ -800,18 +800,18 @@ c.DockerSpawner.extra_host_config = {
 
 notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR', '/home/jovyan')
 c.DockerSpawner.notebook_dir = notebook_dir
-mec_team = ['aline', 'wesley', 'gpes']
-if any(u in c.DockerSpawner.username for u in mec_team):
+# mec_team = ['aline', 'wesley', 'gpes']
+# if any(u in c.DockerSpawner.username for u in mec_team):
     c.DockerSpawner.volumes = { 
         'jupyterhub-user-{username}': notebook_dir,
         'jupyterdata': {"bind": '/home/jovyan/work/data', "mode": "ro"},
         'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
         'flualfadata': {"bind": "/home/jovyan/work/flualfadata", "mode": "ro"},
     }
-else:
-    c.DockerSpawner.volumes = { 
-        'jupyterhub-user-{username}': notebook_dir,
-    }
+# else:
+#     c.DockerSpawner.volumes = { 
+#         'jupyterhub-user-{username}': notebook_dir,
+#     }
 
 network_name = os.environ.get('DOCKER_NETWORK_NAME', 'bridge')
 c.DockerSpawner.use_internal_ip = True

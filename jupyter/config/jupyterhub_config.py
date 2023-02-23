@@ -807,16 +807,17 @@ def mount_volumes(spawner):
     username = spawner.user.name
     if username in mec_team:
         spawner.volumes = { 
+            'jupyterhub-user-{username}': notebook_dir,
             'jupyterdata': {"bind": '/home/jovyan/work/data', "mode": "ro"},
             'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
             'flualfadata': {"bind": "/home/jovyan/work/flualfadata", "mode": "ro"},
         }
+    else:
+        spawner.volumes = { 
+            'jupyterhub-user-{username}': notebook_dir,
+        }
 
 c.DockerSpawner.pre_spawn_hook = mount_volumes
-
-c.DockerSpawner.volumes = { 
-    'jupyterhub-user-{username}': notebook_dir,
-}
 
 network_name = os.environ.get('DOCKER_NETWORK_NAME', 'bridge')
 c.DockerSpawner.use_internal_ip = True

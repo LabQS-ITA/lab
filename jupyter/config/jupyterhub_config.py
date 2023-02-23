@@ -801,11 +801,11 @@ c.DockerSpawner.extra_host_config = {
 notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR', '/home/jovyan')
 c.DockerSpawner.notebook_dir = notebook_dir
 mec_team = ['aline', 'wesley', 'gpes']
-if any(u in c.DockerSpawner.user.name for u in mec_team):
-    print('mec team')
-else:
-    print('other team')
-    
+# if any(u in c.DockerSpawner.user.name for u in mec_team):
+#     print('mec team')
+# else:
+#     print('other team')
+
 c.DockerSpawner.volumes = { 
     'jupyterhub-user-{username}': notebook_dir,
     'jupyterdata': {"bind": '/home/jovyan/work/data', "mode": "ro"},

@@ -807,7 +807,6 @@ def mount_volumes(spawner):
     username = spawner.user.name
     if username in mec_team:
         spawner.volumes = { 
-            'jupyterhub-user-{username}': notebook_dir,
             'jupyterdata': {"bind": '/home/jovyan/work/data', "mode": "ro"},
             'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
             'flualfadata': {"bind": "/home/jovyan/work/flualfadata", "mode": "ro"},

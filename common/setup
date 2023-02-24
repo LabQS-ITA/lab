@@ -273,7 +273,7 @@ if [ "$1" == "ia" ]; then
 
 fi
 
-if [ "$1" == "dev" || "$1" == "tst" ]; then
+if [ "$1" == "dev" ] || [ "$1" == "tst" ]; then
 
     cd ../gitea
     echo '* Gitea *'

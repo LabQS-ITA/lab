@@ -17,7 +17,7 @@ services:
         ipv4_address: ${MONGODB_HOST}
     volumes:
       - mongodata:/data/db:rw
-      - $PWD/mongodb/config/custom.conf:/data/configdb/custom.conf
+      - $PWD/mongodb/config/custom.conf:/etc/mongo/custom.conf
       - $PWD/mongodb/init:/docker-entrypoint-initdb.d:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

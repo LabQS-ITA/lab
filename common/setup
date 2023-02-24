@@ -373,6 +373,5 @@ if [ $1 == "dev" || $1 == "tst" ]; then
     echo '* Portainer *'
 
     docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
-    docker compose -f agent.yaml up  --detach
 
 fi

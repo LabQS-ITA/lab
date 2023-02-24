@@ -233,48 +233,47 @@ if [ $1 != "ia" ]; then
 
 fi
 
-if [ $1 == "hom" ] || [ $1 == "ia" ]; then
+cd ../portainer
+echo '* Portainer *'
 
-    cd ../portainer
-    echo '* Portainer *'
-
-    docker compose -f agent.yaml up  --detach
+docker compose -f agent.yaml up  --detach
 
 
-    if [ $1 == "ia" ]; then
-        cd ../jupyter
-        echo '* Jupyter Notebook *'
+if [ $1 == "ia" ]; then
 
-        if [ $CONFIG_ENV == 'Y' ]; then
-            echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-            echo 'SVC_DEV_PWD='$(openssl rand -hex 8) >> .env
-        fi
+    cd ../jupyter
+    echo '* Jupyter Notebook *'
 
-        cd stacks
-
-        cd docker-stacks-foundation
-        docker build --tag labqs/docker-stacks-foundation --rm .
-
-        cd ../base-notebook
-        docker build --tag labqs/base-notebook --rm .
-
-        cd ../minimal-notebook
-        docker build --tag labqs/minimal-notebook --rm .
-
-        cd ../scipy-notebook
-        docker build --tag labqs/scipy-notebook --rm .
-
-        cd ../tensorflow-notebook
-        docker build --tag labqs/tensorflow-notebook --rm .
-
-        cd ../..
-
-        docker build --tag labqs/jupyterlab --file Dockerfile.jupyterlab --rm .
-        docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --build --detach jupyterhub
+    if [ $CONFIG_ENV == 'Y' ]; then
+        echo 'SVC_PWD='$(openssl rand -hex 8) > .env
+        echo 'SVC_DEV_PWD='$(openssl rand -hex 8) >> .env
     fi
 
-else
+    cd stacks
 
+    cd docker-stacks-foundation
+    docker build --tag labqs/docker-stacks-foundation --rm .
+
+    cd ../base-notebook
+    docker build --tag labqs/base-notebook --rm .
+
+    cd ../minimal-notebook
+    docker build --tag labqs/minimal-notebook --rm .
+
+    cd ../scipy-notebook
+    docker build --tag labqs/scipy-notebook --rm .
+
+    cd ../tensorflow-notebook
+    docker build --tag labqs/tensorflow-notebook --rm .
+
+    cd ../..
+
+    docker build --tag labqs/jupyterlab --file Dockerfile.jupyterlab --rm .
+    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --build --detach jupyterhub
+
+fi
+
+if [ $1 == "dev" || $1 == "tst" ]; then
 
     cd ../gitea
     echo '* Gitea *'
@@ -373,10 +372,7 @@ else
     cd ../portainer
     echo '* Portainer *'
 
-    if [ $1 == "dev" ]; then
-        docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
-    else
-        docker compose -f agent.yaml up  --detach
-    fi
+    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f agent.yaml up  --detach
 
 fi

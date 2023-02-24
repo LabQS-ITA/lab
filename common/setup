@@ -85,7 +85,7 @@ sed -i 's/@IA_LAB_DOMAIN/'$IA_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
 cd ../httpd
 echo '* Apache HTTPD *'
 
-if [ $1 == "hom" ] || [ $1 == "ia" ]; then
+if [ "$1" == "hom" ] || [ "$1" == "ia" ]; then
 
     echo "Desabilitar proxy para "$CI_LAB_DOMAIN" e "$CM_LAB_DOMAIN" se existirem"
 
@@ -125,7 +125,7 @@ docker stop httpd
 docker start httpd
 
 
-if [ $1 != "ia" ]; then
+if [ "$1" != "ia" ]; then
     cd ../postgresql
     echo '* PostgreSQL *'
 
@@ -239,7 +239,7 @@ echo '* Portainer *'
 docker compose -f agent.yaml up  --detach
 
 
-if [ $1 == "ia" ]; then
+if [ "$1" == "ia" ]; then
 
     cd ../jupyter
     echo '* Jupyter Notebook *'
@@ -273,7 +273,7 @@ if [ $1 == "ia" ]; then
 
 fi
 
-if [ $1 == "dev" || $1 == "tst" ]; then
+if [ "$1" == "dev" || "$1" == "tst" ]; then
 
     cd ../gitea
     echo '* Gitea *'

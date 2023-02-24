@@ -78,32 +78,6 @@ services:
       POSTGRES_PASSWORD: ${SVC_PWD_02}
       PGPASSFILE: /etc/postgresql/.pgpass
 
-  postgres03:
-    container_name: postgres03
-    image: postgres:12.13
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "sh -c 'pg_isready -U postgres -d postgres'"]
-      interval: 30s
-      timeout: 60s
-      retries: 5
-      start_period: 90s
-    ports:
-      - '5403:5432'
-    networks:
-      netlab01:
-        ipv4_address: ${POSTGRES_HOST03}
-    volumes:
-      - postgresdata03:/var/lib/postgresql/data
-      - $PWD/postgres03/config:/etc/postgresql
-      - $PWD/postgres03/init:/docker-entrypoint-initdb.d
-      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
-    environment:
-      POSTGRES_PASSWORD: ${SVC_PWD_03}
-      PGPASSFILE: /etc/postgresql/.pgpass
-
 volumes:
   postgresdata:
     name: postgresdata
@@ -113,9 +87,6 @@ volumes:
     external: true
   postgresdata02:
     name: postgresdata02
-    external: true
-  postgresdata03:
-    name: postgresdata03
     external: true
 
 networks:

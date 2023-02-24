@@ -10,7 +10,7 @@ Para atender a necessidade arquitetural dos desenvolvedores de aplicações de t
 
 ## Configuração
 
-Foram criadas instâncias separadas por ambiente (denominadas [postgres01](./postgres01), [postgres02](./postgres02) e [postgres03](./postgres03)). Nas pastas de cada instância temos um arquivo de configuração `config/postgresql.conf` que permite configurar cada instância em particular.
+Foram criadas instâncias separadas por ambiente (denominadas [postgres01](./postgres01) e [postgres02](./postgres02)). Nas pastas de cada instância temos um arquivo de configuração `config/postgresql.conf` que permite configurar cada instância em particular.
 
 Além disto temos o arquivo `config/pg_hba` onde estão definidos os usuários (como de praxe a senha está no arquivo `.env`):
 

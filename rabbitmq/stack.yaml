@@ -5,6 +5,11 @@ services:
     hostname: rabbitmq01
     image: rabbitmq:alpine
     restart: unless-stopped
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 30s
+      retries: 3
     networks:
       netlab01:
         ipv4_address: ${RABBITMQ_HOST01}
@@ -23,6 +28,11 @@ services:
     hostname: rabbitmq02
     image: rabbitmq:alpine
     restart: unless-stopped
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 30s
+      retries: 3
     networks:
       netlab01:
         ipv4_address: ${RABBITMQ_HOST02}
@@ -41,6 +51,11 @@ services:
     hostname: rabbitmng
     image: rabbitmq:management-alpine
     restart: unless-stopped
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 30s
+      retries: 3
     ports:
       - '15672:15672'
     networks:

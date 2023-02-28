@@ -380,6 +380,7 @@ if [ "$1" == "dev" ] || [ "$1" == "tst" ]; then
 
     # if [ $CONFIG_ENV == 'Y' ]; then
     #     echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) > .env
+    #     echo 'DATABASE_HOST=postgres' >> .env
     #     echo 'GCP_SERVICE_ACCOUNT_FILE_PATH=/dev/null' >> .env
     #     echo 'SAME_HOST=False' >> .env
     #     echo 'USER_PASSWORDS_SECRET='$(openssl rand -hex 32) >> .env

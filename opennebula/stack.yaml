@@ -4,8 +4,6 @@ services:
     container_name: nebula
     image: opennebula/opennebula:latest
     restart: unless-stopped
-    ports:
-      - '19999:19999'
     networks:
       netlab01:
         ipv4_address: ${NEBULA_HOST}

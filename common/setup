@@ -1,49 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+source ./config
+
+source ./functions
+
 if [[ $# -ne 1 && $# -ne 2 ]]; then
 
     echo "Informe { dev | tst | hom | ia } [ config ]"
 
     exit 1
 
-elif [ "$1" == "tst" ]; then
-
-    # Servidor do lab
-    export LAB_DOMAIN=test.labqs.ita.br
-    export CI_LAB_DOMAIN=ci.test.labqs.ita.br
-    export CM_LAB_DOMAIN=cm.test.labqs.ita.br
-    export IA_LAB_DOMAIN=ia.labqs.ita.br
-
-elif [ "$1" == "dev" ]; then
-
-    # Servidores de desenvolvimento e testes
-    export LAB_DOMAIN=dev.labqs.ita.br
-    export CI_LAB_DOMAIN=ci.labqs.ita.br
-    export CM_LAB_DOMAIN=cm.labqs.ita.br
-    export IA_LAB_DOMAIN=ia.labqs.ita.br
-
-elif [ "$1" == "hom" ]; then
-
-    # Servidores de homologação
-    export LAB_DOMAIN=labqs.ita.br
-    export CI_LAB_DOMAIN=ci.labqs.ita.br
-    export CM_LAB_DOMAIN=cm.labqs.ita.br
-    export IA_LAB_DOMAIN=ia.labqs.ita.br
-
-elif [ "$1" == "ia" ]; then
-
-    # Servidor do lab
-    export LAB_DOMAIN=ia.labqs.ita.br
-    export CI_LAB_DOMAIN=ci.labqs.ita.br
-    export CM_LAB_DOMAIN=cm.labqs.ita.br
-    export IA_LAB_DOMAIN=ia.labqs.ita.br
-        
 else
 
-    echo "Argumento $1 incorreto. Use [ dev | tst | hom | ia ]"
-
-    exit 1
+    domain $1
 
 fi
 
@@ -71,18 +41,6 @@ else
     echo "$(tput setaf 1)Atualizando ambientes sem reconfigurar$(tput sgr0)"
 
 fi
-
-source ./config
-
-source ./functions
-
-echo "Registrar domínios $(tput setaf 1)"$LAB_DOMAIN"$(tput sgr0)"
-
-sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' ../httpd/panel/static/index.html
-sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
-sed -i 's/@CM_LAB_DOMAIN/'$CM_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
-sed -i 's/@IA_LAB_DOMAIN/'$IA_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
-
 
 httpd $1 $CONFIG_ENV
 

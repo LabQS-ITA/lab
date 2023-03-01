@@ -374,11 +374,14 @@ if [ "$1" == "dev" ] || [ "$1" == "tst" ]; then
 
     docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
 
+
     cd ../opennebula
     echo '* OpenNebula *'
 
     if [ $CONFIG_ENV == 'Y' ]; then
         echo 'ONEADMIN_PASSWORD='$(openssl rand -hex 8) > .env
     fi
+
+    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
 
 fi

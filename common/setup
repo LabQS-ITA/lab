@@ -84,306 +84,61 @@ sed -i 's/@CM_LAB_DOMAIN/'$CM_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
 sed -i 's/@IA_LAB_DOMAIN/'$IA_LAB_DOMAIN'/g' ../httpd/panel/static/index.html
 
 
-cd ../httpd
-echo '* Apache HTTPD *'
-
-if [ "$1" == "hom" ] || [ "$1" == "ia" ]; then
-
-    echo "Desabilitar proxy para "$CI_LAB_DOMAIN" e "$CM_LAB_DOMAIN" se existirem"
-
-    rm panel/config/sites/001-ci.conf || true
-    rm panel/config/sites/002-cm.conf || true
-
-fi
-
-if [ "$1" == "tst" ]; then
-
-    # Servidor do lab
-    sed -i 's/@LAB_SERVICE/Teste/g' ../httpd/panel/static/index.html
-    
-elif [ "$1" == "dev" ]; then
-
-    # Servidores de desenvolvimento e testes
-    sed -i 's/@LAB_SERVICE/Desenvolvimento/g' ../httpd/panel/static/index.html
-    
-elif [ "$1" == "hom" ]; then
-
-    # Servidores de homologação
-    sed -i 's/@LAB_SERVICE/Homologação/g' ../httpd/panel/static/index.html
-    
-elif [ "$1" == "ia" ]; then
-
-    # Servidores de homologação
-    sed -i 's/@LAB_SERVICE/Data-science/g' ../httpd/panel/static/index.html
-    
-fi
-
-echo 'Certificar que certbot está parado'
-docker stop certbot || true
-
-docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
-
-docker stop httpd
-docker start httpd
-
+httpd $1 $CONFIG_ENV
 
 if [ "$1" != "ia" ]; then
-    cd ../postgresql
-    echo '* PostgreSQL *'
+    
+    postgres $1 $CONFIG_ENV
 
-    if [ $CONFIG_ENV == 'Y' ]; then
-        echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-        echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
-        echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
-        echo 'SVC_PWD_03='$(openssl rand -hex 8) >> .env
+    mongodb $1 $CONFIG_ENV
 
-        echo 'localhost:5432:*:postgres:'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env) > ./postgres/config/.pgpass
-        chmod 0600 ./postgres/config/.pgpass
-        echo 'localhost:5432:*:postgres:'$(awk -F'=' '$1 =="SVC_PWD_01" {print $2}' .env) > ./postgres01/config/.pgpass
-        chmod 0600 ./postgres01/config/.pgpass
-        echo 'localhost:5432:*:postgres:'$(awk -F'=' '$1 =="SVC_PWD_02" {print $2}' .env) > ./postgres02/config/.pgpass
-        chmod 0600 ./postgres02/config/.pgpass
-    fi
+    mariadb $1 $CONFIG_ENV
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    redis $1 $CONFIG_ENV
 
+    # memcached $1 $CONFIG_ENV
 
-    cd ../mongodb
-    echo '* MongoDB *'
+    etcd $1 $CONFIG_ENV
 
-    if [ $CONFIG_ENV == 'Y' ]; then
-        echo 'SVC_PWD='$(openssl rand -hex 8) > .env
+    # rabbitmq $1 $CONFIG_ENV
 
-        echo 'uri: "mongodb://root:'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env)'@localhost:27017"' > ./mongodb/config/.mdbpass
-        chmod 0600 ./mongodb/config/.mdbpass
-    fi
+    nextcloud $1 $CONFIG_ENV
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
-
-
-    cd ../mariadb
-    echo '* MariaDB *'
-
-    if [ $CONFIG_ENV == 'Y' ]; then
-        echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-
-        echo '[client]' > mariadb/config/autologin.cnf
-        echo 'user = root' >> mariadb/config/autologin.cnf
-        echo 'password = '$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env) >> mariadb/config/autologin.cnf
-    fi
-
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
-
-
-    cd ../redis
-    echo '* Redis *'
-
-    if [ $CONFIG_ENV == 'Y' ]; then
-        echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-        echo 'SVC_PWD_01='$(openssl rand -hex 8) >> .env
-        echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
-    fi
-
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
-
-
-    # cd ../memcached
-    # echo '* memcached *'
-
-    # docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
-
-
-    cd ../etcd
-    echo '* Etcd *'
-
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
-
-
-    # cd ../rabbitmq
-    # echo '* RabbitMQ *'
-
-    # if [ $CONFIG_ENV == 'Y' ]; then
-    #      echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-    # fi
-
-    # sed -i 's/@SVC_PWD/'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env)'/g' config/rabbitmng/20-user.conf
-
-    # docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
-
-
-    cd ../nextcloud
-    echo '* Nextcloud *'
-
-    if [ $CONFIG_ENV == 'Y' ]; then
-        echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-        echo 'REDIS_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../redis/.env) >> .env
-        echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
-    fi
-
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
-
-
-    cd ../hasura
-    echo '* Hasura *'
-
-    if [ $CONFIG_ENV == 'Y' ]; then
-        echo 'SVC_PWD='$(openssl rand -hex 16) > .env
-        echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
-    fi
-
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    hasura $1 $CONFIG_ENV
 
 fi
 
-cd ../portainer
-echo '* Portainer *'
-
-docker compose -f agent.yaml up  --detach
+agent $1 $CONFIG_ENV
 
 
 if [ "$1" == "ia" ]; then
 
-    cd ../jupyter
-    echo '* Jupyter Notebook *'
-
-    if [ $CONFIG_ENV == 'Y' ]; then
-        echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-        echo 'SVC_DEV_PWD='$(openssl rand -hex 8) >> .env
-    fi
-
-    cd stacks
-
-    cd docker-stacks-foundation
-    docker build --tag labqs/docker-stacks-foundation --rm .
-
-    cd ../base-notebook
-    docker build --tag labqs/base-notebook --rm .
-
-    cd ../minimal-notebook
-    docker build --tag labqs/minimal-notebook --rm .
-
-    cd ../scipy-notebook
-    docker build --tag labqs/scipy-notebook --rm .
-
-    cd ../tensorflow-notebook
-    docker build --tag labqs/tensorflow-notebook --rm .
-
-    cd ../..
-
-    docker build --tag labqs/jupyterlab --file Dockerfile.jupyterlab --rm .
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --build --detach jupyterhub
+    jupyter $1 $CONFIG_ENV
 
 fi
 
 if [ "$1" == "dev" ] || [ "$1" == "tst" ]; then
 
-    cd ../gitea
-    echo '* Gitea *'
+    gitea $1 $CONFIG_ENV
 
-    if [ $CONFIG_ENV == 'Y' ]; then
-        echo "Navegar até a página de configuração do serviço https://$LAB_DOMAIN/git"
-        echo 'e definir a conta do administrador (no final da página, em "Optional Settings")'
+    drone $1 $CONFIG_ENV
 
-        echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) > .env
-    fi
+    # semaphore $1 $CONFIG_ENV
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    # registry $1 $CONFIG_ENV
 
+    # locust $1 $CONFIG_ENV
 
-    cd ../drone
-    echo '* Drone *'
+    redmine $1 $CONFIG_ENV
 
-    if [ $CONFIG_ENV == 'Y' ]; then
-        echo "Gere uma aplicação OAuth no Gitea para o Drone em https://$LAB_DOMAIN/git"
-        echo "com endereço de retorno https://$CI_LAB_DOMAIN/login"
-        echo 'Após gerar a aplicação informe os dados abaixo'
-        read -p 'Informe o "Client ID": ' GID
-        read -p 'Informe o "Client Secret": ' GSCRT
+    prometheus $1 $CONFIG_ENV
 
-        echo 'DRONE_TOKEN='$(openssl rand -hex 32) > .env
-        echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
-        echo 'GITEA_ID='$GID >> .env
-        echo 'GITEA_PWD='$GSCRT >> .env
-        echo 'SVC_PWD='$(openssl rand -hex 16) >> .env
-    fi
+    grafana $1 $CONFIG_ENV
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans
+    netdata $1 $CONFIG_ENV
 
+    portainer $1 $CONFIG_ENV
 
-    cd ../semaphore
-    echo '* Ansible Semaphore *'
-
-    if [ $CONFIG_ENV == 'Y' ]; then
-        echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-        echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
-    fi
-
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --build --detach
-
-
-    # cd ../registry
-    # echo '* registry *'
-
-    # if [ $CONFIG_ENV == 'Y' ]; then
-    #     echo 'REGISTRY_HTTP_SECRET='$(openssl rand -hex 8) > .env
-    #     echo 'REDIS_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../redis/.env) >> .env
-
-    #     docker run --rm --entrypoint htpasswd httpd -Bbn maint $(awk -F'=' '$1 =="REGISTRY_HTTP_SECRET" {print $2}' ./.env) > .htpasswd
-    # fi
-
-    # sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' config/config.yml
-
-    # docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
-
-
-    # cd ../locust
-    # echo '* Locust *'
-
-    # docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --scale worker=2 --detach --remove-orphans
-    # docker stop $(docker ps -qa -f 'name=locust*')
-
-
-    cd ../redmine
-    echo '* Redmine *'
-
-    if [ $CONFIG_ENV == 'Y' ]; then
-        echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) > .env
-    fi
-
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
-
-
-    cd ../prometheus
-    echo '* Prometheus *'
-
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
-
-
-    cd ../grafana
-    echo '* Grafana *'
-
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
-
-
-    cd ../netdata
-    echo '* Netdata *'
-
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
-    
-
-    cd ../portainer
-    echo '* Portainer *'
-
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
-
-
-    # cd ../opennebula
-    # echo '* OpenNebula *'
-
-    # if [ $CONFIG_ENV == 'Y' ]; then
-    #     echo 'ONEADMIN_PASSWORD='$(openssl rand -hex 8) > .env
-    # fi
-
-    # docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    # opennebula $1 $CONFIG_ENV
 
 fi

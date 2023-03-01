@@ -11,6 +11,7 @@ services:
       netlab01:
         ipv4_address: ${NEBULA_HOST}
     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro

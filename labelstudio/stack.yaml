@@ -20,7 +20,7 @@ services:
       - POSTGRE_PASSWORD=${POSTGRES_PWD}
       - POSTGRE_PORT=5432
       - POSTGRE_HOST=postgres
-      - LABEL_STUDIO_HOST=https://${LAB_DOMAIN}/labelstudio
+      - LABEL_STUDIO_HOST=https://${LAB_DOMAIN}/labelstudio/
       - JSON_LOG=1
       - LOG_LEVEL=DEBUG
     volumes:

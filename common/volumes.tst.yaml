@@ -24,6 +24,10 @@ volumes:
     name: jupytershared
     driver: local
 
+  dbdata:
+    name: dbdata
+    driver: local
+
   mariadata:
     name: mariadbdata
     driver: local

@@ -13,8 +13,8 @@ services:
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=1
     volumes:
-      - ./shared_folder/mysql:/var/lib/mysql
-      - ./docker_mysql:/docker-entrypoint-initdb.d
+      - dbdata:/var/lib/mysql:rw
+      - $PWD/mariadb/init:/docker-entrypoint-initdb.d:ro
 
   teamtat:
     container_name: teamtat
@@ -33,6 +33,11 @@ services:
     command: bash -c "wait-for-it db:3306 && rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     depends_on:
       - db
+
+volumes:
+  dbdata:
+    name: dbdata
+    external: true
 
 networks:
   netlab01:

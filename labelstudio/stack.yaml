@@ -15,12 +15,12 @@ services:
       - /etc/localtime:/etc/localtime:ro
     environment:
       - DJANGO_DB=default
-      - POSTGRE_NAME=postgres
-      - POSTGRE_USER=postgres
-      - POSTGRE_PASSWORD=
+      - POSTGRE_NAME=labelstudio
+      - POSTGRE_USER=labelstudio
+      - POSTGRE_PASSWORD=${POSTGRES_PWD}
       - POSTGRE_PORT=5432
-      - POSTGRE_HOST=db
-      - LABEL_STUDIO_HOST=${LABEL_STUDIO_HOST:-}
+      - POSTGRE_HOST=postgres
+      - LABEL_STUDIO_HOST=${LABELSTUDIO_HOST:-}
       - JSON_LOG=1
       - LOG_LEVEL=DEBUG
     volumes:

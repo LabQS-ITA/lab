@@ -23,15 +23,21 @@ services:
       - LABEL_STUDIO_HOST=https://${LAB_DOMAIN}/labelstudio/
       - LABEL_STUDIO_USERNAME=maint
       - LABEL_STUDIO_PASSWORD=${SVC_PWD}
+      - LABEL_STUDIO_LOCAL_FILES_SERVING_ENABLED=true
+      - LABEL_STUDIO_LOCAL_FILES_DOCUMENT_ROOT=/label-studio/files
       - JSON_LOG=1
       - LOG_LEVEL=DEBUG
     volumes:
       - labelstudiodata:/label-studio/data:rw
+      - flualfadata:/label-studio/files/flualfa
     command: label-studio-uwsgi
 
 volumes:
   labelstudiodata:
     name: labelstudiodata
+    external: true
+  flualfadata:
+    name: flualfadata
     external: true
 
 networks:

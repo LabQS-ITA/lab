@@ -44,8 +44,8 @@ fi
 
 httpd $1 $CONFIG_ENV
 
-if [ "$1" == "dev" ] || [ "$1" == "tst" ]; then
+# if [ "$1" == "dev" ] || [ "$1" == "tst" ]; then
 
-    teamtat $1 $CONFIG_ENV
+#     teamtat $1 $CONFIG_ENV
 
-fi
+# fi

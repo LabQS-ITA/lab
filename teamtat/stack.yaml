@@ -8,6 +8,8 @@ services:
     image: mysql:5.7
     ports:
       - "7364:3306"
+    networks:
+      netlab01:
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=1
     volumes:

@@ -1,0 +1,19 @@
+services:
+
+  labelstudio:
+    container_name: labelstudio
+    image: heartexlabs/label-studio:latest
+    restart: unless-stopped
+    ports:
+      - '8091:8080'
+    networks:
+      netlab01:
+        ipv4_address: ${LABELSTUDIO_HOST}
+    volumes:
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+networks:
+  netlab01:
+    external: true

@@ -5,7 +5,7 @@ services:
     image: heartexlabs/label-studio:latest
     restart: unless-stopped
     ports:
-      - '8091:8080'
+      - '8091:8000'
     networks:
       netlab01:
         ipv4_address: ${LABELSTUDIO_HOST}

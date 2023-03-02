@@ -14,8 +14,6 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     command: bash -c "wait-for-it mariadb:3306 && rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
-    depends_on:
-      - db
 
 networks:
   netlab01:

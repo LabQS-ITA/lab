@@ -21,6 +21,7 @@ services:
       netlab01:
         ipv4_address: ${TEAMTAT_HOST}
     volumes:
+      - $PWD/mariadb/init:/docker-entrypoint-initdb.d:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro

@@ -23,6 +23,10 @@ volumes:
   jupytershared:
     name: jupytershared
     driver: local
+  
+  labelstudiodata:
+    name: labelstudiodata
+    driver: local
 
   dbdata:
     name: dbdata

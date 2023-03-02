@@ -5,6 +5,8 @@ services:
       context: .
       dockerfile: Dockerfile.jupyterlab
       target: jupyterlabbase
+    networks:
+      netlab01:
     deploy:
       resources:
         reservations:

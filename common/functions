@@ -45,6 +45,17 @@ function domain() {
 
 }
 
+
+function teamtat() {
+
+    cd ../teamtat
+    echo '* TeamTat *'
+
+    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+
+}
+
+
 function httpd() {
 
     cd ../httpd

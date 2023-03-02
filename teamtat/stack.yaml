@@ -1,0 +1,21 @@
+services:
+
+  teamtat:
+    container_name: teamtat
+    image: dongseop/teamtat:latest
+    restart: unless-stopped
+    ports:
+      - '8090:3000'
+    networks:
+      netlab01:
+        ipv4_address: ${NETDATA_HOST}
+    volumes:
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    command:
+      - 'bash -c "wait-for-it mariadb:3306 && rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"'
+
+networks:
+  netlab01:
+    external: true

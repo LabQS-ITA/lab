@@ -8,7 +8,7 @@ services:
       - '8090:3000'
     networks:
       netlab01:
-        ipv4_address: ${NETDATA_HOST}
+        ipv4_address: ${TEAMTAT_HOST}
     volumes:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

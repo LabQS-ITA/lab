@@ -12,7 +12,6 @@ services:
     volumes:
       - doccanostaticdata:/backend/staticfiles:rw
       - doccanomediadata:/backend/media:rw
-      - $PWD/config:/doccano/backend/config/settings:ro
       - flualfadata:/label-studio/files/flualfa:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

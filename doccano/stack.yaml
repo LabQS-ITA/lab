@@ -1,14 +1,11 @@
 services:
 
-  doccano:
-    container_name: doccano
+  backend:
+    container_name: doccano_backend
     image: doccano/doccano:backend
     restart: unless-stopped
-    ports:
-      - '8092:8000'
     networks:
       netlab01:
-        ipv4_address: ${DOCCANO_HOST}
     volumes:
       - doccanostaticdata:/backend/staticfiles:rw
       - doccanomediadata:/backend/media:rw
@@ -25,6 +22,27 @@ services:
       - ALLOW_SIGNUP=False
       - DEBUG=True
       - DJANGO_SETTINGS_MODULE=config.settings.production
+
+  frontend:
+    container_name: doccano_frontend
+    image: doccano/doccano:frontend
+    restart: unless-stopped
+    ports:
+      - '8092:8080'
+    networks:
+      netlab01:
+        ipv4_address: ${DOCCANO_HOST}
+    volumes:
+      - doccanostaticdata:/backend/staticfiles:rw
+      - doccanomediadata:/backend/media:rw
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - API_URL=http://backend:8000
+      - WORKER_PROCESSES=auto
+    command: >
+      /bin/sh -c "envsubst '$${WORKER_PROCESSES}'< /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
 
 volumes:
   doccanostaticdata:

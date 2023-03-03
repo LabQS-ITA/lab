@@ -12,7 +12,7 @@ services:
     volumes:
       - doccanostaticdata:/backend/staticfiles:rw
       - doccanomediadata:/backend/media:rw
-      - $PWD/config:/backend/config/settings:ro
+      - $PWD/config:/doccano/backend/config/settings:ro
       - flualfadata:/label-studio/files/flualfa:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
@@ -24,7 +24,7 @@ services:
       - DATABASE_URL='postgres://doccano:${POSTGRES_PWD}@postgres:5432/doccano?sslmode=disable'
       - ALLOW_SIGNUP='False'
       - DEBUG='True'
-      # - DJANGO_SETTINGS_MODULE='config.settings.production'
+      - DJANGO_SETTINGS_MODULE='config.settings.production'
 
 volumes:
   doccanostaticdata:

@@ -29,7 +29,7 @@ services:
       - LOG_LEVEL=DEBUG
     volumes:
       - labelstudiodata:/label-studio/data:rw
-      - flualfadata:/label-studio/files/flualfa
+      - flualfadata:/label-studio/files/flualfa/documents:ro
     command: label-studio-uwsgi
 
 volumes:

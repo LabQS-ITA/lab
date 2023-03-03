@@ -18,13 +18,13 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
-      - ADMIN_USERNAME='maint'
-      - ADMIN_PASSWORD='${SVC_PWD}'
-      - ADMIN_EMAIL='labqs@ita.br'
-      - DATABASE_URL='postgres://doccano:${POSTGRES_PWD}@postgres:5432/doccano?sslmode=disable'
-      - ALLOW_SIGNUP='False'
-      - DEBUG='True'
-      - DJANGO_SETTINGS_MODULE='config.settings.production'
+      - ADMIN_USERNAME=maint
+      - ADMIN_PASSWORD=${SVC_PWD}
+      - ADMIN_EMAIL=labqs@ita.br
+      - DATABASE_URL=postgres://doccano:${POSTGRES_PWD}@postgres:5432/doccano?sslmode=disable
+      - ALLOW_SIGNUP=False
+      - DEBUG=True
+      - DJANGO_SETTINGS_MODULE=config.settings.production
 
 volumes:
   doccanostaticdata:

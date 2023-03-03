@@ -10,6 +10,8 @@ services:
       netlab01:
         ipv4_address: ${LABELSTUDIO_HOST}
     volumes:
+      - labelstudiodata:/label-studio/data:rw
+      - flualfadata:/label-studio/files/flualfa:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
@@ -27,9 +29,6 @@ services:
       - LABEL_STUDIO_LOCAL_FILES_DOCUMENT_ROOT=/label-studio/files
       - JSON_LOG=1
       - LOG_LEVEL=DEBUG
-    volumes:
-      - labelstudiodata:/label-studio/data:rw
-      - flualfadata:/label-studio/files/flualfa:ro
     command: label-studio-uwsgi
 
 volumes:

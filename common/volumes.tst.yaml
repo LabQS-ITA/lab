@@ -28,6 +28,14 @@ volumes:
     name: labelstudiodata
     driver: local
 
+  doccanostaticdata:
+    name: doccanostaticdata
+    driver: local
+
+  doccanomediadata:
+    name: doccanomediadata
+    driver: local
+
   dbdata:
     name: dbdata
     driver: local

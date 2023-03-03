@@ -1,6 +1,6 @@
 services:
 
-  labelstudio:
+  doccano:
     container_name: doccano
     image: doccano/doccano:backend
     restart: unless-stopped

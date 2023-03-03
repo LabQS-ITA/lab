@@ -24,7 +24,7 @@ services:
       - DATABASE_URL='postgres://doccano:${POSTGRES_PWD}@postgres:5432/doccano?sslmode=disable'
       - ALLOW_SIGNUP='False'
       - DEBUG='True'
-      - DJANGO_SETTINGS_MODULE='config.settings.production'
+      # - DJANGO_SETTINGS_MODULE='config.settings.production'
 
 volumes:
   doccanostaticdata:

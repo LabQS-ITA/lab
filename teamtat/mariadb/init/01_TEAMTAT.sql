@@ -1,4 +1,0 @@
-CREATE DATABASE IF NOT EXISTS `teamtat_development` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE DATABASE IF NOT EXISTS `teamtat_test` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
-FLUSH PRIVILEGES;

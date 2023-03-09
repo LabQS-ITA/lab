@@ -93,7 +93,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
     environment:
       - URL_PREFIX=/commander
-      - REDIS_HOSTS=local:redis:0:$SVC_PWD},local:redis01:6379:0:${SVC_PWD_01},local:redis02:6379:0:${SVC_PWD_02}
+      - REDIS_HOSTS=local:redis:6379:0:$SVC_PWD},local:redis01:6379:0:${SVC_PWD_01},local:redis02:6379:0:${SVC_PWD_02}
 
 volumes:
   redisdata:

@@ -35,7 +35,7 @@ services:
     entrypoint: ["/opt/bin/prod-celery.sh"]
     environment:
       PYTHONUNBUFFERED: "1"
-      CELERY_BROKER_URL: "amqp://doccano:doccano@172.16.4.200:15672"
+      CELERY_BROKER_URL: "amqp://doccano:doccano@172.16.4.200:15672/"
       DATABASE_URL: "postgres://doccano:${POSTGRES_PWD}@postgres:5432/doccano?sslmode=disable"
       DJANGO_SETTINGS_MODULE: "config.settings.production"
 
@@ -49,7 +49,7 @@ services:
     entrypoint: ["/opt/bin/prod-flower.sh"]
     environment:
       PYTHONUNBUFFERED: "1"
-      CELERY_BROKER_URL: "amqp://doccano:doccano@172.16.4.200:15672"
+      CELERY_BROKER_URL: "amqp://doccano:doccano@172.16.4.200:15672/"
       DATABASE_URL: "postgres://doccano:${POSTGRES_PWD}@postgres:5432/doccano?sslmode=disable"
       DJANGO_SETTINGS_MODULE: "config.settings.production"
       FLOWER_BASIC_AUTH: ""

@@ -108,21 +108,25 @@ function httpd() {
 
         # Servidor do lab
         sed -i 's/@LAB_SERVICE/Teste/g' ../httpd/panel/static/index.html
+        sed -i 's/@LAB_SERVICE/Teste/g' ../httpd/panel/static/mec/index.html
         
     elif [ "$1" == "dev" ]; then
 
         # Servidores de desenvolvimento e testes
         sed -i 's/@LAB_SERVICE/Desenvolvimento/g' ../httpd/panel/static/index.html
+        sed -i 's/@LAB_SERVICE/Desenvolvimento/g' ../httpd/panel/static/mec/index.html
         
     elif [ "$1" == "hom" ]; then
 
         # Servidores de homologação
         sed -i 's/@LAB_SERVICE/Homologação/g' ../httpd/panel/static/index.html
+        sed -i 's/@LAB_SERVICE/Homologação/g' ../httpd/panel/static/mec/index.html
         
     elif [ "$1" == "ia" ]; then
 
         # Servidores de homologação
         sed -i 's/@LAB_SERVICE/Data-science/g' ../httpd/panel/static/index.html
+        sed -i 's/@LAB_SERVICE/Data-science/g' ../httpd/panel/static/mec/index.html
         
     fi
 

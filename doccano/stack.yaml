@@ -9,6 +9,7 @@ services:
     volumes:
       - doccanostaticdata:/backend/staticfiles:rw
       - doccanomediadata:/backend/media:rw
+      - doccanotmpdata:/backend/filepond-temp-uploads
       - $PWD/config:/doccano/backend/config/settings:ro
       - flualfadata:/label-studio/files/flualfa:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
@@ -28,8 +29,8 @@ services:
     networks:
       netlab01:
     volumes:
-      - media:/backend/media
-      - tmp_file:/backend/filepond-temp-uploads
+      - doccanomediadata:/backend/media
+      - doccanotmpdata:/backend/filepond-temp-uploads
     entrypoint: ["/opt/bin/prod-celery.sh"]
     environment:
       PYTHONUNBUFFERED: "1"

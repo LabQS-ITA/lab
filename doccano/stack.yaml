@@ -4,6 +4,8 @@ services:
     container_name: doccano_backend
     image: doccano/doccano:backend
     restart: unless-stopped
+    ports:
+    - '8093:8000'
     networks:
       netlab01:
     volumes:
@@ -39,7 +41,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
-      - API_URL=http://doccano_backend:8000
+      - API_URL=http://doccano_backend:8093
       - WORKER_PROCESSES=auto
     command: >
       /bin/sh -c "envsubst '$${WORKER_PROCESSES}'< /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"

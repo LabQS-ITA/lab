@@ -36,6 +36,10 @@ volumes:
     name: doccanomediadata
     driver: local
 
+  doccanotmpdata:
+    name: doccanotmpdata
+    driver: local
+
   dbdata:
     name: dbdata
     driver: local

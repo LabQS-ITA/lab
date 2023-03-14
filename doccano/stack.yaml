@@ -25,6 +25,7 @@ services:
       - DJANGO_SETTINGS_MODULE=config.settings.production
 
   celery:
+    container_name: doccano_celery
     image: doccano/doccano:backend
     networks:
       netlab01:
@@ -39,6 +40,7 @@ services:
       DJANGO_SETTINGS_MODULE: "config.settings.production"
 
   flower:
+    container_name: doccano_flower
     image: doccano/doccano:backend
     ports:
       - 5555:5555

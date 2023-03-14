@@ -67,7 +67,7 @@ echo 'Registrando '${CERT_DOMAINS}
 
 # Usando docker
 # Verificar em stack.yml se está configurado para criação ou renovação
-docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+docker compose -f renew.yaml -f ../common/volumes.$1.yaml up --detach
 echo "$(tput setaf 1)Aguarde a finalização da execução$(tput sgr0)"
 docker logs certbot --follow
 

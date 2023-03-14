@@ -46,6 +46,8 @@ httpd $1 $CONFIG_ENV
 
 if [ "$1" == "dev" ] || [ "$1" == "tst" ]; then
 
+    rabbitmq $1 $CONFIG_ENV
+
     doccano $1 $CONFIG_ENV
 
 fi

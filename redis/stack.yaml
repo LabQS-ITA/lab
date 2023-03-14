@@ -78,22 +78,22 @@ services:
       REDISCLI_AUTH: ${SVC_PWD_02}
     command: ["redis-server", "--requirepass", "${SVC_PWD_02}", "--appendonly", "yes"]
   
-  commander:
-    container_name: commander
-    image: rediscommander/redis-commander:latest
-    restart: unless-stopped
-    ports:
-      - '8081:8081'
-    networks:
-      netlab01:
-        ipv4_address: ${COMMANDER_HOST}
-    volumes:
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
-    environment:
-      - URL_PREFIX=/commander
-      - REDIS_HOSTS=local:redis:6379:0:${SVC_PWD},local:redis01:6379:0:${SVC_PWD_01},local:redis02:6379:0:${SVC_PWD_02}
+  # commander:
+  #   container_name: commander
+  #   image: rediscommander/redis-commander:latest
+  #   restart: unless-stopped
+  #   ports:
+  #     - '8081:8081'
+  #   networks:
+  #     netlab01:
+  #       ipv4_address: ${COMMANDER_HOST}
+  #   volumes:
+  #     - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+  #     - /etc/timezone:/etc/timezone:ro
+  #     - /etc/localtime:/etc/localtime:ro
+  #   environment:
+  #     - URL_PREFIX=/commander
+  #     - REDIS_HOSTS=local:redis:6379:0:${SVC_PWD},local:redis01:6379:0:${SVC_PWD_01},local:redis02:6379:0:${SVC_PWD_02}
 
 volumes:
   redisdata:

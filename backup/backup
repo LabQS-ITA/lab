@@ -70,13 +70,10 @@ function backup_env() {
 
 }
 
-
 for c in $(docker ps -a --format '{{.Names}}');
 do
     backup_container $c
 done
-
-mkdir -p /export/bkp
 
 if [ "$LAB_ENV" != "ia.labqs" ]; then
     backup_postgres postgres

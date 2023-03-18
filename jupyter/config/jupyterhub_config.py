@@ -1,6 +1,6 @@
 # Configuration file for jupyterhub.
 
-import os #,grp
+import os, grp
 
 #------------------------------------------------------------------------------
 # Application(SingletonConfigurable) configuration
@@ -787,12 +787,11 @@ c.DockerSpawner.extra_host_config = {
 notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR', '/home/jovyan')
 c.DockerSpawner.notebook_dir = notebook_dir
 
-# m = [g.gr_mem for g in grp.getgrall() if g.gr_name == 'mec'][0]
-m = ['gpes', 'aline', 'wesley']
+m = [g.gr_mem for g in grp.getgrall() if g.gr_name == 'mec'][0]
 
 def config_by_user(spawner):
     username = spawner.user.name
-    # if username in m:
+    if username in m:
     spawner.volumes = { 
         'jupyterhub-user-{username}': notebook_dir,
         'jupyterdata': {"bind": '/home/jovyan/work/data', "mode": "ro"},

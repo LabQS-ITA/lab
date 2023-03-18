@@ -787,7 +787,6 @@ c.DockerSpawner.extra_host_config = {
 notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR', '/home/jovyan')
 c.DockerSpawner.notebook_dir = notebook_dir
 
-# mec_team = ['aline', 'wesley', 'gpes']
 mec_team = [g.gr_mem for g in grp.getgrall() if g.gr_name == 'mec'][0]
 
 def config_by_user(spawner):

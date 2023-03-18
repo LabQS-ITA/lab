@@ -792,17 +792,17 @@ m = ['gpes', 'aline', 'wesley']
 
 def config_by_user(spawner):
     username = spawner.user.name
-    if username in m:
-        spawner.volumes = { 
-            'jupyterhub-user-{username}': notebook_dir,
-            'jupyterdata': {"bind": '/home/jovyan/work/data', "mode": "ro"},
-            'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
-            'flualfadata': {"bind": "/home/jovyan/work/flualfadata", "mode": "ro"},
-        }
-    else:
-        spawner.volumes = { 
-            'jupyterhub-user-{username}': notebook_dir,
-        }
+    # if username in m:
+    spawner.volumes = { 
+        'jupyterhub-user-{username}': notebook_dir,
+        'jupyterdata': {"bind": '/home/jovyan/work/data', "mode": "ro"},
+        'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
+        'flualfadata': {"bind": "/home/jovyan/work/flualfadata", "mode": "ro"},
+    }
+    # else:
+    #     spawner.volumes = { 
+    #         'jupyterhub-user-{username}': notebook_dir,
+    #     }
 
 c.DockerSpawner.pre_spawn_hook = config_by_user
 

@@ -1,6 +1,6 @@
 # Configuration file for jupyterhub.
 
-import os,grp
+import os #,grp
 
 #------------------------------------------------------------------------------
 # Application(SingletonConfigurable) configuration

@@ -29,6 +29,7 @@ services:
     restart: unless-stopped
     ports:
       - '8000:8000'
+      - '8001:8001'
     networks:
       netlab01:
         ipv4_address: ${JUPYTER_HOST}

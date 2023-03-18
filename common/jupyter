@@ -42,4 +42,5 @@ else
 
 fi
 
+httpd $1 $CONFIG_ENV
 jupyter $1 $CONFIG_ENV

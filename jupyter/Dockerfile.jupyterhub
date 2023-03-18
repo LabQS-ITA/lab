@@ -10,8 +10,13 @@ RUN pip install --upgrade pip
 RUN pip install jupyter_server --upgrade
 RUN pip install dockerspawner --upgrade
 
+RUN groupadd -f mec
+
 RUN adduser --disabled-password --gecos "" gpes
 RUN usermod --password $(echo ${GPES_PASSWORD} | openssl passwd -1 -stdin) gpes
+RUN usermod -a -G users gpes
+RUN usermod -a -G mec gpes
 
 RUN adduser --disabled-password --gecos "" gpesdev
 RUN usermod --password $(echo ${GPES_DEV_PASSWORD} | openssl passwd -1 -stdin) gpesdev
+RUN usermod -a -G users gpesdev

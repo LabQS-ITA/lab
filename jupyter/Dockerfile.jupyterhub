@@ -1,4 +1,4 @@
-FROM docker.io/jupyterhub/jupyterhub:latest as jupyterhubbase
+FROM docker.io/jupyterhub/jupyterhub:latest AS jupyterhubbase
 
 ARG GPES_PASSWORD=s3cr37
 ARG GPES_DEV_PASSWORD=s3cr37

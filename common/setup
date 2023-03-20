@@ -68,6 +68,12 @@ fi
 
 agent $1 $CONFIG_ENV
 
+prometheus $1 $CONFIG_ENV
+
+grafana $1 $CONFIG_ENV
+
+netdata $1 $CONFIG_ENV
+
 
 if [ "$1" == "ia" ]; then
 
@@ -88,12 +94,6 @@ if [ "$1" == "dev" ] || [ "$1" == "tst" ]; then
     # locust $1 $CONFIG_ENV
 
     redmine $1 $CONFIG_ENV
-
-    prometheus $1 $CONFIG_ENV
-
-    grafana $1 $CONFIG_ENV
-
-    netdata $1 $CONFIG_ENV
 
     portainer $1 $CONFIG_ENV
 

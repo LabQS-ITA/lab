@@ -1,0 +1,18 @@
+services:
+
+  dvc:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dvcbase
+    networks:
+      netlab01:
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    environment:
+      JUPYTER_HOST: ${JUPYTER_HOST}

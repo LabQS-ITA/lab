@@ -8,8 +8,6 @@ git checkout ../httpd/panel/config/sites/002-cm.conf
 
 git checkout ../httpd/panel/static/index.html
 
-git checkout ../registry/config/config.yml
-
 git checkout ../rabbitmq/config/rabbitmng/20-user.conf
 
 git pull

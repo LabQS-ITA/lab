@@ -54,11 +54,11 @@ if [ "$1" != "ia" ]; then
 
     redis $1 $CONFIG_ENV
 
-    # memcached $1 $CONFIG_ENV
+    memcached $1 $CONFIG_ENV
 
     etcd $1 $CONFIG_ENV
 
-    # rabbitmq $1 $CONFIG_ENV
+    rabbitmq $1 $CONFIG_ENV
 
     nextcloud $1 $CONFIG_ENV
 
@@ -96,7 +96,5 @@ if [ "$1" == "dev" ] || [ "$1" == "tst" ]; then
     redmine $1 $CONFIG_ENV
 
     portainer $1 $CONFIG_ENV
-
-    # opennebula $1 $CONFIG_ENV
 
 fi

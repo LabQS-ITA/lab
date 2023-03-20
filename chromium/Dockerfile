@@ -1,4 +1,4 @@
-FROM alpine:3.17
+FROM docker.io/alpine:3.17
 
 RUN apk upgrade --no-cache --available \
     && apk add --no-cache \

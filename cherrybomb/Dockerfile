@@ -1,4 +1,4 @@
-FROM alpine:latest as cherrybombbase
+FROM docker.io/alpine:latest as cherrybombbase
 
 USER root
 

@@ -1,4 +1,4 @@
-FROM ansiblesemaphore/semaphore:latest as semaphorebase
+FROM docker.io/ansiblesemaphore/semaphore:latest as semaphorebase
 
 USER root
 

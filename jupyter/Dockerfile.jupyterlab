@@ -1,6 +1,6 @@
 ARG OWNER=labqs
 ARG BASE_CONTAINER=$OWNER/tensorflow-notebook
-FROM $BASE_CONTAINER as jupyterlabbase
+FROM docker.io/$BASE_CONTAINER as jupyterlabbase
 
 # Fix: https://github.com/hadolint/hadolint/wiki/DL4006
 # Fix: https://github.com/koalaman/shellcheck/wiki/SC3014

@@ -10,7 +10,7 @@
 # ARG ROOT_CONTAINER=nvidia/cuda:11.7.1-runtime-ubuntu20.04
 ARG ROOT_CONTAINER=nvidia/cuda:11.7.1-cudnn8-runtime-ubuntu20.04
 
-FROM $ROOT_CONTAINER
+FROM docker.io/$ROOT_CONTAINER
 
 LABEL maintainer="LabQS Project <https://github.com/labqs-ita>"
 

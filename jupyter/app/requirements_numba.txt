@@ -1,4 +1,0 @@
-numba
-jit
-cuda-python
-numpy==1.23

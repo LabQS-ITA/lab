@@ -241,7 +241,7 @@ c.JupyterHub.base_url = '/jupyter'
 #  If set to 0, no limit is enforced.
 #  Default: 100
 # c.JupyterHub.concurrent_spawn_limit = 100
-c.JupyterHub.concurrent_spawn_limit = 10
+c.JupyterHub.concurrent_spawn_limit = 5
 
 ## The config file to load
 #  Default: 'jupyterhub_config.py'

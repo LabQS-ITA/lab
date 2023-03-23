@@ -377,13 +377,13 @@ function registry() {
 
     if [ $2 == 'Y' ]; then
         echo 'REGISTRY_HTTP_SECRET='$(openssl rand -hex 8) > .env
-        echo 'REDIS_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../redis/.env) >> .env
 
         mkdir -p ./auth
         docker run --rm --entrypoint htpasswd httpd -Bbn maint $(awk -F'=' '$1 =="REGISTRY_HTTP_SECRET" {print $2}' ./.env) > ./auth/htpasswd
     fi
 
     sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' config/config.yml
+    sed -i 's/@REDIS_PWD/'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../redis/.env)'/g' config/config.yml
 
     docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
 

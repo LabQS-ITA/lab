@@ -22,7 +22,7 @@ services:
 
   registryweb:
     container_name: registryweb
-    image: docker.io/registry:latest
+    image: joxit/docker-registry-ui:latest
     restart: unless-stopped
     ports:
       - '8084:80'

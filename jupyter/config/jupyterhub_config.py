@@ -601,7 +601,7 @@ c.JupyterHub.init_spawners_timeout = 60
 
 ## Specify path to a logo image to override the Jupyter logo in the banner.
 #  Default: ''
-# c.JupyterHub.logo_file = ''
+c.JupyterHub.logo_file = 'https://dev.labqs.ita.br/nextcloud/s/jSb8Dqyaw9AyiLQ/preview'
 
 ## Maximum number of concurrent named servers that can be created by a user at a
 #  time.

@@ -20,9 +20,9 @@ services:
       REGISTRY_AUTH: htpasswd
       REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
       REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
-      REGISTRY_STORAGE_CACHE_BLOBDESCRIPTOR: redis
-      REGISTRY_REDIS_ADDR: redis
-      REGISTRY_REDIS_PASSWORD: ${REDIS_PWD}
+      # REGISTRY_STORAGE_CACHE_BLOBDESCRIPTOR: redis
+      # REGISTRY_REDIS_ADDR: redis
+      # REGISTRY_REDIS_PASSWORD: ${REDIS_PWD}
 
   registry:
     container_name: registry

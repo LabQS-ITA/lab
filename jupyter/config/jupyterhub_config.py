@@ -768,7 +768,7 @@ c.JupyterHub.shutdown_on_logout = True
 # c.JupyterHub.spawner_class = 'jupyterhub.spawner.LocalProcessSpawner'
 c.JupyterHub.spawner_class = 'dockerspawner.DockerSpawner'
 
-c.DockerSpawner.image_whitelist = {
+c.DockerSpawner.allowed_images = {
    "minimal"            : "labqs/tensorflow-minimal:latest",
    "scipy"              : "labqs/scipy-notebook:latest",
    "tensorflow"         : "labqs/tensorflow-notebook:latest",

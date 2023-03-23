@@ -35,7 +35,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
     environment:
       REGISTRY_TITLE: LabQS Container Registry
-      REGISTRY_URL: ${LAB_DOMAIN}/registry
+      # REGISTRY_URL: ${LAB_DOMAIN}/registry
 
 volumes:
   registrydata:

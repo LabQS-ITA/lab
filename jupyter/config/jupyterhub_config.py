@@ -776,7 +776,7 @@ c.DockerSpawner.allowed_images = {
 }
 
 container_image = os.environ.get('DOCKER_NOTEBOOK_IMAGE', 'labqs/jupyterlab:latest')
-c.DockerSpawner.container_image = container_image
+c.DockerSpawner.container_image = c.DockerSpawner.allowed_images
 
 spawn_cmd = os.environ.get('DOCKER_SPAWN_CMD', 'start-singleuser.sh')
 c.DockerSpawner.extra_create_kwargs.update({ 'command': spawn_cmd })

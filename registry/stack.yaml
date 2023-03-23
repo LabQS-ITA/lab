@@ -20,6 +20,9 @@ services:
       REGISTRY_AUTH: htpasswd
       REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
       REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+      REGISTRY_STORAGE_CACHE_BLOBDESCRIPTOR: redis
+      REGISTRY_REDIS_ADDR: redis
+      REGISTRY_REDIS_PASSWORD: ${REDIS_PWD}
 
   registry:
     container_name: registry
@@ -37,7 +40,9 @@ services:
     environment:
       DOCKER_SCAN_SUGGEST: false
       REGISTRY_TITLE: LabQS Docker Registry
-      REGISTRY_URL: http://registrydb:5000
+      NGINX_PROXY_PASS_URL: http://registrydb:5000
+      SINGLE_REGISTRY: true
+      DELETE_IMAGES: false
 
 volumes:
   registrydata:

@@ -1,17 +1,18 @@
 services:
 
-  registry:
-    container_name: registry
+  registrydb:
+    container_name: registrydb
     image: docker.io/registry:latest
     restart: unless-stopped
     ports:
       - '5000:5000'
     networks:
       netlab01:
-        ipv4_address: ${REGISTRY_HOST}
+        ipv4_address: ${REGISTRYDB_HOST}
     volumes:
-      - $PWD/config:/auth
       - registrydata:/var/lib/registry
+      - $PWD/config/config.yml:/etc/docker/registry/config.yml
+      - $PWD/auth/htpasswd:/etc/docker/registry/htpasswd
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
@@ -20,22 +21,23 @@ services:
       REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
       REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
 
-  registryweb:
-    container_name: registryweb
+  registry:
+    container_name: registry
     image: joxit/docker-registry-ui:latest
     restart: unless-stopped
     ports:
       - '8084:80'
     networks:
       netlab01:
-        ipv4_address: ${REGISTRYWEB_HOST}
+        ipv4_address: ${REGISTRY_HOST}
     volumes:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
-      REGISTRY_TITLE: LabQS Container Registry
-      REGISTRY_URL: ${LAB_DOMAIN}/registryweb
+      DOCKER_SCAN_SUGGEST: false
+      REGISTRY_TITLE: LabQS Docker Registry
+      NGINX_PROXY_PASS_URL: http://${REGISTRYDB_HOST}:5000
 
 volumes:
   registrydata:

@@ -10,4 +10,6 @@ git checkout ../httpd/panel/static/index.html
 
 git checkout ../rabbitmq/config/rabbitmng/20-user.conf
 
+git checkout ../registry/config/config.yml
+
 git pull

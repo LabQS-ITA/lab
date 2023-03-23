@@ -768,17 +768,17 @@ c.JupyterHub.shutdown_on_logout = True
 # c.JupyterHub.spawner_class = 'jupyterhub.spawner.LocalProcessSpawner'
 
 # c.JupyterHub.spawner_class = 'dockerspawner.DockerSpawner'
-c.JupyterHub.spawner_class = 'wrapspawner.ProfilesSpawner'
+# c.JupyterHub.spawner_class = 'wrapspawner.ProfilesSpawner'
 
-c.ProfilesSpawner.profiles = [
-    ('Minimal', 'minimal-notebook', 'dockerspawner.SystemUserSpawner', dict(image="labqs/minimal-notebook")),
-    ('Scipy', 'scipy-notebook', 'dockerspawner.SystemUserSpawner', dict(image="labqs/scipy-notebook")),
-    ('Tensorflow', 'tensorflow-notebook', 'dockerspawner.SystemUserSpawner', dict(image="labqs/tensorflow-notebook")),
-    ('Tensorflow + PyTorch', 'jupyterlab', 'dockerspawner.SystemUserSpawner', dict(image="labqs/jupyterlab")),
-]
+# c.ProfilesSpawner.profiles = [
+#     ('Minimal', 'minimal-notebook', 'dockerspawner.SystemUserSpawner', dict(image="labqs/minimal-notebook")),
+#     ('Scipy', 'scipy-notebook', 'dockerspawner.SystemUserSpawner', dict(image="labqs/scipy-notebook")),
+#     ('Tensorflow', 'tensorflow-notebook', 'dockerspawner.SystemUserSpawner', dict(image="labqs/tensorflow-notebook")),
+#     ('Tensorflow + PyTorch', 'jupyterlab', 'dockerspawner.SystemUserSpawner', dict(image="labqs/jupyterlab")),
+# ]
 
-# container_image = os.environ.get('DOCKER_NOTEBOOK_IMAGE', 'labqs/jupyterlab:latest')
-# c.DockerSpawner.container_image = container_image
+container_image = os.environ.get('DOCKER_NOTEBOOK_IMAGE', 'labqs/jupyterlab:latest')
+c.DockerSpawner.container_image = container_image
 
 spawn_cmd = os.environ.get('DOCKER_SPAWN_CMD', 'start-singleuser.sh')
 c.DockerSpawner.extra_create_kwargs.update({ 'command': spawn_cmd })

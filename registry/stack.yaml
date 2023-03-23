@@ -37,6 +37,7 @@ services:
     environment:
       DOCKER_SCAN_SUGGEST: false
       REGISTRY_TITLE: LabQS Docker Registry
+      REGISTRY_URL: http://${REGISTRYDB_HOST}:5000
       NGINX_PROXY_PASS_URL: http://${REGISTRYDB_HOST}:5000
 
 volumes:

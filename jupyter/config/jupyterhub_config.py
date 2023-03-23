@@ -768,15 +768,8 @@ c.JupyterHub.shutdown_on_logout = True
 # c.JupyterHub.spawner_class = 'jupyterhub.spawner.LocalProcessSpawner'
 c.JupyterHub.spawner_class = 'dockerspawner.DockerSpawner'
 
-c.DockerSpawner.allowed_images = {
-   "minimal"            : "labqs/tensorflow-minimal:latest",
-   "scipy"              : "labqs/scipy-notebook:latest",
-   "tensorflow"         : "labqs/tensorflow-notebook:latest",
-   "tensorflow+pytorch" : "labqs/jupyterlab:latest",
-}
-
 container_image = os.environ.get('DOCKER_NOTEBOOK_IMAGE', 'labqs/jupyterlab:latest')
-c.DockerSpawner.container_image = c.DockerSpawner.allowed_images
+c.DockerSpawner.container_image = container_image
 
 spawn_cmd = os.environ.get('DOCKER_SPAWN_CMD', 'start-singleuser.sh')
 c.DockerSpawner.extra_create_kwargs.update({ 'command': spawn_cmd })

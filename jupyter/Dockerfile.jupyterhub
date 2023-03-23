@@ -7,8 +7,7 @@ ENV NVIDIA_VISIBLE_DEVICES all
 
 RUN pip install --upgrade pip
 
-RUN pip install jupyter_server --upgrade
-RUN pip install dockerspawner --upgrade
+RUN pip install jupyter_server dockerspawner wrapspawner --upgrade
 
 RUN groupadd -f mec
 

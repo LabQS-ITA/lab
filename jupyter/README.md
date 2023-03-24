@@ -23,3 +23,24 @@ adduser --disabled-password --gecos "" novousr
 usermod -a -G users novousr
 usermod -a -G proj novousr
 ```
+
+### Modificar a configuração do Jupyter para incluir o novo grupo
+
+Por exemplo, para mapear uma pasta compartilhada:
+
+```python
+proj = [g.gr_mem for g in grp.getgrall() if g.gr_name == 'proj'][0]
+
+ .  .  .
+
+ def config_by_user(spawner):
+    username = spawner.user.name
+    if username in proj:
+        spawner.volumes = { 
+            'jupyterhub-user-{username}': notebook_dir,
+            'jupyterdata': {"bind": '/home/jovyan/work/data', "mode": "ro"},
+        }
+
+c.DockerSpawner.pre_spawn_hook = config_by_user
+
+```

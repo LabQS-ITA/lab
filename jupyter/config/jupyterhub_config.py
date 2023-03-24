@@ -1,6 +1,6 @@
 # Configuration file for jupyterhub.
 
-import os, grp
+import os, grp, wrapspawner
 
 #------------------------------------------------------------------------------
 # Application(SingletonConfigurable) configuration
@@ -767,7 +767,7 @@ c.JupyterHub.shutdown_on_logout = True
 #  Default: 'jupyterhub.spawner.LocalProcessSpawner'
 # c.JupyterHub.spawner_class = 'jupyterhub.spawner.LocalProcessSpawner'
 
-# c.JupyterHub.spawner_class = 'dockerspawner.DockerSpawner'
+c.JupyterHub.spawner_class = 'dockerspawner.DockerSpawner'
 # c.JupyterHub.spawner_class = 'wrapspawner.ProfilesSpawner'
 
 # c.ProfilesSpawner.profiles = [

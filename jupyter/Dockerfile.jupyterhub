@@ -29,3 +29,10 @@ RUN adduser --disabled-password --gecos "" wesley
 RUN usermod --password $(echo s3cr37 | openssl passwd -1 -stdin) wesley
 RUN usermod -a -G users wesley
 RUN usermod -a -G mec wesley
+
+RUN groupadd -f acd
+
+RUN adduser --disabled-password --gecos "" gomesjm
+RUN usermod --password $(echo c0r0n@ | openssl passwd -1 -stdin) gomesjm
+RUN usermod -a -G users gomesjm
+RUN usermod -a -G acd gomesjm

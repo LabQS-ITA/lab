@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+
+if [ "$EUID" -ne 0 ]
+    then echo "Execute como root"
+    exit 2
+fi
+
+
+export LAB_ENV=$(cat /export/lab)
+
+
+function osupdate_host {
+
+    apt update && apt upgrade --yes
+
+}
+
+osupdate_host

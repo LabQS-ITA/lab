@@ -46,7 +46,7 @@ fi
 
 TEMPFILE=`mktemp` && {
     crontab -l 2>/dev/null > $TEMPFILE
-    echo "$SCHEDULE_BACKUP /home/gpes/LTS/backup/backup" >> $TEMPFILE
+    echo "$SCHEDULE_BACKUP /home/gpes/LTS/maint/osupdate" >> $TEMPFILE
     if [ "$LAB_ENV" == "hom.labqs" ]; then
         echo "$SCHEDULE_RSYNC /usr/bin/rsync -r /import /replica" >> $TEMPFILE
     fi

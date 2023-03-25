@@ -13,7 +13,7 @@ export LAB_ENV=$(cat /export/lab)
 
 function osupdate_host {
 
-    apt update && apt upgrade --yes
+    apt update && apt upgrade --yes && autoremove --yes
 
 }
 

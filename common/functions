@@ -447,3 +447,12 @@ function portainer() {
     docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
 
 }
+
+function caprover() {
+
+    cd ../caprover
+    echo '* CapRover *'
+
+    docker compose -f stack.yaml -f ../common/volumes.$q.yaml up --detach
+    
+}

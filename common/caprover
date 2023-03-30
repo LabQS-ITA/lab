@@ -44,58 +44,7 @@ fi
 
 httpd $1 $CONFIG_ENV
 
-if [ "$1" != "ia" ]; then
-    
-    postgres $1 $CONFIG_ENV
-
-    mongodb $1 $CONFIG_ENV
-
-    mariadb $1 $CONFIG_ENV
-
-    redis $1 $CONFIG_ENV
-
-    memcached $1 $CONFIG_ENV
-
-    etcd $1 $CONFIG_ENV
-
-    rabbitmq $1 $CONFIG_ENV
-
-    nextcloud $1 $CONFIG_ENV
-
-    hasura $1 $CONFIG_ENV
-
-fi
-
-agent $1 $CONFIG_ENV
-
-prometheus $1 $CONFIG_ENV
-
-grafana $1 $CONFIG_ENV
-
-netdata $1 $CONFIG_ENV
-
-
-if [ "$1" == "ia" ]; then
-
-    jupyter $1 $CONFIG_ENV
-
-fi
-
 if [ "$1" == "dev" ] || [ "$1" == "tst" ]; then
-
-    gitea $1 $CONFIG_ENV
-
-    drone $1 $CONFIG_ENV
-
-    # semaphore $1 $CONFIG_ENV
-
-    # registry $1 $CONFIG_ENV
-
-    # locust $1 $CONFIG_ENV
-
-    redmine $1 $CONFIG_ENV
-
-    portainer $1 $CONFIG_ENV
 
     caprover $1 $CONFIG_ENV
 

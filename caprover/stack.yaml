@@ -1,0 +1,20 @@
+services:
+
+  caprover:
+    container_name: caprover
+    image: caprover/caprover:latest
+    restart: unless-stopped
+    ports:
+      - '8090:80'
+    networks:
+      netlab01:
+        ipv4_address: ${CAPROVER_HOST}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+networks:
+  netlab01:
+    external: true

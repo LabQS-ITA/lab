@@ -15,7 +15,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
-      MAIN_NODE_IP_ADDRESS: ${CAPROVER_HOST}
+      MAIN_NODE_IP_ADDRESS: 127.0.0.1
       BY_PASS_PROXY_CHECK: true
 
 networks:

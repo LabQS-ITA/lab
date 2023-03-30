@@ -14,6 +14,9 @@ services:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
+    environment:
+      MAIN_NODE_IP_ADDRESS: ${CAPROVER_HOST}
+      BY_PASS_PROXY_CHECK: true
 
 networks:
   netlab01:

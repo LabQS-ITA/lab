@@ -5,7 +5,7 @@ services:
     image: caprover/caprover:latest
     restart: unless-stopped
     ports:
-      - '8090:80'
+      - '3002:3000'
     networks:
       netlab01:
         ipv4_address: ${CAPROVER_HOST}

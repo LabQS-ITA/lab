@@ -10,6 +10,7 @@ services:
       netlab01:
         ipv4_address: ${CAPROVER_HOST}
     volumes:
+      - caproverdata:/captain
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
@@ -17,6 +18,11 @@ services:
     environment:
       MAIN_NODE_IP_ADDRESS: 127.0.0.1
       BY_PASS_PROXY_CHECK: true
+
+volumes:
+  caproverdata:
+    name: caproverdata
+    external: true
 
 networks:
   netlab01:

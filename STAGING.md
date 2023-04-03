@@ -2,7 +2,7 @@
 
 ![Estágios de Desenvolvimento](./images/staging/00-estagios.png)
 
-Com a implantação dos diferentes ambientes de desenvolvimento, testes e validação implantamos um processo de integração usando diferentes estágios e aproveitando o controle de versionamento.
+Com a implantação dos diferentes ambientes de [desenvolvimento](https://dev.labqs.ita.br), [testes](https://test.labqs.ita.br) e [homologação](https://labqs.ita.br), implantamos um processo de integração usando diferentes estágios e aproveitando o controle de versionamento.
 
 Este processo utiliza arquivos de configuração que foram documentados para o [Laboratório de Qualidade de Software](./BUILD.md).
 
@@ -16,13 +16,13 @@ Algumas observações sobre o processo de construção e instalação das aplica
 
 1. Existe uma tarefa (_task_) para cada projeto e cada ambiente (num total de *3* tarefas por projeto);
 2. Cada ambiente aponta para um repositório de fontes específico e determina o ramo do fonte que será utilizado
-    - ramos `USXXX` para o ambiente de desenvolvimento ou `dev` quando não houver US em aberto;
-    - ramo `dev` para o ambiente de testes (reflete todos os ramos `USXXX` da corrida passada); e
-    - ramo `main` para o ambiente de homologação (reflete o ramo `dev` após os testes).
+    - ramos `USXXX` para o ambiente de [desenvolvimento](https://dev.labqs.ita.br) ou `dev` quando não houver US em aberto;
+    - ramo `dev` para o ambiente de [testes](https://test.labqs.ita.br) (reflete todos os ramos `USXXX` da corrida passada); e
+    - ramo `main` para o ambiente de [homologação](https://labqs.ita.br) (reflete o ramo `dev` após os testes).
 3. A versão é independente por ambiente e por aplicação:
-    - no exemplo acima, a versão `10013` do coletor no ambiente de homologação não está relacionada à versão `10013` do coletor no ambiente de desenvolvimento.
+    - no exemplo acima, a versão `10013` do coletor no ambiente de [homologação](https://labqs.ita.br) não está relacionada à versão `10013` do coletor no ambiente de [desenvolvimento](https://dev.labqs.ita.br).
 4. Podemos observar abaixo a lista de repositórios utilizada pelo processo de construção e instalação
-5. Deve ser criado um repositório específico para uma `USXXX` quando desejada a instalação e construção deste ramo no ambiente de desenvolvimento
+5. Deve ser criado um repositório específico para uma `USXXX` quando desejada a instalação e construção deste ramo no ambiente de [desenvolvimento](https://dev.labqs.ita.br)
 
 ![Construção & Instalação](./images/staging/05-repositorios.png)
 

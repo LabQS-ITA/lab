@@ -7,7 +7,7 @@ source ./functions
 
 if [[ $# -ne 1 && $# -ne 2 ]]; then
 
-    echo "Informe { dev | tst | hom | ia } [ config ]"
+    echo "Informe { dev | tst | hom | ia | mng } [ config ]"
 
     exit 1
 
@@ -44,7 +44,7 @@ fi
 
 httpd $1 $CONFIG_ENV
 
-if [ "$1" == "dev" ] || [ "$1" == "tst" ]; then
+if [ "$1" == "mng" ]; then
 
     cloudstack $1 $CONFIG_ENV
 

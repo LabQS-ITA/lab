@@ -440,6 +440,6 @@ function cloudstack() {
     cd ../cloudstack
     echo '* CloudStack *'
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml up --detach
 
 }

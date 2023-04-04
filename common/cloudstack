@@ -42,8 +42,6 @@ else
 
 fi
 
-httpd $1 $CONFIG_ENV
-
 if [ "$1" == "mng" ]; then
 
     cloudstack $1 $CONFIG_ENV

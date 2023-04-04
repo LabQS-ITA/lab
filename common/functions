@@ -53,34 +53,10 @@ function domain() {
 
 }
 
-
-function teamtat() {
-
-    cd ../teamtat
-    echo '* TeamTat *'
-
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
-
-}
-
 function labelstudio() {
 
     cd ../labelstudio
     echo '* Label-Studio *'
-
-    if [ $2 == 'Y' ]; then
-        echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-        echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
-    fi
-
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
-
-}
-
-function doccano() {
-
-    cd ../doccano
-    echo '* Doccano *'
 
     if [ $2 == 'Y' ]; then
         echo 'SVC_PWD='$(openssl rand -hex 8) > .env

@@ -443,3 +443,12 @@ function cloudstack() {
     docker compose -f stack.yaml up --detach
 
 }
+
+function opennebula() {
+
+    cd ../opennebula
+    echo '* OpenNebula *'
+
+    docker compose -f stack.yaml up --detach
+
+}

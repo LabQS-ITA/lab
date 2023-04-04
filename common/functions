@@ -35,6 +35,14 @@ function domain() {
         export CM_LAB_DOMAIN=cm.labqs.ita.br
         export IA_LAB_DOMAIN=ia.labqs.ita.br
 
+    elif [ "$1" == "mng" ]; then
+
+        # Servidor do lab
+        export LAB_DOMAIN=labqs.ita.br
+        export CI_LAB_DOMAIN=ci.labqs.ita.br
+        export CM_LAB_DOMAIN=cm.labqs.ita.br
+        export IA_LAB_DOMAIN=ia.labqs.ita.br
+
     else
 
         echo "Argumento $1 incorreto. Use [ dev | tst | hom | ia ]"

@@ -84,7 +84,3 @@ volumes:
   registrydata:
     name: registrydata
     driver: local
-
-  caproverdata:
-    name: caproverdata
-    driver: local

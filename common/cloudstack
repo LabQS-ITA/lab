@@ -46,6 +46,6 @@ httpd $1 $CONFIG_ENV
 
 if [ "$1" == "dev" ] || [ "$1" == "tst" ]; then
 
-    caprover $1 $CONFIG_ENV
+    cloudstack $1 $CONFIG_ENV
 
 fi

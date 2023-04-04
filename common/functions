@@ -451,10 +451,10 @@ function portainer() {
 
 }
 
-function caprover() {
+function cloudstack() {
 
-    cd ../caprover
-    echo '* CapRover *'
+    cd ../cloudstack
+    echo '* CloudStack *'
 
     docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
 

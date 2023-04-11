@@ -23,7 +23,7 @@ TEMPFILE=`mktemp` && {
         echo "$SCHEDULE_RSYNC /usr/bin/rsync -r /import /replica" >> $TEMPFILE
     fi
     echo "$SCHEDULE_CLEANUP find /export/bkp/* -mtime +30 -exec rm {} \;" >> $TEMPFILE
-    echo "$SCHEDULE_OSUPDATE apt update && apt upgrade --yes && autoremove --yes" >> $TEMPFILE
+    echo "$SCHEDULE_OSUPDATE apt update && apt upgrade --yes && apt autoremove --yes" >> $TEMPFILE
     crontab $TEMPFILE
     rm -f $TEMPFILE
 }

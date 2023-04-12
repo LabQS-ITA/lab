@@ -44,6 +44,7 @@ fi
 
 httpd $1 $CONFIG_ENV
 
+
 if [ "$1" != "ia" ]; then
     
     postgres $1 $CONFIG_ENV
@@ -66,6 +67,7 @@ if [ "$1" != "ia" ]; then
 
 fi
 
+
 agent $1 $CONFIG_ENV
 
 prometheus $1 $CONFIG_ENV
@@ -74,14 +76,15 @@ grafana $1 $CONFIG_ENV
 
 netdata $1 $CONFIG_ENV
 
+labelstudio $1 $CONFIG_ENV
+
 
 if [ "$1" == "ia" ]; then
 
     jupyter $1 $CONFIG_ENV
 
-    labelstudio $1 $CONFIG_ENV
-
 fi
+
 
 if [ "$1" == "dev" ] || [ "$1" == "tst" ]; then
 

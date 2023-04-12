@@ -56,3 +56,7 @@ volumes:
   redminedata:
     name: redminedata
     driver: local
+  
+  labelstudiodata:
+    name: labelstudiodata
+    driver: local

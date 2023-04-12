@@ -168,3 +168,11 @@ volumes:
       type: none
       device: /home/gpes/VOLUMES/docker/volumes/registrydata/_data
       o: bind
+  
+  labelstudiodata:
+    name: labelstudiodata
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/labelstudiodata/_data
+      o: bind

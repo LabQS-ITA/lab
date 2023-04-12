@@ -44,8 +44,4 @@ fi
 
 httpd $1 $CONFIG_ENV
 
-if [ "$1" == "dev" ] || [ "$1" == "tst" ]; then
-
-    labelstudio $1 $CONFIG_ENV
-
-fi
+labelstudio $1 $CONFIG_ENV

@@ -79,6 +79,8 @@ if [ "$1" == "ia" ]; then
 
     jupyter $1 $CONFIG_ENV
 
+    labelstudio $1 $CONFIG_ENV
+
 fi
 
 if [ "$1" == "dev" ] || [ "$1" == "tst" ]; then

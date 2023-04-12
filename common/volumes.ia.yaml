@@ -19,6 +19,14 @@ volumes:
       type: none
       device: /volumes/jupyterdata/_data
       o: bind
+  
+  labelstudiodata:
+    name: labelstudiodata
+    driver: local
+    driver_opts:
+      type: none
+      device: /volumes/labelstudiodata/_data
+      o: bind
 
   jupytershared:
     name: jupytershared

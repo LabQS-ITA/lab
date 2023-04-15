@@ -816,7 +816,7 @@ c.DockerSpawner.pre_spawn_hook = config_by_user
 network_name = os.environ.get('DOCKER_NETWORK_NAME', 'bridge')
 c.DockerSpawner.use_internal_ip = True
 c.DockerSpawner.network_name = network_name
-c.DockerSpawner.remove_containers = True
+c.DockerSpawner.remove = True
 
 c.SystemUserSpawner.run_as_root = True
 

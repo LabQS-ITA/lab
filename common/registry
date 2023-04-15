@@ -42,5 +42,4 @@ else
 
 fi
 
-httpd $1 $CONFIG_ENV
 registry $1 $CONFIG_ENV

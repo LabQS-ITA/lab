@@ -18,6 +18,7 @@ services:
     command: 
       - 'renew'
       - '--force-renewal'
+      - '--no-random-sleep-on-renew'
       - '--dry-run'
 
 networks:

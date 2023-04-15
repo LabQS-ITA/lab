@@ -769,8 +769,8 @@ c.JupyterHub.shutdown_on_logout = True
 
 c.JupyterHub.spawner_class = 'dockerspawner.DockerSpawner'
 
-container_image = os.environ.get('DOCKER_NOTEBOOK_IMAGE', 'labqs/jupyterlab:latest')
-c.DockerSpawner.container_image = container_image
+image = os.environ.get('DOCKER_NOTEBOOK_IMAGE', 'labqs/jupyterlab:latest')
+c.DockerSpawner.image = image
 
 spawn_cmd = os.environ.get('DOCKER_SPAWN_CMD', 'start-singleuser.sh')
 c.DockerSpawner.extra_create_kwargs.update({ 'command': spawn_cmd })

@@ -76,12 +76,14 @@ grafana $1 $CONFIG_ENV
 
 netdata $1 $CONFIG_ENV
 
-labelstudio $1 $CONFIG_ENV
-
 
 if [ "$1" == "ia" ]; then
 
     jupyter $1 $CONFIG_ENV
+
+else
+
+    labelstudio $1 $CONFIG_ENV
 
 fi
 

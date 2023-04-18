@@ -1,2 +1,3 @@
 Options -Indexes
 Redirect 301 "/" "/web"
+Redirect 301 "/mec" "/web"

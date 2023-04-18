@@ -1,1 +1,2 @@
 Options -Indexes
+Redirect 301 "/" "/web"

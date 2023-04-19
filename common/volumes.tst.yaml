@@ -85,34 +85,27 @@ volumes:
     name: registrydata
     driver: local
 
-  miniodata0101:
+  miniodata011:
     name: miniodata011
     driver: local
-
-  miniodata0102:
+  miniodata012:
     name: miniodata012
     driver: local
-
-  miniodata0201:
+  miniodata021:
     name: miniodata021
     driver: local
-
-  miniodata0202:
+  miniodata022:
     name: miniodata022
     driver: local
-
-  miniodata0301:
+  miniodata031:
     name: miniodata031
     driver: local
-
-  miniodata0302:
+  miniodata032:
     name: miniodata032
     driver: local
-
-  miniodata0401:
+  miniodata041:
     name: miniodata041
     driver: local
-
-  miniodata0402:
+  miniodata042:
     name: miniodata042
     driver: local

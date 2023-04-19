@@ -17,8 +17,8 @@ services:
       netlab01:
         ipv4_address: ${MARIADB_HOST}
     volumes:
-      - miniodata011:data1:rw
-      - miniodata012:data2:rw
+      - miniodata011:/data1:rw
+      - miniodata012:/data2:rw
       - $PWD/mariadb/config:/etc/mysql/conf.d:ro
       - $PWD/mariadb/init:/docker-entrypoint-initdb.d:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
@@ -45,8 +45,8 @@ services:
       netlab01:
         ipv4_address: ${MARIADB_HOST}
     volumes:
-      - miniodata021:data1:rw
-      - miniodata022:data2:rw
+      - miniodata021:/data1:rw
+      - miniodata022:/data2:rw
       - $PWD/mariadb/config:/etc/mysql/conf.d:ro
       - $PWD/mariadb/init:/docker-entrypoint-initdb.d:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
@@ -73,8 +73,8 @@ services:
       netlab01:
         ipv4_address: ${MARIADB_HOST}
     volumes:
-      - miniodata031:data1:rw
-      - miniodata032:data2:rw
+      - miniodata031:/data1:rw
+      - miniodata032:/data2:rw
       - $PWD/mariadb/config:/etc/mysql/conf.d:ro
       - $PWD/mariadb/init:/docker-entrypoint-initdb.d:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
@@ -101,8 +101,8 @@ services:
       netlab01:
         ipv4_address: ${MARIADB_HOST}
     volumes:
-      - miniodata041:data1:rw
-      - miniodata042:data2:rw
+      - miniodata041:/data1:rw
+      - miniodata042:/data2:rw
       - $PWD/mariadb/config:/etc/mysql/conf.d:ro
       - $PWD/mariadb/init:/docker-entrypoint-initdb.d:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro

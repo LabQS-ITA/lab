@@ -27,6 +27,7 @@ services:
     environment:
       MINIO_ROOT_USER: maint
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
+    command: server --console-address ":9001" http://minio0{1...4}/data0{1...2}
 
   minio02:
     container_name: minio02
@@ -55,6 +56,7 @@ services:
     environment:
       MINIO_ROOT_USER: maint
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
+    command: server --console-address ":9001" http://minio0{1...4}/data0{1...2}      
 
   minio03:
     container_name: minio03
@@ -83,6 +85,7 @@ services:
     environment:
       MINIO_ROOT_USER: maint
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
+    command: server --console-address ":9001" http://minio0{1...4}/data0{1...2}      
 
   minio04:
     container_name: minio04
@@ -111,6 +114,7 @@ services:
     environment:
       MINIO_ROOT_USER: maint
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
+    command: server --console-address ":9001" http://minio0{1...4}/data0{1...2}      
 
 volumes:
   miniodata0101:

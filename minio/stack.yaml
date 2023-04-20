@@ -12,7 +12,7 @@ services:
       start_period: 90s
     ports:
       - '9000:9000'
-      - '9001:9001'
+      - '9002:9001'
     networks:
       netlab01:
         ipv4_address: ${MARIADB_HOST}
@@ -40,7 +40,7 @@ services:
       start_period: 90s
     ports:
       - '9000:9000'
-      - '9001:9001'
+      - '9002:9001'
     networks:
       netlab01:
         ipv4_address: ${MARIADB_HOST}
@@ -68,7 +68,7 @@ services:
       start_period: 90s
     ports:
       - '9000:9000'
-      - '9001:9001'
+      - '9002:9001'
     networks:
       netlab01:
         ipv4_address: ${MARIADB_HOST}
@@ -96,7 +96,7 @@ services:
       start_period: 90s
     ports:
       - '9000:9000'
-      - '9001:9001'
+      - '9002:9001'
     networks:
       netlab01:
         ipv4_address: ${MARIADB_HOST}

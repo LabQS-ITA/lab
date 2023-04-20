@@ -60,3 +60,28 @@ volumes:
   labelstudiodata:
     name: labelstudiodata
     driver: local
+
+  miniodata011:
+    name: miniodata011
+    driver: local
+  miniodata012:
+    name: miniodata012
+    driver: local
+  miniodata021:
+    name: miniodata021
+    driver: local
+  miniodata022:
+    name: miniodata022
+    driver: local
+  miniodata031:
+    name: miniodata031
+    driver: local
+  miniodata032:
+    name: miniodata032
+    driver: local
+  miniodata041:
+    name: miniodata041
+    driver: local
+  miniodata042:
+    name: miniodata042
+    driver: local

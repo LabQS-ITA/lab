@@ -28,7 +28,7 @@ services:
     environment:
       MINIO_ROOT_USER: maint
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
-      MINIO_SERVER_URL: https://${LAB_DOMAIN}/minio
+      MINIO_SERVER_URL: https://${LAB_DOMAIN}
       MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/minio
     command: server --console-address ":9001" http://minio0{1...4}/data{1...2}
 
@@ -60,7 +60,7 @@ services:
     environment:
       MINIO_ROOT_USER: maint
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
-      MINIO_SERVER_URL: https://${LAB_DOMAIN}/minio
+      MINIO_SERVER_URL: https://${LAB_DOMAIN}
       MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/minio
     command: server --console-address ":9001" http://minio0{1...4}/data{1...2}      
 
@@ -92,7 +92,7 @@ services:
     environment:
       MINIO_ROOT_USER: maint
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
-      MINIO_SERVER_URL: https://${LAB_DOMAIN}/minio
+      MINIO_SERVER_URL: https://${LAB_DOMAIN}
       MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/minio
     command: server --console-address ":9001" http://minio0{1...4}/data{1...2}      
 
@@ -124,7 +124,7 @@ services:
     environment:
       MINIO_ROOT_USER: maint
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
-      MINIO_SERVER_URL: https://${LAB_DOMAIN}/minio
+      MINIO_SERVER_URL: https://${LAB_DOMAIN}
       MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/minio
     command: server --console-address ":9001" http://minio0{1...4}/data{1...2}      
 

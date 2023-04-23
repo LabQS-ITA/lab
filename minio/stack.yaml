@@ -18,10 +18,8 @@ services:
       netlab01:
         ipv4_address: ${MINIO_HOST01}
     volumes:
-      - miniodata011:/data1:rw
-      - miniodata012:/data2:rw
-      - $PWD/MINIO/config:/etc/mysql/conf.d:ro
-      - $PWD/MINIO/init:/docker-entrypoint-initdb.d:ro
+      - miniodata011:/data/vol1:rw
+      - miniodata012:/data/vol2:rw
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro  
@@ -30,7 +28,7 @@ services:
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
       MINIO_SERVER_URL: https://${LAB_DOMAIN}
       MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/minio
-    command: server --console-address ":9001" http://minio0{1...4}/data{1...2}
+    command: server --console-address ":9001" http://minio0{1...4}/data/vol{1...2}
 
   minio02:
     container_name: minio02
@@ -50,10 +48,8 @@ services:
       netlab01:
         ipv4_address: ${MINIO_HOST02}
     volumes:
-      - miniodata021:/data1:rw
-      - miniodata022:/data2:rw
-      - $PWD/MINIO/config:/etc/mysql/conf.d:ro
-      - $PWD/MINIO/init:/docker-entrypoint-initdb.d:ro
+      - miniodata021:/data/vol1:rw
+      - miniodata022:/data/vol2:rw
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro  
@@ -62,7 +58,7 @@ services:
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
       MINIO_SERVER_URL: https://${LAB_DOMAIN}
       MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/minio
-    command: server --console-address ":9001" http://minio0{1...4}/data{1...2}      
+    command: server --console-address ":9001" http://minio0{1...4}/data/vol{1...2}      
 
   minio03:
     container_name: minio03
@@ -82,10 +78,8 @@ services:
       netlab01:
         ipv4_address: ${MINIO_HOST03}
     volumes:
-      - miniodata031:/data1:rw
-      - miniodata032:/data2:rw
-      - $PWD/MINIO/config:/etc/mysql/conf.d:ro
-      - $PWD/MINIO/init:/docker-entrypoint-initdb.d:ro
+      - miniodata031:/data/vol1:rw
+      - miniodata032:/data/vol2:rw
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro  
@@ -94,7 +88,7 @@ services:
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
       MINIO_SERVER_URL: https://${LAB_DOMAIN}
       MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/minio
-    command: server --console-address ":9001" http://minio0{1...4}/data{1...2}      
+    command: server --console-address ":9001" http://minio0{1...4}/data/vol{1...2}      
 
   minio04:
     container_name: minio04
@@ -114,10 +108,8 @@ services:
       netlab01:
         ipv4_address: ${MINIO_HOST04}
     volumes:
-      - miniodata041:/data1:rw
-      - miniodata042:/data2:rw
-      - $PWD/MINIO/config:/etc/mysql/conf.d:ro
-      - $PWD/MINIO/init:/docker-entrypoint-initdb.d:ro
+      - miniodata041:/data/vol1:rw
+      - miniodata042:/data/vol2:rw
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro  
@@ -126,7 +118,7 @@ services:
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
       MINIO_SERVER_URL: https://${LAB_DOMAIN}
       MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/minio
-    command: server --console-address ":9001" http://minio0{1...4}/data{1...2}      
+    command: server --console-address ":9001" http://minio0{1...4}/data/vol{1...2}      
 
 volumes:
   miniodata0101:

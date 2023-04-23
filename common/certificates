@@ -15,6 +15,7 @@ elif [ "$1" == "tst" ]; then
     export CI_LAB_DOMAIN=ci.test.labqs.ita.br
     export CM_LAB_DOMAIN=cm.test.labqs.ita.br
     export IA_LAB_DOMAIN=ia.labqs.ita.br
+    export ST_LAB_DOMAIN=st.test.labqs.ita.br
 
 elif [ "$1" == "dev" ]; then
 
@@ -23,6 +24,7 @@ elif [ "$1" == "dev" ]; then
     export CI_LAB_DOMAIN=ci.labqs.ita.br
     export CM_LAB_DOMAIN=cm.labqs.ita.br
     export IA_LAB_DOMAIN=ia.labqs.ita.br
+    export ST_LAB_DOMAIN=st.labqs.ita.br
 
 elif [ "$1" == "hom" ]; then
 
@@ -31,6 +33,7 @@ elif [ "$1" == "hom" ]; then
     export CI_LAB_DOMAIN=ci.labqs.ita.br
     export CM_LAB_DOMAIN=cm.labqs.ita.br
     export IA_LAB_DOMAIN=ia.labqs.ita.br
+    export ST_LAB_DOMAIN=st.labqs.ita.br
 
 elif [ "$1" == "ia" ]; then
 
@@ -39,6 +42,7 @@ elif [ "$1" == "ia" ]; then
     export CI_LAB_DOMAIN=ci.labqs.ita.br
     export CM_LAB_DOMAIN=cm.labqs.ita.br
     export IA_LAB_DOMAIN=ia.labqs.ita.br
+    export ST_LAB_DOMAIN=st.labqs.ita.br
     
 else
 
@@ -61,7 +65,7 @@ if [ "$1" == "hom" ]; then
 elif [ $1 == "ia" ]; then
     export CERT_DOMAINS=$IA_LAB_DOMAIN
 else
-    export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN,$CM_LAB_DOMAIN
+    export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN,$CM_LAB_DOMAIN,$ST_LAB_DOMAIN
 fi
 echo 'Registrando '${CERT_DOMAINS}
 

@@ -24,6 +24,7 @@ services:
       CI_LAB_DOMAIN: ${CI_LAB_DOMAIN}
       CM_LAB_DOMAIN: ${CM_LAB_DOMAIN}
       IA_LAB_DOMAIN: ${IA_LAB_DOMAIN}
+      ST_LAB_DOMAIN: ${ST_LAB_DOMAIN}
 
 networks:
   netlab01:

@@ -1,5 +1,4 @@
 Options -Indexes
 
+DirectoryIndex /web
 RewriteCond %{REQUEST_URI} !/assets
-RewriteRule (.*) web/$1 [R=301,L]
-

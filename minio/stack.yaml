@@ -29,6 +29,8 @@ services:
       MINIO_BROWSER_REDIRECT_URL: https://${ST_LAB_DOMAIN}
       MINIO_LOGGER_WEBHOOK_ENABLE_ST: on
       MINIO_LOGGER_WEBHOOK_ENDPOINT_ST: https://${ST_LAB_DOMAIN}
+      MINIO_AUDIT_WEBHOOK_ENABLE_ST: on
+      MINIO_AUDIT_WEBHOOK_ENDPOINT_ST: https://${ST_LAB_DOMAIN}
     command: server --console-address ":9001" http://minio0{1...4}/data/vol{1...2}
 
   minio02:
@@ -60,6 +62,8 @@ services:
       MINIO_BROWSER_REDIRECT_URL: https://${ST_LAB_DOMAIN}
       MINIO_LOGGER_WEBHOOK_ENABLE_ST: on
       MINIO_LOGGER_WEBHOOK_ENDPOINT_ST: https://${ST_LAB_DOMAIN}
+      MINIO_AUDIT_WEBHOOK_ENABLE_ST: on
+      MINIO_AUDIT_WEBHOOK_ENDPOINT_ST: https://${ST_LAB_DOMAIN}
     command: server --console-address ":9001" http://minio0{1...4}/data/vol{1...2}      
 
   minio03:
@@ -91,6 +95,8 @@ services:
       MINIO_BROWSER_REDIRECT_URL: https://${ST_LAB_DOMAIN}
       MINIO_LOGGER_WEBHOOK_ENABLE_ST: on
       MINIO_LOGGER_WEBHOOK_ENDPOINT_ST: https://${ST_LAB_DOMAIN}
+      MINIO_AUDIT_WEBHOOK_ENABLE_ST: on
+      MINIO_AUDIT_WEBHOOK_ENDPOINT_ST: https://${ST_LAB_DOMAIN}
     command: server --console-address ":9001" http://minio0{1...4}/data/vol{1...2}      
 
   minio04:
@@ -122,6 +128,8 @@ services:
       MINIO_BROWSER_REDIRECT_URL: https://${ST_LAB_DOMAIN}
       MINIO_LOGGER_WEBHOOK_ENABLE_ST: on
       MINIO_LOGGER_WEBHOOK_ENDPOINT_ST: https://${ST_LAB_DOMAIN}
+      MINIO_AUDIT_WEBHOOK_ENABLE_ST: on
+      MINIO_AUDIT_WEBHOOK_ENDPOINT_ST: https://${ST_LAB_DOMAIN}
     command: server --console-address ":9001" http://minio0{1...4}/data/vol{1...2}      
 
 volumes:

@@ -1,5 +1,11 @@
 services:
 
+  mc:
+    container_name: mc
+    hostname: mc
+    image: minio/mc:latest
+    restart: unless-stopped
+    
   minio01:
     container_name: minio01
     hostname: minio01

@@ -19,6 +19,7 @@ services:
       - 'certonly'
       - '--standalone'
       - '--agree-tos'
+      - '--expand'
       - '-m labqs@ita.br'
       - '-n'
       - '-d ${CERT_DOMAINS}'

@@ -1,14 +1,4 @@
 services:
-    
-  mc:
-    container_name: mc
-    hostname: mc
-    image: minio/mc:latest
-    restart: unless-stopped
-    networks:
-      netlab01:
-        ipv4_address: ${MC_HOST}
-    entrypoint: /bin/sh -c "/usr/bin/mc alias set minio http://minio01:9000 maint ${SVC_PWD}; exit 0;"
 
   minio01:
     container_name: minio01
@@ -37,8 +27,6 @@ services:
       MINIO_ROOT_USER: maint
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
       MINIO_BROWSER_REDIRECT_URL: https://${ST_LAB_DOMAIN}
-      MINIO_AUDIT_WEBHOOK_ENABLE_PRIMARY: on
-      MINIO_AUDIT_WEBHOOK_ENDPOINT_PRIMARY: https://${ST_LAB_DOMAIN}/mc
     command: server --console-address ":9001" http://minio0{1...4}/data/vol{1...2}
 
   minio02:
@@ -68,8 +56,6 @@ services:
       MINIO_ROOT_USER: maint
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
       MINIO_BROWSER_REDIRECT_URL: https://${ST_LAB_DOMAIN}
-      MINIO_AUDIT_WEBHOOK_ENABLE_PRIMARY: on
-      MINIO_AUDIT_WEBHOOK_ENDPOINT_PRIMARY: https://${ST_LAB_DOMAIN}/mc
     command: server --console-address ":9001" http://minio0{1...4}/data/vol{1...2}      
 
   minio03:
@@ -99,8 +85,6 @@ services:
       MINIO_ROOT_USER: maint
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
       MINIO_BROWSER_REDIRECT_URL: https://${ST_LAB_DOMAIN}
-      MINIO_AUDIT_WEBHOOK_ENABLE_PRIMARY: on
-      MINIO_AUDIT_WEBHOOK_ENDPOINT_PRIMARY: https://${ST_LAB_DOMAIN}/mc
     command: server --console-address ":9001" http://minio0{1...4}/data/vol{1...2}      
 
   minio04:
@@ -130,8 +114,6 @@ services:
       MINIO_ROOT_USER: maint
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
       MINIO_BROWSER_REDIRECT_URL: https://${ST_LAB_DOMAIN}
-      MINIO_AUDIT_WEBHOOK_ENABLE_PRIMARY: on
-      MINIO_AUDIT_WEBHOOK_ENDPOINT_PRIMARY: https://${ST_LAB_DOMAIN}/mc
     command: server --console-address ":9001" http://minio0{1...4}/data/vol{1...2}      
 
 volumes:

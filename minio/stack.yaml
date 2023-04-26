@@ -4,6 +4,10 @@ services:
     container_name: mc
     hostname: mc
     image: minio/mc:latest
+    restart: unless-stopped
+    networks:
+      netlab01:
+        ipv4_address: ${MC_HOST}
     entrypoint: /bin/sh -c "/usr/bin/mc alias set minio http://minio01:9001 maint ${SVC_PWD}; exit 0;"
 
   minio01:

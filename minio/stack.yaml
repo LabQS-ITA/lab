@@ -26,6 +26,7 @@ services:
     environment:
       MINIO_ROOT_USER: maint
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
+      MINIO_SERVER_URL: http://minio01:9000
       MINIO_BROWSER_REDIRECT_URL: https://${ST_LAB_DOMAIN}
     command: server --console-address ":9001" http://minio0{1...4}/data/vol{1...2}
 
@@ -55,6 +56,7 @@ services:
     environment:
       MINIO_ROOT_USER: maint
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
+      MINIO_SERVER_URL: http://minio02:9000
       MINIO_BROWSER_REDIRECT_URL: https://${ST_LAB_DOMAIN}
     command: server --console-address ":9001" http://minio0{1...4}/data/vol{1...2}      
 
@@ -84,6 +86,7 @@ services:
     environment:
       MINIO_ROOT_USER: maint
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
+      MINIO_SERVER_URL: http://minio03:9000
       MINIO_BROWSER_REDIRECT_URL: https://${ST_LAB_DOMAIN}
     command: server --console-address ":9001" http://minio0{1...4}/data/vol{1...2}      
 
@@ -113,6 +116,7 @@ services:
     environment:
       MINIO_ROOT_USER: maint
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
+      MINIO_SERVER_URL: http://minio04:9000
       MINIO_BROWSER_REDIRECT_URL: https://${ST_LAB_DOMAIN}
     command: server --console-address ":9001" http://minio0{1...4}/data/vol{1...2}      
 

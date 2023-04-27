@@ -2,22 +2,22 @@
 
 ### Criar e ativar ambiente virtual
 
-Para usar ambientes virtuais no *Jupyter*, basta abrir a linha de comando no Jupyter e em seguida criar o ambiente virtual com o comando:
+Para usar ambientes virtuais no **Jupyter**, basta abrir a janela de comandos e em seguida criar um ambiente virtual (_no examplo usamos **game** como nome de nosso ambiente virtual_) com o comando:
 
 ```sh
-conda create -n <nome do ambiente>
+conda create -n game
 ```
 
 Após confirmar com `y`, basta ativar o ambiente e em seguida instalar o utilitário `pip`:
 
 ```sh
-conda activate flualfa
+conda activate game
 conda install pip
 ```
 
 ### Usar ambiente virtual
 
-Confirmada a instalação do `pip`, a partir de agora toda instalação de pacote para os notebooks deverá se dar por linha de comando. Por exemplo:
+Confirmada a instalação do `pip`, **a partir deste momento toda instalação de pacote para os notebooks deverá se dar pela janela de comandos do Jupyter**. Por exemplo:
 
 ```sh
 pip install galeshapley
@@ -68,10 +68,10 @@ print(resultado)
 conda deactivate
 ```
 
->*Obs*.: _se executarmos o código acima após desativar o ambiente virtual, o pacote *galeshapley* não será encontrado!
+>*Obs*.: _se executarmos o código acima após desativar o ambiente virtual, o pacote **galeshapley** não será encontrado!
 
 ### Remover o ambiente virtual
 
 ```sh
-conda remove -n flualfa --all
+conda remove -n game --all
 ```

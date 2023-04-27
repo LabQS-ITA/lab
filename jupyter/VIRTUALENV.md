@@ -68,10 +68,12 @@ print(resultado)
 conda deactivate
 ```
 
->*Obs*.: _se executarmos o código acima após desativar o ambiente virtual, o pacote **galeshapley** não será encontrado!
+>_**Obs**.: se executarmos o código acima após desativar o ambiente virtual, o pacote **galeshapley** não será encontrado_!
 
 ### Remover o ambiente virtual
 
 ```sh
 conda remove -n game --all
 ```
+
+Agora todos os pacotes instalados no ambiente virtual foram excluídos.

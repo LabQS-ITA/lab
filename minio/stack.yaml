@@ -11,9 +11,8 @@ services:
       timeout: 5s
       retries: 5
       start_period: 90s
-    ports:
-      - '9000:9000'
     expose:
+      - '9000'
       - '9001'
     networks:
       netlab01:
@@ -42,9 +41,8 @@ services:
       timeout: 5s
       retries: 5
       start_period: 90s
-    ports:
-      - '9000:9000'
     expose:
+      - '9000'
       - '9001'
     networks:
       netlab01:
@@ -73,9 +71,8 @@ services:
       timeout: 5s
       retries: 5
       start_period: 90s
-    ports:
-      - '9000:9000'
     expose:
+      - '9000'
       - '9001'
     networks:
       netlab01:
@@ -104,9 +101,8 @@ services:
       timeout: 5s
       retries: 5
       start_period: 90s
-    ports:
-      - '9000:9000'
     expose:
+      - '9000'
       - '9001'
     networks:
       netlab01:

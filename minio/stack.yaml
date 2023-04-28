@@ -12,7 +12,7 @@ services:
       retries: 5
       start_period: 90s
     ports:
-      - '9000'
+      - '9901:9000'
     expose:
       - '9000'
       - '9001'
@@ -43,7 +43,7 @@ services:
       retries: 5
       start_period: 90s
     ports:
-      - '9000'
+      - '9902:9000'
     expose:
       - '9000'
       - '9001'
@@ -74,7 +74,7 @@ services:
       retries: 5
       start_period: 90s
     ports:
-      - '9000'
+      - '9903:9000'
     expose:
       - '9000'
       - '9001'
@@ -105,7 +105,7 @@ services:
       retries: 5
       start_period: 90s
     ports:
-      - '9000'
+      - '9904:9000'
     expose:
       - '9000'
       - '9001'

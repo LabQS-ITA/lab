@@ -8,7 +8,7 @@ Iniciar a captura de tráfego de rede na aplicação e iniciar os textes via _br
 docker exec -it flualfagovbr tcpdump -i any -w /dist/flualfa/dump-$(date +%F-%H%M).pcap
 ```
 
-Pode ser necessário também capturar o tráfego no servidor **HTTP**.
+Pode ser necessário também capturar o tráfego no serviço **HTTP**.
 
 ```sh
 docker exec -it httpd tcpdump -i any -w /usr/local/apache2/dump-$(date +%F-%H%M).pcap
@@ -27,9 +27,30 @@ docker exec -it httpd tcpdump -i any -w /usr/local/apache2/dump-$(date +%F-%H%M)
 > docker cp httpd:/usr/local/apache2/dump-2022-12-12-1428.pcap /export/dist/flualfa
 > ```
 
-Ao final do teste, interromper a captura e obter o arquivo gerado remotamente na pasta da aplicação vi *SFTP*.
+## Capturando se o container não tiver **tcpdump**
 
-Utilizando a sua ferramenta de análise predileta, analisar o tráfego gerado pelo teste:
+Obter o número do processo do serviço:
+
+```sh
+docker inspect --format "{{ .State.Pid }}"  <nome do container do serviço>
+```
+
+Entrar no mesmo _namespace_ da rede no serviço
+
+```sh
+nsenter -n -t <número do processo>
+```
+
+Capturar o tráfego de rede no serviço (usar **Ctrl-C** para finalizar) e sair do _namespace_:
+
+```sh
+tcpdump -i eth0 -w /dev/stdout > capture.pcap
+exit
+```
+
+## Análise tráfego de rede
+
+Ao final do teste e captura, obter o arquivo gerado remotamente na pasta da aplicação (via *SFTP* por exemplo) e utilizando a sua ferramenta de análise predileta, analisar o tráfego gerado pelo teste:
 
 ![Análise com Wireshark](./images/01-wireshark.png)
 

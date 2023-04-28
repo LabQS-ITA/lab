@@ -11,8 +11,6 @@ services:
       timeout: 5s
       retries: 5
       start_period: 90s
-    ports:
-      - '9901:9000'
     expose:
       - '9000'
       - '9001'
@@ -42,8 +40,6 @@ services:
       timeout: 5s
       retries: 5
       start_period: 90s
-    ports:
-      - '9902:9000'
     expose:
       - '9000'
       - '9001'
@@ -73,8 +69,6 @@ services:
       timeout: 5s
       retries: 5
       start_period: 90s
-    ports:
-      - '9903:9000'
     expose:
       - '9000'
       - '9001'
@@ -104,8 +98,6 @@ services:
       timeout: 5s
       retries: 5
       start_period: 90s
-    ports:
-      - '9904:9000'
     expose:
       - '9000'
       - '9001'

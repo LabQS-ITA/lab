@@ -7,6 +7,8 @@ services:
     ports:
       - '80:80'
       - '443:443'
+      - '4200:4200'
+      - '8080:8080'
     networks:
       netlab01:
         ipv4_address: ${HTTPD_HOST}

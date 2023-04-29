@@ -11,7 +11,7 @@ services:
       netlab01:
         ipv4_address: ${HTTPD_HOST}
     extra_hosts:
-      - host.docker.internal:172.16.0.1
+      - host.docker.internal:host-gateway
     volumes:
       - $PWD/panel/static:/usr/local/apache2/htdocs:ro
       - $PWD/panel/config:/usr/local/apache2/conf:ro

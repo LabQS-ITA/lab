@@ -6,6 +6,10 @@ Com a implantação dos diferentes ambientes de [desenvolvimento](https://dev.la
 
 Este processo utiliza arquivos de configuração que foram documentados para o [Laboratório de Qualidade de Software](./BUILD.md).
 
+![Repositório de Fontes do LabQS](./images/staging/01-git.png)
+
+Temos um repositório de fontes próprio e privado que faz réplica de repositórios na internet (ver [Laboratório de Qualidade de Software](./BUILD.md)). Estes fontes são atualizados automaticamente a cada dez minutos.
+
 ![Gerenciamento de Configuração](./images/staging/01-config.png)
 
 Optamos por ter configurações diferentes para cada ambiente apesar de serem praticamente idênticas atualmente.

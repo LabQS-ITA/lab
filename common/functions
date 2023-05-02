@@ -441,6 +441,10 @@ function minio() {
         echo 'SVC_PWD='$(openssl rand -hex 8) > .env
     fi
 
+    docker stop $(docker ps -qa -f 'name=minio*')
+    docker rm $(docker ps -qa -f 'name=minio*') || true
+
+    docker stop -f
     docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
     
 }

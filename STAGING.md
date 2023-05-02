@@ -28,9 +28,11 @@ Algumas observações sobre o processo de construção e instalação das aplica
 
 Uma vez instaladas, as aplicações do projeto podem ser acessadas via portal:
 
-1. Testes: https://test.labqs.ita.br/mec
-2. Desenvolvimento: https://dev.labqs.ita.br/mec
-3. Homologação: https://labqs.ita.br/mec
+2. Desenvolvimento: https://dev.labqs.ita.br
+1. Testes: https://test.labqs.ita.br
+3. Homologação: https://labqs.ita.br
+
+A navegação por cada ambiente se faz pelo menu à esquerda.
 
 ![Portal de Acesso](./images/staging/03-app.png)
 

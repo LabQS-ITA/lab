@@ -441,7 +441,7 @@ function minio() {
         echo 'SVC_PWD='$(openssl rand -hex 8) > .env
     fi
 
-    docker stop $(docker ps -qa -f 'name=minio*')
+    docker stop $(docker ps -qa -f 'name=minio*') || true
     docker rm $(docker ps -qa -f 'name=minio*') || true
 
     docker stop -f

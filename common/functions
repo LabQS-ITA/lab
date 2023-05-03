@@ -74,6 +74,7 @@ function httpd() {
     sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' ./panel/static/index.html
     sed -i 's/@CM_LAB_DOMAIN/'$CM_LAB_DOMAIN'/g' ./panel/static/index.html
     sed -i 's/@IA_LAB_DOMAIN/'$IA_LAB_DOMAIN'/g' ./panel/static/index.html
+    sed -i 's/@ST_LAB_DOMAIN/'$ST_LAB_DOMAIN'/g' ./panel/static/index.html
 
     if [ "$1" == "hom" ] || [ "$1" == "ia" ]; then
 

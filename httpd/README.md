@@ -64,3 +64,11 @@ A página inicial (e geralmente única) de cada _front-end_ deve ser atualizada 
         </article>
     </body>
 ```
+
+## Conteúdo estático da página Web
+
+```sh
+git submodule add https://github.com/LabQS-ITA/static.git httpd/panel/static/assets
+```
+
+> **ATENÇÃO**: O comando acima é executado na raiz do repositório

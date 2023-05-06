@@ -13,8 +13,6 @@ git checkout ../rabbitmq/config/rabbitmng/20-user.conf
 
 git checkout ../registry/config/config.yml
 
-echo "$(tput setaf 1)Atualizando branch DEV:$(tput sgr0)"
-git diff origin/dev
 git pull
 
 

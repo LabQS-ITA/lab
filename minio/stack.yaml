@@ -63,7 +63,7 @@ services:
   minio:
     container_name: minio
     hostname: minio
-    image: minio/console:RELEASE.2023-03-22T06-36-24Z
+    image: minio/console:latest
     restart: unless-stopped
     ports:
       - '8090:9090'

@@ -77,7 +77,6 @@ services:
     environment:
       MINIO_SERVER_URL: https://${ST_LAB_DOMAIN}
       MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/minio/
-    command: server --console-address ":9001"
 
 volumes:
   miniodata0101:

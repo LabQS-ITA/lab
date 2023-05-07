@@ -20,7 +20,6 @@ services:
     volumes:
       - miniodata011:/data/vol1:rw
       - miniodata012:/data/vol2:rw
-      - ${PWD}/tmp:/tmp
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro  
@@ -29,7 +28,6 @@ services:
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
       MINIO_SERVER_URL: https://${ST_LAB_DOMAIN}
       MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/console
-      MINIO_HTTP_TRACE: /tmp/log.txt
     command: server --address ":9000" --console-address ":9001" http://minio0{1...2}/data/vol{1...2}
 
   minio02:
@@ -52,7 +50,6 @@ services:
     volumes:
       - miniodata021:/data/vol1:rw
       - miniodata022:/data/vol2:rw
-      - ${PWD}/tmp:/tmp
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro  
@@ -61,7 +58,6 @@ services:
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
       MINIO_SERVER_URL: https://${ST_LAB_DOMAIN}
       MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/console
-      MINIO_HTTP_TRACE: /tmp/log.txt
     command: server --address ":9000" --console-address ":9001" http://minio0{1...2}/data/vol{1...2}      
 
 

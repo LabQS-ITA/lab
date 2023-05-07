@@ -66,10 +66,10 @@ services:
     image: minio/console:latest
     restart: unless-stopped
     ports:
-      - '8091:9001'
+      - '8090:9001'
     networks:
       netlab01:
-        ipv4_address: ${MINIO_HOST02}
+        ipv4_address: ${MINIO_HOST}
     volumes:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

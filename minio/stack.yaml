@@ -29,7 +29,7 @@ services:
       MINIO_SERVER_URL: https://${ST_LAB_DOMAIN}
       # MINIO_BROWSER_REDIRECT_URL: https://${ST_LAB_DOMAIN}/console
       MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/console
-      MINIO_DOMAIN: ${ST_LAB_DOMAIN}
+      # MINIO_DOMAIN: ${ST_LAB_DOMAIN}
     command: server --address ":9000" --console-address ":9001" http://minio0{1...2}/data/vol{1...2}
 
   minio02:
@@ -61,7 +61,7 @@ services:
       MINIO_SERVER_URL: https://${ST_LAB_DOMAIN}
       # MINIO_BROWSER_REDIRECT_URL: https://${ST_LAB_DOMAIN}/console
       MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/console
-      MINIO_DOMAIN: ${ST_LAB_DOMAIN}
+      # MINIO_DOMAIN: ${ST_LAB_DOMAIN}
     command: server --address ":9000" --console-address ":9001" http://minio0{1...2}/data/vol{1...2}      
 
 

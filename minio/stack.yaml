@@ -27,7 +27,7 @@ services:
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
       MINIO_SERVER_URL: https://${ST_LAB_DOMAIN}
       MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/minio/
-      MINIO_BROWSER: off
+      # MINIO_BROWSER: off
     command: server --address ":9000" http://minio0{1...2}/data/vol{1...2}
 
   minio02:
@@ -60,23 +60,24 @@ services:
       MINIO_BROWSER: off
     command: server --address ":9000" http://minio0{1...2}/data/vol{1...2}
 
-  minio:
-    container_name: minio
-    hostname: minio
-    image: minio/console:latest
-    restart: unless-stopped
-    ports:
-      - '8090:9090'
-    networks:
-      netlab01:
-        ipv4_address: ${MINIO_HOST}
-    volumes:
-      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro  
-    environment:
-      CONSOLE_MINIO_SERVER: https://${ST_LAB_DOMAIN}
-    command: server
+  # minio:
+  #   container_name: minio
+  #   hostname: minio
+  #   image: minio/console:latest
+  #   restart: unless-stopped
+  #   ports:
+  #     - '8090:9090'
+  #   networks:
+  #     netlab01:
+  #       ipv4_address: ${MINIO_HOST}
+  #   volumes:
+  #     - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+  #     - /etc/timezone:/etc/timezone:ro
+  #     - /etc/localtime:/etc/localtime:ro  
+  #   environment:
+  #     MINIO_SERVER_URL: https://${ST_LAB_DOMAIN}
+  #     MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/minio/
+  #   command: server
 
 volumes:
   miniodata0101:

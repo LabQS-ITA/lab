@@ -13,6 +13,7 @@ services:
       start_period: 90s
     expose:
       - '9000'
+      - '9001'
     networks:
       netlab01:
         ipv4_address: ${MINIO_HOST01}

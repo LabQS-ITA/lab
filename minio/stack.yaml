@@ -29,7 +29,7 @@ services:
       MINIO_SERVER_URL: https://${ST_LAB_DOMAIN}
       MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/minio/
       # MINIO_BROWSER: off
-    command: server --address ":9000" http://minio0{1...2}/data/vol{1...2}
+    command: server --console-address ":9001" --address ":9000" http://minio0{1...2}/data/vol{1...2}
 
   minio02:
     container_name: minio02

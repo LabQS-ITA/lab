@@ -66,7 +66,7 @@ services:
     image: minio/console:latest
     restart: unless-stopped
     ports:
-      - '8090:9001'
+      - '8091:9001'
     networks:
       netlab01:
         ipv4_address: ${MINIO_HOST02}

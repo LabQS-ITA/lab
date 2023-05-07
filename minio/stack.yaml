@@ -63,7 +63,7 @@ services:
   minio:
     container_name: minio
     hostname: minio
-    image: minio/console:latest
+    image: minio/console:RELEASE.2023-03-22T06-36-24Z
     restart: unless-stopped
     ports:
       - '8090:9090'
@@ -75,10 +75,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro  
     environment:
-      MINIO_ROOT_USER: maint
-      MINIO_ROOT_PASSWORD: ${SVC_PWD}
-      MINIO_SERVER_URL: https://${ST_LAB_DOMAIN}
-      MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/minio/
+      CONSOLE_MINIO_SERVER: https://${ST_LAB_DOMAIN}
     command: server
 
 volumes:

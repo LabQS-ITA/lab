@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+
+if [ "$EUID" -ne 0 ]
+    then echo "Execute como root"
+    exit 2
+fi
+
+
+export LAB_ENV=$(cat /export/lab)
+
+
+function backup_container {
+
+    docker export $c | gzip --fast > /export/bkp/bkp_"$LAB_ENV"_$1_$(date +%F-%H%M).docker.gz
+
+}
+
+function backup_postgres() {
+
+    docker exec -i $1 /usr/bin/pg_dumpall -U postgres -w | gzip --fast > /export/bkp/bkp_"$LAB_ENV"_$1_$(date +%F-%H%M).postgres.gz
+
+}
+
+function backup_mariadb() {
+
+    docker exec -i $1 /usr/bin/mysqldump -u root -A | gzip --fast > /export/bkp/bkp_"$LAB_ENV"_$1_$(date +%F-%H%M).mariadb.gz
+
+}
+
+function backup_mongodb() {
+
+    docker exec -i $1 /usr/bin/mongodump --config=/etc/mongo/.mdbpass --gzip --archive=$1.tar
+    TEMPFILE=`mktemp` && {
+        docker cp $1:/$1.tar $TEMPFILE.tar
+        docker exec -i $1 rm $1.tar
+        gzip --fast $TEMPFILE.tar
+        mv $TEMPFILE.tar.gz /export/bkp/bkp_"$LAB_ENV"_$1_$(date +%F-%H%M).mongodb.gz
+        rm -f $TEMPFILE
+    }
+
+}
+
+function backup_redis() {
+
+    docker exec -i $1 /usr/local/bin/redis-cli "SAVE"
+    TEMPFILE=`mktemp` && {
+        docker cp $1:/data/dump.rdb $TEMPFILE.tar
+        docker exec -i $1 rm /data/dump.rdb
+        gzip --fast $TEMPFILE.tar
+        mv $TEMPFILE.tar.gz /export/bkp/bkp_"$LAB_ENV"_$1_$(date +%F-%H%M).redis.gz
+        rm -f $TEMPFILE
+    }
+
+}
+
+function backup_volumes() {
+
+    for VOLUME in `docker volume ls -q`
+    do
+        docker run --rm -v "$VOLUME":/source-volume -v /export/bkp:/target-volume -u $(id -u):$(id -g) busybox tar -zcvf /target-volume/bkp_"$LAB_ENV"_"$VOLUME"_$(date +%F-%H%M).volume.tar.gz source-volume
+    done
+
+}
+
+function backup_env() {
+
+    find /home/gpes/LTS -name *.env -type f -exec tar cvzf /export/bkp/bkp_"$LAB_ENV"_env.tar.gz {} +
+
+}
+
+for c in $(docker ps -a --format '{{.Names}}');
+do
+    backup_container $c
+done
+
+if [ "$LAB_ENV" != "ia.labqs" ]; then
+    backup_postgres postgres
+    backup_postgres postgres01
+    backup_postgres postgres02
+
+    backup_mariadb mariadb
+
+    backup_mongodb mongodb
+
+    backup_redis redis
+    backup_redis redis01
+    backup_redis redis02
+fi
+
+backup_volumes

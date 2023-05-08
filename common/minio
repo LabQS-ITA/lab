@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+source ./config
+
+source ./functions
+
+if [[ $# -ne 1 && $# -ne 2 ]]; then
+
+    echo "Informe { dev | tst | hom | ia } [ config ]"
+
+    exit 1
+
+else
+
+    domain $1
+
+fi
+
+CONFIG_ENV="N"
+
+if [ $# -eq 2 ]; then
+    if [ "$2" == "config" ]; then
+        echo "$(tput setaf 1)Configurando ambientes$(tput sgr0)"
+        read -p "Confirme [S/N]: " -n1 CONFIG_OPT
+        CONFIG_OPT=${CONFIG_OPT:-N}
+        if [[ $CONFIG_OPT =~ ^[Ss]$ ]]; then
+            echo '\nTodos os ambientes serão configurados'
+            CONFIG_ENV="Y"
+        fi
+    else
+
+        echo "Argumento $2 incorreto. Use [ config ]"
+
+        exit 2
+        
+    fi
+
+else
+
+    echo "$(tput setaf 1)Atualizando ambientes sem reconfigurar$(tput sgr0)"
+
+fi
+
+httpd $1 $CONFIG_ENV
+
+minio $1 $CONFIG_ENV

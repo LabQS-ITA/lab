@@ -10,7 +10,7 @@ Para atender a necessidade arquitetural dos desenvolvedores de aplicações de t
 
 ## Configuração
 
-Foram criadas instâncias separadas por ambiente (denominadas [postgres01](./postgres01), [postgres02](./postgres02) e [postgres03](./postgres03)). Nas pastas de cada instância temos um arquivo de configuração `config/postgresql.conf` que permite configurar cada instância em particular.
+Foram criadas instâncias separadas por ambiente (denominadas [postgres01](./postgres01) e [postgres02](./postgres02)). Nas pastas de cada instância temos um arquivo de configuração `config/postgresql.conf` que permite configurar cada instância em particular.
 
 Além disto temos o arquivo `config/pg_hba` onde estão definidos os usuários (como de praxe a senha está no arquivo `.env`):
 
@@ -30,13 +30,13 @@ Os serviços não podem ser acessados fora da rede local.
 
 Para administração dos dados é possível se utilizar de um túnel SSH via VPN do ITA:
 
-```bash
+```sh
 ssh -p 2222 -fN -L 5432:172.1.9.201:5432 <usuário VPN ITA>@dev.labqs.ita.br
 ```
 
 Na rede local é possível acessar diretamente o console de cada serviço por meio da linha de comando:
 
-```bash
+```sh
 bash -c 'docker exec -it postgres01 psql --username=postgres'
 ```
 
@@ -58,6 +58,13 @@ O serviço pode ser acessado por máquinas na rede local através do nome (`post
 ## Repositório de dados
 
 Os dados de cada ambiente são mantidos numa pasta com o mesmo nome do serviço, **fora de controle de versão**, e sob um regime de _backup_ automatizado (ver [Serviço de cópias de segurança de dados do Laboratório de Testes de Software](../backup/README.md)).
+
+### Volumes de dados
+
+```bash
+mkdir  -p /home/gpes/VOLUMES/docker/volumes/postgresdata03/_data
+docker volume create -d local -o type=none -o device="/home/gpes/VOLUMES/docker/volumes/postgresdata03/_data" -o o=bind postgresdata03
+```
 
 ## Autologin
 

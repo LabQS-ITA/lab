@@ -5,28 +5,28 @@
 Uma vez conectada à VPN do laboratório, é possível usar um túnel SSH para acessar os serviços do laboratório, como os de bancos de dados por exemplo:
 
 ### Postgres
-```bash
+```sh
 ssh -fN -L 5432:172.1.2.201:5432 <usuario da vpn>@dev.labqs.ita.br -p 2222
 ```
 
 ### Redis
-```bash
+```sh
 ssh -fN -L 6379:172.1.7.201:6379 <usuario da vpn>@dev.labqs.ita.br -p 2222
 ```
 
 ### MongoDB
-```bash
+```sh
 ssh -fN -L 27017:172.1.8.201:27017 <usuario da vpn>@dev.labqs.ita.br -p 2222
 ```
 
 ### MariaDB
-```bash
+```sh
 ssh -fN -L 3306:172.1.9.201:3306 <usuario da vpn>@dev.labqs.ita.br -p 2222
 ```
 
 Uma vez conectado o túnel SSH podemos conectar o serviço remoto como se estivesse instalado localmente. Por exemplo, abrir a conexão com servidor Postgres tunelado acima:
 
-```bash
+```sh
 telnet localhost 5432
 Trying ::1...
 Connected to localhost.

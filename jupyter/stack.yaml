@@ -5,7 +5,17 @@ services:
       context: .
       dockerfile: Dockerfile.jupyterlab
       target: jupyterlabbase
-    image: labqs/jupyterlab:latest
+    networks:
+      netlab01:
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    environment:
+      JUPYTER_HOST: ${JUPYTER_HOST}
 
   jupyterhub:
     container_name: jupyter
@@ -16,18 +26,17 @@ services:
       args:
       - GPES_PASSWORD=${SVC_PWD}
       - GPES_DEV_PASSWORD=${SVC_DEV_PWD}
-    image: labqs/jupyterhub:latest
     restart: unless-stopped
     ports:
       - '8000:8000'
+      - '8001:8001'
     networks:
       netlab01:
         ipv4_address: ${JUPYTER_HOST}
     volumes:
       - $PWD/config/jupyterhub_config.py:/etc/jupyterhub/jupyterhub_config.py:ro
-      - jupyterdata:/data
       - /var/run/docker.sock:/var/run/docker.sock
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
@@ -36,10 +45,8 @@ services:
       DOCKER_NOTEBOOK_IMAGE:  labqs/jupyterlab:latest
       DOCKER_NOTEBOOK_DIR: /home/jovyan/work
       DOCKER_SPAWN_CMD: start-singleuser.sh
-
     command: [ "jupyterhub", "-f", "/etc/jupyterhub/jupyterhub_config.py" ]
 
-volumes:
-  jupyterdata:
-    name: jupyterdata
-    driver: local
+networks:
+  netlab01:
+    external: true

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# set -euo pipefail
+
+if [ "$EUID" -ne 0 ]
+    then echo "Execute como root"
+    exit 2
+fi
+
+crontab -r
+
+export LAB_ENV=$(cat /export/lab)
+echo "Configurando ambiente $LAB_ENV"
+
+export SCHEDULE_BACKUP="0 0 * * 6"
+export SCHEDULE_RSYNC="0 2 * * 1-6"
+export SCHEDULE_CLEANUP="0 4 * * 1-6"
+export SCHEDULE_OSUPDATE="0 0 * * 7"
+
+TEMPFILE=`mktemp` && {
+    crontab -l 2>/dev/null > $TEMPFILE
+    echo "$SCHEDULE_BACKUP /home/gpes/LTS/maint/backup" >> $TEMPFILE
+    if [ "$LAB_ENV" == "hom.labqs" ]; then
+        echo "$SCHEDULE_RSYNC /usr/bin/rsync -r /import /replica" >> $TEMPFILE
+    fi
+    echo "$SCHEDULE_CLEANUP find /export/bkp/* -mtime +30 -exec rm {} \;" >> $TEMPFILE
+    echo "$SCHEDULE_OSUPDATE apt update && apt upgrade --yes && apt autoremove --yes" >> $TEMPFILE
+    crontab $TEMPFILE
+    rm -f $TEMPFILE
+}

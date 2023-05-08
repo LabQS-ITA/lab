@@ -1,0 +1,29 @@
+services:
+
+  certbot:
+    container_name: certbot
+    image: certbot/certbot
+    ports:
+      - '80:80'
+      - '443:443'
+    networks:
+      netlab01:
+        ipv4_address: ${CERTBOT_HOST}
+    volumes:
+      - certificates:/etc/letsencrypt:rw
+      - $PWD/var/log:/var/log:rw
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    command: 
+      - 'certonly'
+      - '--standalone'
+      - '--agree-tos'
+      - '-m labqs@ita.br'
+      - '-n'
+      - '-d ${CERT_DOMAINS}'
+      - '--dry-run'
+
+networks:
+  netlab01:
+    external: true

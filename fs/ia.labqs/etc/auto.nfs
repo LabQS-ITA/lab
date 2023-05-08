@@ -1,0 +1,2 @@
+/import/hom.labqs -fstype=nfs labqs.ita.br:/export
+/import/flualfadata -fstype=nfs labqs.ita.br:/var/lib/docker/volumes/flualfadata/_data

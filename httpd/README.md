@@ -22,11 +22,7 @@ O acesso a cada ambiente se fará por meio de uma porta a partir do endereço ce
 
 A configuração dos serviços se faz por meio do arquivo [stack.yaml](./stack.yaml) e nele temos a configuração individual de cada um.
 
-Para cada ambiente é criada uma pasta com o prefixo `httpd` numerada com dois dígitos para identificar cada um (por exemplo: [postgres01](../postgresql/postgres01), [postgres02](../postgresql/postgres02) e [postgres03](../postgresql/postgres03) que correspondem aos ambientes de **desenvolvimento**, **testes** e **homologação** dos projetos).
-
-> **OBSERVAÇÃO**: De modo geral, praticamente **todos** os serviços, sejam de dados, aplicações e outros criados para cada projeto seguem o padrão de ter os dígitos `01`, `02` e `03` indicando os ambientes de **desenvolvimento**, **testes** e **homologação** respectivamente.
-
-Nas pastas `httpdNN` temos os arquivos de configuração do servidor **Apache** e seguem o padrão deste (ver [Apache HTTP Server Version 2.4 Documentation](https://httpd.apache.org/docs/2.4/)).
+Na pasta `httpd` temos os arquivos de configuração do servidor **Apache** e seguem o padrão deste (ver [Apache HTTP Server Version 2.4 Documentation](https://httpd.apache.org/docs/2.4/)).
 
 O arquivo [httpd.conf](sc/config/httpd.conf) foi customizado com a adição da clásula
 
@@ -68,3 +64,11 @@ A página inicial (e geralmente única) de cada _front-end_ deve ser atualizada 
         </article>
     </body>
 ```
+
+## Conteúdo estático da página Web
+
+```sh
+git submodule add https://github.com/LabQS-ITA/static.git httpd/panel/static/assets
+```
+
+> **ATENÇÃO**: O comando acima é executado na raiz do repositório

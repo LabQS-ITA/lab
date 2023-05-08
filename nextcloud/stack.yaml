@@ -11,9 +11,9 @@ services:
         ipv4_address: ${NEXTCLOUD_HOST}
     volumes:
       - nextclouddata:/var/www/html
-      - /home/gpes/shared/out:/var/www/shared:ro
       - flualfadata:/var/www/flualfa:ro
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /home/gpes/shared/out:/var/www/shared:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
@@ -25,14 +25,18 @@ services:
       POSTGRES_HOST: postgres
       NEXTCLOUD_ADMIN_USER: maint
       NEXTCLOUD_ADMIN_PASSWORD: ${SVC_PWD}
-      NEXTCLOUD_TRUSTED_DOMAINS: ${LAB_DOMAIN} ${CI_LAB_DOMAIN} ${CM_LAB_DOMAIN}
+      NEXTCLOUD_TRUSTED_DOMAINS: ${LAB_DOMAIN} ${CI_LAB_DOMAIN} ${CM_LAB_DOMAIN} {$IA_LAB_DOMAIN} ${ST_LAB_DOMAIN}
       OVERWRITEPROTOCOL: https
       OVERWRITEWEBROOT: nextcloud
 
 volumes:
   nextclouddata:
     name: nextclouddata
-    driver: local
+    external: true
   flualfadata:
     name: flualfadata
-    driver: local
+    external: true
+
+networks:
+  netlab01:
+    external: true

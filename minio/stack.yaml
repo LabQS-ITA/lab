@@ -1,0 +1,81 @@
+services:
+
+  minio01:
+    container_name: minio01
+    hostname: minio01
+    image: minio/minio:latest
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 90s
+    expose:
+      - '9000'
+      - '9001'
+    networks:
+      netlab01:
+        ipv4_address: ${MINIO_HOST01}
+    volumes:
+      - miniodata011:/data/vol1:rw
+      - miniodata012:/data/vol2:rw
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro  
+    environment:
+      MINIO_ROOT_USER: maint
+      MINIO_ROOT_PASSWORD: ${SVC_PWD}
+      MINIO_SERVER_URL: https://${ST_LAB_DOMAIN}
+      MINIO_BROWSER_REDIRECT_URL: https://${ST_LAB_DOMAIN}
+      MINIO_BROWSER: off
+    command: server --console-address ":9001" --address ":9000" http://minio0{1...2}/data/vol{1...2}
+
+  minio02:
+    container_name: minio02
+    hostname: minio02
+    image: minio/minio:latest
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 90s
+    expose:
+      - '9000'
+      - '9001'
+    networks:
+      netlab01:
+        ipv4_address: ${MINIO_HOST02}
+    volumes:
+      - miniodata021:/data/vol1:rw
+      - miniodata022:/data/vol2:rw
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro  
+    environment:
+      MINIO_ROOT_USER: maint
+      MINIO_ROOT_PASSWORD: ${SVC_PWD}
+      MINIO_SERVER_URL: https://${ST_LAB_DOMAIN}
+      MINIO_BROWSER_REDIRECT_URL: https://${ST_LAB_DOMAIN}
+      MINIO_BROWSER: off
+    command: server --console-address ":9001" --address ":9000" http://minio0{1...2}/data/vol{1...2}
+
+volumes:
+  miniodata0101:
+    name: miniodata011
+    external: true
+  miniodata0102:
+    name: miniodata012
+    external: true
+  miniodata0201:
+    name: miniodata021
+    external: true
+  miniodata0202:
+    name: miniodata022
+    external: true
+
+networks:
+  netlab01:
+    external: true

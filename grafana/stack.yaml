@@ -1,0 +1,22 @@
+services:
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:latest
+    restart: unless-stopped
+    ports:
+      - '3001:3001'
+    networks:
+      netlab01:
+        ipv4_address: ${GRAFANA_HOST}
+    volumes:
+      - $PWD/config/grafana.ini:/etc/grafana/grafana.ini
+      - $PWD/config/provisioning:/etc/grafana/provisioning
+      - $PWD/config/dashboards:/var/lib/grafana/dashboards
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+networks:
+  netlab01:
+    external: true

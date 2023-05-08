@@ -1,0 +1,33 @@
+services:
+
+  redmine:
+    container_name: redmine
+    image: redmine:alpine
+    restart: unless-stopped
+    ports:
+      - '8087:3000'
+    networks:
+      netlab01:
+        ipv4_address: ${REDMINE_HOST}
+    volumes:
+      - $PWD/config/config.ru:/usr/src/redmine/config.ru
+      - $PWD/config/configuration.yml:/usr/src/redmine/config/configuration.yml
+      - redminedata:/usr/src/redmine/files
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      REDMINE_DB_POSTGRES: postgres
+      REDMINE_DB_DATABASE: redmine
+      REDMINE_DB_USERNAME: redmine
+      REDMINE_DB_PASSWORD: ${POSTGRES_PWD}
+      RAILS_RELATIVE_URL_ROOT: /redmine
+
+volumes:
+  redminedata:
+    name: redminedata
+    external: true
+
+networks:
+  netlab01:
+    external: true

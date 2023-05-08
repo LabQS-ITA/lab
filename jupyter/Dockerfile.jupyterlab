@@ -1,4 +1,6 @@
-FROM jupyter/tensorflow-notebook:latest as jupyterlabbase
+ARG OWNER=labqs
+ARG BASE_CONTAINER=$OWNER/tensorflow-notebook
+FROM docker.io/$BASE_CONTAINER AS jupyterlabbase
 
 # Fix: https://github.com/hadolint/hadolint/wiki/DL4006
 # Fix: https://github.com/koalaman/shellcheck/wiki/SC3014
@@ -7,9 +9,10 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 USER root
 
 # JavaScript/R pre-requisites
-RUN apt-get update --yes && \
+RUN apt-get update && \
     apt-get upgrade --yes && \
     apt-get install --yes --no-install-recommends \
+    curl \
     software-properties-common \
     libzmq3-dev \
     nodejs \
@@ -19,7 +22,10 @@ RUN apt-get update --yes && \
     unixodbc-dev \
     r-cran-rodbc \
     gfortran \
-    gcc && \
+    gcc \
+    git-lfs \
+    nvidia-cuda-toolkit \
+    apt-transport-https && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 USER ${NB_UID}
@@ -55,10 +61,16 @@ RUN mamba install --quiet --yes \
     'python-decouple' \
     'webdav4' \
     'psycopg2' \
-    'sqlalchemy' \
     'sshtunnel' \
     'texinfo' && \
     mamba clean --all -f -y && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
+
+RUN pip3 install \
+    'torch' \
+    'torchvision' \
+    'torchaudio' && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 

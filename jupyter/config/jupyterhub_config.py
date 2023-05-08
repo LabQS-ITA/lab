@@ -1,6 +1,6 @@
 # Configuration file for jupyterhub.
 
-import os
+import os, grp
 
 #------------------------------------------------------------------------------
 # Application(SingletonConfigurable) configuration
@@ -241,7 +241,7 @@ c.JupyterHub.base_url = '/jupyter'
 #  If set to 0, no limit is enforced.
 #  Default: 100
 # c.JupyterHub.concurrent_spawn_limit = 100
-c.JupyterHub.concurrent_spawn_limit = 10
+c.JupyterHub.concurrent_spawn_limit = 5
 
 ## The config file to load
 #  Default: 'jupyterhub_config.py'
@@ -766,22 +766,57 @@ c.JupyterHub.shutdown_on_logout = True
 #    - simple: jupyterhub.spawner.SimpleLocalProcessSpawner
 #  Default: 'jupyterhub.spawner.LocalProcessSpawner'
 # c.JupyterHub.spawner_class = 'jupyterhub.spawner.LocalProcessSpawner'
+
 c.JupyterHub.spawner_class = 'dockerspawner.DockerSpawner'
 
-container_image = os.environ.get('DOCKER_NOTEBOOK_IMAGE', 'jupyter/minimal-notebook:latest')
-c.DockerSpawner.container_image = container_image
+image = os.environ.get('DOCKER_NOTEBOOK_IMAGE', 'labqs/jupyterlab:latest')
+c.DockerSpawner.image = image
 
 spawn_cmd = os.environ.get('DOCKER_SPAWN_CMD', 'start-singleuser.sh')
 c.DockerSpawner.extra_create_kwargs.update({ 'command': spawn_cmd })
+c.DockerSpawner.extra_host_config = {
+    'runtime': 'nvidia', 'privileged': True,
+    'devices': [
+        '/dev/nvidiactl',
+        '/dev/nvidia-uvm',
+        '/dev/nvidia-uvm-tools',
+        '/dev/nvidia0',
+    ],
+}
 
-notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR', '/home/jovyan/work')
+
+notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR', '/home/jovyan')
 c.DockerSpawner.notebook_dir = notebook_dir
-c.DockerSpawner.volumes = { 'jupyterhub-user-{username}': notebook_dir }
+
+mec = [g.gr_mem for g in grp.getgrall() if g.gr_name == 'mec'][0]
+
+acd = [g.gr_mem for g in grp.getgrall() if g.gr_name == 'acd'][0]
+
+def config_by_user(spawner):
+    username = spawner.user.name
+    if username in mec:
+        spawner.volumes = { 
+            'jupyterhub-user-{username}': notebook_dir,
+            'jupyterdata': {"bind": '/home/jovyan/work/data', "mode": "ro"},
+            'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
+            'flualfadata': {"bind": "/home/jovyan/work/flualfadata", "mode": "ro"},
+        }
+    elif username in acd:
+        spawner.volumes = { 
+            'jupyterhub-user-{username}': notebook_dir,
+            'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
+        }
+    else:
+        spawner.volumes = { 
+            'jupyterhub-user-{username}': notebook_dir,
+        }
+
+c.DockerSpawner.pre_spawn_hook = config_by_user
 
 network_name = os.environ.get('DOCKER_NETWORK_NAME', 'bridge')
 c.DockerSpawner.use_internal_ip = True
 c.DockerSpawner.network_name = network_name
-c.DockerSpawner.remove_containers = True
+c.DockerSpawner.remove = True
 
 c.SystemUserSpawner.run_as_root = True
 
@@ -1067,7 +1102,11 @@ c.SystemUserSpawner.run_as_root = True
 #      allowing override of 'default' env variables,
 #      such as JUPYTERHUB_API_URL.
 #  Default: {}
-# c.Spawner.environment = {}
+c.Spawner.environment = {
+    'TF_ENABLE_ONEDNN_OPTS': '0',
+    'NVIDIA_VISIBLE_DEVICES': 'all',
+    'LD_LIBRARY_PATH': '/usr/local/cuda/lib64',
+}
 
 ## Timeout (in seconds) before giving up on a spawned HTTP server
 #  
@@ -1300,7 +1339,7 @@ c.Spawner.http_timeout = 120
 #  takes longer than this. start should return when the server process is started
 #  and its location is known.
 #  Default: 60
-c.Spawner.start_timeout = 60
+c.Spawner.start_timeout = 120
 
 #------------------------------------------------------------------------------
 # Authenticator(LoggingConfigurable) configuration

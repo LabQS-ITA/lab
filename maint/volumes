@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+
+if [ "$EUID" -ne 0 ]
+    then echo "Execute como root"
+    exit 2
+fi
+
+
+export LAB_ENV=$(cat /export/lab)
+
+
+for VOLUME in `docker volume ls -q`
+do
+    docker run --rm -v "$VOLUME":/source-volume -v /export/bkp:/target-volume -u $(id -u):$(id -g) busybox tar -zcvf /target-volume/bkp_"$LAB_ENV"_"$VOLUME"_$(date +%F-%H%M).volume.tar.gz source-volume
+done

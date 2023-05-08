@@ -12,15 +12,14 @@ services:
     volumes:
       - dronedata:/data
       - /var/run/docker.sock:/var/run/docker.sock
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-
     environment:
-      DRONE_AGENTS_ENABLED: 'true'
-      DRONE_LOGS_DEBUG: 'true'
-      DRONE_LOGS_TRACE: 'true'
-      DRONE_DATADOG_ENABLED: 'false'
+      DRONE_AGENTS_ENABLED: true
+      DRONE_LOGS_DEBUG: true
+      DRONE_LOGS_TRACE: true
+      DRONE_DATADOG_ENABLED: false
       DRONE_DATABASE_DRIVER: postgres
       DRONE_DATABASE_DATASOURCE: 'postgres://drone:${POSTGRES_PWD}@postgres:5432/drone?sslmode=disable'
       DRONE_SERVER_HOST: ${CI_LAB_DOMAIN}
@@ -28,9 +27,9 @@ services:
       DRONE_GITEA_SERVER: https://${LAB_DOMAIN}/git
       DRONE_GITEA_CLIENT_ID: ${GITEA_ID}
       DRONE_GITEA_CLIENT_SECRET: ${GITEA_PWD}
-      DRONE_GITEA_SKIP_VERIFY: 'true'
-      DRONE_VALIDATE_PLUGIN_SKIP_VERIFY: 'true'
-      DRONE_WEBHOOK_SKIP_VERIFY: 'true'
+      DRONE_GITEA_SKIP_VERIFY: true
+      DRONE_VALIDATE_PLUGIN_SKIP_VERIFY: true
+      DRONE_WEBHOOK_SKIP_VERIFY: true
       DRONE_RPC_SECRET: ${SVC_PWD}
       DRONE_USER_CREATE: 'username:maint,machine:false,admin:true,token:${DRONE_TOKEN},'
 
@@ -43,6 +42,9 @@ services:
       - netlab01
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     environment:
       DRONE_RPC_PROTO: https
       DRONE_RPC_HOST: ${CI_LAB_DOMAIN}
@@ -50,8 +52,8 @@ services:
       DRONE_RUNNER_NAME: dronerunner01
       DRONE_RUNNER_CAPACITY: 2
       DRONE_RUNNER_NETWORKS: netlab01
-      DRONE_DEBUG: 'false'
-      DRONE_TRACE: 'false'
+      DRONE_DEBUG: false
+      DRONE_TRACE: false
     depends_on:
       - 'drone'
 
@@ -62,6 +64,11 @@ services:
       - '9200-9299:3000'
     networks:
       - netlab01
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     environment:
       DRONE_RPC_PROTO: https
       DRONE_RPC_HOST: ${CI_LAB_DOMAIN}
@@ -75,4 +82,8 @@ services:
 volumes:
   dronedata:
     name: dronedata
-    driver: local
+    external: true
+
+networks:
+  netlab01:
+    external: true

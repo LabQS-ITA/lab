@@ -1,49 +1,54 @@
 services:
 
   registrydb:
-    container_name: registry
-    image: registry:latest
+    container_name: registrydb
+    image: docker.io/registry:latest
     restart: unless-stopped
     ports:
       - '5000:5000'
     networks:
       netlab01:
-        ipv4_address: ${REGISTRY_HOST}
+        ipv4_address: ${REGISTRYDB_HOST}
     volumes:
       - registrydata:/var/lib/registry
       - $PWD/config/config.yml:/etc/docker/registry/config.yml
-      - $PWD/.htpasswd:/etc/docker/registry/htpasswd
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - $PWD/auth:/auth
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
-      - REGISTRY_HTTP_SECRET=${REGISTRY_HTTP_SECRET}
-      - REGISTRY_STORAGE_CACHE_BLOBDESCRIPTOR=redis
-      - REGISTRY_REDIS_ADDR=redis
-      - REGISTRY_REDIS_PASSWORD=${REDIS_PWD}
+      REGISTRY_AUTH: htpasswd
+      REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+      REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+      # REGISTRY_STORAGE_CACHE_BLOBDESCRIPTOR: redis
+      # REGISTRY_REDIS_ADDR: redis
+      # REGISTRY_REDIS_PASSWORD: ${REDIS_PWD}
 
-  registryui:
-    container_name: containers
+  registry:
+    container_name: registry
     image: joxit/docker-registry-ui:latest
     restart: unless-stopped
     ports:
       - '8084:80'
     networks:
       netlab01:
-        ipv4_address: ${REGISTRYUI_HOST}
+        ipv4_address: ${REGISTRY_HOST}
     volumes:
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
-      - REGISTRY_TITLE=LabQS Docker Registry
-      - NGINX_PROXY_PASS_URL=http://${REGISTRY_HOST}:5000
-      - SINGLE_REGISTRY=true
-      - DELETE_IMAGES=true
-    depends_on:
-      - registrydb
+      DOCKER_SCAN_SUGGEST: false
+      REGISTRY_TITLE: LabQS Docker Registry
+      NGINX_PROXY_PASS_URL: http://registrydb:5000
+      SINGLE_REGISTRY: true
+      DELETE_IMAGES: false
 
 volumes:
   registrydata:
     name: registrydata
-    driver: local
+    external: true
+
+networks:
+  netlab01:
+    external: true

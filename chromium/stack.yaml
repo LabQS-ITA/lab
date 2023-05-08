@@ -1,0 +1,29 @@
+services:
+
+  chromium:
+    container_name: chromium
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: labqs/chromium:latest
+    restart: unless-stopped
+    ports:
+      - '9222:9222'
+    networks:
+      netlab01:
+        ipv4_address: ${CHROMIUM_HOST}
+    volumes:
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    command: 
+      - chromium-browser
+      - "--headless"
+      - "--disable-gpu"
+      - "--no-sandbox"
+      - "--remote-debugging-address=0.0.0.0"
+      - "--remote-debugging-port=9222"
+
+networks:
+  netlab01:
+    external: true

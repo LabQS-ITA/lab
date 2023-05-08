@@ -174,9 +174,9 @@ Origem do ambiente de homologação e onde são executados os testes dos usuári
 ### Descrição da imagem do container
 
 ```Dockerfile
-FROM node:16.17.0 as nodebase
+FROM docker.io/node:16.17.0 as nodebase
 
-FROM php:7.4-cli as phpbase
+FROM docker.io/php:7.4-cli as phpbase
 
 COPY --from=nodebase /usr/local/lib/node_modules /usr/local/lib/node_modules
 COPY --from=nodebase /usr/local/bin/node /usr/local/bin/node
@@ -245,7 +245,7 @@ services:
       netlab01:
         ipv4_address: "${FLUALFAAPP_HOST}"
     volumes:
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
 

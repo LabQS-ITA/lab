@@ -1,0 +1,27 @@
+services:
+
+  hasura:
+    container_name: hasura
+    image: hasura/graphql-engine:latest
+    restart: unless-stopped
+    ports:
+      - '8088:8080'
+    networks:
+      netlab01:
+        ipv4_address: ${HASURA_HOST}
+    volumes:
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://postgres:${POSTGRES_PWD}@postgres:5432/hasura
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
+      HASURA_GRAPHQL_ENABLE_ALLOWLIST: "true"
+      HASURA_GRAPHQL_DEV_MODE: "true"
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      HASURA_GRAPHQL_ENABLE_TELEMETRY: "false"
+      HASURA_GRAPHQL_ADMIN_SECRET: ${SVC_PWD}
+
+networks:
+  netlab01:
+    external: true

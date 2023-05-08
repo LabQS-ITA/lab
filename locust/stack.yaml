@@ -12,9 +12,10 @@ services:
         ipv4_address: ${LOCUST_HOST}
     volumes:
       - ${PWD}/config:/home/locust:rw
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
+    environment:
     command: 
       - '--config=master.conf'
 
@@ -24,6 +25,11 @@ services:
       - netlab01
     volumes:
       - ${PWD}/config:/home/locust:rw
+    environment:
     command: '--worker --master-host locust'
     depends_on:
       - 'master'
+
+networks:
+  netlab01:
+    external: true

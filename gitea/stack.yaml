@@ -11,7 +11,8 @@ services:
         ipv4_address: ${GITEA_HOST}
     volumes:
       - giteadata:/data
-      - /usr/share/zoneinfo:/user/share/zoneinfo:ro
+      - $PWD/config/app.ini:/data/gitea/conf/app.ini
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
@@ -32,4 +33,8 @@ services:
 volumes:
   giteadata:
     name: giteadata
-    driver: local
+    external: true
+
+networks:
+  netlab01:
+    external: true

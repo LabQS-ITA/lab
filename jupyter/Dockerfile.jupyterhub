@@ -1,15 +1,38 @@
-FROM jupyterhub/jupyterhub:latest as jupyterhubbase
+FROM docker.io/jupyterhub/jupyterhub:latest AS jupyterhubbase
 
 ARG GPES_PASSWORD=s3cr37
 ARG GPES_DEV_PASSWORD=s3cr37
 
+ENV NVIDIA_VISIBLE_DEVICES all
+
 RUN pip install --upgrade pip
 
-RUN pip install jupyter_server --upgrade
-RUN pip install dockerspawner --upgrade
+RUN pip install jupyter_server dockerspawner wrapspawner --upgrade
+
+RUN groupadd -f mec
 
 RUN adduser --disabled-password --gecos "" gpes
 RUN usermod --password $(echo ${GPES_PASSWORD} | openssl passwd -1 -stdin) gpes
+RUN usermod -a -G users gpes
+RUN usermod -a -G mec gpes
 
 RUN adduser --disabled-password --gecos "" gpesdev
 RUN usermod --password $(echo ${GPES_DEV_PASSWORD} | openssl passwd -1 -stdin) gpesdev
+RUN usermod -a -G users gpesdev
+
+RUN adduser --disabled-password --gecos "" aline
+RUN usermod --password $(echo s3cr37 | openssl passwd -1 -stdin) aline
+RUN usermod -a -G users aline
+RUN usermod -a -G mec aline
+
+RUN adduser --disabled-password --gecos "" wesley
+RUN usermod --password $(echo s3cr37 | openssl passwd -1 -stdin) wesley
+RUN usermod -a -G users wesley
+RUN usermod -a -G mec wesley
+
+RUN groupadd -f acd
+
+RUN adduser --disabled-password --gecos "" gomesjm
+RUN usermod --password $(echo c0r0n@ | openssl passwd -1 -stdin) gomesjm
+RUN usermod -a -G users gomesjm
+RUN usermod -a -G acd gomesjm

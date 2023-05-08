@@ -1,1 +1,4 @@
 Options -Indexes
+
+DirectoryIndex /web
+RewriteCond %{REQUEST_URI} !/assets

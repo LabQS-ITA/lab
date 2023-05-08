@@ -6,9 +6,23 @@ storage:
   delete:
     enabled: true
   cache:
-    blobdescriptor: inmemory
+    blobdescriptor: redis
+    blobdescriptorsize: 10000
   filesystem:
     rootdirectory: /var/lib/registry
+redis:
+  addr: redis:6379
+  password: @REDIS_PWD
+  db: 0
+  dialtimeout: 10ms
+  readtimeout: 10ms
+  writetimeout: 10ms
+  pool:
+    maxidle: 16
+    maxactive: 64
+    idletimeout: 300s
+  tls:
+    enabled: false    
 http:
   addr: :5000
   headers:

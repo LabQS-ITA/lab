@@ -1,0 +1,33 @@
+services:
+
+  netdata:
+    container_name: netdata
+    image: netdata/netdata:latest
+    restart: unless-stopped
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - apparmor:unconfined
+    ulimits:
+      nofile:
+        soft: 4096
+        hard: 4096
+    ports:
+      - '19999:19999'
+    networks:
+      netlab01:
+        ipv4_address: ${NETDATA_HOST}
+    volumes:
+      - $PWD/config:/etc/netdata \
+      - /etc/passwd:/host/etc/passwd:ro \
+      - /etc/group:/host/etc/group:ro \
+      - /proc:/host/proc:ro \
+      - /sys:/host/sys:ro \
+      - /etc/os-release:/host/etc/os-release:ro \
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+networks:
+  netlab01:
+    external: true

@@ -1,0 +1,44 @@
+services:
+
+  labelstudio:
+    container_name: labelstudio
+    image: heartexlabs/label-studio:latest
+    restart: unless-stopped
+    ports:
+      - '8091:8000'
+    networks:
+      netlab01:
+        ipv4_address: ${LABELSTUDIO_HOST}
+    volumes:
+      - labelstudiodata:/label-studio/data:rw
+      - flualfadata:/label-studio/files/flualfa:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - DJANGO_DB=default
+      - POSTGRE_NAME=labelstudio
+      - POSTGRE_USER=labelstudio
+      - POSTGRE_PASSWORD=${POSTGRES_PWD}
+      - POSTGRE_PORT=5432
+      - POSTGRE_HOST=postgres
+      - LABEL_STUDIO_HOST=https://${LAB_DOMAIN}/labelstudio/
+      - LABEL_STUDIO_USERNAME=maint
+      - LABEL_STUDIO_PASSWORD=${SVC_PWD}
+      - LABEL_STUDIO_LOCAL_FILES_SERVING_ENABLED=true
+      - LABEL_STUDIO_LOCAL_FILES_DOCUMENT_ROOT=/label-studio/files
+      - JSON_LOG=1
+      - LOG_LEVEL=DEBUG
+    command: label-studio-uwsgi
+
+volumes:
+  labelstudiodata:
+    name: labelstudiodata
+    external: true
+  flualfadata:
+    name: flualfadata
+    external: true
+
+networks:
+  netlab01:
+    external: true

@@ -1,0 +1,29 @@
+volumes:
+
+  flualfadata:
+    name: flualfadata
+    driver: local
+    driver_opts:
+      type: none
+      device: /import/flualfadata/documents
+      o: bind
+
+  certificates:
+    name: certificates
+    driver: local
+
+  jupyterdata:
+    name: jupyterdata
+    driver: local
+    driver_opts:
+      type: none
+      device: /volumes/jupyterdata/_data
+      o: bind
+
+  jupytershared:
+    name: jupytershared
+    driver: local
+    driver_opts:
+      type: none
+      device: /volumes/jupyterdata/_data
+      o: bind

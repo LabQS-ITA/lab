@@ -78,10 +78,16 @@ function httpd() {
 
     if [ "$1" == "hom" ] || [ "$1" == "ia" ]; then
 
-        echo "Desabilitar proxy para "$CI_LAB_DOMAIN" e "$CM_LAB_DOMAIN" se existirem"
+        echo "Desabilitar proxy para "$CI_LAB_DOMAIN" e "$CM_LAB_DOMAIN
 
         rm panel/config/sites/001-ci.conf || true
         rm panel/config/sites/002-cm.conf || true
+
+    elif [ "$1" == "dev" ] || [ "$1" == "ia" ]; then
+
+        echo "Desabilitar proxy para "$ST_LAB_DOMAIN
+
+        rm panel/config/sites/003-st.conf || true
 
     fi
 

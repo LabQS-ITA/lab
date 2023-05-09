@@ -66,8 +66,7 @@ Arquivo `flualfa-ro.policy.json`:
         ],
         "Resource": [
             "arn:aws:s3:::flualfa/*"
-        ],
-        "Sid": ""
+        ]
     }]
 }
 ```

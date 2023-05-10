@@ -221,4 +221,4 @@ Configuração em Nextcloud:
 
 Acesso à pasta:
 
-![](../images/st/flualfa-nextcloud-share.png)
+![](../images/st/flualfa-nextcloud-st-share.png)

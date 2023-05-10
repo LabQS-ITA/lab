@@ -193,27 +193,6 @@ mc admin policy create st-hom-maint nextcloud-rw ./nextcloud-rw.policy.json && \
 mc admin policy attach st-hom-maint nextcloud-rw --group nextcloud-rw
 ```
 
-mc admin policy detach st-test-maint flualfa-ro --group flualfa-ro && \
-mc admin policy detach st-test-maint flualfa-rw --group flualfa-rw && \
-mc admin policy detach st-hom-maint flualfa-ro --group flualfa-ro && \
-mc admin policy detach st-hom-maint flualfa-rw --group flualfa-rw
-
-mc admin policy remove st-test-maint flualfa-ro && \
-mc admin policy remove st-test-maint flualfa-rw && \
-mc admin policy remove st-hom-maint flualfa-ro && \
-mc admin policy remove st-hom-maint flualfa-rw
-
-
-mc admin policy detach st-test-maint nextcloud-ro --group nextcloud-ro && \
-mc admin policy detach st-test-maint nextcloud-rw --group nextcloud-rw && \
-mc admin policy detach st-hom-maint nextcloud-ro --group nextcloud-ro && \
-mc admin policy detach st-hom-maint nextcloud-rw --group nextcloud-rw
-
-mc admin policy remove st-test-maint nextcloud-ro && \
-mc admin policy remove st-test-maint nextcloud-rw && \
-mc admin policy remove st-hom-maint nextcloud-ro && \
-mc admin policy remove st-hom-maint nextcloud-rw
-
 ### Chaves de acesso
 
 #### FluAlfa
@@ -239,3 +218,7 @@ mc admin user svcacct add --access-key "ZC435HMZLB5PC3D9YCRH" --secret-key "m0qa
 Configuração em Nextcloud:
 
 ![](../../images/flualfa-nextcloud-st.png)
+
+Acesso à pasta:
+
+![](../../images/flualfa-nextcloud-share.png)

@@ -217,8 +217,8 @@ mc admin user svcacct add --access-key "ZC435HMZLB5PC3D9YCRH" --secret-key "m0qa
 
 Configuração em Nextcloud:
 
-![](../images/flualfa-nextcloud-st.png)
+![](../images/st/flualfa-nextcloud-st.png)
 
 Acesso à pasta:
 
-![](../images/flualfa-nextcloud-share.png)
+![](../images/st/flualfa-nextcloud-share.png)

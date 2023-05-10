@@ -170,32 +170,26 @@ Arquivo `nextcloud-rw.policy.json`:
 #### FluAlfa
 
 ```sh
-mc admin policy create st-test-maint flualfa-ro ./flualfa-ro.policy.json
-mc admin policy attach st-test-maint flualfa-ro --group flualfa-ro
-
-mc admin policy create st-test-maint flualfa-rw ./flualfa-rw.policy.json
-mc admin policy attach st-test-maint flualfa-rw --group flualfa-rw
-
-mc admin policy create st-hom-maint flualfa-ro ./flualfa-ro.policy.json
-mc admin policy attach st-hom-maint flualfa-ro --group flualfa-ro
-
-mc admin policy create st-hom-maint flualfa-rw ./flualfa-rw.policy.json
+mc admin policy create st-test-maint flualfa-ro ./flualfa-ro.policy.json && \
+mc admin policy attach st-test-maint flualfa-ro --group flualfa-ro && \
+mc admin policy create st-test-maint flualfa-rw ./flualfa-rw.policy.json && \
+mc admin policy attach st-test-maint flualfa-rw --group flualfa-rw && \
+mc admin policy create st-hom-maint flualfa-ro ./flualfa-ro.policy.json && \
+mc admin policy attach st-hom-maint flualfa-ro --group flualfa-ro && \
+mc admin policy create st-hom-maint flualfa-rw ./flualfa-rw.policy.json && \
 mc admin policy attach st-hom-maint flualfa-rw --group flualfa-rw
 ```
 
 #### Nextcloud
 
 ```sh
-mc admin policy create st-test-maint nextcloud-ro ./nextcloud-ro.policy.json
-mc admin policy attach st-test-maint nextcloud-ro --group nextcloud-ro
-
-mc admin policy create st-test-maint nextcloud-rw ./nextcloud-rw.policy.json
-mc admin policy attach st-test-maint nextcloud-rw --group nextcloud-rw
-
-mc admin policy create st-hom-maint nextcloud-ro ./nextcloud-ro.policy.json
-mc admin policy attach st-hom-maint nextcloud-ro --group nextcloud-ro
-
-mc admin policy create st-hom-maint nextcloud-rw ./nextcloud-rw.policy.json
+mc admin policy create st-test-maint nextcloud-ro ./nextcloud-ro.policy.json && \
+mc admin policy attach st-test-maint nextcloud-ro --group nextcloud-ro && \
+mc admin policy create st-test-maint nextcloud-rw ./nextcloud-rw.policy.json && \
+mc admin policy attach st-test-maint nextcloud-rw --group nextcloud-rw && \
+mc admin policy create st-hom-maint nextcloud-ro ./nextcloud-ro.policy.json && \
+mc admin policy attach st-hom-maint nextcloud-ro --group nextcloud-ro && \
+mc admin policy create st-hom-maint nextcloud-rw ./nextcloud-rw.policy.json && \
 mc admin policy attach st-hom-maint nextcloud-rw --group nextcloud-rw
 ```
 

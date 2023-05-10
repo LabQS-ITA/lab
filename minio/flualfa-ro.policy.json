@@ -4,7 +4,7 @@
         "Effect": "Allow",
         "Action": [
             "s3:GetBucketLocation",
-            "se:GetBucketVersioning",
+            "s3:GetBucketVersioning",
             "s3:GetObject",
             "s3:ListBucket"
         ],

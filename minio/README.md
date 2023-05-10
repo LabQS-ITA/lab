@@ -187,7 +187,7 @@ mc admin policy attach st-hom-maint flualfa-rw --group flualfa-rw
 
 ```sh
 mc admin policy create st-test-maint nextcloud-ro ./nextcloud-ro.policy.json
-mc admin policy attach st-test-maint nextcloud-ro --group flualfa-ro
+mc admin policy attach st-test-maint nextcloud-ro --group nextcloud-ro
 
 mc admin policy create st-test-maint nextcloud-rw ./nextcloud-rw.policy.json
 mc admin policy attach st-test-maint nextcloud-rw --group nextcloud-rw
@@ -198,6 +198,27 @@ mc admin policy attach st-hom-maint nextcloud-ro --group nextcloud-ro
 mc admin policy create st-hom-maint nextcloud-rw ./nextcloud-rw.policy.json
 mc admin policy attach st-hom-maint nextcloud-rw --group nextcloud-rw
 ```
+
+mc admin policy detach st-test-maint flualfa-ro --group flualfa-ro && \
+mc admin policy detach st-test-maint flualfa-rw --group flualfa-rw && \
+mc admin policy detach st-hom-maint flualfa-ro --group flualfa-ro && \
+mc admin policy detach st-hom-maint flualfa-rw --group flualfa-rw
+
+mc admin policy remove st-test-maint flualfa-ro && \
+mc admin policy remove st-test-maint flualfa-rw && \
+mc admin policy remove st-hom-maint flualfa-ro && \
+mc admin policy remove st-hom-maint flualfa-rw
+
+
+mc admin policy detach st-test-maint nextcloud-ro --group nextcloud-ro && \
+mc admin policy detach st-test-maint nextcloud-rw --group nextcloud-rw && \
+mc admin policy detach st-hom-maint nextcloud-ro --group nextcloud-ro && \
+mc admin policy detach st-hom-maint nextcloud-rw --group nextcloud-rw
+
+mc admin policy remove st-test-maint nextcloud-ro && \
+mc admin policy remove st-test-maint nextcloud-rw && \
+mc admin policy remove st-hom-maint nextcloud-ro && \
+mc admin policy remove st-hom-maint nextcloud-rw
 
 ### Chaves de acesso
 

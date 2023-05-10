@@ -58,16 +58,16 @@ $CONFIG = array (
   'mail_smtpname' => 'labqs@ita.br',
   'mail_smtppassword' => 'C0r0n@2022',
   'mail_smtpsecure' => 'tls',
-  'objectstore' => [
-    'class' => '\\OC\\Files\\ObjectStore\\S3',
-    'arguments' => [
-            'bucket' => 'nextcloud',
-            'autocreate' => true,
-            'key'    => 'YY79MESQLPD8SAC2KN5L',
-            'secret' => '96bo7gRjpTdyy5IR34CrE1uFMQPUfGEqBk8nXAUr+7uRTVSj',
-            'hostname' => 'st.test.labqs.ita.br',
-            'use_ssl' => true,
-            'use_path_style'=>true
-    ],
-],
+  // 'objectstore' => [
+  //   'class' => '\\OC\\Files\\ObjectStore\\S3',
+  //   'arguments' => [
+  //           'bucket' => 'nextcloud',
+  //           'autocreate' => true,
+  //           'key'    => 'YY79MESQLPD8SAC2KN5L',
+  //           'secret' => '96bo7gRjpTdyy5IR34CrE1uFMQPUfGEqBk8nXAUr+7uRTVSj',
+  //           'hostname' => 'st.test.labqs.ita.br',
+  //           'use_ssl' => true,
+  //           'use_path_style'=>true
+  //   ],
+  // ],
 );

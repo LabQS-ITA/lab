@@ -28,15 +28,15 @@ mc admin logs st-hom-maint
 #### FluAlfa
 
 ```sh
-mc mb st-test-maint/flualfa
-mc mb st-hom-maint/flualfa
+mc mb st-test-maint/flualfa --with-versioning
+mc mb st-hom-maint/flualfa --with-versioning
 ```
 
 #### Nextcloud
 
 ```sh
-mc mb st-test-maint/nextcloud
-mc mb st-hom-maint/nextcloud
+mc mb st-test-maint/nextcloud --with-versioning
+mc mb st-hom-maint/nextcloud --with-versioning
 ```
 
 ### Criar usuários
@@ -137,6 +137,7 @@ Arquivo `nextcloud-ro.policy.json`:
         "Effect": "Allow",
         "Action": [
             "s3:GetBucketLocation",
+            "se:GetBucketVersioning",
             "s3:GetObject",
             "s3:ListBucket"
         ],
@@ -208,6 +209,18 @@ mc admin user svcacct add --access-key "1F4IC0mliCgfS5hl" --secret-key "uV2b4Ixq
 
 #### Nextcloud
 
+Armazenamento do serviço:
+
 ```sh
 mc admin user svcacct add --access-key "YY79MESQLPD8SAC2KN5L" --secret-key "96bo7gRjpTdyy5IR34CrE1uFMQPUfGEqBk8nXAUr" st-test-maint nextcloud-rw
+```
 
+Acesso à FluAlfa:
+
+```sh
+mc admin user svcacct add --access-key "ZC435HMZLB5PC3D9YCRH" --secret-key "m0qaRR4KD1Z+7pLwiWCv2x3l7xfqLpK3qpvb6j+K" st-test-maint flualfa-ro
+```
+
+Configuração em Nextcloud:
+
+![](../../images/flualfa-nextcloud-st.png)

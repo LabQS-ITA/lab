@@ -103,3 +103,9 @@ mc admin policy attach st-hom-maint flualfa-ro --group flualfa-ro
 mc admin policy create st-hom-maint flualfa-rw ./flualfa-rw.policy.json
 mc admin policy attach st-hom-maint flualfa-rw --group flualfa-rw
 ```
+
+Criar chave de acesso para FluAlfa:
+
+```sh
+mc admin user svcacct add --access-key "1F4IC0mliCgfS5hl" --secret-key "uV2b4Ixqo3xo9aBptzIDlLviO2CTFtLI" st-test-maint flualfa-rw
+```

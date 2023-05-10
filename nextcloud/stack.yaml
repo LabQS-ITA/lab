@@ -12,8 +12,8 @@ services:
     volumes:
       - nextclouddata:/var/www/html
       - flualfadata:/var/www/flualfa:ro
-      - /home/gpes/shared/out:/var/www/shared:rw
-      - $PWD/config/config.php:/var/www/html/config/config.php:ro
+      - /home/gpes/shared/out:/var/www/shared:ro
+      - $PWD/config/config.php:/var/www/html/config/config.php:rw
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro

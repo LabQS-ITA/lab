@@ -70,47 +70,19 @@ function httpd() {
 
     echo "Registrar domínios $(tput setaf 1)"$LAB_DOMAIN"$(tput sgr0)"
 
-    sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' ./panel/static/index.html
-    sed -i 's/@CI_LAB_DOMAIN/'$CI_LAB_DOMAIN'/g' ./panel/static/index.html
-    sed -i 's/@CM_LAB_DOMAIN/'$CM_LAB_DOMAIN'/g' ./panel/static/index.html
-    sed -i 's/@IA_LAB_DOMAIN/'$IA_LAB_DOMAIN'/g' ./panel/static/index.html
-
     if [ "$1" == "hom" ] || [ "$1" == "ia" ]; then
 
-        echo "Desabilitar proxy para "$CI_LAB_DOMAIN" e "$CM_LAB_DOMAIN" se existirem"
+        echo "Desabilitar proxy para "$CI_LAB_DOMAIN" e "$CM_LAB_DOMAIN
 
         rm panel/config/sites/001-ci.conf || true
         rm panel/config/sites/002-cm.conf || true
 
-    fi
+    elif [ "$1" == "dev" ] || [ "$1" == "ia" ]; then
 
-    if [ "$1" == "tst" ]; then
+        echo "Desabilitar proxy para "$ST_LAB_DOMAIN
 
-        # Servidor do lab
-        sed -i 's/@LAB_SERVICE/Teste/g' ../httpd/panel/static/index.html
-        sed -i 's/@LAB_SERVICE/Teste/g' ../httpd/panel/static/mec/index.html
-        sed -i 's/@IA_LAB_DOMAIN/'$IA_LAB_DOMAIN'/g' ../httpd/panel/static/mec/index.html
-        
-    elif [ "$1" == "dev" ]; then
+        rm panel/config/sites/003-st.conf || true
 
-        # Servidores de desenvolvimento e testes
-        sed -i 's/@LAB_SERVICE/Desenvolvimento/g' ../httpd/panel/static/index.html
-        sed -i 's/@LAB_SERVICE/Desenvolvimento/g' ../httpd/panel/static/mec/index.html
-        sed -i 's/@IA_LAB_DOMAIN/'$IA_LAB_DOMAIN'/g' ../httpd/panel/static/mec/index.html
-        
-    elif [ "$1" == "hom" ]; then
-
-        # Servidores de homologação
-        sed -i 's/@LAB_SERVICE/Homologação/g' ../httpd/panel/static/index.html
-        sed -i 's/@LAB_SERVICE/Homologação/g' ../httpd/panel/static/mec/index.html
-        sed -i 's/@IA_LAB_DOMAIN/'$IA_LAB_DOMAIN'/g' ../httpd/panel/static/mec/index.html
-        
-    elif [ "$1" == "ia" ]; then
-
-        # Servidores de homologação
-        sed -i 's/@LAB_SERVICE/Data-science/g' ../httpd/panel/static/index.html
-        sed -i 's/@LAB_SERVICE/Data-science/g' ../httpd/panel/static/mec/index.html
-        
     fi
 
     echo 'Certificar que certbot está parado'
@@ -440,6 +412,9 @@ function minio() {
     if [ $2 == 'Y' ]; then
         echo 'SVC_PWD='$(openssl rand -hex 8) > .env
     fi
+
+    docker ps -qa -f 'name=minio*' | xargs -r docker stop
+    docker ps -qa -f 'name=minio*' | xargs -r docker rm
 
     docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
     

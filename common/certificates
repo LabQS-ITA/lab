@@ -61,7 +61,7 @@ echo 'Certificar que apache está parado'
 docker stop httpd || true
 
 if [ "$1" == "hom" ]; then
-    export CERT_DOMAINS=$LAB_DOMAIN
+    export CERT_DOMAINS=$LAB_DOMAIN,$ST_LAB_DOMAIN
 elif [ $1 == "ia" ]; then
     export CERT_DOMAINS=$IA_LAB_DOMAIN
 else

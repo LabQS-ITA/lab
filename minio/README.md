@@ -32,13 +32,6 @@ mc mb st-test-maint/flualfa --with-versioning
 mc mb st-hom-maint/flualfa --with-versioning
 ```
 
-#### Nextcloud
-
-```sh
-mc mb st-test-maint/nextcloud --with-versioning
-mc mb st-hom-maint/nextcloud --with-versioning
-```
-
 ### Criar usuários
 
 #### FluAlfa
@@ -125,46 +118,6 @@ Arquivo `flualfa-rw.policy.json`:
 }
 ```
 
-
-#### Nextcloud
-
-Arquivo `nextcloud-ro.policy.json`:
-
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [{
-        "Effect": "Allow",
-        "Action": [
-            "s3:GetBucketLocation",
-            "se:GetBucketVersioning",
-            "s3:GetObject",
-            "s3:ListBucket"
-        ],
-        "Resource": [
-            "arn:aws:s3:::nextcloud/*"
-        ]
-    }]
-}
-```
-
-Arquivo `nextcloud-rw.policy.json`:
-
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [{
-        "Effect": "Allow",
-        "Action": [
-            "s3:*"
-        ],
-        "Resource": [
-            "arn:aws:s3:::nextcloud/*"
-        ]
-    }]
-}
-```
-
 ### Associar _política_ ao _grupo_:
 
 #### FluAlfa
@@ -180,19 +133,6 @@ mc admin policy create st-hom-maint flualfa-rw ./flualfa-rw.policy.json && \
 mc admin policy attach st-hom-maint flualfa-rw --group flualfa-rw
 ```
 
-#### Nextcloud
-
-```sh
-mc admin policy create st-test-maint nextcloud-ro ./nextcloud-ro.policy.json && \
-mc admin policy attach st-test-maint nextcloud-ro --group nextcloud-ro && \
-mc admin policy create st-test-maint nextcloud-rw ./nextcloud-rw.policy.json && \
-mc admin policy attach st-test-maint nextcloud-rw --group nextcloud-rw && \
-mc admin policy create st-hom-maint nextcloud-ro ./nextcloud-ro.policy.json && \
-mc admin policy attach st-hom-maint nextcloud-ro --group nextcloud-ro && \
-mc admin policy create st-hom-maint nextcloud-rw ./nextcloud-rw.policy.json && \
-mc admin policy attach st-hom-maint nextcloud-rw --group nextcloud-rw
-```
-
 ### Chaves de acesso
 
 #### FluAlfa
@@ -202,12 +142,6 @@ mc admin user svcacct add --access-key "1F4IC0mliCgfS5hl" --secret-key "uV2b4Ixq
 ```
 
 #### Nextcloud
-
-Armazenamento do serviço:
-
-```sh
-mc admin user svcacct add --access-key "YY79MESQLPD8SAC2KN5L" --secret-key "96bo7gRjpTdyy5IR34CrE1uFMQPUfGEqBk8nXAUr" st-test-maint nextcloud-rw
-```
 
 Acesso à FluAlfa:
 

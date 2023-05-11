@@ -2,7 +2,7 @@
 
 ```sh
 cd . . . docker/volumes/flualfadata/_data/
-mc cp --recursive * st-test-maint/flualfa
+mc cp --recursive documents/* st-test-maint/flualfa/public/documents
 ```
 
 ![](../images/st/flualfa-migracao.png)

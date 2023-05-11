@@ -36,6 +36,6 @@ Configurar o compartilhamento da pasta:
 
 ![](../images/st/share.png)
 
-Acesso à pasta:
+Acesso à pasta (o caminho será '_/s/coleta_', a partir da configuração do compartilhamento feita acima)
 
 ![](../images/st/flualfa-nextcloud-st-share.png)

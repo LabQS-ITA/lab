@@ -10,7 +10,6 @@ services:
       netlab01:
         ipv4_address: ${NEXTCLOUD_HOST}
     volumes:
-      - $PWD/config/config.php:/var/www/html/config/config.php:rw
       - nextclouddata:/var/www/html/data
       - flualfadata:/var/www/flualfa:ro
       - /home/gpes/shared/out:/var/www/shared:ro

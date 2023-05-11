@@ -29,6 +29,7 @@ services:
       NEXTCLOUD_TRUSTED_DOMAINS: ${LAB_DOMAIN} ${CI_LAB_DOMAIN} ${CM_LAB_DOMAIN} {$IA_LAB_DOMAIN} ${ST_LAB_DOMAIN}
       OVERWRITEPROTOCOL: https
       OVERWRITEWEBROOT: nextcloud
+      PHP_MEMORY_LIMIT: 1G
 
 volumes:
   nextclouddata:

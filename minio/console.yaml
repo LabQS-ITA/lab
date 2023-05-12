@@ -4,7 +4,7 @@ services:
     container_name: console
     hostname: console
     # image: minio/console:latest
-    image: minio/console:v0.26.4
+    image: minio/console:v0.26.3
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]

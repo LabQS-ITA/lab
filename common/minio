@@ -44,4 +44,6 @@ fi
 
 httpd $1 $CONFIG_ENV
 
-minio $1 $CONFIG_ENV
+# minio $1 $CONFIG_ENV
+
+minio_console $1 $CONFIG_ENV

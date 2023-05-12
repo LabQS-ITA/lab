@@ -25,7 +25,7 @@ services:
       CONSOLE_PBKDF_SALT: ${SVC_PBKDF_SALT}
       MINIO_SERVER_URL: https://${ST_LAB_DOMAIN}
       MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/console
-    command: server --host ${LAB_DOMAIN}/console
+    command: server --host ${LAB_DOMAIN}
 
 networks:
   netlab01:

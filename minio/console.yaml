@@ -23,9 +23,8 @@ services:
     environment:
       CONSOLE_PBKDF_PASSPHRASE: ${SVC_PWD}
       CONSOLE_PBKDF_SALT: ${SVC_PBKDF_SALT}
-      MINIO_SERVER_URL: https://${ST_LAB_DOMAIN}
-      MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/console
-    command: server
+      MINIO_CONSOLE_SUBPATH: https://${ST_LAB_DOMAIN}/console
+      command: server
 
 networks:
   netlab01:

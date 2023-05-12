@@ -42,6 +42,6 @@ else
 
 fi
 
-httpd $1 $CONFIG_ENV
+httpd $1
 
 labelstudio $1 $CONFIG_ENV

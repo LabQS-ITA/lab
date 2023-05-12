@@ -428,7 +428,7 @@ function minio_console() {
  
     if [ $2 == 'Y' ]; then
         echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-        echo 'CONSOLE_PBKDF_SALT='$(openssl rand -hex 12) >> .env
+        echo 'SVC_PBKDF_SALT='$(openssl rand -hex 12) >> .env
     fi
 
     docker compose -f console.yaml -f ../common/volumes.$1.yaml up --detach

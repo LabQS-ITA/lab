@@ -133,22 +133,6 @@ mc admin policy create st-hom-maint flualfa-rw ./flualfa-rw.policy.json && \
 mc admin policy attach st-hom-maint flualfa-rw --group flualfa-rw
 ```
 
-### Chaves de acesso
-
-#### FluAlfa
-
-```sh
-mc admin user svcacct add --access-key "1F4IC0mliCgfS5hl" --secret-key "uV2b4Ixqo3xo9aBptzIDlLviO2CTFtLI" st-test-maint flualfa-rw
-```
-
-#### Nextcloud
-
-Acesso à FluAlfa:
-
-```sh
-mc admin user svcacct add --access-key "ZC435HMZLB5PC3D9YCRH" --secret-key "m0qaRR4KD1Z+7pLwiWCv2x3l7xfqLpK3qpvb6j+K" st-test-maint flualfa-ro
-```
-
 Configuração em Nextcloud:
 
 ![](../images/st/flualfa-nextcloud-st.png)

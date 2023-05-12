@@ -26,3 +26,7 @@ services:
       MINIO_SERVER_URL: https://${ST_LAB_DOMAIN}
       MINIO_BROWSER_REDIRECT_URL: https://${ST_LAB_DOMAIN}
     command: console server
+
+networks:
+  netlab01:
+    external: true

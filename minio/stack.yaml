@@ -27,7 +27,7 @@ services:
       MINIO_ROOT_USER: maint
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
       MINIO_BROWSER: off
-    command: server --console-address ":9001" --address ":9000" http://minio0{1...2}/data/vol{1...2}
+    command: server --address ":9000" http://minio0{1...2}/data/vol{1...2}
 
   minio02:
     container_name: minio02
@@ -56,7 +56,7 @@ services:
       MINIO_ROOT_USER: maint
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
       MINIO_BROWSER: off
-    command: server --console-address ":9001" --address ":9000" http://minio0{1...2}/data/vol{1...2}
+    command: server --address ":9000" http://minio0{1...2}/data/vol{1...2}
 
 volumes:
   miniodata0101:

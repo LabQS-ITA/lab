@@ -22,8 +22,6 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro  
     environment:
-      CONSOLE_PBKDF_PASSPHRASE: ${SVC_PWD}
-      CONSOLE_PBKDF_SALT: ${SVC_PBKDF_SALT}
       CONSOLE_MINIO_SERVER: https://${ST_LAB_DOMAIN}
       CONSOLE_SUBPATH: https://${LAB_DOMAIN}/console
       MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/console

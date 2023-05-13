@@ -3,7 +3,6 @@ services:
   console:
     container_name: console
     hostname: console
-    # image: minio/console:v0.26.1
     image: minio/console:latest
     restart: unless-stopped
     healthcheck:

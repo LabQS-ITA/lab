@@ -420,7 +420,7 @@ function minio() {
     
 }
 
-function minio_console() {
+function console() {
 
     cd ../minio
     echo '* MinIO *'

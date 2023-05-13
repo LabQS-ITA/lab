@@ -17,6 +17,7 @@ services:
     environment:
       CONSOLE_MINIO_SERVER: https://${ST_LAB_DOMAIN}
       CONSOLE_SUBPATH: https://${LAB_DOMAIN}/console
+      MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/console
     command: server
 
 networks:

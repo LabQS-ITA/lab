@@ -5,12 +5,6 @@ services:
     hostname: console
     image: minio/console:latest
     restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 90s
     ports:
       - '8090:9090'
     networks:
@@ -22,8 +16,7 @@ services:
       - /etc/localtime:/etc/localtime:ro  
     environment:
       CONSOLE_MINIO_SERVER: https://${ST_LAB_DOMAIN}
-      # CONSOLE_SUBPATH: https://${LAB_DOMAIN}/console
-      # MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/console
+      CONSOLE_SUBPATH: https://${LAB_DOMAIN}/console
     command: server
 
 networks:

@@ -26,7 +26,6 @@ services:
       MINIO_ROOT_USER: maint
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
       MINIO_BROWSER: off
-      MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/console
     command: server --address ":9000" http://minio0{1...2}/data/vol{1...2}
 
   minio02:
@@ -55,7 +54,6 @@ services:
       MINIO_ROOT_USER: maint
       MINIO_ROOT_PASSWORD: ${SVC_PWD}
       MINIO_BROWSER: off
-      MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}/console
     command: server --address ":9000" http://minio0{1...2}/data/vol{1...2}
 
 volumes:

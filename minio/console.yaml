@@ -22,6 +22,8 @@ services:
       - /etc/localtime:/etc/localtime:ro  
     environment:
       CONSOLE_MINIO_SERVER: https://${ST_LAB_DOMAIN}
+      CONSOLE_SUBPATH: https://${LAB_DOMAIN}
+      MINIO_BROWSER_REDIRECT_URL: https://${LAB_DOMAIN}
     command: server
 
 networks:

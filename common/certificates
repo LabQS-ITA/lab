@@ -37,4 +37,4 @@ docker logs certbot --follow
 # sudo certbot certonly --standalone --agree-tos -m labqs@ita.br -n -d ${CERT_DOMAINS}
 # sudo certbot renew --force-renewal
 
-echo "$(tput setaf 1)Re-inicar apache com script setup $(1)$(tput sgr0)"
+echo "$(tput setaf 1)Re-inicar apache com script setup $1$(tput sgr0)"

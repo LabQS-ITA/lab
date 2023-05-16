@@ -11,6 +11,7 @@ function domain() {
         export CM_LAB_DOMAIN=cm.test.labqs.ita.br
         export IA_LAB_DOMAIN=ia.labqs.ita.br
         export ST_LAB_DOMAIN=st.test.labqs.ita.br
+        export ST_C_LAB_DOMAIN=st.c.test.labqs.ita.br
 
     elif [ "$1" == "dev" ]; then
 
@@ -20,6 +21,7 @@ function domain() {
         export CM_LAB_DOMAIN=cm.labqs.ita.br
         export IA_LAB_DOMAIN=ia.labqs.ita.br
         export ST_LAB_DOMAIN=st.labqs.ita.br
+        export ST_C_LAB_DOMAIN=st.c.labqs.ita.br
 
     elif [ "$1" == "hom" ]; then
 
@@ -29,6 +31,7 @@ function domain() {
         export CM_LAB_DOMAIN=cm.labqs.ita.br
         export IA_LAB_DOMAIN=ia.labqs.ita.br
         export ST_LAB_DOMAIN=st.labqs.ita.br
+        export ST_C_LAB_DOMAIN=st.c.labqs.ita.br
 
     elif [ "$1" == "ia" ]; then
 
@@ -38,6 +41,7 @@ function domain() {
         export CM_LAB_DOMAIN=cm.labqs.ita.br
         export IA_LAB_DOMAIN=ia.labqs.ita.br
         export ST_LAB_DOMAIN=st.labqs.ita.br
+        export ST_C_LAB_DOMAIN=st.c.labqs.ita.br
 
     else
 

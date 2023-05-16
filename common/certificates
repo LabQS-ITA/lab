@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+source ./functions
 
 if [[ $# -ne 1 ]]; then
 
@@ -8,47 +9,9 @@ if [[ $# -ne 1 ]]; then
 
     exit 1
 
-elif [ "$1" == "tst" ]; then
-
-    # Servidor do lab
-    export LAB_DOMAIN=test.labqs.ita.br
-    export CI_LAB_DOMAIN=ci.test.labqs.ita.br
-    export CM_LAB_DOMAIN=cm.test.labqs.ita.br
-    export IA_LAB_DOMAIN=ia.labqs.ita.br
-    export ST_LAB_DOMAIN=st.test.labqs.ita.br
-
-elif [ "$1" == "dev" ]; then
-
-    # Servidores de desenvolvimento e testes
-    export LAB_DOMAIN=dev.labqs.ita.br
-    export CI_LAB_DOMAIN=ci.labqs.ita.br
-    export CM_LAB_DOMAIN=cm.labqs.ita.br
-    export IA_LAB_DOMAIN=ia.labqs.ita.br
-    export ST_LAB_DOMAIN=st.labqs.ita.br
-
-elif [ "$1" == "hom" ]; then
-
-    # Servidores de homologação
-    export LAB_DOMAIN=labqs.ita.br
-    export CI_LAB_DOMAIN=ci.labqs.ita.br
-    export CM_LAB_DOMAIN=cm.labqs.ita.br
-    export IA_LAB_DOMAIN=ia.labqs.ita.br
-    export ST_LAB_DOMAIN=st.labqs.ita.br
-
-elif [ "$1" == "ia" ]; then
-
-    # Servidores de homologação
-    export LAB_DOMAIN=ia.labqs.ita.br
-    export CI_LAB_DOMAIN=ci.labqs.ita.br
-    export CM_LAB_DOMAIN=cm.labqs.ita.br
-    export IA_LAB_DOMAIN=ia.labqs.ita.br
-    export ST_LAB_DOMAIN=st.labqs.ita.br
-    
 else
 
-    echo "Argumento $1 incorreto. Use [ dev | tst | hom ]"
-
-    exit 1
+    domain $1
 
 fi
 
@@ -60,24 +23,30 @@ echo '* Letsencrypt certbot *'
 echo 'Certificar que apache está parado'
 docker stop httpd || true
 
-if [ "$1" == "hom" ]; then
-    export CERT_DOMAINS=$LAB_DOMAIN,$ST_LAB_DOMAIN
-elif [ $1 == "ia" ]; then
-    export CERT_DOMAINS=$IA_LAB_DOMAIN
+if [[ $# -ne 2 ]]; then
+
+    echo "Informe { dev | tst | hom | ia } nome do domínio"
+
+    exit 1
+
 else
-    export CERT_DOMAINS=$LAB_DOMAIN,$CI_LAB_DOMAIN,$CM_LAB_DOMAIN,$ST_LAB_DOMAIN
+
+    domain $1
+
 fi
+
+CERT_DOMAINS=$2
 echo 'Registrando '${CERT_DOMAINS}
 
 # Usando docker
-# Verificar em stack.yml se está configurado para criação ou renovação
-docker compose -f renew.yaml -f ../common/volumes.$1.yaml up --detach
-docker compose -f register.yaml -f ../common/volumes.$1.yaml up --detach
+echo "Verificar se está configurado para criação ou renovação"
+# docker compose -f renew.yaml -f ../common/volumes.$1.yaml up --detach
+# docker compose -f register.yaml -f ../common/volumes.$1.yaml up --detach
 echo "$(tput setaf 1)Aguarde a finalização da execução$(tput sgr0)"
 docker logs certbot --follow
 
 # Usando letsencrypt
-# sudo certbot certonly --standalone --agree-tos -m gomesjm@ita.br -n -d ${CERT_DOMAINS}
+# sudo certbot certonly --standalone --agree-tos -m labqs@ita.br -n -d ${CERT_DOMAINS}
 # sudo certbot renew --force-renewal
 
-echo "$(tput setaf 1)Re-inicar apache com script setup$(tput sgr0)"
+echo "$(tput setaf 1)Re-inicar apache com script setup $(1)$(tput sgr0)"

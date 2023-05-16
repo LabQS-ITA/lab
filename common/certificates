@@ -3,9 +3,9 @@ set -euo pipefail
 
 source ./functions
 
-if [[ $# -ne 1 ]]; then
+if [[ $# -ne 2 ]]; then
 
-    echo "Informe [ dev | tst | hom | ia ]"
+    echo "Informe { dev | tst | hom | ia } nome do domínio"
 
     exit 1
 
@@ -22,18 +22,6 @@ echo '* Letsencrypt certbot *'
 
 echo 'Certificar que apache está parado'
 docker stop httpd || true
-
-if [[ $# -ne 2 ]]; then
-
-    echo "Informe { dev | tst | hom | ia } nome do domínio"
-
-    exit 1
-
-else
-
-    domain $1
-
-fi
 
 CERT_DOMAINS=$2
 echo 'Registrando '${CERT_DOMAINS}

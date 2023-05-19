@@ -47,11 +47,11 @@ mc admin user add st-hom-maint flualfa-rw ::senha::
 #### Nextcloud
 
 ```sh
-mc admin user add st-test-maint nextcloud-ro f1f503c2ddbf1776
-mc admin user add st-test-maint nextcloud-rw cd060e3bba6b5bce
+mc admin user add st-test-maint nextcloud-ro ::senha::
+mc admin user add st-test-maint nextcloud-rw ::senha::
 
-mc admin user add st-hom-maint nextcloud-ro 7cb016fd36a50bb9
-mc admin user add st-hom-maint nextcloud-rw 0e5917820d0c5f59
+mc admin user add st-hom-maint nextcloud-ro ::senha::
+mc admin user add st-hom-maint nextcloud-rw ::senha::
 ```
 
 

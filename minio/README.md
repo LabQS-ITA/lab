@@ -54,6 +54,16 @@ mc admin user add st-hom-maint nextcloud-ro ::senha::
 mc admin user add st-hom-maint nextcloud-rw ::senha::
 ```
 
+#### LabelStudio
+
+```sh
+mc admin user add st-test-maint labelstudio-ro ::senha::
+mc admin user add st-test-maint labelstudio-rw ::senha::
+
+mc admin user add st-hom-maint labelstudio-ro ::senha::
+mc admin user add st-hom-maint labelstudio-rw ::senha::
+```
+
 
 ### Criar grupo
 
@@ -67,7 +77,6 @@ mc admin group add st-hom-maint flualfa-ro flualfa-ro
 mc admin group add st-hom-maint flualfa-rw flualfa-rw
 ```
 
-
 #### Nextcloud
 
 ```sh
@@ -77,6 +86,17 @@ mc admin group add st-test-maint nextcloud-rw nextcloud-rw
 mc admin group add st-hom-maint nextcloud-ro nextcloud-ro
 mc admin group add st-hom-maint nextcloud-rw nextcloud-rw
 ```
+
+#### LabelStudio
+
+```sh
+mc admin group add st-test-maint labelstudio-ro labelstudio-ro
+mc admin group add st-test-maint labelstudio-rw labelstudio-rw
+
+mc admin group add st-hom-maint labelstudio-ro labelstudio-ro
+mc admin group add st-hom-maint labelstudio-rw labelstudio-rw
+```
+
 
 ### Criar política
 
@@ -118,6 +138,46 @@ Arquivo `flualfa-rw.policy.json`:
 }
 ```
 
+#### LabelStudio
+
+Arquivo `labelstudio-ro.policy.json`
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [{
+        "Effect": "Allow",
+        "Action": [
+            "s3:GetBucketLocation",
+            "s3:GetBucketVersioning",
+            "s3:GetObject",
+            "s3:ListBucket"
+        ],
+        "Resource": [
+            "arn:aws:s3:::labelstudio/*"
+        ]
+    }]
+}
+```
+
+Arquivo `labelstudio-rw.policy.json`
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [{
+        "Effect": "Allow",
+        "Action": [
+            "s3:*"
+        ],
+        "Resource": [
+            "arn:aws:s3:::labelstudio/*"
+        ]
+    }]
+}
+```
+
+
 ### Associar _política_ ao _grupo_:
 
 #### FluAlfa
@@ -133,7 +193,20 @@ mc admin policy create st-hom-maint flualfa-rw ./flualfa-rw.policy.json && \
 mc admin policy attach st-hom-maint flualfa-rw --group flualfa-rw
 ```
 
-Configuração em Nextcloud:
+#### LabelStudio
+
+```sh
+mc admin policy create st-test-maint labelstudio-ro ./labelstudio-ro.policy.json && \
+mc admin policy attach st-test-maint labelstudio-ro --group labelstudio-ro && \
+mc admin policy create st-test-maint labelstudio-rw ./labelstudio-rw.policy.json && \
+mc admin policy attach st-test-maint labelstudio-rw --group labelstudio-rw && \
+mc admin policy create st-hom-maint labelstudio-ro ./labelstudio-ro.policy.json && \
+mc admin policy attach st-hom-maint labelstudio-ro --group labelstudio-ro && \
+mc admin policy create st-hom-maint labelstudio-rw ./labelstudio-rw.policy.json && \
+mc admin policy attach st-hom-maint labelstudio-rw --group labelstudio-rw
+```
+
+#### Configuração em Nextcloud:
 
 ![](../images/st/flualfa-nextcloud-st.png)
 

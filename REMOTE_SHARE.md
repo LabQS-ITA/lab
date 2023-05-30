@@ -28,13 +28,13 @@ RUN composer install
 
 ```yaml
 build:
-                context: ${HOME}/flualfa
-                dockerfile: Dockerfile
-                target: phpbase
-                args:
-                  FLUALFAAPP_HOST: ${FLUALFAAPP_HOST}
-                  FLUALFAAPP_PORT: ${FLUALFAAPP_PORT}
-                  VERSION: '{{ semaphore_vars.task_details.target_version }}'
+  context: ${HOME}/flualfa
+  dockerfile: Dockerfile
+  target: phpbase
+  args:
+    FLUALFAAPP_HOST: ${FLUALFAAPP_HOST}
+    FLUALFAAPP_PORT: ${FLUALFAAPP_PORT}
+    VERSION: '{{ semaphore_vars.task_details.target_version }}'
 ```
 
 O container deve ser configurado por um script de inicialização:
@@ -48,8 +48,8 @@ CMD ["/build/flualfa/start.sh"]
 E mais tarde o container é criado exportando a pasta compartilhada num ponto local do servidor _host_:
 
 ```yaml
-              volumes:
-                - /export/dist/flualfa:/dist/flualfa
+  volumes:
+    - /export/dist/flualfa:/dist/flualfa
 ```
 _Esta configuração reside num arquivo que será processado via **docker compose** pelo script **ansible**_
 
@@ -79,8 +79,8 @@ echo "exited $0"
 A pasta publicada no _host_ externo via configuração da criação do container poderá ser acessada via VPN:
 
 ```yaml
-              volumes:
-                - /export/dist/flualfa:/dist/flualfa
+  volumes:
+    - /export/dist/flualfa:/dist/flualfa
 ```
 
 ```sh

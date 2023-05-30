@@ -2,12 +2,16 @@
 
 ### Acessar Gerenciador de Armazenamento
 
-Antes criar o usuário para acesso:
+Antes criar o usuário para acessos de leitura/gravação e somente leitura:
 
 ```sh
-mc admin user svcacct st-test-maint labelstudio-rw
+mc admin user svcacct add st-test-maint labelstudio-rw
 
 mc admin user svcacct add st-hom-maint labelstudio-rw
+
+mc admin user svcacct add st-test-maint labelstudio-ro
+
+mc admin user svcacct add st-hom-maint labelstudio-ro
 ```
 
 > **Obs**.: _Anotar os valores retornados_

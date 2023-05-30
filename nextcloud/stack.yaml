@@ -10,7 +10,6 @@ services:
       netlab01:
         ipv4_address: ${NEXTCLOUD_HOST}
     volumes:
-      - flualfadata:/var/www/flualfa:ro
       - /home/gpes/shared/out:/var/www/shared:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
@@ -32,9 +31,6 @@ services:
 volumes:
   nextclouddata:
     name: nextclouddata
-    external: true
-  flualfadata:
-    name: flualfadata
     external: true
 
 networks:

@@ -37,31 +37,31 @@ mc mb st-hom-maint/flualfa --with-versioning
 #### FluAlfa
 
 ```sh
-mc admin user add st-test-maint flualfa-ro ::senha::
-mc admin user add st-test-maint flualfa-rw ::senha::
+mc admin user add st-test-maint flualfa-ro `openssl rand -hex 8`
+mc admin user add st-test-maint flualfa-rw `openssl rand -hex 8`
 
-mc admin user add st-hom-maint flualfa-ro ::senha::
-mc admin user add st-hom-maint flualfa-rw ::senha::
+mc admin user add st-hom-maint flualfa-ro `openssl rand -hex 8`
+mc admin user add st-hom-maint flualfa-rw `openssl rand -hex 8`
 ```
 
 #### Nextcloud
 
 ```sh
-mc admin user add st-test-maint nextcloud-ro ::senha::
-mc admin user add st-test-maint nextcloud-rw ::senha::
+mc admin user add st-test-maint nextcloud-ro `openssl rand -hex 8`
+mc admin user add st-test-maint nextcloud-rw `openssl rand -hex 8`
 
-mc admin user add st-hom-maint nextcloud-ro ::senha::
-mc admin user add st-hom-maint nextcloud-rw ::senha::
+mc admin user add st-hom-maint nextcloud-ro `openssl rand -hex 8`
+mc admin user add st-hom-maint nextcloud-rw `openssl rand -hex 8`
 ```
 
 #### LabelStudio
 
 ```sh
-mc admin user add st-test-maint labelstudio-ro ::senha::
-mc admin user add st-test-maint labelstudio-rw ::senha::
+mc admin user add st-test-maint labelstudio-ro `openssl rand -hex 8`
+mc admin user add st-test-maint labelstudio-rw `openssl rand -hex 8`
 
-mc admin user add st-hom-maint labelstudio-ro ::senha::
-mc admin user add st-hom-maint labelstudio-rw ::senha::
+mc admin user add st-hom-maint labelstudio-ro `openssl rand -hex 8`
+mc admin user add st-hom-maint labelstudio-rw `openssl rand -hex 8`
 ```
 
 
@@ -208,8 +208,26 @@ mc admin policy attach st-hom-maint labelstudio-rw --group labelstudio-rw
 
 #### Configuração em Nextcloud:
 
+Repositório de áudios (somente leitura):
+
 ![](../images/st/flualfa-nextcloud-st.png)
 
 Acesso à pasta:
 
 ![](../images/st/flualfa-nextcloud-st-share.png)
+
+
+#### Configuração em LabelStudio
+
+Repositório de áudios (somente leitura):
+
+![](../images/st/flualfa-labelstudio-st.png)
+
+Repositório para as rotulações (leitura/gravação):
+
+![](../images/st/labelstudio-st.png)
+
+Acesso à pasta:
+
+![](../images/st/flualfa-labelstudio-share.png)
+

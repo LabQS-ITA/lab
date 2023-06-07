@@ -61,12 +61,11 @@ function traefik() {
 
     if [ $2 = 'Y' ]; then
         echo 'SVC_PWD='$(openssl rand -hex 8) > .env
-        echo 'SVC_KEY='$(htpasswd -nb maint $(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env)) >> .env
     fi
 
-    sed -i 's\@SVC_KEY\'$(awk -F'=' '$1 =="SVC_KEY" {print $2}' .env)'\g' config/traefik_dynamic.toml
+    sed -i 's\@SVC_KEY\'$(htpasswd -nb admin $(awk -F'=' '$1 =="SVC_PWD" {print $2}' ./.env))'\g' config/traefik_dynamic.toml
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }
 
@@ -95,7 +94,7 @@ function httpd() {
     echo 'Certificar que certbot está parado'
     docker stop certbot || true
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
     docker stop httpd
     docker start httpd
@@ -121,7 +120,7 @@ function postgres() {
         chmod 0600 ./postgres02/config/.pgpass
     fi
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }
 
@@ -137,7 +136,7 @@ function mongodb() {
         chmod 0600 ./mongodb/config/.mdbpass
     fi
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }
 
@@ -154,7 +153,7 @@ function mariadb() {
         echo 'password = '$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env) >> mariadb/config/autologin.cnf
     fi
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }
 
@@ -169,7 +168,7 @@ function redis() {
         echo 'SVC_PWD_02='$(openssl rand -hex 8) >> .env
     fi
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }
 
@@ -178,7 +177,7 @@ function memcached() {
     cd ../memcached
     echo '* memcached *'
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }
 
@@ -187,7 +186,7 @@ function etcd() {
     cd ../etcd
     echo '* Etcd *'
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }
 
@@ -202,7 +201,7 @@ function rabbitmq() {
 
     sed -i 's/@SVC_PWD/'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env)'/g' config/rabbitmng/20-user.conf
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }
 
@@ -217,7 +216,7 @@ function nextcloud() {
         echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
     fi
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }
 
@@ -231,7 +230,7 @@ function hasura() {
         echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
     fi
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }
 
@@ -240,7 +239,7 @@ function agent() {
     cd ../portainer
     echo '* Portainer *'
 
-    docker compose -f agent.yaml up  --detach
+    docker compose -f agent.yaml -f ../common/networks.yaml up  --detach
 
 }
 
@@ -274,7 +273,7 @@ function jupyter() {
     cd ../..
 
     docker build --tag labqs/jupyterlab --file Dockerfile.jupyterlab --rm .
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --build --detach jupyterhub
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --build --detach jupyterhub
 
 }
 
@@ -290,7 +289,7 @@ function gitea() {
         echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) > .env
     fi
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }
 
@@ -314,7 +313,7 @@ function drone() {
         echo 'SVC_PWD='$(openssl rand -hex 16) >> .env
     fi
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --scale docker=2 --scale ssh=2 --detach --remove-orphans
 
 }
 
@@ -328,7 +327,7 @@ function semaphore() {
         echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
     fi
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --build --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --build --detach
 
 }
 
@@ -347,7 +346,7 @@ function registry() {
     sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' config/config.yml
     sed -i 's/@REDIS_PWD/'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../redis/.env)'/g' config/config.yml
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }
 
@@ -356,7 +355,7 @@ function locust() {
     cd ../locust
     echo '* Locust *'
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --scale worker=2 --detach --remove-orphans
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --scale worker=2 --detach --remove-orphans
     docker stop $(docker ps -qa -f 'name=locust*')
 
 }
@@ -370,7 +369,7 @@ function redmine() {
         echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) > .env
     fi
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }
 
@@ -379,7 +378,7 @@ function prometheus() {
     cd ../prometheus
     echo '* Prometheus *'
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }
 
@@ -388,7 +387,7 @@ function grafana() {
     cd ../grafana
     echo '* Grafana *'
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }
 
@@ -397,7 +396,7 @@ function netdata() {
     cd ../netdata
     echo '* Netdata *'
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
     
 }
 
@@ -406,7 +405,7 @@ function portainer() {
     cd ../portainer
     echo '* Portainer *'
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }
 
@@ -420,7 +419,7 @@ function labelstudio() {
         echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) >> .env
     fi
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }
 
@@ -437,7 +436,7 @@ function minio() {
     docker ps -qa -f 'name=minio*' | xargs -r docker stop
     docker ps -qa -f 'name=minio*' | xargs -r docker rm
 
-    docker compose -f stack.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
     
 }
 
@@ -452,6 +451,6 @@ function console() {
         echo 'SVC_PBKDF_SALT='$(openssl rand -hex 12) >> .env
     fi
 
-    docker compose -f console.yaml -f ../common/volumes.$1.yaml up --detach
+    docker compose -f console.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }

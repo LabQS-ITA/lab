@@ -1,0 +1,6 @@
+
+networks:
+  netlab01:
+    external: true
+  netlab02:
+    external: false

@@ -16,3 +16,7 @@ services:
               capabilities: [gpu]
     environment:
       JUPYTER_HOST: ${JUPYTER_HOST}
+
+networks:
+  netlab01:
+    external: true

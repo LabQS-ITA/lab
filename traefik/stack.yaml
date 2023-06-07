@@ -1,6 +1,6 @@
 services:
 
-  redis:
+  traefik:
     container_name: traefik
     image: traefik:latest
     restart: unless-stopped

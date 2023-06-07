@@ -2,6 +2,7 @@
 set -euo pipefail
 
 docker network create --driver bridge netlab01 --subnet='172.16.0.0/16'
+docker network create --driver bridge netlab02 --subnet='172.18.0.0/16'
 
 if [ $1 == "ia" ]; then
     docker volume create -d local -o type=none -o device="/import/flualfadata/documents" -o o=bind flualfadata

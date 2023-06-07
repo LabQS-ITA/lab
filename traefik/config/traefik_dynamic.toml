@@ -1,10 +1,10 @@
 [http.middlewares.simpleAuth.basicAuth]
   users = [
-    "@SVC_PWD"
+    "@SVC_KEY"
   ]
 
 [http.routers.api]
-  rule = "Host(`monitor.your_domain`)"
+  rule = "Host(`dev.labqs.ita.br`)"
   entrypoints = ["websecure"]
   middlewares = ["simpleAuth"]
   service = "api@internal"

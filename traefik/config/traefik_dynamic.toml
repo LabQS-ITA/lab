@@ -1,0 +1,12 @@
+[http.middlewares.simpleAuth.basicAuth]
+  users = [
+    "@SVC_PWD"
+  ]
+
+[http.routers.api]
+  rule = "Host(`monitor.your_domain`)"
+  entrypoints = ["websecure"]
+  middlewares = ["simpleAuth"]
+  service = "api@internal"
+  [http.routers.api.tls]
+    certResolver = "lets-encrypt"

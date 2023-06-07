@@ -2,6 +2,8 @@
 set -euo pipefail
 
 
+git checkout ../traefik/config/traefik_dynamic.toml
+
 git checkout ../httpd/panel/config/sites/000-default.conf
 git checkout ../httpd/panel/config/sites/001-ci.conf
 git checkout ../httpd/panel/config/sites/002-cm.conf

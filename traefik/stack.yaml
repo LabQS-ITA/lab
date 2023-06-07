@@ -5,7 +5,8 @@ services:
     image: traefik:latest
     restart: unless-stopped
     ports:
-      - '10000:10000'
+      - '80:80'
+      - '443:443'
     networks:
       netlab01:
         ipv4_address: ${TRAEFIK_HOST}

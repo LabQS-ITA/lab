@@ -42,4 +42,6 @@ else
 
 fi
 
+docker stop httpd
+
 traefik $1 $CONFIG_ENV

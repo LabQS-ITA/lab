@@ -1,6 +1,6 @@
 [entryPoints]
   [entryPoints.web]
-    address = ":10000"
+    address = ":80"
     [entryPoints.web.http.redirections.entryPoint]
       to = "websecure"
       scheme = "https"

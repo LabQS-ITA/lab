@@ -10,8 +10,7 @@ services:
       netlab01:
         ipv4_address: ${TRAEFIK_HOST}
     volumes:
-      - $PWD/config/traefik.yml:/etc/traefik/traefik.yml
-      - $PWD/config/traefik_dynamic.yml:/etc/traefik/traefik_dynamic.yml
+      - $PWD/config:/etc/traefik
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro

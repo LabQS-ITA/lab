@@ -21,4 +21,4 @@
   network = "netlab01"
 
 [providers.file]
-  filename = "traefik_dynamic.toml"
+  filename = "/etc/traefik/traefik_dynamic.toml"

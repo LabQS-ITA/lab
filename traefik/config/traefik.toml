@@ -10,6 +10,7 @@
 
 [api]
   dashboard = true
+  rule = "PathPrefix(`/api`, `/dashboard`)"
 
 [certificatesResolvers.lets-encrypt.acme]
   email = "labqs@ita.br"

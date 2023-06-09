@@ -5,9 +5,8 @@ services:
     image: httpd
     restart: unless-stopped
     ports:
-      # - '80:80'
-      # - '443:443'
-      - '8092:8092'
+      - '80:80'
+      - '443:443'
     networks:
       netlab01:
         ipv4_address: ${HTTPD_HOST}

@@ -29,7 +29,7 @@ services:
       SEMAPHORE_ADMIN_NAME: maint
       SEMAPHORE_ADMIN_EMAIL: labqs@ita.br
     labels:
-      - traefik.http.routers.labqs.rule="PathPrefix(`/semaphore`)"
+      - traefik.http.routers.labqs.rule="Host(`dev.labqs.ita.br`) && PathPrefix(`/semaphore`)"
 
 networks:
   netlab01:

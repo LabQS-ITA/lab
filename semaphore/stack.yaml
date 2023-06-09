@@ -30,7 +30,6 @@ services:
       SEMAPHORE_ADMIN_EMAIL: labqs@ita.br
     labels:
       - "traefik.http.routers.semaphore.rule=PathPrefix(`/semaphore`)"
-      - "traefik.http.services.semaphore.loadbalancer.server.port=8085"
 
 networks:
   netlab01:

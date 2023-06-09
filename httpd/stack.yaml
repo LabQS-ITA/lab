@@ -5,8 +5,9 @@ services:
     image: httpd
     restart: unless-stopped
     ports:
-      - '80:80'
-      - '443:443'
+      # - '80:80'
+      # - '443:443'
+      - '8092:8092'
     networks:
       netlab01:
         ipv4_address: ${HTTPD_HOST}
@@ -24,7 +25,8 @@ services:
       IA_LAB_DOMAIN: ${IA_LAB_DOMAIN}
       ST_LAB_DOMAIN: ${ST_LAB_DOMAIN}
       ST_C_LAB_DOMAIN: ${ST_C_LAB_DOMAIN}
-
+    labels:
+      - traefik.http.routers.labqs.rule="PathPrefix(`/static`)"
 networks:
   netlab01:
     external: true

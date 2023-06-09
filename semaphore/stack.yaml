@@ -28,6 +28,8 @@ services:
       SEMAPHORE_ADMIN_PASSWORD: ${SVC_PWD}
       SEMAPHORE_ADMIN_NAME: maint
       SEMAPHORE_ADMIN_EMAIL: labqs@ita.br
+    labels:
+      - traefik.http.routers.labqs.rule="PathPrefix(`/semaphore`)"
 
 networks:
   netlab01:

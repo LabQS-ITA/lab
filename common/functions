@@ -88,6 +88,7 @@ function httpd() {
         echo "Desabilitar proxy para "$ST_LAB_DOMAIN
 
         rm panel/config/sites/003-st.conf || true
+        rm panel/config/sites/004-st.c.conf || true
 
     fi
 

@@ -17,6 +17,15 @@ function backup_container {
 
 }
 
+function backup_containers {
+
+    for c in $(docker ps -a --format '{{.Names}}');
+    do
+        backup_container $c
+    done
+
+}
+
 function backup_postgres() {
 
     docker exec -i $1 /usr/bin/pg_dumpall -U postgres -w | gzip --fast > /export/bkp/bkp_"$LAB_ENV"_$1_$(date +%F-%H%M).postgres.gz
@@ -70,10 +79,9 @@ function backup_env() {
 
 }
 
-for c in $(docker ps -a --format '{{.Names}}');
-do
-    backup_container $c
-done
+backup_volumes
+backup_containers
+backup_env
 
 if [ "$LAB_ENV" != "ia.labqs" ]; then
     backup_postgres postgres
@@ -89,4 +97,3 @@ if [ "$LAB_ENV" != "ia.labqs" ]; then
     backup_redis redis02
 fi
 
-backup_volumes

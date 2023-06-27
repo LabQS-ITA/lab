@@ -42,4 +42,4 @@ else
 
 fi
 
-mariadb $1
+mariadb $1 $CONFIG_ENV

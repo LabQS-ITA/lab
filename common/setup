@@ -51,7 +51,7 @@ if [ "$1" != "ia" ]; then
 
     mongodb $1 $CONFIG_ENV
 
-    mariadb $1 $CONFIG_ENV
+    # mariadb $1 $CONFIG_ENV
 
     redis $1 $CONFIG_ENV
 

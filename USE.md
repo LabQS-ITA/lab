@@ -19,11 +19,6 @@ ssh -fN -L 6379:172.1.7.201:6379 <usuario da vpn>@dev.labqs.ita.br -p 2222
 ssh -fN -L 27017:172.1.8.201:27017 <usuario da vpn>@dev.labqs.ita.br -p 2222
 ```
 
-### MariaDB
-```sh
-ssh -fN -L 3306:172.1.9.201:3306 <usuario da vpn>@dev.labqs.ita.br -p 2222
-```
-
 Uma vez conectado o túnel SSH podemos conectar o serviço remoto como se estivesse instalado localmente. Por exemplo, abrir a conexão com servidor Postgres tunelado acima:
 
 ```sh

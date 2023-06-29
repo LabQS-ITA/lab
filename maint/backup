@@ -79,9 +79,16 @@ function backup_env() {
 
 }
 
+function backup_etc() {
+
+    tar cvzf /export/bkp/bkp_"$LAB_ENV"_etc.tar.gz /etc
+
+}
+
 backup_volumes
 backup_containers
 backup_env
+backup_etc
 
 if [ "$LAB_ENV" != "ia.labqs" ]; then
     backup_postgres postgres

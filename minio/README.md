@@ -115,7 +115,8 @@ Arquivo `flualfa-ro.policy.json`:
             "s3:ListBucket"
         ],
         "Resource": [
-            "arn:aws:s3:::flualfa/*"
+                "arn:aws:s3:::flualfa/*",
+                "arn:aws:s3:::flualfa-dev/*"
         ]
     }]
 }
@@ -132,7 +133,8 @@ Arquivo `flualfa-rw.policy.json`:
             "s3:*"
         ],
         "Resource": [
-            "arn:aws:s3:::flualfa/*"
+                "arn:aws:s3:::flualfa/*",
+                "arn:aws:s3:::flualfa-dev/*"
         ]
     }]
 }

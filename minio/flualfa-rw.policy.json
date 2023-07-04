@@ -6,7 +6,8 @@
             "s3:*"
         ],
         "Resource": [
-            "arn:aws:s3:::flualfa/*"
-        ]
+            "arn:aws:s3:::flualfa/*",
+            "arn:aws:s3:::flualfa-dev/*"
+    ]
     }]
 }

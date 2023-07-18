@@ -3,9 +3,12 @@ set -euo pipefail
 
 source ./functions
 
-if [[ $# -ne 2 ]]; then
+# Para registrar
+# if [[ $# -ne 2 ]]; then
+# Para renovar
+if [[ $# -ne 1 ]]; then
 
-    echo "Informe { dev | tst | hom | ia } nome do domínio"
+    echo "Informe { dev | tst | hom | ia }"
 
     exit 1
 
@@ -23,8 +26,9 @@ echo '* Letsencrypt certbot *'
 echo 'Certificar que apache está parado'
 docker stop httpd || true
 
-export CERT_DOMAINS=$2
-echo 'Registrando '${CERT_DOMAINS}
+# Para registrar
+# export CERT_DOMAINS=$2
+# echo 'Registrando '${CERT_DOMAINS}
 
 # Usando docker
 echo "Verificar se está configurado para criação ou renovação"
@@ -33,8 +37,4 @@ echo "Verificar se está configurado para criação ou renovação"
 echo "$(tput setaf 1)Aguarde a finalização da execução$(tput sgr0)"
 docker logs certbot --follow
 
-# Usando letsencrypt
-# sudo certbot certonly --standalone --agree-tos -m labqs@ita.br -n -d ${CERT_DOMAINS}
-# sudo certbot renew --force-renewal
-
-echo "$(tput setaf 1)Re-inicar apache com script setup $1$(tput sgr0)"
+echo "$(tput setaf 1)Re-inicar apache com script httpd $1$(tput sgr0)"

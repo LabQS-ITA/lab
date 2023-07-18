@@ -173,15 +173,6 @@ function redis() {
 
 }
 
-function memcached() {
-
-    cd ../memcached
-    echo '* memcached *'
-
-    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
-
-}
-
 function etcd() {
 
     cd ../etcd

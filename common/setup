@@ -55,8 +55,6 @@ if [ "$1" != "ia" ]; then
 
     redis $1 $CONFIG_ENV
 
-    memcached $1 $CONFIG_ENV
-
     etcd $1 $CONFIG_ENV
 
     rabbitmq $1 $CONFIG_ENV

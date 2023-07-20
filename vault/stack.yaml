@@ -1,7 +1,7 @@
 services:
 
   vault:
-    container_name: vault:latest
+    container_name: vault
     image: vault
     restart: unless-stopped
     ports:

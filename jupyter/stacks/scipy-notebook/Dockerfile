@@ -67,7 +67,7 @@ RUN pip install jupyter_contrib_nbextensions
 # Install facets which does not have a pip or conda package at the moment
 WORKDIR /tmp
 RUN git clone https://github.com/PAIR-code/facets.git && \
-    jupyter nbextension install facets/facets-dist/ --sys-prefix && \
+    jupyter contrib nbextension install facets/facets-dist/ --sys-prefix && \
     rm -rf /tmp/facets && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"

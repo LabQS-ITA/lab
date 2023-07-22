@@ -57,11 +57,12 @@ RUN mamba install --quiet --yes \
     'statsmodels' \
     'sympy' \
     'widgetsnbextension'\
-    'jupyter_contrib_nbextensions'\
     'xlrd' && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
+
+RUN pip install jupyter_contrib_nbextensions
 
 # Install facets which does not have a pip or conda package at the moment
 WORKDIR /tmp

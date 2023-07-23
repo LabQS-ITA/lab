@@ -16,7 +16,7 @@ services:
       netlab01:
         ipv4_address: ${REDIS_HOST}
     volumes:
-      - $PWD/config:/usr/local/etc/redis/redis.conf:ro
+      - $PWD/config:/usr/local/etc/redis:rw
       - redisdata:/data:rw
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
@@ -24,7 +24,7 @@ services:
     environment:
       REDIS_REPLICATION_MODE: master
       REDISCLI_AUTH: ${SVC_PWD}
-    command: ["redis-server", "--requirepass", "${SVC_PWD}", "--appendonly", "yes"]
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf" "--requirepass", "${SVC_PWD}", "--appendonly", "yes"]
 
   redis01:
     container_name: redis01

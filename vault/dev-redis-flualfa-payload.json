@@ -1,8 +1,8 @@
 {
     "plugin_name": "redis-database-plugin",
-    "host": "redis01",
+    "host": "redis",
     "port": 6379,
     "username": "flualfa",
     "password": "p4ssw0rd",
-    "allowed_roles": "dev-redis01-flualfa-*-role"
+    "allowed_roles": "dev-redis-flualfa-*-role"
 }

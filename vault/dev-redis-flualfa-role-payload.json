@@ -1,5 +1,5 @@
 {
-    "db_name": "dev-redis01-flualfa",
+    "db_name": "dev-redis-flualfa",
     "username": "flualfa",
     "rotation_period": "5m"
 }

@@ -1,8 +1,0 @@
-{
-    "plugin_name": "redis-database-plugin",
-    "host": "redis",
-    "port": 6379,
-    "username": "default",
-    "password": "ed6f868221a182eb",
-    "allowed_roles": "dev-redis-*-role"
-}

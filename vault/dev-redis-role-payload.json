@@ -1,0 +1,5 @@
+{
+    "db_name": "dev-redis",
+    "username": "default",
+    "rotation_period": "5m"
+}

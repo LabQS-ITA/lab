@@ -57,7 +57,6 @@ RUN mamba install --quiet --yes \
     'statsmodels' \
     'sympy' \
     'widgetsnbextension'\
-    'git+https://github.com/PAIR-code/facets.git' \
     'xlrd' && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
@@ -70,6 +69,11 @@ RUN mamba install --quiet --yes \
 #     rm -rf /tmp/facets && \
 #     fix-permissions "${CONDA_DIR}" && \
 #     fix-permissions "/home/${NB_USER}"
+
+RUN pip3 install \
+    'git+https://github.com/PAIR-code/facets.git' && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
 
 # Import matplotlib the first time to build the font cache.
 ENV XDG_CACHE_HOME="/home/${NB_USER}/.cache/"

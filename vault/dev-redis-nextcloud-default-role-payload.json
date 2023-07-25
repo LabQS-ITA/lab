@@ -1,0 +1,5 @@
+{
+    "db_name": "dev-redis-nextcloud",
+    "username": "nextcloud",
+    "rotation_period": "5m"
+}

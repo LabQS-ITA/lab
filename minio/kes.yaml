@@ -13,7 +13,8 @@ services:
     volumes:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro  
+      - /etc/localtime:/etc/localtime:ro
+    command: server
 
 networks:
   netlab01:

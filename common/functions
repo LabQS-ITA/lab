@@ -459,14 +459,3 @@ function console() {
     docker compose -f console.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }
-
-function kes() {
-
-    cd ../minio
-    echo '* MinIO KES *'
-
- 
-    docker compose -f kes.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
-
-
-}

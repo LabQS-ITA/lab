@@ -44,8 +44,4 @@ fi
 
 httpd $1
 
-minio $1 $CONFIG_ENV
-
-console $1 $CONFIG_ENV
-
 kes $1 $CONFIG_ENV

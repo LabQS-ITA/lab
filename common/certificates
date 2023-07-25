@@ -3,7 +3,7 @@ set -euo pipefail
 
 source ./functions
 
-# Para registrar
+# Para registrar 
 # if [[ $# -ne 2 ]]; then
 # Para renovar
 if [[ $# -ne 1 ]]; then

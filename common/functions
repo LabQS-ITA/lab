@@ -76,7 +76,7 @@ function traefik() {
         echo 'SVC_PWD='$(openssl rand -hex 8) > .env
     fi
 
-    sed -i 's\@SVC_KEY\'$(htpasswd -nb admin $(awk -F'=' '$1 =="SVC_PWD" {print $2}' ./.env))'\g' config/traefik_dynamic.toml
+    sed -i 's\@SVC_KEY\'$(docker run --rm --entrypoint htpasswd -nb admin $(awk -F'=' '$1 =="SVC_PWD" {print $2}' ./.env))'\g' config/traefik_dynamic.toml
 
     docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 

@@ -23,6 +23,7 @@ services:
       ST_LAB_DOMAIN: ${ST_LAB_DOMAIN}
       ST_C_LAB_DOMAIN: ${ST_C_LAB_DOMAIN}
     labels:
+      - traefik.http.routers.httpd.rule=Host(`${LAB_DOMAIN}`)
       - traefik.http.routers.httpd.rule=PathPrefix(`/static`)
 networks:
   netlab01:

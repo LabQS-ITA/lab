@@ -25,6 +25,7 @@ services:
     labels:
       - traefik.http.routers.httpd.rule=Host(`${LAB_DOMAIN}`)
       - traefik.http.routers.httpd.rule=PathPrefix(`/static`)
+      - traefik.port=80
 networks:
   netlab01:
     external: true

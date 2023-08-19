@@ -12,6 +12,7 @@ services:
         ipv4_address: ${TRAEFIK_HOST}
     volumes:
       - $PWD/config:/etc/traefik
+      - certificates:/usr/local/apache2/certificates:ro
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

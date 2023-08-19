@@ -24,7 +24,7 @@ services:
       ST_C_LAB_DOMAIN: ${ST_C_LAB_DOMAIN}
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.httpd.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.httpd.rule=PathPrefix(`/static`)"
 networks:
   netlab01:
     external: true

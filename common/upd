@@ -2,15 +2,13 @@
 set -euo pipefail
 
 
-git checkout ../traefik/config/traefik_dynamic.toml
-
 # git checkout ../httpd/panel/config/sites/000-default.conf
 # git checkout ../httpd/panel/config/sites/001-ci.conf
 # git checkout ../httpd/panel/config/sites/002-cm.conf
 
-git checkout ../rabbitmq/config/rabbitmng/20-user.conf
-
-git checkout ../registry/config/config.yml
+# git checkout ../traefik/config/traefik_dynamic.toml
+# git checkout ../rabbitmq/config/rabbitmng/20-user.conf
+# git checkout ../registry/config/config.yml
 
 git pull
 

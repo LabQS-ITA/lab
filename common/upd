@@ -25,9 +25,9 @@ sed -i 's/@REDIS_PWD/'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../redis/.env)'/g'
 git pull
 
 
-if [[ $# -ne 1 && $# -ne 2 ]]; then
+if [[ $# -ne 1 ]]; then
 
-    echo "Informe { dev | tst | hom | ia } [ config ]"
+    echo "Informe { dev | tst | hom | ia }"
 
     exit 1
 

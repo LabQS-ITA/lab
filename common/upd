@@ -5,6 +5,20 @@ source ./config
 
 source ./functions
 
+
+if [[ $# -ne 1 ]]; then
+
+    echo "Informe { dev | tst | hom | ia }"
+
+    exit 1
+
+else
+
+    domain $1
+
+fi
+
+
 git checkout ../httpd/panel/config/sites/000-default.conf
 git checkout ../httpd/panel/config/sites/001-ci.conf
 git checkout ../httpd/panel/config/sites/002-cm.conf
@@ -22,19 +36,8 @@ git checkout config/config.yml
 sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' config/config.yml
 sed -i 's/@REDIS_PWD/'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../redis/.env)'/g' config/config.yml
 
+
 git pull
 
-
-if [[ $# -ne 1 ]]; then
-
-    echo "Informe { dev | tst | hom | ia }"
-
-    exit 1
-
-else
-
-    domain $1
-
-fi
 
 git submodule update --init --recursive

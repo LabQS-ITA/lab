@@ -26,8 +26,6 @@ services:
       - traefik.http.routers.httpd.rule=(Host(`${LAB_DOMAIN}`) && Path(`/assets`))
       - traefik.http.routers.httpd.tls=true
       - traefik.http.services.httpd.loadbalancer.server.port=80
-      - traefik.http.middlewares.httpd-stripprefix.stripprefix.prefixes=/assets
-      - traefik.http.middlewares.httpd.stripprefix.forceSlash=false
       - traefik.http.routers.httpd.middlewares=httpd-stripprefix@docker
 networks:
   netlab01:

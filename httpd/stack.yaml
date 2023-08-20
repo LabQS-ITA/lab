@@ -28,6 +28,7 @@ services:
       - traefik.http.routers.httpd.tls.certresolver=le
       - traefik.http.services.httpd.loadbalancer.server.port=80
       - traefik.http.middlewares.static-files-stripprefix.stripprefix.prefixes=/static
+      - traefik.http.middlewares.httpd.compress=true 
       - traefik.http.routers.httpd.middlewares=gzip@docker,static-files-stripprefix@docker
 networks:
   netlab01:

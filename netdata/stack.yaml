@@ -31,6 +31,8 @@ services:
       - traefik.enable=true
       - traefik.http.routers.netdata.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/netdata`)
       - traefik.http.services.netdata.loadbalancer.server.port=19999
+      - traefik.http.middlewares.netdata-stripprefix.stripprefix.prefixes=/netdata
+      - traefik.http.routers.httpd.middlewares=netdata-stripprefix@docker
 
 networks:
   netlab01:

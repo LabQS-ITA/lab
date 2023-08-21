@@ -15,6 +15,14 @@ services:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.portainer.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/portainer`)
+      - traefik.http.routers.portainer.tls=true
+      - traefik.http.services.portainer.loadbalancer.server.port=19999
+      - traefik.http.middlewares.portainer-stripprefix.stripprefix.prefixes=/portainer
+      - traefik.http.middlewares.portainer-stripprefix.stripprefix.forceSlash=true
+      - traefik.http.routers.portainer.middlewares=portainer-stripprefix@docker
 
 volumes:
   portainerdata:

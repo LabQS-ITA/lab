@@ -22,7 +22,7 @@ services:
       - traefik.http.services.locust.loadbalancer.server.port=8089
       - traefik.http.middlewares.locust-stripprefix.stripprefix.prefixes=/locust
       - traefik.http.middlewares.locust-stripprefix.stripprefix.forceSlash=true
-      - traefik.http.routers.locust.middlewares=netdata-stripprefix@docker
+      - traefik.http.routers.locust.middlewares=locust-stripprefix@docker
     command: 
       - '--config=master.conf'
 

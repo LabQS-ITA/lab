@@ -34,9 +34,6 @@ services:
       - traefik.http.routers.gitea.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/git`)
       - traefik.http.routers.gitea.tls=true
       - traefik.http.services.gitea.loadbalancer.server.port=3000
-      - traefik.http.middlewares.gitea-stripprefix.stripprefix.prefixes=/git
-      - traefik.http.middlewares.gitea-stripprefix.stripprefix.forceSlash=true
-      - traefik.http.routers.gitea.middlewares=netdata-stripprefix@docker
 
 volumes:
   giteadata:

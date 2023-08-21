@@ -23,13 +23,10 @@ services:
       ST_LAB_DOMAIN: ${ST_LAB_DOMAIN}
       ST_C_LAB_DOMAIN: ${ST_C_LAB_DOMAIN}
     labels:
-      - traefik.http.routers.httpd.rule=(Host(`${LAB_DOMAIN}`) && PathPrefix(`/static`))
+      - traefik.http.routers.httpd.rule=(Host(`${LAB_DOMAIN}`) && PathPrefix(`/`))
       - traefik.http.routers.httpd.tls=true
       - traefik.http.services.httpd.loadbalancer.server.port=80
-      - traefik.http.middlewares.httpd-stripprefix.stripprefix.prefixes=/static
-      - traefik.http.middlewares.httpd.stripprefix.forceSlash=false
-      - traefik.http.routers.httpd.middlewares=httpd-stripprefix@docker
-      
+
 networks:
   netlab01:
     external: true

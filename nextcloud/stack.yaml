@@ -31,6 +31,7 @@ services:
       - traefik.enable=true
       - traefik.http.routers.nextcloud.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/nextcloud`)
       - traefik.http.services.nextcloud.loadbalancer.server.port=80
+      - traefik.http.routers.nextcloud.tls=true
       - traefik.http.middlewares.nextcloud-stripprefix.stripprefix.prefixes=/nextcloud
       - traefik.http.routers.nextcloud.middlewares=nextcloud-stripprefix@docker
 

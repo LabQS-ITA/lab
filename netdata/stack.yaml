@@ -30,6 +30,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.netdata.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/netdata`)
+      - traefik.http.routers.netdata.tls=true
       - traefik.http.services.netdata.loadbalancer.server.port=19999
       - traefik.http.middlewares.netdata-stripprefix.stripprefix.prefixes=/netdata
       - traefik.http.routers.netdata.middlewares=netdata-stripprefix@docker

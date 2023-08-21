@@ -29,6 +29,14 @@ services:
       GITEA__ui.meta__DESCRIPTION: Instituto Tecnológico de Aeronáutica
       GITEA__ui.meta__KEYWORDS: git,ita,testes,teste de software,qualidade,segurança
       GITEA__service__DISABLE_REGISTRATION: 'true'
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.gitea.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/git`)
+      - traefik.http.routers.gitea.tls=true
+      - traefik.http.services.gitea.loadbalancer.server.port=3000
+      - traefik.http.middlewares.gitea-stripprefix.stripprefix.prefixes=/git
+      - traefik.http.middlewares.gitea-stripprefix.stripprefix.forceSlash=true
+      - traefik.http.routers.gitea.middlewares=netdata-stripprefix@docker
 
 volumes:
   giteadata:

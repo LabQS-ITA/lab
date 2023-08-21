@@ -25,7 +25,7 @@ services:
     labels:
       - traefik.http.routers.httpd.rule=(Host(`${LAB_DOMAIN}`) && Path(`/static`))
       - traefik.http.routers.httpd.tls=true
-      - traefik.http.services.httpd.loadbalancer.server.port=10000
+      - traefik.http.services.httpd.loadbalancer.server.port=80
       - traefik.http.middlewares.httpd-stripprefix.stripprefix.prefixes=/static
       - traefik.http.middlewares.httpd.stripprefix.forceSlash=false
       - traefik.http.routers.httpd.middlewares=httpd-stripprefix@docker

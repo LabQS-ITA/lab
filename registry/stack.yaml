@@ -43,6 +43,14 @@ services:
       NGINX_PROXY_PASS_URL: http://registrydb:5000
       SINGLE_REGISTRY: true
       DELETE_IMAGES: false
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.registry.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/registry`)
+      - traefik.http.services.registry.loadbalancer.server.port=80
+      - traefik.http.routers.registry.tls=true
+      - traefik.http.middlewares.registry-stripprefix.stripprefix.prefixes=/registry
+      - traefik.http.middlewares.registry-stripprefix.stripprefix.forceSlash=false
+      - traefik.http.routers.registry.middlewares=registry-stripprefix@docker
 
 volumes:
   registrydata:

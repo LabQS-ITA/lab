@@ -17,6 +17,7 @@
   [certificatesResolvers.lets-encrypt.acme.tlsChallenge]
 
 [providers.docker]
+  exposedByDefault = false
   watch = true
   network = "netlab01"
 

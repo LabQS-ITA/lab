@@ -28,7 +28,8 @@ services:
       OVERWRITEHOST: ${LAB_DOMAIN}
       OVERWRITEWEBROOT: nextcloud
     labels:
-      - traefik.http.routers.nextcloud.rule=(Host(`${LAB_DOMAIN}`) && Path(`/nextcloud`))
+      - traefik.http.routers.nextcloud.rule=(Host(`${LAB_DOMAIN}`) && PathPrefix(`/netdata`))
+      - traefik.http.services.nextcloud.loadbalancer.server.port=80
 
 volumes:
   nextclouddata:

@@ -33,7 +33,7 @@ services:
       - traefik.http.services.nextcloud.loadbalancer.server.port=80
       - traefik.http.routers.nextcloud.tls=true
       - traefik.http.middlewares.nextcloud-stripprefix.stripprefix.prefixes=/nextcloud
-      - traefik.http.middlewares.nextcloud-stripprefix.stripprefix.forceSlash=false
+      - traefik.http.middlewares.nextcloud-stripprefix.stripprefix.forceSlash=true
       - traefik.http.routers.nextcloud.middlewares=nextcloud-stripprefix@docker
 
 volumes:

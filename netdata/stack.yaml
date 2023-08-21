@@ -28,6 +28,8 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     labels:
+      - traefik.http.routers.labqs.tls=true
+      - traefik.http.routers.labqs.tls.certresolver=lets-encrypt
       - traefik.http.routers.httpd.rule=(Host(`${LAB_DOMAIN}`) && Path(`/netdata`))
 
 networks:

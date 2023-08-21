@@ -23,7 +23,6 @@ services:
       GITEA__database__NAME: gitea
       GITEA__database__USER: gitea
       GITEA__database__PASSWD: ${POSTGRES_PWD}
-      GITEA__server__ROOT_URL: https://${LAB_DOMAIN}/git
       GITEA__webhook__ALLOWED_HOST_LIST: ${DRONE_HOST}
       GITEA__ui.meta__AUTHOR: Laboratório de Testes de Software
       GITEA__ui.meta__DESCRIPTION: Instituto Tecnológico de Aeronáutica
@@ -34,6 +33,9 @@ services:
       - traefik.http.routers.gitea.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/git`)
       - traefik.http.routers.gitea.tls=true
       - traefik.http.services.gitea.loadbalancer.server.port=3000
+      - traefik.http.middlewares.gitea-stripprefix.stripprefix.prefixes=/git
+      - traefik.http.middlewares.gitea-stripprefix.stripprefix.forceSlash=true
+      - traefik.http.routers.gitea.middlewares=netdata-stripprefix@docker
 
 volumes:
   giteadata:

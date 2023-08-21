@@ -28,6 +28,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     labels:
+      - traefik.enable=true
       - traefik.http.routers.netdata.rule=(Host(`${LAB_DOMAIN}`) && PathPrefix(`/netdata`))
       - traefik.http.services.netdata.loadbalancer.server.port=19999
 

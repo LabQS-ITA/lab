@@ -28,7 +28,7 @@ services:
       OVERWRITEHOST: ${LAB_DOMAIN}
       OVERWRITEWEBROOT: nextcloud
     labels:
-      - traefik.http.routers.httpd.rule=(Path(`/nextcloud`))
+      - traefik.http.routers.nextcloud.rule=(Host(`${LAB_DOMAIN}`) && Path(`/nextcloud`))
 
 volumes:
   nextclouddata:

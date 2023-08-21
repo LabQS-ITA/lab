@@ -28,7 +28,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     labels:
-      - traefik.http.routers.httpd.rule=(Path(`/netdata`))
+      - traefik.http.routers.netdata.rule=(Host(`${LAB_DOMAIN}`) && Path(`/netdata`))
 
 networks:
   netlab01:

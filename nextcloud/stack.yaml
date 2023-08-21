@@ -28,7 +28,8 @@ services:
       OVERWRITEHOST: ${LAB_DOMAIN}
       OVERWRITEWEBROOT: nextcloud
     labels:
-      - traefik.enable=true
+      - traefik.http.routers.labqs.tls=true
+      - traefik.http.routers.labqs.tls.certresolver=lets-encrypt
       - traefik.http.routers.nextcloud.rule=(Host(`${LAB_DOMAIN}`) && Path(`/nextcloud`))
 
 volumes:

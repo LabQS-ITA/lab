@@ -4,7 +4,7 @@
   ]
 
 [http.routers.api]
-  rule = "Host(`test.labqs.ita.br`) && PathPrefix(`/api`, `/dashboard`)"
+  rule = "(Host(`test.labqs.ita.br`) || Host(`st.test.labqs.ita.br`) || Host(`st.c.test.labqs.ita.br`) ) && PathPrefix(`/api`, `/dashboard`)"
   entrypoints = ["websecure"]
   middlewares = ["simpleAuth"]
   service = "api@internal"

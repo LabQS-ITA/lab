@@ -21,9 +21,6 @@ services:
       - traefik.http.routers.console.rule=Host(`${ST_C_LAB_DOMAIN}`) && PathPrefix(`/console`)
       - traefik.http.routers.console.tls=true
       - traefik.http.services.console.loadbalancer.server.port=9090
-      - traefik.http.middlewares.console-stripprefix.stripprefix.prefixes=/console
-      - traefik.http.middlewares.console-stripprefix.stripprefix.forceSlash=true
-      - traefik.http.routers.console.middlewares=console-stripprefix@docker
     command: server
 
 networks:

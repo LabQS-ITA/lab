@@ -27,6 +27,14 @@ services:
       - LABEL_STUDIO_LOCAL_FILES_DOCUMENT_ROOT=/label-studio/files
       - JSON_LOG=1
       - LOG_LEVEL=DEBUG
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.labelstudio.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/labelstudio`)
+      - traefik.http.routers.labelstudio.tls=true
+      - traefik.http.services.labelstudio.loadbalancer.server.port=8000
+      - traefik.http.middlewares.labelstudio-stripprefix.stripprefix.prefixes=/labelstudio
+      - traefik.http.middlewares.labelstudio-stripprefix.stripprefix.forceSlash=true
+      - traefik.http.routers.labelstudio.middlewares=labelstudio-stripprefix@docker
     command: label-studio-uwsgi
 
 networks:

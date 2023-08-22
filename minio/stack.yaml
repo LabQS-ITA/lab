@@ -1,41 +1,5 @@
 services:
 
-  minio:
-    container_name: minio
-    hostname: minio
-    image: minio/minio:latest
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 90s
-    expose:
-      - '9000'
-    networks:
-      netlab01:
-        ipv4_address: ${MINIO_HOST}
-    volumes:
-      - miniodata011:/data/vol011:rw
-      - miniodata012:/data/vol012:rw
-      - miniodata021:/data/vol021:rw
-      - miniodata022:/data/vol022:rw
-      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro  
-    environment:
-      MINIO_ROOT_USER: maint
-      MINIO_ROOT_PASSWORD: ${SVC_PWD}
-      MINIO_BROWSER: off
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.minio.rule=Host(`${ST_LAB_DOMAIN}`)
-      - traefik.http.routers.minio.tls=true
-      - traefik.http.routers.minio.service=minio
-      - traefik.http.services.minio.loadbalancer.server.port=9000
-    command: server --address ":9000" http://minio0{1...2}/data/vol{1...2} http://minio/data/vol0{1...2}{1...2}
-
   minio01:
     container_name: minio01
     hostname: minio01
@@ -64,7 +28,8 @@ services:
       MINIO_BROWSER: off
     labels:
       - traefik.enable=true
-      - traefik.http.routers.minio01.service=minio
+      - traefik.http.routers.minio01.rule=Host(`${ST_LAB_DOMAIN}`)
+      - traefik.http.routers.minio01.tls=true
       - traefik.http.services.minio01.loadbalancer.server.port=9000
     command: server --address ":9000" http://minio0{1...2}/data/vol{1...2}
 
@@ -96,7 +61,8 @@ services:
       MINIO_BROWSER: off
     labels:
       - traefik.enable=true
-      - traefik.http.routers.minio01.service=minio
+      - traefik.http.routers.minio02.rule=Host(`${ST_LAB_DOMAIN}`)
+      - traefik.http.routers.minio02.tls=true
       - traefik.http.services.minio02.loadbalancer.server.port=9000
     command: server --address ":9000" http://minio0{1...2}/data/vol{1...2}
 

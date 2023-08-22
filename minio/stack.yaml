@@ -64,8 +64,6 @@ services:
       MINIO_BROWSER: off
     labels:
       - traefik.enable=true
-      - traefik.http.routers.minio01.rule=Host(`${ST_LAB_DOMAIN}`)
-      - traefik.http.routers.minio01.tls=true
       - traefik.http.routers.minio01.service=minio
       - traefik.http.services.minio01.loadbalancer.server.port=9000
     command: server --address ":9000" http://minio0{1...2}/data/vol{1...2}
@@ -98,8 +96,6 @@ services:
       MINIO_BROWSER: off
     labels:
       - traefik.enable=true
-      - traefik.http.routers.minio02.rule=Host(`${ST_LAB_DOMAIN}`)
-      - traefik.http.routers.minio02.tls=true
       - traefik.http.routers.minio01.service=minio
       - traefik.http.services.minio02.loadbalancer.server.port=9000
     command: server --address ":9000" http://minio0{1...2}/data/vol{1...2}

@@ -360,7 +360,7 @@ function locust() {
     cd ../locust
     echo '* Locust *'
 
-    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --scale worker=2 --detach --remove-orphans
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --scale slave=2 --detach --remove-orphans
     docker stop $(docker ps -qa -f 'name=locust*')
 
 }

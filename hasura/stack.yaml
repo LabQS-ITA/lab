@@ -26,6 +26,9 @@ services:
       - traefik.http.routers.hasura.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/hasura`)
       - traefik.http.routers.hasura.tls=true
       - traefik.http.services.hasura.loadbalancer.server.port=8080
+      - traefik.http.middlewares.hasura-stripprefix.stripprefix.prefixes=/hasura
+      - traefik.http.middlewares.hasura-stripprefix.stripprefix.forceSlash=true
+      - traefik.http.routers.hasura.middlewares=hasura-stripprefix@docker
 
 networks:
   netlab01:

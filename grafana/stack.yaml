@@ -16,6 +16,14 @@ services:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.grafana.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/grafana`)
+      - traefik.http.routers.grafana.tls=true
+      - traefik.http.services.grafana.loadbalancer.server.port=3001
+      - traefik.http.middlewares.grafana-stripprefix.stripprefix.prefixes=/grafana
+      - traefik.http.middlewares.grafana-stripprefix.stripprefix.forceSlash=true
+      - traefik.http.routers.grafana.middlewares=grafana-stripprefix@docker
 
 networks:
   netlab01:

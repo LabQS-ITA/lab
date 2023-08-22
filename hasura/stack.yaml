@@ -21,6 +21,14 @@ services:
       HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
       HASURA_GRAPHQL_ENABLE_TELEMETRY: "false"
       HASURA_GRAPHQL_ADMIN_SECRET: ${SVC_PWD}
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.hasura.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/hasura`)
+      - traefik.http.routers.hasura.tls=true
+      - traefik.http.services.hasura.loadbalancer.server.port=8080
+      - traefik.http.middlewares.hasura-stripprefix.stripprefix.prefixes=/hasura
+      - traefik.http.middlewares.hasura-stripprefix.stripprefix.forceSlash=true
+      - traefik.http.routers.hasura.middlewares=hasura-stripprefix@docker
 
 networks:
   netlab01:

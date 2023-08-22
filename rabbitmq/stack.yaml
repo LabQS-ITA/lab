@@ -72,6 +72,14 @@ services:
       - /etc/localtime:/etc/localtime:ro
     environment:
       RABBITMQ_CONF_ENV_FILE: /etc/rabbitmq/rabbitmq-env.conf
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.rabbitmng.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/rabbitmng`)
+      - traefik.http.routers.rabbitmng.tls=true
+      - traefik.http.services.rabbitmng.loadbalancer.server.port=15672
+      - traefik.http.middlewares.rabbitmng-stripprefix.stripprefix.prefixes=/rabbitmng
+      - traefik.http.middlewares.rabbitmng-stripprefix.stripprefix.forceSlash=true
+      - traefik.http.routers.rabbitmng.middlewares=rabbitmng-stripprefix@docker
 
 volumes:
   rabbitmqdata:

@@ -19,20 +19,20 @@ else
 fi
 
 
-git checkout -- ../httpd/panel/config/sites/000-default.conf
-git checkout -- ../httpd/panel/config/sites/001-ci.conf
-git checkout -- ../httpd/panel/config/sites/002-cm.conf
+git checkout ../httpd/panel/config/sites/000-default.conf
+git checkout ../httpd/panel/config/sites/001-ci.conf
+git checkout ../httpd/panel/config/sites/002-cm.conf
 
 cd ../traefik
-git checkout -- config/traefik_dynamic.toml
+git checkout config/traefik_dynamic.toml
 sed -i 's\@SVC_KEY\'$(docker run --rm --entrypoint htpasswd httpd -nb admin $(awk -F'=' '$1 =="SVC_PWD" {print $2}' ./.env))'\g' config/traefik_dynamic.toml
 
 cd ../rabbitmq
-git checkout -- config/rabbitmng/20-user.conf
+git checkout config/rabbitmng/20-user.conf
 sed -i 's/@SVC_PWD/'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' .env)'/g' config/rabbitmng/20-user.conf
 
 cd ../registry
-git checkout -- config/config.yml
+git checkout config/config.yml
 sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' config/config.yml
 sed -i 's/@REDIS_PWD/'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../redis/.env)'/g' config/config.yml
 

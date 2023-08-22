@@ -9,7 +9,7 @@ services:
       - '8090:9090'
     networks:
       netlab01:
-        ipv4_address: ${MINIO_HOST}
+        ipv4_address: ${MINIO_HOST_CONSOLE}
     volumes:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

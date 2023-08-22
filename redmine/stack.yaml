@@ -22,6 +22,14 @@ services:
       REDMINE_DB_USERNAME: redmine
       REDMINE_DB_PASSWORD: ${POSTGRES_PWD}
       RAILS_RELATIVE_URL_ROOT: /redmine
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.redmine.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/netdata`)
+      - traefik.http.routers.redmine.tls=true
+      - traefik.http.services.redmine.loadbalancer.server.port=19999
+      - traefik.http.middlewares.redmine-stripprefix.stripprefix.prefixes=/netdata
+      - traefik.http.middlewares.redmine-stripprefix.stripprefix.forceSlash=true
+      - traefik.http.routers.redmine.middlewares=redmine-stripprefix@docker
 
 volumes:
   redminedata:

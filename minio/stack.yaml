@@ -34,7 +34,7 @@ services:
       - traefik.http.routers.minio.tls=true
       - traefik.http.routers.minio.service=minio
       - traefik.http.services.minio.loadbalancer.server.port=9000
-    command: server --address ":9000" http://minio0{1...2}/data/vol{1...2}
+    command: server --address ":9000" http://minio0{1...2}/data/vol{1...2} http://minio/data/vol0{1..2}{1..2}
 
   minio01:
     container_name: minio01

@@ -24,10 +24,10 @@ services:
       RAILS_RELATIVE_URL_ROOT: /redmine
     labels:
       - traefik.enable=true
-      - traefik.http.routers.redmine.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/netdata`)
+      - traefik.http.routers.redmine.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/redmine`)
       - traefik.http.routers.redmine.tls=true
       - traefik.http.services.redmine.loadbalancer.server.port=3000
-      - traefik.http.middlewares.redmine-stripprefix.stripprefix.prefixes=/netdata
+      - traefik.http.middlewares.redmine-stripprefix.stripprefix.prefixes=/redmine
       - traefik.http.middlewares.redmine-stripprefix.stripprefix.forceSlash=true
       - traefik.http.routers.redmine.middlewares=redmine-stripprefix@docker
 

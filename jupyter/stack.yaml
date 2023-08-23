@@ -17,7 +17,7 @@ services:
     environment:
       JUPYTER_HOST: ${JUPYTER_HOST}
 
-  jupyterhub:
+  jupyter:
     container_name: jupyter
     build:
       context: .
@@ -29,7 +29,6 @@ services:
     restart: unless-stopped
     ports:
       - '8000:8000'
-      - '8001:8001'
     networks:
       netlab01:
         ipv4_address: ${JUPYTER_HOST}
@@ -45,6 +44,11 @@ services:
       DOCKER_NOTEBOOK_IMAGE:  labqs/jupyterlab:latest
       DOCKER_NOTEBOOK_DIR: /home/jovyan/work
       DOCKER_SPAWN_CMD: start-singleuser.sh
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.jupyter.rule=Host(`${IA_LAB_DOMAIN}`) && PathPrefix(`/jupyter`)
+      - traefik.http.routers.jupyter.tls=true
+      - traefik.http.services.jupyter.loadbalancer.server.port=8000
     command: [ "jupyterhub", "-f", "/etc/jupyterhub/jupyterhub_config.py" ]
 
 networks:

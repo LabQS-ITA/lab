@@ -258,6 +258,20 @@ function jupyter() {
         echo 'SVC_DEV_PWD='$(openssl rand -hex 8) >> .env
     fi
 
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --build --detach jupyter
+
+}
+
+function jupyterBuild() {
+
+    cd ../jupyter
+    echo '* Jupyter Notebook *'
+
+    if [ $2 == 'Y' ]; then
+        echo 'SVC_PWD='$(openssl rand -hex 8) > .env
+        echo 'SVC_DEV_PWD='$(openssl rand -hex 8) >> .env
+    fi
+
     cd stacks
 
     cd docker-stacks-foundation

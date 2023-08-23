@@ -278,7 +278,7 @@ function jupyter() {
     cd ../..
 
     docker build --tag labqs/jupyterlab --file Dockerfile.jupyterlab --rm .
-    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --build --detach jupyterhub
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --build --detach jupyter
 
 }
 

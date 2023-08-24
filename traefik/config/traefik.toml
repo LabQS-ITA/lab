@@ -15,6 +15,7 @@
   email = "labqs@ita.br"
   storage = "acme.json"
   [certificatesResolvers.lets-encrypt.acme.tlsChallenge]
+    entryPoint = "web"
 
 [providers.docker]
   exposedByDefault = false

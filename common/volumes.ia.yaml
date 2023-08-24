@@ -27,3 +27,7 @@ volumes:
       type: none
       device: /volumes/jupyterdata/_data
       o: bind
+
+  traefikdata:
+    name: traefikdata
+    driver: local

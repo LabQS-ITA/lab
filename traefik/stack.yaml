@@ -12,6 +12,7 @@ services:
         ipv4_address: ${TRAEFIK_HOST}
     volumes:
       - $PWD/config:/etc/traefik
+      - traefikdata:/data
       - certificates:/usr/local/apache2/certificates:ro
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
@@ -20,4 +21,9 @@ services:
 
 networks:
   netlab01:
+    external: true
+
+volumes:
+  traefikdata:
+    name: traefikdata
     external: true

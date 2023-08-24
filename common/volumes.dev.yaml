@@ -176,3 +176,11 @@ volumes:
       type: none
       device: /home/gpes/VOLUMES/docker/volumes/labelstudiodata/_data
       o: bind
+
+  traefikdata:
+    name: traefikdata
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/traefikdata/_data
+      o: bind

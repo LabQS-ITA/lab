@@ -13,7 +13,7 @@
 
 [certificatesResolvers.le.acme]
   email = "labqs@ita.br"
-  storage = "/etc/traefik/acme.json"
+  storage = "/data/acme.json"
   [certificatesResolvers.le.acme.tlsChallenge]
 
 [providers.docker]

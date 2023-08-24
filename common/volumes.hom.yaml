@@ -85,3 +85,7 @@ volumes:
   miniodata042:
     name: miniodata042
     driver: local
+
+  traefikdata:
+    name: traefikdata
+    driver: local

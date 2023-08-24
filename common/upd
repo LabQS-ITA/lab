@@ -32,7 +32,7 @@ git submodule update --init --recursive
 
 if [[ -f ../traefik/.env ]]; then
     sed -i 's\@SVC_KEY\'$(docker run --rm --entrypoint htpasswd httpd -nb admin $(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../traefik/.env))'\g' ../traefik/config/traefik_dynamic.toml
-    sed -i 's\@SVC_HOST\'$IA_LAB_DOMAIN'\g' config/traefik_dynamic.toml
+    sed -i 's\@SVC_HOST\'$IA_LAB_DOMAIN'\g' ../traefik/config/traefik_dynamic.toml
 fi
 
 [[ -f ../rabbitmq/.env ]] && sed -i 's/@SVC_PWD/'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../rabbitmq/.env)'/g' ../rabbitmq/config/rabbitmng/20-user.conf

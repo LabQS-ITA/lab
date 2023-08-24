@@ -36,6 +36,7 @@ services:
       - traefik.enable=true
       - traefik.http.routers.drone.rule=Host(`${CI_LAB_DOMAIN}`)
       - traefik.http.routers.drone.tls=true
+      - traefik.http.routers.drone.certResolver=le
       - traefik.http.services.drone.loadbalancer.server.port=80
 
   docker:

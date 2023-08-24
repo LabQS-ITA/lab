@@ -11,10 +11,10 @@
 [api]
   dashboard = true
 
-[certificatesResolvers.lets-encrypt.acme]
+[certificatesResolvers.le.acme]
   email = "labqs@ita.br"
   storage = "acme.json"
-  [certificatesResolvers.lets-encrypt.acme.tlsChallenge]
+  [certificatesResolvers.le.acme.tlsChallenge]
 
 [providers.docker]
   exposedByDefault = false

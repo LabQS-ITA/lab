@@ -9,4 +9,4 @@
   middlewares = ["simpleAuth"]
   service = "api@internal"
   [http.routers.api.tls]
-    certResolver = "lets-encrypt"
+    certResolver = "le"

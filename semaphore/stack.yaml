@@ -31,6 +31,8 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.semaphore.rule=Host(`cm.labqs.ita.br`)
+      - traefik.http.routers.drone.tls.certresolver=le
+      - traefik.http.services.drone.loadbalancer.server.port=3000
 
 networks:
   netlab01:

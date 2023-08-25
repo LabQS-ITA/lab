@@ -485,7 +485,11 @@ function kes() {
     cd ../kes
     echo '* Kes Service *'
 
- 
+    
+    if [ $2 == 'Y' ]; then
+        docker run --rm --volume kesdata:/root/.kes/certs:rw --workdir /root/.kes/certs minio/kes identity new --force --key private.key --cert public.crt --ip "127.0.0.1" localhost
+    fi
+    
     docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }

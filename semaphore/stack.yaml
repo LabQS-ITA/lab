@@ -31,6 +31,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.semaphore.rule=Host(`${CM_LAB_DOMAIN}`)
+      - traefik.http.routers.drone.tls=true
       - traefik.http.routers.drone.tls.certresolver=le
       - traefik.http.services.drone.loadbalancer.server.port=3000
 

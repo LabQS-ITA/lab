@@ -4,8 +4,8 @@ admin:
   identity: disabled
    
 tls:
-  key: private.key
-  cert: public.crt
+  key: /root/.kes/certs/private.key
+  cert: /root/.kes/certs/public.crt
    
 policy:
   my-app: 

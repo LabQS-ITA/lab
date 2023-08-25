@@ -18,7 +18,7 @@ policy:
     - /v1/identity/list/*
     identities:
     - 2a8bd0d5ef005eb667917d5d22c19a44f6121579c298e61a29f7cdec6a14243a
-   
+
 keystore:
   fs:
     path: ./keys

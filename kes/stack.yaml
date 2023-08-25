@@ -10,15 +10,22 @@ services:
       netlab01:
         ipv4_address: ${KES_HOST}
     volumes:
+      - $PWD/config:/root/.kes/config
+      - kesdata:/root/.kes/certs:rw
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
+    environment:
+      - KES_SERVER=https://127.0.0.1:7373
+      - KES_CLIENT_KEY=/root/.kes/certs/client.key
+      - KES_CLIENT_CERT=/root/.kes/certs/client.cert
+    command: server --config=/root/.kes/config/config.yaml --auth=off 
 
 networks:
   netlab01:
     external: true
 
 volumes:
-  traefikdata:
-    name: traefikdata
+  kesdata:
+    name: kesdata
     external: true

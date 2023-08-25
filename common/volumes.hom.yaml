@@ -89,3 +89,7 @@ volumes:
   traefikdata:
     name: traefikdata
     driver: local
+
+  kesdata:
+    name: kesdata
+    driver: local

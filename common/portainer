@@ -42,6 +42,5 @@ else
 
 fi
 
-httpd $1
 
 portainer $1 $CONFIG_ENV

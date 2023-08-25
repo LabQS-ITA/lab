@@ -42,6 +42,5 @@ else
 
 fi
 
-httpd $1
 
 prometheus $1 $CONFIG_ENV

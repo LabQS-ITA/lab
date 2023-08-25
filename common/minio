@@ -42,7 +42,6 @@ else
 
 fi
 
-httpd $1
 
 minio $1 $CONFIG_ENV
 

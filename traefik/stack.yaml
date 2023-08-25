@@ -10,9 +10,6 @@ services:
     networks:
       netlab01:
         ipv4_address: ${TRAEFIK_HOST}
-    environment:
-      - "TRAEFIK_ACCESSLOG": "true"
-      - "TRAEFIK_ACCESSLOG_FILEPATH": "/var/log/traefik_access.log"
     volumes:
       - $PWD/config:/etc/traefik
       - traefikdata:/data

@@ -30,7 +30,7 @@ services:
       SEMAPHORE_ADMIN_EMAIL: labqs@ita.br
     labels:
       - traefik.enable=true
-      - traefik.http.routers.semaphore.rule=Host(`cm.labqs.ita.br`)
+      - traefik.http.routers.semaphore.rule=Host(`${CM_LAB_DOMAIN}`)
       - traefik.http.routers.drone.tls.certresolver=le
       - traefik.http.services.drone.loadbalancer.server.port=3000
 

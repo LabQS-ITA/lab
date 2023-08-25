@@ -86,6 +86,12 @@ else
 fi
 
 
+if [ "$1" == "tst" ] || [ "$1" == "hom" ]; then
+    
+    kes $1 $CONFIG_ENV
+
+fi
+
 if [ "$1" == "dev" ] || [ "$1" == "tst" ]; then
 
     gitea $1 $CONFIG_ENV
@@ -105,7 +111,7 @@ if [ "$1" == "dev" ] || [ "$1" == "tst" ]; then
 fi
 
 if [ "$1" == "tst" ] || [ "$1" == "hom" ]; then
-
+    
     minio $1 $CONFIG_ENV
 
 fi

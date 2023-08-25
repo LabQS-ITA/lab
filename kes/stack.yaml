@@ -1,0 +1,24 @@
+services:
+
+  kes:
+    container_name: kes
+    image: minio/kes:latest
+    restart: unless-stopped
+    ports:
+      - '7373:7373'
+    networks:
+      netlab01:
+        ipv4_address: ${KES_HOST}
+    volumes:
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+networks:
+  netlab01:
+    external: true
+
+volumes:
+  traefikdata:
+    name: traefikdata
+    external: true

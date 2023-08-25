@@ -479,3 +479,13 @@ function console() {
     docker compose -f console.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }
+
+function kes() {
+
+    cd ../kes
+    echo '* Kes Service *'
+
+ 
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
+
+}

@@ -6,22 +6,20 @@ admin:
 tls:
   key: /root/.kes/certs/private.key
   cert: /root/.kes/certs/public.crt
-   
-policy:
-  my-app: 
-    allow:
-    - /v1/key/create/*
-    - /v1/key/generate/*
-    - /v1/key/decrypt/*      
-    - /v1/key/delete/*
-    - /v1/key/list/*
-    - /v1/identity/list/*
-    identities:
-    - 2a8bd0d5ef005eb667917d5d22c19a44f6121579c298e61a29f7cdec6a14243a
 
 keystore:
   fs:
     path: ./keys
+  vault:
+    endpoint: http://vault:8200
+    engine: "kv/"
+    version: "v2"
+    approle:
+      id: "fa8a2777-a2b3-d4c7-0240-66d805daf3b9"
+      secret: "0a32856c-9fef-4f4d-0a64-52d5faf5fccb"
+      retry: 15s
+    status:
+      ping: 10s
 
 log:
   error: on

@@ -1,3 +1,6 @@
+[accessLog]
+  filePath = "/var/log/access.log"
+
 [http.middlewares.simpleAuth.basicAuth]
   users = [
     "@SVC_KEY"

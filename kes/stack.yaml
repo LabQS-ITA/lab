@@ -2,7 +2,7 @@ services:
 
   kes:
     container_name: kes
-    image: labqs/kes:latest
+    image: minio/kes:latest
     cap_add:
       - IPC_LOCK
     restart: unless-stopped

@@ -16,7 +16,7 @@ services:
       netlab01:
         ipv4_address: ${REDIS_HOST}
     volumes:
-      - $PWD/config:/usr/local/etc/redis:rw
+      - $PWD/config/redis.conf:/usr/local/etc/redis/redis.conf:rw
       - redisdata:/data:rw
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

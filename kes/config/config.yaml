@@ -15,7 +15,7 @@ keystore:
     engine: "kv/"
     version: "v2"
     approle:
-      id: "fa8a2777-a2b3-d4c7-0240-66d805daf3b9"
+      id: "a9b252e4577e77ce7f2bb726c0a4a313488b55a8224f9868"
       secret: "0a32856c-9fef-4f4d-0a64-52d5faf5fccb"
       retry: 15s
     status:

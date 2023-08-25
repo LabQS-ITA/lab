@@ -12,21 +12,21 @@
     certresolver = "le"
    
 [[tls.certificates]]
-  certFile = "/local/apache2/certificates/live/@CI_LAB_DOMAIN/fullchain.pem"
-  keyFile = "/local/apache2/certificates/live/@CI_LAB_DOMAIN/privkey.pem"
+  certFile = "/usr/local/apache2/certificates/live/@CI_LAB_DOMAIN/fullchain.pem"
+  keyFile = "/usr/local/apache2/certificates/live/@CI_LAB_DOMAIN/privkey.pem"
     
 [[tls.certificates]]
-  certFile = "/local/apache2/certificates/live/@CM_LAB_DOMAIN/fullchain.pem"
-  keyFile = "/local/apache2/certificates/live/@CM_LAB_DOMAIN/privkey.pem"
+  certFile = "/usr/local/apache2/certificates/live/@CM_LAB_DOMAIN/fullchain.pem"
+  keyFile = "/usr/local/apache2/certificates/live/@CM_LAB_DOMAIN/privkey.pem"
     
 [[tls.certificates]]
-  certFile = "/local/apache2/certificates/live/@ST_LAB_DOMAIN/fullchain.pem"
-  keyFile = "/local/apache2/certificates/live/@ST_LAB_DOMAIN/privkey.pem"
+  certFile = "/usr/local/apache2/certificates/live/@ST_LAB_DOMAIN/fullchain.pem"
+  keyFile = "/usr/local/apache2/certificates/live/@ST_LAB_DOMAIN/privkey.pem"
     
 [[tls.certificates]]
-  certFile = "/local/apache2/certificates/live/@ST_C_LAB_DOMAIN/fullchain.pem"
-  keyFile = "/local/apache2/certificates/live/@ST_C_LAB_DOMAIN/privkey.pem"
+  certFile = "/usr/local/apache2/certificates/live/@ST_C_LAB_DOMAIN/fullchain.pem"
+  keyFile = "/usr/local/apache2/certificates/live/@ST_C_LAB_DOMAIN/privkey.pem"
     
 [[tls.certificates]]
-  certFile = "/local/apache2/certificates/live/@SVC_HOST/fullchain.pem"
-  keyFile = "/local/apache2/certificates/live/@SVC_HOST/privkey.pem"
+  certFile = "/usr/local/apache2/certificates/live/@SVC_HOST/fullchain.pem"
+  keyFile = "/usr/local/apache2/certificates/live/@SVC_HOST/privkey.pem"

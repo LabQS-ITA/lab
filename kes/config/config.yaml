@@ -17,7 +17,7 @@ policy:
     - /v1/key/list/*
     - /v1/identity/list/*
     identities:
-    - f829b905ac119229bc75a60eab4fa9172f3cbba179df0b5601f8ed8168b9a9d5 # Use the identity of your API key
+    - 3df7e58699084d9e25b24e29e0028086a3f849b350a2d59797604e819a602d34
    
 keystore:
   fs:

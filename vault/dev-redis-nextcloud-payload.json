@@ -1,8 +1,0 @@
-{
-    "plugin_name": "redis-database-plugin",
-    "host": "redis",
-    "port": 6379,
-    "username": "nextcloud",
-    "password": "p4ssw0rd",
-    "allowed_roles": "dev-redis-nextcloud-*-role"
-}

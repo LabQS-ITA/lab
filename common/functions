@@ -59,10 +59,6 @@ function vault() {
     cd ../vault
     echo '* Vault *'
 
-    if [ $2 = 'Y' ]; then
-        echo 'SVC_PWD='$(openssl rand -hex 24) > .env
-    fi
-
     docker compose -f stack.yaml -f ../common/networks.yaml up --detach
     
 }

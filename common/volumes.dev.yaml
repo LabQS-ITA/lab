@@ -184,3 +184,11 @@ volumes:
       type: none
       device: /home/gpes/VOLUMES/docker/volumes/traefikdata/_data
       o: bind
+
+  vaultdata:
+    name: vaultdata
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gpes/VOLUMES/docker/volumes/vaultdata/_data
+      o: bind

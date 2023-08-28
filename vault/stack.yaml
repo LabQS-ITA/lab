@@ -14,7 +14,7 @@ services:
         ipv4_address: ${VAULT_HOST}
     volumes:
       - $PWD/config:/vault/config:rw
-      - vaultdata:/vault/file
+      - vaultdata:/vault/file:rw
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro

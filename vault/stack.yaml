@@ -13,7 +13,7 @@ services:
       netlab01:
         ipv4_address: ${VAULT_HOST}
     volumes:
-      - $PWD/config:/vault/config:rw
+      - $PWD/config:/vault/config:ro
       - vaultdata:/vault/file:rw
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

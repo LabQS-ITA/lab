@@ -20,11 +20,6 @@ services:
     environment:
       - VAULT_ADDR=http://127.0.0.1:8200
       - VAULT_TOKEN=${SVC_PWD}
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.vault.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/ui`)
-      - traefik.http.routers.vault.tls=true
-      - traefik.http.services.vault.loadbalancer.server.port=8200
     command: server
 
 networks:

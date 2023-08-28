@@ -14,7 +14,9 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
+      VAULT_NAMESPACE: "admin"
       VAULT_ADDR: "http://0.0.0.0:8200"
+      VAULT_DEV_ROOT_TOKEN_ID: "${SVC_PWD}"
       VAULT_TOKEN: "${SVC_PWD}"
 
 networks:

@@ -2,7 +2,9 @@ services:
 
   vault:
     container_name: vault
-    image: vault:1.13.3
+    image: hashicorp/vault:latest
+    cap_add:
+      - IPC_LOCK
     restart: unless-stopped
     ports:
       - '8200:8200'
@@ -10,15 +12,20 @@ services:
       netlab01:
         ipv4_address: ${VAULT_HOST}
     volumes:
+      - $PWD/config:/vault/config:rw
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
       VAULT_NAMESPACE: "admin"
       VAULT_ADDR: "http://0.0.0.0:8200"
-      VAULT_DEV_ROOT_TOKEN_ID: "${SVC_PWD}"
       VAULT_TOKEN: "${SVC_PWD}"
 
 networks:
   netlab01:
+    external: true
+
+volumes:
+  vaultdata:
+    name: vaultdata
     external: true

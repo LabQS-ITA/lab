@@ -117,3 +117,7 @@ volumes:
   kesdata:
     name: kesdata
     driver: local
+
+  vaultdata:
+    name: vaultdata
+    driver: local

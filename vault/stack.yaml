@@ -15,7 +15,7 @@ services:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-    command: consul agent -server -data-dir=/consul/data -config-dir=/consul/config -bootstrap-expect=1 -client 0.0.0.0
+    command: consul agent -server -data-dir=/consul/data -config-dir=/consul/config -client 0.0.0.0
 
   vault:
     container_name: vault

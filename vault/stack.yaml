@@ -46,3 +46,6 @@ volumes:
   vaultdata:
     name: vaultdata
     external: true
+  consuldata:
+    name: consuldata
+    external: true

@@ -4,6 +4,8 @@ services:
     container_name: consul
     image: hashicorp/consul:latest
     restart: unless-stopped
+    ports:
+      - '8600:8600'
     networks:
       netlab01:
         ipv4_address: ${CONSUL_HOST}

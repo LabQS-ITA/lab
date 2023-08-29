@@ -1,5 +1,5 @@
 # Read redis credentials
-path "database/static-creds/dev-redis-nextcloud*"
+path "database/static-creds/dev-nextcloud*"
 {
   capabilities = ["read"]
 }

@@ -1,5 +1,17 @@
 services:
 
+  consul:
+    container_name: consul
+    image: hashicorp/consul:latest
+    restart: unless-stopped
+    networks:
+      netlab01:
+        ipv4_address: ${CONSUL_HOST}
+    volumes:
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
   vault:
     container_name: vault
     image: hashicorp/vault:latest

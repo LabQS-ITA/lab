@@ -10,9 +10,12 @@ services:
       netlab01:
         ipv4_address: ${CONSUL_HOST}
     volumes:
+      - $PWD/config/consul:/consul/config:ro
+      - consuldata:/consul/data:rw
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
+    command: consul agent -server -ui -data-dir=/consul/data -config-dir=/consul/config -bootstrap-expect=1 -client 0.0.0.0
 
   vault:
     container_name: vault
@@ -26,7 +29,7 @@ services:
       netlab01:
         ipv4_address: ${VAULT_HOST}
     volumes:
-      - $PWD/config:/vault/config:ro
+      - $PWD/config/vault:/vault/config:ro
       - vaultdata:/vault/file:rw
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

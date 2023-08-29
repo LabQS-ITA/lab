@@ -1,5 +1,22 @@
 services:
 
+  consul:
+    container_name: consul
+    image: hashicorp/consul:latest
+    restart: unless-stopped
+    ports:
+      - '8600:8600'
+    networks:
+      netlab01:
+        ipv4_address: ${CONSUL_HOST}
+    volumes:
+      - $PWD/config/consul:/consul/config:rw
+      - consuldata:/consul/data:rw
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    command: consul agent -server -data-dir=/consul/data -config-dir=/consul/config -bootstrap-expect=1 -client 0.0.0.0
+
   vault:
     container_name: vault
     image: hashicorp/vault:latest

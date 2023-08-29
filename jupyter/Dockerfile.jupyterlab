@@ -1,7 +1,8 @@
 ARG OWNER=labqs
 # ARG BASE_CONTAINER=$OWNER/tensorflow-notebook
-ARG BASE_CONTAINER=$OWNER/elixir-notebook
-FROM docker.io/$BASE_CONTAINER AS jupyterlabbase
+# ARG BASE_CONTAINER=$OWNER/elixir-notebook
+# FROM docker.io/$BASE_CONTAINER AS jupyterlabbase
+FROM pprzetacznik/ielixir-requirements AS jupyterlabbase
 
 # Fix: https://github.com/hadolint/hadolint/wiki/DL4006
 # Fix: https://github.com/koalaman/shellcheck/wiki/SC3014

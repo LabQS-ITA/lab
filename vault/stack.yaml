@@ -22,9 +22,6 @@ services:
       - traefik.http.routers.consul.tls=true
       - traefik.http.routers.consul.tls.certresolver=le
       - traefik.http.services.consul.loadbalancer.server.port=8500
-      - traefik.http.middlewares.consul-stripprefix.stripprefix.prefixes=/consul
-      - traefik.http.middlewares.consul-stripprefix.stripprefix.forceSlash=true
-      - traefik.http.routers.consul.middlewares=consul-stripprefix@docker
     command: consul agent -server -ui -data-dir=/consul/data -config-dir=/consul/config -bootstrap-expect=1 -client 0.0.0.0
 
   vault:

@@ -97,7 +97,3 @@ volumes:
   vaultdata:
     name: vaultdata
     driver: local
-
-  consuldata:
-    name: consuldata
-    driver: local

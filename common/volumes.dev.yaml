@@ -192,11 +192,3 @@ volumes:
       type: none
       device: /home/gpes/VOLUMES/docker/volumes/vaultdata/_data
       o: bind
-
-  consuldata:
-    name: consuldata
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/gpes/VOLUMES/docker/volumes/consuldata/_data
-      o: bind

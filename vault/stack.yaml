@@ -10,7 +10,7 @@ services:
       netlab01:
         ipv4_address: ${CONSUL_HOST}
     volumes:
-      - $PWD/config/consul:/consul/config:ro
+      - $PWD/config/consul:/consul/config:rw
       - consuldata:/consul/data:rw
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

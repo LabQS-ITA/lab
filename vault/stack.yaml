@@ -18,7 +18,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
     labels:
       - traefik.enable=true
-      - traefik.http.routers.consul.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/consul`)
+      - traefik.http.routers.consul.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/ui`)
       - traefik.http.routers.consul.tls=true
       - traefik.http.routers.consul.tls.certresolver=le
       - traefik.http.services.consul.loadbalancer.server.port=8500

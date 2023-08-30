@@ -21,7 +21,7 @@
             "options": null
     },
     "dialect": "postgres",
-    "port": "",
+    "port": "2222",
     "interface": "",
     "tmp_path": "/tmp/semaphore",
     "cookie_hash": "okEZJZpyviwfgj+qyJzVvcoR1qlmAzSE7YT7yydxfzs=",

@@ -14,6 +14,7 @@ services:
       netlab01:
         ipv4_address: ${SEMAPHORE_HOST}
     volumes:
+      - $PWD/config:/etc/semaphore:rw
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro

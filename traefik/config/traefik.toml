@@ -21,5 +21,10 @@
   watch = true
   network = "netlab01"
 
+[providers.consul]
+  endpoints = ["consul:8500"]
+  rootKey = "traefik"
+  token = "b7fbf73e-570e-4322-bf40-421fe308d7e9"
+
 [providers.file]
   filename = "/etc/traefik/dynamic.toml"

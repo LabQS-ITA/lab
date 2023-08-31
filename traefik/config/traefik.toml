@@ -23,7 +23,7 @@
 
 [providers.consulCatalog]
   prefix = "labqs"
-  defaultRule = "Host(`{{ .Name }}.consul.labqs.tech`)"
+  defaultRule = "Host(`{{ .Name }}`)"
   [providers.consulCatalog.endpoint]
       address = "consul:8500"
       scheme = "http"

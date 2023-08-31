@@ -22,6 +22,7 @@
   network = "netlab01"
 
 [providers.consulCatalog]
+  prefix = "labqs"
   defaultRule = "Host(`{{ .Name }}.consul.labqs.tech`)"
   [providers.consulCatalog.endpoint]
       address = "consul:8500"

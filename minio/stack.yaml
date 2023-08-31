@@ -1,28 +1,5 @@
 services:
 
-  kes:
-    container_name: kes
-    image: minio/kes:latest
-    cap_add:
-      - IPC_LOCK
-    restart: unless-stopped
-    ports:
-      - '7373:7373'
-    networks:
-      netlab01:
-        ipv4_address: ${KES_HOST}
-    volumes:
-      - $PWD/config/kes:/root/.kes/config
-      - kesdata:/root/.kes/certs:rw
-      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
-    environment:
-      - KES_SERVER=https://127.0.0.1:7373
-      - KES_CLIENT_KEY=/root/.kes/certs/private.key
-      - KES_CLIENT_CERT=/root/.kes/certs/public.crt
-    command: server --config=/root/.kes/config/config.yaml --auth=off 
-
   minio01:
     container_name: minio01
     hostname: minio01
@@ -94,9 +71,6 @@ networks:
     external: true
 
 volumes:
-  kesdata:
-    name: kesdata
-    external: true
   miniodata0101:
     name: miniodata011
     external: true

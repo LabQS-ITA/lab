@@ -44,7 +44,3 @@ fi
 
 
 kes $1 $CONFIG_ENV
-
-minio $1 $CONFIG_ENV
-
-console $1 $CONFIG_ENV

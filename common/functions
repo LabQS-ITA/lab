@@ -53,13 +53,21 @@ function domain() {
 
 }
 
+function consul() {
+
+    cd ../vault
+    echo '* Consul *'
+    
+    docker compose -f consul.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
+    
+}
 
 function vault() {
 
     cd ../vault
     echo '* Vault *'
 
-    docker compose -f stack.yaml -f ../common/networks.yaml up --detach
+    docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
     
 }
 

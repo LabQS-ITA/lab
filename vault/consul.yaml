@@ -1,0 +1,36 @@
+services:
+
+  consul:
+    container_name: consul
+    image: hashicorp/consul:latest
+    cap_add:
+      - IPC_LOCK
+    restart: unless-stopped
+    ports:
+      - '8500:8500'
+      - '8600:8600/tcp'
+      - '8600:8600/udp'
+    networks:
+      netlab01:
+        ipv4_address: ${CONSUL_HOST}
+    volumes:
+      - $PWD/config/consul/server.json:/consul/config/server.json:ro
+      - consuldata:/consul/data:rw
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - VAULT_ADDR=http://vault:8200
+      - VAULT_TOKEN=hvs.7HcXGRSOD1iTOVw6oQ5PnazS
+      - CONSUL_HTTP_ADDR=consul:8500
+      - CONSUL_HTTP_TOKEN=b7fbf73e-570e-4322-bf40-421fe308d7e9
+    command: consul agent -server -data-dir=/consul/data -config-dir=/consul/config -bootstrap-expect=1 -client 0.0.0.0
+
+networks:
+  netlab01:
+    external: true
+
+volumes:
+  consuldata:
+    name: consuldata
+    external: true

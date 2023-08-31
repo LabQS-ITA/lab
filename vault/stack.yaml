@@ -12,13 +12,15 @@ services:
       netlab01:
         ipv4_address: ${VAULT_HOST}
     volumes:
-      - $PWD/config:/vault/config:ro
+      - $PWD/config/vault:/vault/config:ro
       - vaultdata:/vault/file:rw
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
       - VAULT_ADDR=http://127.0.0.1:8200
+      - CONSUL_HTTP_ADDR=consul:8500
+      - CONSUL_HTTP_TOKEN=b7fbf73e-570e-4322-bf40-421fe308d7e9
     command: server
 
 networks:

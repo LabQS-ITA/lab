@@ -112,9 +112,6 @@ function httpd() {
 
     docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
-    docker stop httpd
-    docker start httpd
-
 }
 
 function postgres() {

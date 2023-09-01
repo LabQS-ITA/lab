@@ -7,6 +7,15 @@
     "retry_join":[
         "consul"
      ],
+     "acl": { 
+		"enabled": true,
+		"default_policy": "deny",
+		"enable_token_persistence": true,
+		"tokens": {
+			"master": "150d947c-9383-78fe-31ee-b986774fdba2",
+			"agent": "f1e8faf6-defa-b768-f2b6-355fe61d018b"
+		}
+	},
     "service": {
       "id": "dns",
       "name": "dns",

@@ -10,6 +10,5 @@
     "addresses": {
         "http" : "0.0.0.0"
     },
-	"connect": { "enabled": true },
-    "encrypt": "aPuGh+5UDskRAbkLaXRzFoSOcSM+5vAK+NEYOWHJH7w="
+	"connect": { "enabled": true }
 }

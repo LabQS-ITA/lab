@@ -127,5 +127,5 @@ volumes:
     driver: local
 
   consulagentdata:
-    name:   consulagentdata:
+    name:   consulagentdata
     driver: local

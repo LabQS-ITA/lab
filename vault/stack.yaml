@@ -20,7 +20,6 @@ services:
     environment:
       - VAULT_ADDR=http://127.0.0.1:8200
       - CONSUL_HTTP_ADDR=consul:8500
-      - CONSUL_HTTP_TOKEN=150d947c-9383-78fe-31ee-b986774fdba2
     command: server
 
 networks:

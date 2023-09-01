@@ -17,8 +17,6 @@ services:
       - 'NET_ADMIN'
     ports:
       - '53:53/udp'
-      - '67:67/udp'
-      - '68:68/udp'
     networks:
       netlab01:
         ipv4_address: ${DNSMASQ_HOST}

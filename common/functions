@@ -62,6 +62,15 @@ function consul() {
     
 }
 
+function consulAgent() {
+
+    cd ../vault
+    echo '* Consul *'
+    
+    docker compose -f agent.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
+    
+}
+
 function dnsmasq() {
 
     cd ../dnsmasq
@@ -255,15 +264,6 @@ function hasura() {
 
 }
 
-function agent() {
-
-    cd ../portainer
-    echo '* Portainer *'
-
-    docker compose -f agent.yaml -f ../common/networks.yaml up  --detach
-
-}
-
 function jupyter() {
 
     cd ../jupyter
@@ -441,6 +441,15 @@ function portainer() {
     echo '* Portainer *'
 
     docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
+
+}
+
+function portainerAgent() {
+
+    cd ../portainer
+    echo '* Portainer *'
+
+    docker compose -f agent.yaml -f ../common/networks.yaml up  --detach
 
 }
 

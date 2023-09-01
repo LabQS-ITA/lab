@@ -1,0 +1,24 @@
+services:
+
+  consul_agent:
+    container_name: consul_agent
+    image: hashicorp/consul:latest
+    restart: unless-stopped
+    ports:
+      - '8500:8500'
+      - '8600:8600/tcp'
+      - '8600:8600/udp'
+    networks:
+      - netlab01
+    volumes:
+      - $PWD/config/consul/agent.json:/consul/config/agent.json:ro
+      - consuldata:/consul/data:rw
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    command:
+      - agent
+      
+networks:
+  netlab01:
+    external: true

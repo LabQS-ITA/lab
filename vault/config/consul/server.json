@@ -19,21 +19,6 @@
 			"agent": "b7fbf73e-570e-4322-bf40-421fe308d7e9"
 		}
 	},
-    "service": {
-        "id": "dns",
-        "name": "dns",
-        "tags": ["primary"],
-        "address": "localhost",
-        "port": 8600,
-        "enable_tag_override": false,
-        "check": {
-          "id": "dns",
-          "name": "Consul DNS TCP on port 8600",
-          "tcp": "localhost:8600",
-          "interval": "10s",
-          "timeout": "1s"
-        }
-    },
 	"connect": { "enabled": true },
     "encrypt": "aPuGh+5UDskRAbkLaXRzFoSOcSM+5vAK+NEYOWHJH7w="
 }

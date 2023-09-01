@@ -29,8 +29,3 @@ services:
 networks:
   netlab01:
     external: true
-
-volumes:
-  consuldata:
-    name: consuldata
-    external: true

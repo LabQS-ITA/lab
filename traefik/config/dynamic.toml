@@ -16,7 +16,7 @@
 
 [providers.consulCatalog]
   prefix = "labqs"
-  defaultRule = "Host(`{{ .Name }}`) && PathPrefix(`/consul`)"
+  defaultRule = "Host(`@SVC_HOST`) && PathPrefix(`/consul`)"
   [providers.consulCatalog.endpoint]
       address = "consul:8500"
       scheme = "http"

@@ -13,7 +13,19 @@
   service = "api@internal"
   [http.routers.api.tls]
     certresolver = "le"
-   
+
+[providers.consulCatalog]
+  prefix = "labqs"
+  defaultRule = "Host(`{{ .Name }}`) && PathPrefix(`/consul`)"
+  [providers.consulCatalog.endpoint]
+      address = "consul:8500"
+      scheme = "http"
+      token = "b7fbf73e-570e-4322-bf40-421fe308d7e9"
+
+[providers.consul]
+  endpoints = ["consul:8500"]
+  token = "b7fbf73e-570e-4322-bf40-421fe308d7e9"
+
 [[tls.certificates]]
   certFile = "/usr/local/apache2/certificates/live/@CI_LAB_DOMAIN/fullchain.pem"
   keyFile = "/usr/local/apache2/certificates/live/@CI_LAB_DOMAIN/privkey.pem"

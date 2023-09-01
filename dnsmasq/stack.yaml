@@ -1,0 +1,29 @@
+services:
+
+  dnsmasq:
+    container_name: dnsmasq
+    image: labqs/dnsmasq:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dnsmasqbase
+    restart: unless-stopped
+    healthcheck:
+      test: 'if [ -z "$(netstat -nltu |grep \:53)" ]; then exit 1;else exit 0;fi'
+      interval: 2s
+      timeout: 2s
+      retries: 20
+    cap_add:
+      - 'NET_ADMIN'
+    ports:
+      - '53:53/udp'
+      - '67:67/udp'
+      - '68:68/udp'
+    networks:
+      netlab01:
+        ipv4_address: ${DNSMASQ_HOST}
+    volumes:
+      - $PWD./config:/etc/dnsmasq.d
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro

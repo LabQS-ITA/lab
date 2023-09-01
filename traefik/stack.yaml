@@ -10,6 +10,8 @@ services:
     networks:
       netlab01:
         ipv4_address: ${TRAEFIK_HOST}
+    dns:
+      - ${DNSMASQ_HOST}
     volumes:
       - $PWD/config:/etc/traefik
       - traefikdata:/data

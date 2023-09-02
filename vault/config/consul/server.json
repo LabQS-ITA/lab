@@ -2,7 +2,7 @@
     "node_name": "consul",
     "server": true,
     "ui_config": {
-        "enabled" : true
+        "enabled" : false
     },
     "datacenter": "labqs",
     "data_dir": "/consul/data",

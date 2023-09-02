@@ -15,6 +15,11 @@ services:
     command:
       - agent
 
+volumes:
+  consulagentdata:
+    name: consulagentdata
+    external: true
+
 networks:
   netlab01:
     external: true

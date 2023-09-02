@@ -19,11 +19,14 @@
 [providers.consulCatalog]
   prefix = "labqs"
   defaultRule = "Host(`@SVC_HOST`) && PathPrefix(`/{{ .Name }}`)"
+  entrypoints = ["websecure"]
   watch = true
   [providers.consulCatalog.endpoint]
       address = "consul:8500"
       scheme = "http"
       datacenter = "labqs"
+  [providers.consulCatalog.tls]
+    certresolver = "le"
 
 [providers.file]
   filename = "/etc/traefik/dynamic.toml"

@@ -9,7 +9,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     command: 
       - "-i 127.0.0.1"
-      - "-h 'consul'"
+      - "-h consul.docker.internal"
       - "-p 8500"
 
 networks:

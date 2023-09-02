@@ -14,6 +14,13 @@
   [http.routers.api.tls]
     certresolver = "le"
 
+[http.routers.api]
+  rule = "Host(`@SVC_HOST`) && PathPrefix(`/consul`)"
+  entrypoints = ["websecure"]
+  service = "api@internal"
+  [http.routers.api.tls]
+    certresolver = "le"
+
 [[tls.certificates]]
   certFile = "/usr/local/apache2/certificates/live/@CI_LAB_DOMAIN/fullchain.pem"
   keyFile = "/usr/local/apache2/certificates/live/@CI_LAB_DOMAIN/privkey.pem"

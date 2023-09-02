@@ -42,8 +42,8 @@ else
 
 fi
 
-registrator $1 $CONFIG_ENV
+consul $1 $CONFIG_ENV
 
 consulAgent $1 $CONFIG_ENV
 
-consul $1 $CONFIG_ENV
+registrator $1 $CONFIG_ENV

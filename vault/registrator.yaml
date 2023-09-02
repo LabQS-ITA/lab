@@ -11,7 +11,7 @@ services:
       - "-internal"
       - "-cleanup"
       - "-resync=10"
-      - "consul://consul:8500"
+      - "consul://consul_agent:8500"
 
 networks:
   netlab01:

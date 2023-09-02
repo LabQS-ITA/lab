@@ -10,7 +10,7 @@ services:
     command: 
       - "-i 127.0.0.1"
       - "-h 'consul'"
-      - "-p '8500'"
+      - "-p 8500"
 
 networks:
   netlab01:

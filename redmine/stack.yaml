@@ -6,8 +6,6 @@ services:
     restart: unless-stopped
     ports:
       - '8087:3000'
-    expose:
-      - '8087'
     networks:
       - netlab01
       # netlab01:

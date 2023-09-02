@@ -11,6 +11,7 @@ services:
       - "-cleanup=true"
       - "-deregister=always"
       - "-resync=10"
+      - "consul://consul:8500"
 
 networks:
   netlab01:

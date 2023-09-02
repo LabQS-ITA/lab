@@ -24,8 +24,6 @@
       address = "consul:8500"
       scheme = "http"
       datacenter = "labqs"
-  [providers.consulCatalog.tls]
-    certresolver = "le"
 
 [providers.file]
   filename = "/etc/traefik/dynamic.toml"

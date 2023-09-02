@@ -6,8 +6,6 @@ services:
     restart: unless-stopped
     ports:
       - '8087:3000'
-    expose:
-      - '8087'
     networks:
       - netlab01
       # netlab01:
@@ -25,7 +23,7 @@ services:
       REDMINE_DB_USERNAME: redmine
       REDMINE_DB_PASSWORD: ${POSTGRES_PWD}
       RAILS_RELATIVE_URL_ROOT: /redmine
-      SERVICE_NAME: redmine
+      SERVICE_8087_NAME: redmine
     labels:
       - traefik.enable=true
       - traefik.http.routers.redmine.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/redmine`)

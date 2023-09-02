@@ -8,8 +8,6 @@ services:
       - '8087:3000'
     networks:
       - netlab01
-      # netlab01:
-      #   ipv4_address: ${REDMINE_HOST}
     volumes:
       - $PWD/config/config.ru:/usr/src/redmine/config.ru
       - $PWD/config/configuration.yml:/usr/src/redmine/config/configuration.yml
@@ -23,7 +21,6 @@ services:
       REDMINE_DB_USERNAME: redmine
       REDMINE_DB_PASSWORD: ${POSTGRES_PWD}
       RAILS_RELATIVE_URL_ROOT: /redmine
-      SERVICE_8087_NAME: redmine
     labels:
       - traefik.enable=true
       - traefik.http.routers.redmine.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/redmine`)

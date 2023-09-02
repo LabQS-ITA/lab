@@ -4,8 +4,6 @@ services:
     container_name: consul_agent
     image: hashicorp/consul:latest
     restart: unless-stopped
-    ports:
-      - '8500:8500'
     networks:
       - netlab01
     volumes:

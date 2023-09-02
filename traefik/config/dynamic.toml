@@ -7,16 +7,9 @@
   ]
 
 [http.routers.api]
-  rule = "Host(`@SVC_HOST`) && PathPrefix(`/api`, `/dashboard`)"
+  rule = "Host(`@SVC_HOST`) && PathPrefix(`/api`, `/dashboard`, `/consul`)"
   entrypoints = ["websecure"]
   middlewares = ["simpleAuth"]
-  service = "api@internal"
-  [http.routers.api.tls]
-    certresolver = "le"
-
-[http.routers.api]
-  rule = "Host(`@SVC_HOST`) && PathPrefix(`/consul`)"
-  entrypoints = ["websecure"]
   service = "api@internal"
   [http.routers.api.tls]
     certresolver = "le"

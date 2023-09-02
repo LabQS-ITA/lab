@@ -22,7 +22,7 @@
   watch = true
   [providers.consulCatalog.endpoint]
       address = "consul:8500"
-      scheme = "http"
+      scheme = "https"
       datacenter = "labqs"
 
 [providers.file]

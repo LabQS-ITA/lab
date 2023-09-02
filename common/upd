@@ -20,6 +20,7 @@ fi
 
 
 git checkout ../httpd/panel/config/sites/000-default.conf
+git checkout ../traefik/config/traefik.toml
 git checkout ../traefik/config/dynamic.toml
 git checkout ../rabbitmq/config/rabbitmng/20-user.conf
 git checkout ../registry/config/config.yml
@@ -30,8 +31,8 @@ git submodule update --init --recursive
 
 if [[ -f ../traefik/.env ]]; then
     sed -i 's\@SVC_KEY\'$(docker run --rm --entrypoint htpasswd httpd -nb admin $(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../traefik/.env))'\g' ../traefik/config/dynamic.toml
+    sed -i 's\@SVC_HOST\'$LAB_DOMAIN'\g' config/traefik.toml
     sed -i 's\@SVC_HOST\'$LAB_DOMAIN'\g' ../traefik/config/dynamic.toml
-
 
     sed -i 's\@CI_LAB_DOMAIN\'$CI_LAB_DOMAIN'\g' ../traefik/config/dynamic.toml
     sed -i 's\@CM_LAB_DOMAIN\'$CM_LAB_DOMAIN'\g' ../traefik/config/dynamic.toml

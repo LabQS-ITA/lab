@@ -23,7 +23,7 @@
 
 [providers.consulCatalog]
   prefix = "labqs"
-  defaultRule = "Host(`{{ .Name }}`.{{ index .Labels \"customLabel\"}}`)"
+  defaultRule = "Host(`{{ .Name }}`)"
   watch = true
   [providers.consulCatalog.endpoint]
       address = "consul:8500"

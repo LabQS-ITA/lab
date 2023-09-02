@@ -16,11 +16,6 @@
   storage = "/data/acme.json"
   [certificatesResolvers.le.acme.tlsChallenge]
 
-[providers.docker]
-  exposedByDefault = false
-  watch = true
-  network = "netlab01"
-
 [providers.consulCatalog]
   prefix = "labqs"
   defaultRule = "Host(`@SVC_HOST`) && PathPrefix(`/{{ .Name }}`)"

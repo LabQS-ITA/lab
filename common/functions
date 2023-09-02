@@ -53,6 +53,15 @@ function domain() {
 
 }
 
+function registrator() {
+
+    cd ../vault
+    echo '* Consul *'
+    
+    docker compose -f registrator.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
+    
+}
+
 function consul() {
 
     cd ../vault

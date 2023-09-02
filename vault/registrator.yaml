@@ -1,0 +1,8 @@
+services:
+
+  registrator:
+    container_name: registrator
+    image: hypolas/registrator:latest
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    command: -internal -cleanup -resync 10 -networks-priority 'netlab01,netlab02' consul://consul:8500

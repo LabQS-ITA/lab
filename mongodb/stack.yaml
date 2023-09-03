@@ -26,7 +26,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     labels:
-      - SERVICE_MONGODB=mongodb
+      - SERVICE_27017_MONGODB=mongodb
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: ${SVC_PWD}

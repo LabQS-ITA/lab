@@ -2,7 +2,7 @@ services:
 
   registrator:
     container_name: registrator
-    image: gliderlabs/registrator:latest
+    image: hypolas/registrator:latest
     networks:
       - netlab01
     volumes:

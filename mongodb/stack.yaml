@@ -15,6 +15,9 @@ services:
     networks:
       netlab01:
         ipv4_address: ${MONGODB_HOST}
+    dns:
+      - 127.0.0.1
+      - consul:8600
     volumes:
       - mongodata:/data/db:rw
       - $PWD/mongodb/config/custom.conf:/etc/mongo/custom.conf

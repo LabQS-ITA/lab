@@ -18,8 +18,7 @@ services:
     ports:
       - '53:53/udp'
     networks:
-      netlab01:
-        ipv4_address: ${DNSMASQ_HOST}
+      - netlab01
     volumes:
       - $PWD./config:/etc/dnsmasq.d
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro

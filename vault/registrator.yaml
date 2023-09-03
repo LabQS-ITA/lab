@@ -11,6 +11,7 @@ services:
       - -i127.0.0.1
       - -hconsul
       - -p8500
+      - -lDEBUG
 
 networks:
   netlab01:

@@ -22,6 +22,7 @@
   network = "netlab01"
 
 [providers.consulCatalog]
+  exposedByDefault = false
   prefix = "labqs"
   defaultRule = "Host(`@SVC_HOST`) && PathPrefix(`/{{ .Name }}`)"
   watch = true

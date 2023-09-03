@@ -1,0 +1,19 @@
+services:
+
+  registrator:
+    container_name: registrator
+    image: gliderlabs/registrator:latest
+    networks:
+      - netlab01
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    command: 
+      - "-cleanup=true"
+      - "-deregister=always"
+      - "-resync=10"
+      - "-tags='tls'"
+      - "consul://consul:8500"
+
+networks:
+  netlab01:
+    external: true

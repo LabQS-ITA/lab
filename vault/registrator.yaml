@@ -2,19 +2,12 @@ services:
 
   registrator:
     container_name: registrator
-    # image: gliderlabs/registrator:latest
     image: metabrainz/serviceregistrator:latest
     networks:
       - netlab01
     volumes:
-      # - /var/run/docker.sock:/tmp/docker.sock:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
     command: 
-    #   - "-cleanup=true"
-    #   - "-deregister=always"
-    #   - "-resync=10"
-    #   - "-tags='tls'"
-    #   - "consul://consul:8500"
     - "--ip 127.0.0.1"
 	  - "--consul-port 8500"
 	  - "--consul-host consul"

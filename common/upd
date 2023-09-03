@@ -42,6 +42,8 @@ fi
 
 [[ -f ../rabbitmq/.env ]] && sed -i 's/@SVC_PWD/'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../rabbitmq/.env)'/g' ../rabbitmq/config/rabbitmng/20-user.conf
 
+[[ -f ../semaphore/.env ]] && sed -i 's/@POSTGRES_PWD/'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgres/.env)'/g' ../semaphore/config/config.json
+
 if [[ -f ../registry/config/config.yml && -f ../redis/.env ]]; then
     sed -i 's/@LAB_DOMAIN/'$LAB_DOMAIN'/g' ../registry/config/config.yml
     sed -i 's/@REDIS_PWD/'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../redis/.env)'/g' ../registry/config/config.yml

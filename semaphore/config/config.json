@@ -16,7 +16,7 @@
     "postgres": {
             "host": "postgres:5432",
             "user": "semaphore",
-            "pass": "e5478da866654a06",
+            "pass": "@POSTGRES_PWD",
             "name": "semaphore?sslmode=disable",
             "options": null
     },

@@ -5,11 +5,10 @@ services:
     hostname: console
     image: minio/console:latest
     restart: unless-stopped
-    ports:
-      - '8090:9090'
+    expose:
+      - '9090'
     networks:
-      netlab01:
-        ipv4_address: ${MINIO_HOST_CONSOLE}
+      - netlab01
     volumes:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

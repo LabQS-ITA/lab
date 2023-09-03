@@ -5,10 +5,9 @@ services:
     image: nextcloud:latest
     restart: unless-stopped
     ports:
-      - '8083:80'
+      - '80'
     networks:
-      netlab01:
-        ipv4_address: ${NEXTCLOUD_HOST}
+      - netlab01
     volumes:
       - /home/gpes/shared/out:/var/www/shared:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro

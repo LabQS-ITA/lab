@@ -6,11 +6,10 @@ services:
     cap_add:
       - IPC_LOCK
     restart: unless-stopped
-    ports:
-      - '8200:8200'
+    expose:
+      - '8200'
     networks:
-      netlab01:
-        ipv4_address: ${VAULT_HOST}
+      - netlab01
     dns:
       - 127.0.0.1
       - consul:8600

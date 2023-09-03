@@ -8,11 +8,10 @@ services:
       dockerfile: Dockerfile
       target: semaphorebase
     restart: unless-stopped
-    ports:
-      - '8085:3000'
+    expose:
+      - '3000'
     networks:
-      netlab01:
-        ipv4_address: ${SEMAPHORE_HOST}
+      - netlab01
     volumes:
       - $PWD/config:/etc/semaphore:rw
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro

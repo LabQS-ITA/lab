@@ -10,8 +10,8 @@ services:
       timeout: 60s
       retries: 5
       start_period: 90s
-    ports:
-      - '5400:5432'
+    expose:
+      - '5432'
     networks:
       netlab01:
         ipv4_address: ${POSTGRES_HOST}
@@ -36,8 +36,8 @@ services:
       timeout: 60s
       retries: 5
       start_period: 90s
-    ports:
-      - '5401:5432'
+    expose:
+      - '5432'
     networks:
       netlab01:
         ipv4_address: ${POSTGRES_HOST01}
@@ -62,8 +62,8 @@ services:
       timeout: 60s
       retries: 5
       start_period: 90s
-    ports:
-      - '5402:5432'
+    expose:
+      - '5432'
     networks:
       netlab01:
         ipv4_address: ${POSTGRES_HOST02}

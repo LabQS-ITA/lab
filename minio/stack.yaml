@@ -14,8 +14,7 @@ services:
     expose:
       - '9000'
     networks:
-      netlab01:
-        ipv4_address: ${MINIO_HOST01}
+      - netlab01
     volumes:
       - miniodata011:/data/vol1:rw
       - miniodata012:/data/vol2:rw
@@ -47,8 +46,7 @@ services:
     expose:
       - '9000'
     networks:
-      netlab01:
-        ipv4_address: ${MINIO_HOST02}
+      - netlab01
     volumes:
       - miniodata021:/data/vol1:rw
       - miniodata022:/data/vol2:rw

@@ -4,11 +4,10 @@ services:
     container_name: registrydb
     image: docker.io/registry:latest
     restart: unless-stopped
-    ports:
-      - '5000:5000'
+    expose:
+      - '5000'
     networks:
-      netlab01:
-        ipv4_address: ${REGISTRYDB_HOST}
+      - netlab01
     volumes:
       - registrydata:/var/lib/registry
       - $PWD/config/config.yml:/etc/docker/registry/config.yml
@@ -20,19 +19,15 @@ services:
       REGISTRY_AUTH: htpasswd
       REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
       REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
-      # REGISTRY_STORAGE_CACHE_BLOBDESCRIPTOR: redis
-      # REGISTRY_REDIS_ADDR: redis
-      # REGISTRY_REDIS_PASSWORD: ${REDIS_PWD}
 
   registry:
     container_name: registry
     image: joxit/docker-registry-ui:latest
     restart: unless-stopped
-    ports:
-      - '8084:80'
+    expose:
+      - '80'
     networks:
-      netlab01:
-        ipv4_address: ${REGISTRY_HOST}
+      - netlab01
     volumes:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

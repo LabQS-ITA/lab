@@ -6,13 +6,12 @@ services:
     cap_add:
       - IPC_LOCK
     restart: unless-stopped
-    ports:
-      - '8500:8500'
-      - '8600:8600/tcp'
-      - '8600:8600/udp'
+    expose:
+      - '8500'
+      - '8600/tcp'
+      - '8600/udp'
     networks:
-      netlab01:
-        ipv4_address: ${CONSUL_HOST}
+      - netlab01
     volumes:
       - $PWD/config/consul/server.json:/consul/config/server.json:ro
       - consuldata:/consul/data:rw

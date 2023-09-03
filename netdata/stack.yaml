@@ -12,11 +12,10 @@ services:
       nofile:
         soft: 4096
         hard: 4096
-    ports:
-      - '19999:19999'
+    expose:
+      - '19999'
     networks:
-      netlab01:
-        ipv4_address: ${NETDATA_HOST}
+      - netlab01
     volumes:
       - $PWD/config:/etc/netdata \
       - /etc/passwd:/host/etc/passwd:ro \

@@ -11,8 +11,7 @@ services:
       timeout: 30s
       retries: 3
     networks:
-      netlab01:
-        ipv4_address: ${RABBITMQ_HOST01}
+      - netlab01
     volumes:
       - rabbitmqdata01:/var/lib/rabbitmq
       - $PWD/config/rabbitmq01/enabled_plugins:/etc/rabbitmq/enabled_plugins:rw
@@ -34,8 +33,7 @@ services:
       timeout: 30s
       retries: 3
     networks:
-      netlab01:
-        ipv4_address: ${RABBITMQ_HOST02}
+      - netlab01
     volumes:
       - rabbitmqdata02:/var/lib/rabbitmq
       - $PWD/config/rabbitmq02/enabled_plugins:/etc/rabbitmq/enabled_plugins:rw
@@ -56,12 +54,11 @@ services:
       interval: 30s
       timeout: 30s
       retries: 3
-    ports:
-      - '15672:15672'
-      - '5672:5672'
+    expose:
+      - '15672'
+      - '5672'
     networks:
-      netlab01:
-        ipv4_address: ${RABBITMQ_HOST}
+      - netlab01
     volumes:
       - rabbitmqdata:/var/lib/rabbitmq
       - $PWD/config/rabbitmng/enabled_plugins:/etc/rabbitmq/enabled_plugins:rw

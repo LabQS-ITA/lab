@@ -2,7 +2,7 @@ services:
 
   registrator:
     container_name: registrator
-    image: hypolas/registrator:latest
+    image: gliderlabs/registrator:latest
     networks:
       - netlab01
     volumes:
@@ -11,7 +11,7 @@ services:
       - "-cleanup=true"
       - "-deregister=always"
       - "-resync=10"
-      - "-tags=''"
+      - "-tags='tls'"
       - "consul://consul:8500"
 
 networks:

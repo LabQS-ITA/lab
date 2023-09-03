@@ -21,6 +21,7 @@ fi
 
 git checkout ../httpd/panel/config/sites/000-default.conf
 git checkout ../traefik/config/traefik.toml
+git checkout ../semaphore/config/config.json
 git checkout ../traefik/config/dynamic.toml
 git checkout ../rabbitmq/config/rabbitmng/20-user.conf
 git checkout ../registry/config/config.yml

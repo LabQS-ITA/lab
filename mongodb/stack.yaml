@@ -13,7 +13,7 @@ services:
     ports:
       - '27020:27017'
     expose:
-      - '27020'
+      - '27017'
     networks:
       netlab01:
         ipv4_address: ${MONGODB_HOST}

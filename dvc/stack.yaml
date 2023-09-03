@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
       target: dvcbase
     networks:
-      netlab01:
+      - netlab01
     deploy:
       resources:
         reservations:
@@ -15,7 +15,7 @@ services:
               count: 1
               capabilities: [gpu]
     environment:
-      JUPYTER_HOST: ${JUPYTER_HOST}
+      JUPYTER_HOST: jupyter
 
 networks:
   netlab01:

@@ -4,11 +4,10 @@ services:
     container_name: grafana
     image: grafana/grafana:latest
     restart: unless-stopped
-    ports:
-      - '3001:3001'
+    expose:
+      - '3001'
     networks:
-      netlab01:
-        ipv4_address: ${GRAFANA_HOST}
+      - netlab01
     volumes:
       - $PWD/config/grafana.ini:/etc/grafana/grafana.ini
       - $PWD/config/provisioning:/etc/grafana/provisioning

@@ -10,8 +10,6 @@ services:
       timeout: 10s
       retries: 5
       start_period: 90s
-    ports:
-      - '27020:27017'
     expose:
       - '27017'
     networks:

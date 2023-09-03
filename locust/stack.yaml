@@ -4,12 +4,10 @@ services:
     container_name: locust
     image: locustio/locust:latest
     restart: unless-stopped
-    ports:
-      - '8089:8089'
-      - '5557:5557'
+    expose:
+      - '8089'
     networks:
-      netlab01:
-        ipv4_address: ${LOCUST_HOST}
+      - netlab01
     volumes:
       - ${PWD}/config:/home/locust:rw
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro

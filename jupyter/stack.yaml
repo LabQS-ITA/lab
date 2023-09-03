@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile.jupyterlab
       target: jupyterlabbase
     networks:
-      netlab01:
+      - netlab01
     deploy:
       resources:
         reservations:
@@ -15,7 +15,7 @@ services:
               count: 1
               capabilities: [gpu]
     environment:
-      JUPYTER_HOST: ${JUPYTER_HOST}
+      JUPYTER_HOST: jupyter
 
   jupyter:
     container_name: jupyter
@@ -30,8 +30,7 @@ services:
     ports:
       - '8000:8000'
     networks:
-      netlab01:
-        ipv4_address: ${JUPYTER_HOST}
+      - netlab01
     volumes:
       - $PWD/config/jupyterhub_config.py:/etc/jupyterhub/jupyterhub_config.py:ro
       - /var/run/docker.sock:/var/run/docker.sock

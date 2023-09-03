@@ -4,11 +4,10 @@ services:
     container_name: labelstudio
     image: heartexlabs/label-studio:latest
     restart: unless-stopped
-    ports:
-      - '8091:8000'
+    expose:
+      - '8000'
     networks:
-      netlab01:
-        ipv4_address: ${LABELSTUDIO_HOST}
+      - netlab01
     volumes:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

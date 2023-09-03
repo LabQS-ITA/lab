@@ -13,8 +13,6 @@ services:
     dns:
       - 127.0.0.1
       - consul:8600
-      - 161.24.23.199
-      - 161.24.23.180
     volumes:
       - $PWD/config/vault:/vault/config:ro
       - vaultdata:/vault/file:rw

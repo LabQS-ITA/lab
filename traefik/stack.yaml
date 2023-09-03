@@ -12,8 +12,6 @@ services:
     dns:
       - 127.0.0.1
       - consul:8600
-      - 161.24.23.199
-      - 161.24.23.180
     volumes:
       - $PWD/config:/etc/traefik
       - traefikdata:/data

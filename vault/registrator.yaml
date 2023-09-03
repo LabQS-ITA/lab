@@ -8,9 +8,9 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     command:
-      - --ip 127.0.0.1
-      - --consul-port 8500
-      - --consul-host consul
+      - -i 127.0.0.1
+      - -h consul
+      - -p 8500
 
 networks:
   netlab01:

@@ -23,6 +23,7 @@ services:
       - VAULT_ADDR=http://vault:8200
       - VAULT_TOKEN=hvs.7HcXGRSOD1iTOVw6oQ5PnazS
       - CONSUL_HTTP_ADDR=consul:8500
+      - CONSUL_TLS_SERVER_NAME=${LAB_DOMAIN}
     command: consul agent -server -data-dir=/consul/data -config-dir=/consul/config -bootstrap-expect=1 -client 0.0.0.0
 
 volumes:

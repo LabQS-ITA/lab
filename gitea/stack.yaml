@@ -7,8 +7,7 @@ services:
     ports:
       - '3000:3000'
     networks:
-      netlab01:
-        ipv4_address: ${GITEA_HOST}
+      - netlab01
     volumes:
       - giteadata:/data
       - $PWD/config/app.ini:/data/gitea/conf/app.ini

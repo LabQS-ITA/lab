@@ -7,11 +7,10 @@ services:
       dockerfile: Dockerfile
     image: labqs/chromium:latest
     restart: unless-stopped
-    ports:
-      - '9222:9222'
+    export:
+      - '9222'
     networks:
-      netlab01:
-        ipv4_address: ${CHROMIUM_HOST}
+      - netlab01
     volumes:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

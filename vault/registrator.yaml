@@ -7,10 +7,10 @@ services:
       - netlab01
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    command: 
-    - --ip 127.0.0.1
-	  - --consul-port 8500
-	  - --consul-host consul
+    command:
+      - --ip 127.0.0.1
+      - --consul-port 8500
+      - --consul-host consul
 
 networks:
   netlab01:

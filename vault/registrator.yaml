@@ -12,7 +12,6 @@ services:
       - "-deregister=always"
       - "-resync=10"
       - "-tags=labqs"
-      - "-internal"
       - "consul://consul:8500"
 
 networks:

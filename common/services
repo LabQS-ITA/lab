@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -euo pipefail
 
 ping -c 1 agent.service.labqs.consul
 ping -c 1 consul.service.labqs.consul

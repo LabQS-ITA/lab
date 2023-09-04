@@ -2,16 +2,17 @@ services:
 
   registrator:
     container_name: registrator
-    image: metabrainz/serviceregistrator:latest
+    image: gliderlabs/registrator:latest
     networks:
       - netlab01
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    command:
-      - -i127.0.0.1
-      - -hconsul
-      - -p8500
-      - -lDEBUG
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    command: 
+      - "-cleanup=true"
+      - "-deregister=always"
+      - "-resync=10"
+      - "-tags='tls'"
+      - "consul://consul:8500"
 
 networks:
   netlab01:

@@ -8,8 +8,9 @@ services:
     restart: unless-stopped
     expose:
       - '8500'
-      - '8600/tcp'
-      - '8600/udp'
+    ports:
+      - '8600:8600/tcp'
+      - '8600:8600/udp'
     networks:
       - netlab01
     dns:

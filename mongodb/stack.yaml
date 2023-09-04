@@ -14,6 +14,9 @@ services:
       - '27017'
     networks:
       - netlab01
+    dns:
+      - 127.0.0.1
+      - consul:8600
     volumes:
       - mongodata:/data/db:rw
       - $PWD/mongodb/config/custom.conf:/etc/mongo/custom.conf

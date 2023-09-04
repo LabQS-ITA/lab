@@ -11,7 +11,7 @@ services:
       - "-cleanup=true"
       - "-deregister=always"
       - "-resync=10"
-      - "-tags='tls'"
+      - "-tags=labqs"
       - "consul://consul:8500"
 
 networks:

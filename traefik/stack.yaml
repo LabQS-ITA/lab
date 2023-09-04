@@ -9,9 +9,6 @@ services:
       - '443:443'
     networks:
       - netlab01
-    dns:
-      - 127.0.0.1
-      - consul:8600
     volumes:
       - $PWD/config:/etc/traefik
       - traefikdata:/data

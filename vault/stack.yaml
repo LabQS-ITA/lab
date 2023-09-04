@@ -10,9 +10,6 @@ services:
       - ':8200'
     networks:
       - netlab01
-    dns:
-      - 127.0.0.1
-      - consul:8600
     volumes:
       - $PWD/config/vault:/vault/config:ro
       - vaultdata:/vault/file:rw

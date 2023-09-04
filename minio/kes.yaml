@@ -6,8 +6,8 @@ services:
     cap_add:
       - IPC_LOCK
     restart: unless-stopped
-    expose:
-      - '7373'
+    ports:
+      - ':7373'
     networks:
       - netlab01
     volumes:

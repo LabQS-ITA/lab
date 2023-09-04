@@ -5,8 +5,8 @@ services:
     hostname: console
     image: minio/console:latest
     restart: unless-stopped
-    expose:
-      - '9090'
+    ports:
+      - ':9090'
     networks:
       - netlab01
     volumes:

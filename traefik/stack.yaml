@@ -20,7 +20,6 @@ services:
     labels:
       - SERVICE_80_NAME=traefik-web
       - SERVICE_443_NAME=traefik-websecure
-      - SERVICE_TAGS=maint
 
 networks:
   netlab01:

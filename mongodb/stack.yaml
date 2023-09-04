@@ -13,10 +13,8 @@ services:
     expose:
       - '27017'
     networks:
-      - netlab01
-    dns:
-      - 127.0.0.1
-      - consul:8600
+      netlab01:
+        ipv4_address: ${MONGODB_HOST}
     volumes:
       - mongodata:/data/db:rw
       - $PWD/mongodb/config/custom.conf:/etc/mongo/custom.conf
@@ -25,6 +23,8 @@ services:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
+    labels:
+      - SERVICE_27017_MONGODB=mongodb
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: ${SVC_PWD}

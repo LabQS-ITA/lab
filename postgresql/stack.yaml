@@ -26,7 +26,6 @@ services:
       POSTGRES_PASSWORD: ${SVC_PWD}
       PGPASSFILE: /etc/postgresql/.pgpass
     labels:
-      - SERVICE_NAME=postgres
       - SERVICE_TAGS=maint,database
 
   postgres01:
@@ -55,7 +54,6 @@ services:
       POSTGRES_PASSWORD: ${SVC_PWD_01}
       PGPASSFILE: /etc/postgresql/.pgpass
     labels:
-      - SERVICE_NAME=postgres01
       - SERVICE_TAGS=database
 
   postgres02:
@@ -84,7 +82,6 @@ services:
       POSTGRES_PASSWORD: ${SVC_PWD_02}
       PGPASSFILE: /etc/postgresql/.pgpass
     labels:
-      - SERVICE_NAME=postgres02
       - SERVICE_TAGS=database
 
 volumes:

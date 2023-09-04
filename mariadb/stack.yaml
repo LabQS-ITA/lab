@@ -26,9 +26,6 @@ services:
       MARIADB_ROOT_PASSWORD: ${SVC_PWD}
       MARIADB_USER: maint
       MARIADB_PASSWORD: ${SVC_PWD}
-    labels:
-      - SERVICE_NAME=mariadb
-      - SERVICE_TAGS=maint,database
 
 volumes:
   mariadata:

@@ -8,8 +8,6 @@ tls:
   cert: /root/.kes/certs/public.crt
 
 keystore:
-  fs:
-    path: ./keys
   vault:
     endpoint: http://vault:8200
     engine: "kv/"

@@ -12,7 +12,7 @@ services:
       - "-deregister=always"
       - "-resync=10"
       - "-tags=labqs"
-      - "-internal"
+      - "-ip=172.16.0.1"
       - "consul://consul:8500"
 
 networks:

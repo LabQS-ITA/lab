@@ -26,7 +26,7 @@ services:
       REDISCLI_AUTH: ${SVC_PWD}
     labels:
       - SERVICE_NAME=redis
-      - SERVICE_TAGS=labqs,database
+      - SERVICE_TAGS=maint,database
     command: ["redis-server", "/usr/local/etc/redis/redis.conf", "--requirepass", "${SVC_PWD}", "--appendonly", "yes"]
 
   redis01:
@@ -55,7 +55,7 @@ services:
       REDISCLI_AUTH: ${SVC_PWD_01}
     labels:
       - SERVICE_NAME=redis01
-      - SERVICE_TAGS=labqs,database
+      - SERVICE_TAGS=database
     command: ["redis-server", "--requirepass", "${SVC_PWD_01}", "--appendonly", "yes"]
 
   redis02:
@@ -84,7 +84,7 @@ services:
       REDISCLI_AUTH: ${SVC_PWD_02}
     labels:
       - SERVICE_NAME=redis02
-      - SERVICE_TAGS=labqs,database
+      - SERVICE_TAGS=database
     command: ["redis-server", "--requirepass", "${SVC_PWD_02}", "--appendonly", "yes"]
   
 volumes:

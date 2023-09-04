@@ -27,7 +27,7 @@ services:
       PGPASSFILE: /etc/postgresql/.pgpass
     labels:
       - SERVICE_NAME=postgres
-      - SERVICE_TAGS=labqs,database
+      - SERVICE_TAGS=maint,database
 
   postgres01:
     container_name: postgres01
@@ -56,7 +56,7 @@ services:
       PGPASSFILE: /etc/postgresql/.pgpass
     labels:
       - SERVICE_NAME=postgres01
-      - SERVICE_TAGS=labqs,database
+      - SERVICE_TAGS=database
 
   postgres02:
     container_name: postgres02
@@ -85,7 +85,7 @@ services:
       PGPASSFILE: /etc/postgresql/.pgpass
     labels:
       - SERVICE_NAME=postgres02
-      - SERVICE_TAGS=labqs,database
+      - SERVICE_TAGS=database
 
 volumes:
   postgresdata:

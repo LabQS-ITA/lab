@@ -28,7 +28,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${SVC_PWD}
     labels:
       - SERVICE_NAME=mongodb
-      - SERVICE_TAGS=labqs,database
+      - SERVICE_TAGS=maint,database
     command: --config /etc/mongo/custom.conf
 
 volumes:

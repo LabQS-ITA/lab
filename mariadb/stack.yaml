@@ -28,7 +28,7 @@ services:
       MARIADB_PASSWORD: ${SVC_PWD}
     labels:
       - SERVICE_NAME=mariadb
-      - SERVICE_TAGS=labqs,database
+      - SERVICE_TAGS=maint,database
 
 volumes:
   mariadata:

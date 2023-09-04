@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ping -c 1 agent.service.labqs.consul
+ping -c 1 consul.service.labqs.consul
+ping -c 1 consul-8600.service.labqs.consul
+ping -c 1 dns.service.labqs.consul
+ping -c 1 docker-registry-ui.service.labqs.consul
+ping -c 1 drone-80.service.labqs.consul
+ping -c 1 drone-runner-docker.service.labqs.consul
+ping -c 1 drone-runner-ssh.service.labqs.consul
+ping -c 1 flualfa.service.labqs.consul
+ping -c 1 flualfacapp.service.labqs.consul
+ping -c 1 gitea-3000.service.labqs.consul
+ping -c 1 grafana-3001.service.labqs.consul
+ping -c 1 httpd.service.labqs.consul
+ping -c 1 label-studio-8000.service.labqs.consul
+ping -c 1 locust-5557.service.labqs.consul
+ping -c 1 locust-8089.service.labqs.consul
+ping -c 1 mariadb.service.labqs.consul
+ping -c 1 mongodb.service.labqs.consul
+ping -c 1 netdata.service.labqs.consul
+ping -c 1 nextcloud.service.labqs.consul
+ping -c 1 postgres.service.labqs.consul
+ping -c 1 postgres01.service.labqs.consul
+ping -c 1 postgres02.service.labqs.consul
+ping -c 1 prometheus.service.labqs.consul
+ping -c 1 rabbitmq-15672.service.labqs.consul
+ping -c 1 rabbitmq-5672.service.labqs.consul
+ping -c 1 redis.service.labqs.consul
+ping -c 1 redis01.service.labqs.consul
+ping -c 1 redis02.service.labqs.consul
+ping -c 1 redmine.service.labqs.consul
+ping -c 1 registry.service.labqs.consul
+ping -c 1 traefik-443.service.labqs.consul
+ping -c 1 traefik-80.service.labqs.consul
+ping -c 1 web.service.labqs.consul

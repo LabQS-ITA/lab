@@ -8,6 +8,8 @@ services:
       - '3000'
     networks:
       - netlab01
+    dns:
+      - consul:8600
     volumes:
       - $PWD/config/config.ru:/usr/src/redmine/config.ru
       - $PWD/config/configuration.yml:/usr/src/redmine/config/configuration.yml

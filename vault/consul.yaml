@@ -13,10 +13,6 @@ services:
       - '8600:8600/udp'
     networks:
       - netlab01
-    dns:
-      - 127.0.0.1
-      - 161.24.23.199
-      - 161.24.23.180
     volumes:
       - $PWD/config/consul/server.json:/consul/config/server.json:ro
       - consuldata:/consul/data:rw

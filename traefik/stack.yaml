@@ -22,7 +22,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
     labels:
       - SERVICE_80_NAME=traefik-web
-      - SERVICE_443_NAME=traefik-secure
+      - SERVICE_443_NAME=traefik-websecure
       - SERVICE_TAGS=maint
 
 networks:

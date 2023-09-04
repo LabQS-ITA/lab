@@ -34,6 +34,7 @@ services:
       - traefik.http.services.gitea.loadbalancer.server.port=3000
       - traefik.http.middlewares.gitea-stripprefix.stripprefix.prefixes=/git
       - traefik.http.routers.gitea.middlewares=gitea-stripprefix@docker
+      - SERVICE_3000_NAME=gitea
 
 volumes:
   giteadata:

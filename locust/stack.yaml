@@ -21,6 +21,7 @@ services:
       - traefik.http.middlewares.locust-stripprefix.stripprefix.prefixes=/locust
       - traefik.http.middlewares.locust-stripprefix.stripprefix.forceSlash=true
       - traefik.http.routers.locust.middlewares=locust-stripprefix@docker
+      - SERVICE_8089_NAME=locust
     command: 
       - '--config=master.conf'
 

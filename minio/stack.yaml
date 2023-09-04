@@ -11,8 +11,8 @@ services:
       timeout: 5s
       retries: 5
       start_period: 90s
-    expose:
-      - '9000'
+    ports:
+      - ':9000'
     networks:
       - netlab01
     volumes:
@@ -43,8 +43,8 @@ services:
       timeout: 5s
       retries: 5
       start_period: 90s
-    expose:
-      - '9000'
+    ports:
+      - ':9000'
     networks:
       - netlab01
     volumes:

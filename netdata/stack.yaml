@@ -12,8 +12,8 @@ services:
       nofile:
         soft: 4096
         hard: 4096
-    expose:
-      - '19999'
+    ports:
+      - ':19999'
     networks:
       - netlab01
     volumes:

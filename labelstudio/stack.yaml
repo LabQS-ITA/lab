@@ -4,8 +4,8 @@ services:
     container_name: labelstudio
     image: heartexlabs/label-studio:latest
     restart: unless-stopped
-    expose:
-      - '8000'
+    ports:
+      - ':8000'
     networks:
       - netlab01
     volumes:

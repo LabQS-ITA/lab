@@ -6,8 +6,8 @@ services:
     cap_add:
       - IPC_LOCK
     restart: unless-stopped
-    expose:
-      - '8200'
+    ports:
+      - ':8200'
     networks:
       - netlab01
     dns:

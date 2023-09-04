@@ -5,7 +5,7 @@ services:
     image: nextcloud:latest
     restart: unless-stopped
     ports:
-      - '80'
+      - ':80'
     networks:
       - netlab01
     volumes:

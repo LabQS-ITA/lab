@@ -4,7 +4,7 @@ services:
     container_name: gitea
     image: gitea/gitea
     restart: unless-stopped
-    expose:
+    ports:
       - '3000'
     networks:
       - netlab01

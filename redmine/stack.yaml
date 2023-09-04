@@ -4,8 +4,8 @@ services:
     container_name: redmine
     image: redmine:alpine
     restart: unless-stopped
-    expose:
-      - '3000'
+    ports:
+      - ':3000'
     networks:
       - netlab01
     volumes:

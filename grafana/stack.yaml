@@ -4,8 +4,8 @@ services:
     container_name: grafana
     image: grafana/grafana:latest
     restart: unless-stopped
-    expose:
-      - '3001'
+    ports:
+      - ':3001'
     networks:
       - netlab01
     volumes:

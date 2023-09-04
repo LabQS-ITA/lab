@@ -8,8 +8,8 @@ services:
       dockerfile: Dockerfile
       target: semaphorebase
     restart: unless-stopped
-    expose:
-      - '2222'
+    ports:
+      - ':8080'
     networks:
       - netlab01
     volumes:

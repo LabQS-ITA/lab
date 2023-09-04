@@ -4,8 +4,8 @@ services:
     container_name: locust
     image: locustio/locust:latest
     restart: unless-stopped
-    expose:
-      - '8089'
+    ports:
+      - ':8089'
     networks:
       - netlab01
     volumes:

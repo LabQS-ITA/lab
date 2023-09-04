@@ -44,6 +44,17 @@ fi
 
 httpd $1 $CONFIG_ENV
 
+consul $1 $CONFIG_ENV
+
+consulAgent $1 $CONFIG_ENV
+
+registrator $1 $CONFIG_ENV
+
+traefik $1 $CONFIG_ENV
+
+vault $1 $CONFIG_ENV
+
+
 
 if [ "$1" != "ia" ]; then
     
@@ -51,7 +62,7 @@ if [ "$1" != "ia" ]; then
 
     mongodb $1 $CONFIG_ENV
 
-    # mariadb $1 $CONFIG_ENV
+    mariadb $1 $CONFIG_ENV
 
     redis $1 $CONFIG_ENV
 
@@ -98,11 +109,11 @@ if [ "$1" == "dev" ] || [ "$1" == "tst" ]; then
 
     drone $1 $CONFIG_ENV
 
-    # semaphore $1 $CONFIG_ENV
+    semaphore $1 $CONFIG_ENV
 
-    # registry $1 $CONFIG_ENV
+    registry $1 $CONFIG_ENV
 
-    # locust $1 $CONFIG_ENV
+    locust $1 $CONFIG_ENV
 
     redmine $1 $CONFIG_ENV
 

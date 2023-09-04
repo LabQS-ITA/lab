@@ -54,9 +54,9 @@ services:
       interval: 30s
       timeout: 30s
       retries: 3
-    expose:
-      - '15672'
-      - '5672'
+    ports:
+      - ':15672'
+      - ':5672'
     networks:
       - netlab01
     volumes:

@@ -16,7 +16,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
-      REDMINE_DB_POSTGRES: postgres.service.labqs.consul
+      REDMINE_DB_POSTGRES: postgres
       REDMINE_DB_DATABASE: redmine
       REDMINE_DB_USERNAME: redmine
       REDMINE_DB_PASSWORD: ${POSTGRES_PWD}

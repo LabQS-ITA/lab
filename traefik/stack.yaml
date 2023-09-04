@@ -20,6 +20,10 @@ services:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
+    labels:
+      - SERVICE_80_NAME=traefik-web
+      - SERVICE_443_NAME=traefik-secure
+      - SERVICE_TAGS=maint
 
 networks:
   netlab01:

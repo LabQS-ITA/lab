@@ -40,7 +40,7 @@ services:
       - SERVICE_15672_NAME=rabbitmng
       - SERVICE_15691_NAME=rabbitmng
       - SERVICE_15692_NAME=rabbitmng
-      - SERVICE_25672_NAME=rabbotmng
+      - SERVICE_25672_NAME=rabbitmng
 
   rabbitmq01:
     container_name: rabbitmq01

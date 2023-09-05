@@ -8,6 +8,8 @@ services:
       - netlab01
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
+    environment:
+      - CONSUL_HTTP_TOKEN=5fdbf566-22f2-73e2-2525-9eaf6ad8d781
     command: 
       - "-cleanup=true"
       - "-deregister=always"

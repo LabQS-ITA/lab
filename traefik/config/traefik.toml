@@ -16,8 +16,13 @@
   storage = "/data/acme.json"
   [certificatesResolvers.le.acme.tlsChallenge]
 
+[providers.docker]
+  exposedByDefault = false
+  watch = true
+  network = "netlab01"
+
 [providers.consulCatalog]
-  exposedByDefault = true
+  exposedByDefault = false
   prefix = "labqs"
   watch = true
   [providers.consulCatalog.endpoint]

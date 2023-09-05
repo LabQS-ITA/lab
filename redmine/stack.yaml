@@ -26,7 +26,6 @@ services:
       - traefik.consulcatalog.connect=true
       - traefik.http.routers.redmine.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/redmine`)
       - traefik.http.routers.redmine.tls=true
-      - traefik.http.routers.redmine.entrypoints=websecure
       - traefik.http.services.redmine.loadbalancer.server.port=3000
 
 volumes:

@@ -25,6 +25,8 @@ services:
     environment:
       POSTGRES_PASSWORD: ${SVC_PWD}
       PGPASSFILE: /etc/postgresql/.pgpass
+    labels:
+      - SERVICE_NAME=postgres
 
   postgres01:
     container_name: postgres01
@@ -51,6 +53,8 @@ services:
     environment:
       POSTGRES_PASSWORD: ${SVC_PWD_01}
       PGPASSFILE: /etc/postgresql/.pgpass
+    labels:
+      - SERVICE_NAME=postgres01
 
   postgres02:
     container_name: postgres02
@@ -77,6 +81,8 @@ services:
     environment:
       POSTGRES_PASSWORD: ${SVC_PWD_02}
       PGPASSFILE: /etc/postgresql/.pgpass
+    labels:
+      - SERVICE_NAME=postgres02
 
 volumes:
   postgresdata:

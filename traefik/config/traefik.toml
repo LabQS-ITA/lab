@@ -21,15 +21,5 @@
   watch = true
   network = "netlab01"
 
-[providers.consulCatalog]
-  exposedByDefault = false
-  connectAware = true
-  prefix = "labqs"
-  watch = true
-  [providers.consulCatalog.endpoint]
-      address = "consul:8500"
-      scheme = "http"
-      datacenter = "labqs"
-
 [providers.file]
   filename = "/etc/traefik/dynamic.toml"

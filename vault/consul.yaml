@@ -15,6 +15,7 @@ services:
       - netlab01
     volumes:
       - $PWD/config/consul/server.json:/consul/config/server.json:ro
+      - $PWD/config/consul/acl:/consul/acl:ro
       - consuldata:/consul/data:rw
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

@@ -37,8 +37,8 @@ services:
       - traefik.http.routers.drone.tls=true
       - traefik.http.routers.drone.tls.certresolver=le
       - traefik.http.services.drone.loadbalancer.server.port=80
-      - SERVICE_80_NAME=drone-web
-      - SERVICE_443_NAME=drone-websecure
+      - SERVICE_80_NAME=drone
+      - SERVICE_443_NAME=drone
 
   docker:
     image: drone/drone-runner-docker

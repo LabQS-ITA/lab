@@ -12,6 +12,8 @@ services:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
+    environment:
+      - CONSUL_HTTP_TOKEN=5fdbf566-22f2-73e2-2525-9eaf6ad8d781
     command:
       - agent
 

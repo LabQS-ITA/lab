@@ -23,6 +23,7 @@
 
 [providers.consulCatalog]
   exposedByDefault = false
+  connectAware = true
   prefix = "labqs"
   watch = true
   [providers.consulCatalog.endpoint]

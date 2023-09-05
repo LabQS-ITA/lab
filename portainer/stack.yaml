@@ -23,6 +23,8 @@ services:
       - traefik.http.middlewares.portainer-stripprefix.stripprefix.forceSlash=true
       - traefik.http.routers.portainer.middlewares=portainer-stripprefix@docker
       - SERVICE_9000_NAME=portainer
+      - SERVICE_8000_NAME=portainer
+      - SERVICE_8443_NAME=portainer
 
 volumes:
   portainerdata:

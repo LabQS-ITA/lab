@@ -13,8 +13,7 @@ services:
     ports:
       - ':5432'
     networks:
-      netlab01:
-        ipv4_address: ${POSTGRES_HOST}
+      - netlab01
     volumes:
       - postgresdata:/var/lib/postgresql/data
       - $PWD/postgres/config:/etc/postgresql
@@ -39,8 +38,7 @@ services:
     ports:
       - ':5432'
     networks:
-      netlab01:
-        ipv4_address: ${POSTGRES_HOST01}
+      - netlab01
     volumes:
       - postgresdata01:/var/lib/postgresql/data
       - $PWD/postgres01/config:/etc/postgresql
@@ -65,8 +63,7 @@ services:
     ports:
       - ':5432'
     networks:
-      netlab01:
-        ipv4_address: ${POSTGRES_HOST02}
+      - netlab01
     volumes:
       - postgresdata02:/var/lib/postgresql/data
       - $PWD/postgres02/config:/etc/postgresql

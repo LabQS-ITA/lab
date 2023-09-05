@@ -23,7 +23,7 @@ services:
       - VAULT_ADDR=http://vault:8200
       - VAULT_TOKEN=hvs.7HcXGRSOD1iTOVw6oQ5PnazS
       - CONSUL_HTTP_ADDR=consul:8500
-      - CONSUL_HTTP_TOKEN=53c1a702-595a-7057-1897-56574ff92539
+      - CONSUL_HTTP_TOKEN=5b078c99-9291-6273-79b7-3cc1ae7183db
     labels:
       - traefik.enable=true
       - traefik.http.routers.consul.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/ui`, `/v1`)

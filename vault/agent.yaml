@@ -8,6 +8,7 @@ services:
       - netlab01
     volumes:
       - $PWD/config/consul/agent.json:/consul/config/agent.json:ro
+      - $PWD/config/consul/acl:/consul/acl:ro
       - consulagentdata:/consul/data:rw
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

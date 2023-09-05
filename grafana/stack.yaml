@@ -5,7 +5,7 @@ services:
     image: grafana/grafana:latest
     restart: unless-stopped
     ports:
-      - ':3001'
+      - ':3000'
     networks:
       - netlab01
     volumes:
@@ -19,7 +19,7 @@ services:
       - traefik.enable=true
       - traefik.http.routers.grafana.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/grafana`)
       - traefik.http.routers.grafana.tls=true
-      - traefik.http.services.grafana.loadbalancer.server.port=3001
+      - traefik.http.services.grafana.loadbalancer.server.port=3000
       - traefik.http.middlewares.grafana-stripprefix.stripprefix.prefixes=/grafana
       - traefik.http.middlewares.grafana-stripprefix.stripprefix.forceSlash=true
       - traefik.http.routers.grafana.middlewares=grafana-stripprefix@docker

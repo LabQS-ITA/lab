@@ -46,6 +46,7 @@ services:
       - traefik.http.middlewares.registry-stripprefix.stripprefix.prefixes=/registry
       - traefik.http.middlewares.registry-stripprefix.stripprefix.forceSlash=true
       - traefik.http.routers.registry.middlewares=registry-stripprefix@docker
+      - SERVICE_NAME=registry
 
 volumes:
   registrydata:

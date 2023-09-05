@@ -23,7 +23,7 @@
   entrypoints = ["websecure"]
 
 [providers.consulCatalog]
-  exposedByDefault = false
+  exposedByDefault = true
   prefix = "labqs"
   watch = true
   network = "netlab01"

@@ -20,11 +20,14 @@
   exposedByDefault = false
   watch = true
   network = "netlab01"
+  entrypoints = ["websecure"]
 
 [providers.consulCatalog]
   exposedByDefault = false
   prefix = "labqs"
   watch = true
+  network = "netlab01"
+  entrypoints = ["websecure"]
   [providers.consulCatalog.endpoint]
       address = "consul:8500"
       scheme = "http"

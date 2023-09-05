@@ -19,10 +19,5 @@
         "interval": "10s",
         "timeout": "1s"
       }
-    },
-    "acl": {
-      "enabled": true,
-      "default_policy": "allow",
-      "enable_token_persistence": true
     }
 }

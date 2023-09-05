@@ -42,6 +42,8 @@ else
 
 fi
 
+docker stop registrator && true
+
 consul $1 $CONFIG_ENV
 
 consulAgent $1 $CONFIG_ENV

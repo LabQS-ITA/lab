@@ -1,5 +1,6 @@
 {
     "node_name": "consul_agent",
+    "encrypt": "caxvA+s7Rr2Sb1u9tltNDR9v0p+OjDYz23yGe6fdIzw=",
     "server": false,
     "datacenter": "labqs",
     "data_dir": "/consul/data",

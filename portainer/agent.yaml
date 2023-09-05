@@ -4,7 +4,7 @@ services:
     container_name: portainer_agent
     image: portainer/agent:latest
     restart: unless-stopped
-    expose:
+    ports:
       - '9001'
     networks:
       - netlab01

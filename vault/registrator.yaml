@@ -8,10 +8,7 @@ services:
       - netlab01
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    command: 
-      - "--ip 127.0.0.1"
-      - "--consul-host consul"
-      - "--consul-port 8500"
+    command: "serviceregistrator --ip 127.0.0.1 --consul-host consul --consul-port 8500 --loglevel DEBUG --debug"
     extra_hosts:
       - host.docker.internal:host-gateway
 

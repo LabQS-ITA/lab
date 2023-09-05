@@ -28,7 +28,6 @@ services:
       - traefik.http.routers.consul.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/ui`, `/v1`)
       - traefik.http.routers.consul.tls=true
       - traefik.http.services.consul.loadbalancer.server.port=8500
-      - SERVICE_8600_NAME=consul-dns
     command: consul agent -server -data-dir=/consul/data -config-dir=/consul/config -bootstrap-expect=1 -client 0.0.0.0
 
 volumes:

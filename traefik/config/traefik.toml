@@ -22,7 +22,8 @@
   network = "netlab01"
 
 [providers.consulCatalog]
-  exposedByDefault = false
+  exposedByDefault = true
+  connectAware = true
   prefix = "labqs"
   watch = true
   [providers.consulCatalog.endpoint]

@@ -10,7 +10,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     command: "--ip 127.0.0.1 --consul-host host.docker.internal --consul-port 8500 --loglevel DEBUG --debug"
     extra_hosts:
-      - host.docker.internal:consul
+      - host.docker.internal:host-gateway
 
 networks:
   netlab01:

@@ -23,7 +23,7 @@ services:
       - traefik.http.middlewares.grafana-stripprefix.stripprefix.prefixes=/grafana
       - traefik.http.middlewares.grafana-stripprefix.stripprefix.forceSlash=true
       - traefik.http.routers.grafana.middlewares=grafana-stripprefix@docker
-      - SERVICE_3001_NAME=grafana
+      - SERVICE_NAME=grafana
 
 networks:
   netlab01:

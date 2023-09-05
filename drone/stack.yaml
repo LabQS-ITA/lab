@@ -4,6 +4,8 @@ services:
     container_name: drone
     image: drone/drone:latest
     restart: unless-stopped
+    expose:
+      - '443'
     ports:
       - ':80'
     networks:

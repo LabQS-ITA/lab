@@ -35,6 +35,7 @@ services:
       - traefik.http.middlewares.labelstudio-stripprefix.stripprefix.forceSlash=true
       - traefik.http.routers.labelstudio.middlewares=labelstudio-stripprefix@docker
       - SERVICE_8000_NAME=labelstudio
+      - SERVICE_8080_NAME=labelstudio
     command: label-studio-uwsgi
 
 networks:

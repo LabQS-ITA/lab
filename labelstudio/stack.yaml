@@ -5,7 +5,7 @@ services:
     image: heartexlabs/label-studio:latest
     restart: unless-stopped
     ports:
-      - ':8000'
+      - ':8080'
     networks:
       - netlab01
     volumes:
@@ -30,11 +30,11 @@ services:
       - traefik.enable=true
       - traefik.http.routers.labelstudio.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/labelstudio`)
       - traefik.http.routers.labelstudio.tls=true
-      - traefik.http.services.labelstudio.loadbalancer.server.port=8000
+      - traefik.http.services.labelstudio.loadbalancer.server.port=8080
       - traefik.http.middlewares.labelstudio-stripprefix.stripprefix.prefixes=/labelstudio
       - traefik.http.middlewares.labelstudio-stripprefix.stripprefix.forceSlash=true
       - traefik.http.routers.labelstudio.middlewares=labelstudio-stripprefix@docker
-      - SERVICE_8000_NAME=labelstudio
+      - SERVICE_8080_NAME=labelstudio
     command: label-studio-uwsgi
 
 networks:

@@ -1,6 +1,5 @@
 {
     "node_name": "consul",
-    "encrypt": "caxvA+s7Rr2Sb1u9tltNDR9v0p+OjDYz23yGe6fdIzw=",
     "server": true,
     "ui_config": { "enabled" : true },
     "datacenter": "labqs",

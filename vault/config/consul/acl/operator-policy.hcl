@@ -7,3 +7,6 @@ key_prefix "" {
 node_prefix "" {
   policy = "read"
 }
+acl "" {
+  policy = "read"
+}

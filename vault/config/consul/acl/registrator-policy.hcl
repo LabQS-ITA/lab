@@ -1,3 +1,3 @@
-key "" {
+service_prefix "" {
   policy = "write"
 }

@@ -8,5 +8,5 @@ node_prefix "" {
   policy = "read"
 }
 acl "" {
-  policy = "read"
+  policy = "view"
 }

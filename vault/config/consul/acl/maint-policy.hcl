@@ -8,5 +8,5 @@ node_prefix "" {
   policy = "write"
 }
 acl "" {
-  policy = "write"
+  policy = "update"
 }

@@ -7,6 +7,3 @@ key_prefix "" {
 node_prefix "" {
   policy = "write"
 }
-acl "" {
-  policy = "update"
-}

@@ -1,9 +1,27 @@
-service_prefix "" {
-  policy = "write"
+acl = "write"
+agent_prefix "" {
+	policy = "write"
+}
+event_prefix "" {
+	policy = "write"
 }
 key_prefix "" {
-  policy = "write"
+	policy = "write"
 }
+keyring = "write"
 node_prefix "" {
-  policy = "write"
+	policy = "write"
+}
+operator = "write"
+mesh = "write"
+peering = "write"
+query_prefix "" {
+	policy = "write"
+}
+service_prefix "" {
+	policy = "write"
+	intentions = "write"
+}
+session_prefix "" {
+	policy = "write"
 }

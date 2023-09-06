@@ -1,15 +1,10 @@
 {
-    "node_name": "consul",
-    "server": true,
-    "ui_config": { "enabled" : true },
-    "datacenter": "labqs",
-    "data_dir": "/consul/data",
-    "log_level":"INFO",
-    "addresses": { "http" : "0.0.0.0" },
-	"connect": { "enabled": true },
-    "acl": {
-      "enabled": true,
-      "default_policy": "allow",
-      "enable_token_persistence": true
-    }
+  "node_name": "consul",
+  "server": true,
+  "ui_config": { "enabled" : true },
+  "datacenter": "labqs",
+  "data_dir": "/consul/data",
+  "log_level":"INFO",
+  "addresses": { "http" : "0.0.0.0" },
+	"connect": { "enabled": true }
 }

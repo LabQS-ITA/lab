@@ -12,6 +12,7 @@ services:
       - netlab01
     volumes:
       - $PWD/config/vault:/vault/config:ro
+      - $PWD/config/vault/acl:/vault/acl:ro
       - vaultdata:/vault/file:rw
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

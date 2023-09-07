@@ -58,7 +58,7 @@
                 - 'envconsul'
                 - '-pristine'
                 - '-upcase'
-                - '-consul-addr=consul'
+                - '-consul-addr=consul:8500'
                 - '-prefix=labqs/{{target_inventory}}/redmine'
                 - '-prefix=labqs/{{target_inventory}}/redmine'
                 - '/usr/local/bin/ruby bin/rails server -b 0.0.0.0'

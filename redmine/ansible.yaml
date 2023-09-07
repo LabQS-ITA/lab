@@ -28,8 +28,8 @@
               container_name: redmine
               image: labqs/redmine:latest
               build:
-                context: .
-                dockerfile: "{{builddir.path}}/Dockerfile"
+                context: "{{builddir.path}}"
+                dockerfile: Dockerfile
                 target: redminebase
               restart: unless-stopped
               expose:

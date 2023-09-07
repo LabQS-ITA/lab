@@ -2,7 +2,11 @@ services:
 
   redmine:
     container_name: redmine
-    image: redmine:alpine
+    image: labqs/redmine:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.redmine
+      target: redminebase
     restart: unless-stopped
     ports:
       - ':3000'
@@ -26,6 +30,14 @@ services:
       - traefik.http.routers.redmine.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/redmine`)
       - traefik.http.routers.redmine.tls=true
       - traefik.http.services.redmine.loadbalancer.server.port=3000
+    command: 
+      - 'envconsul'
+      - '-pristine'
+      - '-upcase'
+      - '-consul-addr=consul'
+      - '-prefix=labqs/{{target_inventory}}/redmine'
+      - '-prefix=labqs/{{target_inventory}}/redmine'
+      - '/usr/local/bin/ruby bin/rails server -b 0.0.0.0'
 
 volumes:
   redminedata:

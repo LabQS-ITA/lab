@@ -31,8 +31,13 @@ services:
       - traefik.http.routers.redmine.tls=true
       - traefik.http.services.redmine.loadbalancer.server.port=3000
     command: 
-      - '/usr/local/bin/ruby'
-      - 'bin/rails'
+      - 'envconsul'
+      - '-upcase'
+      - '-consul-addr=consul:8500'
+      - '-consul-token=6b8a9882-1f79-699e-46b0-e01ff87cec1a'
+      - '-prefix=labqs/tst/redmine'
+      - '-prefix=labqs/tst/postgres'
+      - 'rails'
       - 'server'
       - '-b'
       - '0.0.0.0'

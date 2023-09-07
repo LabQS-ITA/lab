@@ -26,7 +26,6 @@
     - name: Build project container
       community.docker.docker_compose:
         project_name: redmine
-        build: true
         definition:
           services:
 
@@ -78,7 +77,7 @@
             netlab01:
               external: true
         env_file: '{{builddir.path}}/.env'
-        build: yes
+        build: true
 
     - name: Remove the temporary directory
       ansible.builtin.file:

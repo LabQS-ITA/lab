@@ -26,6 +26,7 @@
     - name: Build project container
       community.docker.docker_compose:
         project_name: redmine
+        build: true
         definition:
           services:
 

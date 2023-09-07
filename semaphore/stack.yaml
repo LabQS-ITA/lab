@@ -33,7 +33,7 @@ services:
       - traefik.http.routers.semaphore.rule=Host(`${CM_LAB_DOMAIN}`)
       - traefik.http.routers.semaphore.tls=true
       - traefik.http.routers.semaphore.tls.certresolver=le
-      - traefik.http.services.semaphore.loadbalancer.server.port=2222
+      - traefik.http.services.semaphore.loadbalancer.server.port=8080
 
 networks:
   netlab01:

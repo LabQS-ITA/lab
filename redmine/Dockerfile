@@ -2,6 +2,7 @@ FROM docker.io/redmine:alpine AS redminebase
 
 USER root
 
-RUN sed -i '/edge/s/^#//' /etc/apk/repositories
-RUN cat /etc/apk/repositories
-RUN apk add envconsul
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
+    echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
+    echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
+    apk add envconsul

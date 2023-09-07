@@ -23,7 +23,7 @@ services:
       REDMINE_DB_POSTGRES: postgres
       REDMINE_DB_DATABASE: redmine
       REDMINE_DB_USERNAME: redmine
-      REDMINE_DB_PASSWORD: a5c7a2940a7cb7aa
+      REDMINE_DB_PASSWORD: ${POSTGRES_PWD}
       RAILS_RELATIVE_URL_ROOT: /redmine
     labels:
       - traefik.enable=true
@@ -31,13 +31,11 @@ services:
       - traefik.http.routers.redmine.tls=true
       - traefik.http.services.redmine.loadbalancer.server.port=3000
     command: 
-      - 'envconsul'
-      - '-upcase'
+      - 'envconsul -upcase'
       - '-consul-addr=consul:8500'
       - '-consul-token=6b8a9882-1f79-699e-46b0-e01ff87cec1a'
-      - '-prefix=labqs/tst/redmine'
-      - '-prefix=labqs/tst/postgres'
-      - 'rails server -b 0.0.0.0'
+      - '-prefix=labqs/tst/redmine -prefix=labqs/tst/postgres'
+      - '/usr/local/bin/ruby bin/rails server -b 0.0.0.0'
 
 volumes:
   redminedata:

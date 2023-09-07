@@ -29,7 +29,7 @@
               image: labqs/redmine:latest
               build:
                 context: .
-                dockerfile: Dockerfile
+                dockerfile: "{{builddir.path}}/Dockerfile"
                 target: redminebase
               restart: unless-stopped
               expose:

@@ -71,7 +71,6 @@
           networks:
             netlab01:
               external: true
-        env_file: '{{builddir.path}}/.env'
         build: true
 
     - name: Remove the temporary directory

@@ -32,7 +32,6 @@ services:
       - traefik.http.services.redmine.loadbalancer.server.port=3000
     command: 
       - 'envconsul'
-      - '-pristine'
       - '-upcase'
       - '-consul-addr=consul:8500'
       - '-consul-token=6b8a9882-1f79-699e-46b0-e01ff87cec1a'

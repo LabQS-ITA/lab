@@ -56,7 +56,6 @@
                 - traefik.http.services.redmine.loadbalancer.server.port=3000
               command: 
                 - 'envconsul'
-                - '-pristine'
                 - '-upcase'
                 - '-consul-addr=consul:8500'
                 - '-prefix=labqs/{{target_inventory}}/redmine'

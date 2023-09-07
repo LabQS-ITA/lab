@@ -1,3 +1,3 @@
-service_prefix "labqs/tst/" {
+service_prefix "labqs/tst" {
   policy = "read"
 }

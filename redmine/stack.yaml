@@ -36,8 +36,8 @@ services:
       - '-upcase'
       - '-consul-addr=consul'
       - '-consul-token=6b8a9882-1f79-699e-46b0-e01ff87cec1a'
-      - '-prefix=labqs/{{target_inventory}}/redmine'
-      - '-prefix=labqs/{{target_inventory}}/redmine'
+      - '-prefix=labqs/tst/redmine'
+      - '-prefix=labqs/tst/redmine'
       - '/usr/local/bin/ruby bin/rails server -b 0.0.0.0'
 
 volumes:

@@ -1,1 +1,1 @@
-FROM lscr.io/linuxserver/nextcloud:latest AS nextcloudbase
+FROM docker.io/nextcloud:stable-apache AS nextcloudbase

@@ -12,3 +12,5 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositori
 USER redmine
 
 CMD ["start.sh"]
+
+COPY start.sh /usr/local/bin/

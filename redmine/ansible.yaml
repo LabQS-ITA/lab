@@ -60,7 +60,11 @@
                 - '-consul-addr=consul:8500'
                 - '-prefix=labqs/redmine'
                 - '-prefix=labqs/postgres'
-                - '/usr/local/bin/ruby bin/rails server -b 0.0.0.0'
+                - '/usr/local/bin/ruby'
+                - 'bin/rails'
+                - 'server'
+                - '-b'
+                - '0.0.0.0'
 
           volumes:
             redminedata:

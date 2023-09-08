@@ -44,8 +44,11 @@
                 - /etc/timezone:/etc/timezone:ro
                 - /etc/localtime:/etc/localtime:ro
               environment:
+                REDMINE_DB_POSTGRES: postgres
+                REDMINE_DB_DATABASE: redmine
+                REDMINE_DB_USERNAME: redmine
+                REDMINE_DB_PASSWORD: a5c7a2940a7cb7aa
                 RAILS_RELATIVE_URL_ROOT: /redmine
-                CONSUL_TOKEN: 6b8a9882-1f79-699e-46b0-e01ff87cec1a
               labels:
                 - traefik.enable=true
                 - traefik.http.routers.redmine.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/redmine`)

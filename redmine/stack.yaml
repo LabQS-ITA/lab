@@ -35,12 +35,10 @@ services:
       - '-upcase'
       - '-consul-addr=consul:8500'
       - '-consul-token=6b8a9882-1f79-699e-46b0-e01ff87cec1a'
-      - '-prefix=labqs/tst/redmine'
-      - '-prefix=labqs/tst/postgres'
-      - 'rails'
-      - 'server'
-      - '-b'
-      - '0.0.0.0'
+      - '-prefix=labqs/redmine'
+      - '-prefix=labqs/postgres'
+      - '-once'
+      - 'env'
 
 volumes:
   redminedata:

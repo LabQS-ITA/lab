@@ -85,3 +85,12 @@ Em [ISSUES.md](./ISSUES.md) listamos os procedimentos para relatos de problemas 
 1. Integração com sistemas de autenticação de alunos e pesquisadores do ITA;
 1. Integração e cadastro de pesquisadores convidados;
 1. Integração com sistema de envio de mensagens por e-mail para notificação de pesquisadores e relatores.
+
+# Consul
+
+```sh
+consul kv put labqs/redmine/POSTGRES_DB redmine && \
+consul kv put labqs/redmine/POSTGRES_HOST postgres && \
+consul kv put labqs/redmine/POSTGRES_USR redmine && \
+consul kv put labqs/postgres/POSTGRES_PWD a5c7a2940a7cb7aa
+```

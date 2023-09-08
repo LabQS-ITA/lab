@@ -1,1 +1,1 @@
-FROM docker.io/nextcloud/all-in-one:latest AS nextcloudbase
+FROM lscr.io/linuxserver/nextcloud:latest AS nextcloudbase

@@ -15,4 +15,3 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["/start.sh"]
 
 COPY start.sh /
-COPY --from=redminebase docker-entrypoint.sh /

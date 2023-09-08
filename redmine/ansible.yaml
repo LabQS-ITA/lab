@@ -44,10 +44,6 @@
                 - /etc/timezone:/etc/timezone:ro
                 - /etc/localtime:/etc/localtime:ro
               environment:
-                REDMINE_DB_POSTGRES: ${POSTGRES_HOST}
-                REDMINE_DB_DATABASE: ${POSTGRES_DB}
-                REDMINE_DB_USERNAME: ${POSTGRES_USR}
-                REDMINE_DB_PASSWORD: ${POSTGRES_PWD}
                 RAILS_RELATIVE_URL_ROOT: /redmine
               labels:
                 - traefik.enable=true

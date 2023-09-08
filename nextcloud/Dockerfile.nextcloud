@@ -1,1 +1,1 @@
-FROM docker.io/nextcloud:latest AS nextcloudbase
+FROM docker.io/nextcloud/all-in-one:latest AS nextcloudbase

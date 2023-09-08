@@ -1,5 +1,7 @@
 FROM docker.io/redmine:alpine AS redminebase
 
+ENV CONSUL_TOKEN %%CONSUL_TOKEN%%
+
 USER root
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
@@ -8,3 +10,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositori
     apk add envconsul
 
 USER redmine
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
+RUN envconsul -consul-addr=consul:8500 -consul-token="$CONSUL_TOKEN" -prefix=labqs/redmine -prefix=labqs/postgres rails server -b 0.0.0.0

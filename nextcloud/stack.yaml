@@ -2,7 +2,11 @@ services:
 
   nextcloud:
     container_name: nextcloud
-    image: nextcloud:latest
+    image: labqs/nextcloud:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.nextcloud
+      target: nextcloudbase
     restart: unless-stopped
     ports:
       - ':80'

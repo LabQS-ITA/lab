@@ -19,6 +19,8 @@ services:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
+    environment:
+      RAILS_RELATIVE_URL_ROOT: /redmine
     labels:
       - traefik.enable=true
       - traefik.http.routers.redmine.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/redmine`)

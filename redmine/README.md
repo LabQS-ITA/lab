@@ -92,6 +92,5 @@ Em [ISSUES.md](./ISSUES.md) listamos os procedimentos para relatos de problemas 
 consul kv put labqs/redmine/REDMINE_DB_POSTGRES postgres && \
 consul kv put labqs/redmine/REDMINE_DB_DATABASE redmine && \
 consul kv put labqs/redmine/REDMINE_DB_USERNAME redmine && \
-consul kv put labqs/redmine/REDMINE_DB_PASSWORD a5c7a2940a7cb7aa && \
-consul kv put labqs/redmine/RAILS_RELATIVE_URL_ROOT /redmine
+consul kv put labqs/redmine/REDMINE_DB_PASSWORD a5c7a2940a7cb7aa
 ```

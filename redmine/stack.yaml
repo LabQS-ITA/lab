@@ -19,12 +19,6 @@ services:
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-    environment:
-      REDMINE_DB_POSTGRES: postgres
-      REDMINE_DB_DATABASE: redmine
-      REDMINE_DB_USERNAME: redmine
-      REDMINE_DB_PASSWORD: ${POSTGRES_PWD}
-      RAILS_RELATIVE_URL_ROOT: /redmine
     labels:
       - traefik.enable=true
       - traefik.http.routers.redmine.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/redmine`)
@@ -37,7 +31,11 @@ services:
       - '-consul-token=6b8a9882-1f79-699e-46b0-e01ff87cec1a'
       - '-prefix=labqs/redmine'
       - '-prefix=labqs/postgres'
-      - '-exec=env'
+      - '/usr/local/bin/ruby'
+      - 'bin/rails'
+      - 'server'
+      - '-b'
+      - '0.0.0.0'
 
 volumes:
   redminedata:

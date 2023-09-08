@@ -89,8 +89,9 @@ Em [ISSUES.md](./ISSUES.md) listamos os procedimentos para relatos de problemas 
 # Consul
 
 ```sh
-consul kv put labqs/redmine/POSTGRES_DB redmine && \
-consul kv put labqs/redmine/POSTGRES_HOST postgres && \
-consul kv put labqs/redmine/POSTGRES_USR redmine && \
-consul kv put labqs/postgres/POSTGRES_PWD a5c7a2940a7cb7aa
+consul kv put labqs/redmine/REDMINE_DB_POSTGRES postgres && \
+consul kv put labqs/redmine/REDMINE_DB_DATABASE redmine && \
+consul kv put labqs/redmine/REDMINE_DB_USERNAME redmine && \
+consul kv put labqs/redmine/REDMINE_DB_PASSWORD a5c7a2940a7cb7aa && \
+consul kv put labqs/redmine/RAILS_RELATIVE_URL_ROOT /redmine
 ```

@@ -1,16 +1,16 @@
 FROM docker.io/redmine:alpine AS redminebase
 
-ENV CONSUL_TOKEN %%CONSUL_TOKEN%%
+# ENV CONSUL_TOKEN %%CONSUL_TOKEN%%
 
-USER root
+# USER root
 
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
-    echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
-    echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
-    apk add envconsul
+# RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
+#     echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
+#     echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
+#     apk add envconsul
 
-USER redmine
+# USER redmine
 
-CMD ["/start.sh"]
+# CMD ["/start.sh"]
 
-COPY start.sh /
+# COPY start.sh /

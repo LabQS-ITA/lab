@@ -21,12 +21,21 @@ services:
       - /etc/localtime:/etc/localtime:ro
     environment:
       RAILS_RELATIVE_URL_ROOT: /redmine
-      CONSUL_TOKEN: 6b8a9882-1f79-699e-46b0-e01ff87cec1a
     labels:
       - traefik.enable=true
       - traefik.http.routers.redmine.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/redmine`)
       - traefik.http.routers.redmine.tls=true
       - traefik.http.services.redmine.loadbalancer.server.port=3000
+    command:
+      - 'envconsul'
+      - '-consul-addr=consul:8500'
+      - '-consul-token=6b8a9882-1f79-699e-46b0-e01ff87cec1a'
+      - '-prefix=labqs/redmine'
+      - '-prefix=labqs/postgres'
+      - 'rails'
+      - 'server'
+      - '-b'
+      - '0.0.0.0'
 
 volumes:
   redminedata:

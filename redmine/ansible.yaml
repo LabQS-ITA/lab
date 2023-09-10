@@ -26,6 +26,11 @@
           - "stack.yaml"
         build: true
         debug: true
+      register: output
+
+    - name: Show results
+      ansible.builtin.debug:
+        var: output
 
     - name: Remove the temporary directory
       ansible.builtin.file:

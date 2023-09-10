@@ -24,8 +24,6 @@
         project_src: "{{builddir.path}}"
         files:
           - "stack.yaml"
-          - "../common/networks.yaml"
-          - "../common/volumes.{{target_inventory}}.yaml"
         build: true
 
     - name: Remove the temporary directory

@@ -25,6 +25,7 @@
         files:
           - "stack.yaml"
         build: true
+        debug: true
 
     - name: Remove the temporary directory
       ansible.builtin.file:

@@ -21,10 +21,11 @@
     - name: Build project container
       community.docker.docker_compose:
         project_name: redmine
+        project_src: "{{builddir.path}}/redmine"
         files:
-          - 'stack.yaml'
-          - '../common/networks.yaml'
-          - '../common/volumes.{{target_inventory}}.yaml'
+          - "stack.yaml"
+          - "../common/networks.yaml"
+          - "../common/volumes.{{target_inventory}}.yaml"
         build: true
 
     - name: Remove the temporary directory

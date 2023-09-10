@@ -21,7 +21,7 @@
     - name: Build project container
       community.docker.docker_compose:
         project_name: redmine
-        project_src: "{{builddir.path}}/redmine"
+        project_src: "{{builddir.path}}/lab/redmine"
         files:
           - "stack.yaml"
           - "../common/networks.yaml"

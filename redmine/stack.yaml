@@ -30,6 +30,11 @@ services:
       - traefik.http.routers.redmine.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/redmine`)
       - traefik.http.routers.redmine.tls=true
       - traefik.http.services.redmine.loadbalancer.server.port=3000
+    command:
+      - 'rails'
+      - 'server'
+      - '-b'
+      - '0.0.0.0'
 
 volumes:
   redminedata:

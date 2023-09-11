@@ -796,20 +796,13 @@ acdiec = [g.gr_mem for g in grp.getgrall() if g.gr_name == 'acdiec'][0]
 
 def config_by_user(spawner):
     username = spawner.user.name
-    volumes_list = {
-        'jupyterhub-user-{username}': notebook_dir,
-    }
+    spawner.volumes['jupyterhub-user-{username}'] = notebook_dir
     if username in mec:
-        volumes_list.append({ 
-            'jupyterdata': {"bind": '/home/jovyan/work/data', "mode": "ro"},
-            'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
-            'flualfadata': {"bind": "/home/jovyan/work/flualfadata", "mode": "ro"},
-        })
+        spawner.volumes['jupyterdata'] = {"bind": '/home/jovyan/work/data', "mode": "ro"}
+        spawner.volumes['jupytershared'] = {"bind": '/home/jovyan/work/shared', "mode": "rw"}
+        spawner.volumes['flualfadata'] = {"bind": "/home/jovyan/work/flualfadata", "mode": "ro"}
     if username in acdiec:
-        volumes_list.append({ 
-            'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
-        })
-    spawner.volumes = volumes_list
+        spawner.volumes['jupytershared'] = {"bind": '/home/jovyan/work/shared', "mode": "rw"}
 
 c.DockerSpawner.pre_spawn_hook = config_by_user
 

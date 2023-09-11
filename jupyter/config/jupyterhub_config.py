@@ -796,20 +796,30 @@ acdiec = [g.gr_mem for g in grp.getgrall() if g.gr_name == 'acdiec'][0]
 
 def config_by_user(spawner):
     username = spawner.user.name
-    spawner.volumes['jupyterhub-user-{username}'] = notebook_dir
-
+    
     if username in mec:
-        spawner.volumes['jupyterdata'] = {"bind": '/home/jovyan/work/data', "mode": "ro"}
-        spawner.volumes['jupytershared'] = {"bind": '/home/jovyan/work/shared', "mode": "rw"}
-        spawner.volumes['flualfadata'] = {"bind": "/home/jovyan/work/flualfadata", "mode": "ro"}
-    
-    if username in acd:
-        spawner.volumes['jupyteracd'] = {"bind": '/home/jovyan/work/acd', "mode": "rw"}
-    
-    if username in acdiec:
-        spawner.volumes['jupytershared'] = {"bind": '/home/jovyan/work/shared', "mode": "rw"}
-        spawner.volumes['jupyteracdiec'] = {"bind": '/home/jovyan/work/acdiec', "mode": "rw"}
-
+        spawner.volumes = {
+            'jupyterhub-user-{username}': notebook_dir,
+            'jupyterdata': {"bind": '/home/jovyan/work/data', "mode": "ro"},
+            'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
+            'flualfadata': {"bind": "/home/jovyan/work/flualfadata", "mode": "ro"},
+        }
+    elif username in acd:
+        spawner.volumes = {
+            'jupyterhub-user-{username}': notebook_dir,
+            'jupyteracd': {"bind": '/home/jovyan/work/acd', "mode": "rw"},
+        }
+    elif username in acdiec:
+        spawner.volumes = {
+            'jupyterhub-user-{username}': notebook_dir,
+            'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
+            'jupyteracd': {"bind": '/home/jovyan/work/acd', "mode": "rw"},
+            'jupyteracdiec': {"bind": '/home/jovyan/work/acdiec', "mode": "rw"},
+        }
+    else:
+        spawner.volumes = {
+            'jupyterhub-user-{username}': notebook_dir,
+        }
 
 c.DockerSpawner.pre_spawn_hook = config_by_user
 

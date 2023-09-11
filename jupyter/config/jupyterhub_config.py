@@ -396,7 +396,7 @@ c.JupyterHub.concurrent_spawn_limit = 5
 #  .. versionadded:: 0.9
 #  Default: ''
 # c.JupyterHub.hub_bind_url = ''
-c.JupyterHub.bind_url = 'http://127.0.0.1:8000/jupyter/'
+# c.JupyterHub.bind_url = 'http://127.0.0.1:8000/jupyter/'
 
 ## The ip or hostname for proxies and spawners to use
 #          for connecting to the Hub.

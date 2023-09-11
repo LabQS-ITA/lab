@@ -2,7 +2,7 @@
 # Distributed under the terms of the Modified BSD License.
 ARG OWNER=labqs
 ARG BASE_CONTAINER=$OWNER/base-notebook
-FROM docker.io/$BASE_CONTAINER
+FROM $BASE_CONTAINER
 
 LABEL maintainer="LabQS Project <https://github.com/labqs-ita>"
 

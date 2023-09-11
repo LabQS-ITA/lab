@@ -202,7 +202,7 @@ volumes:
       o: bind
 
   consulagentdata:
-    name:   consulagentdata:
+    name:   consulagentdata
     driver: local
     driver_opts:
       type: none

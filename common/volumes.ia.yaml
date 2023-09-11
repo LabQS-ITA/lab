@@ -28,6 +28,22 @@ volumes:
       device: /volumes/jupyterdata/_data
       o: bind
 
+  jupyteracd:
+    name: jupyteracd
+    driver: local
+    driver_opts:
+      type: none
+      device: /volumes/jupyteracd/_data
+      o: bind
+
+  jupyteracdiec:
+    name: jupyteracdiec
+    driver: local
+    driver_opts:
+      type: none
+      device: /volumes/jupyteracdiec/_data
+      o: bind
+
   traefikdata:
     name: traefikdata
     driver: local

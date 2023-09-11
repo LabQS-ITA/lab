@@ -14,13 +14,10 @@ RUN pip install --upgrade pip && \
     usermod --password $(echo ${GPES_PASSWORD} | openssl passwd -1 -stdin) gpes && \
     usermod -a -G users gpes && \
     usermod -a -G mec gpes && \
-    usermod -a -G acdiec gpes && \
-    usermod -a -G acdiec gpes && \
     adduser --disabled-password --gecos "" gpesdev && \
     usermod --password $(echo ${GPES_DEV_PASSWORD} | openssl passwd -1 -stdin) gpesdev && \
     usermod -a -G users gpesdev && \
     usermod -a -G acd gpesdev && \
-    usermod -a -G acdiec gpesdev && \
     adduser --disabled-password --gecos "" aline && \
     usermod --password $(echo s3cr37 | openssl passwd -1 -stdin) aline && \
     usermod -a -G users aline && \
@@ -32,7 +29,6 @@ RUN pip install --upgrade pip && \
     adduser --disabled-password --gecos "" gomesjm && \
     usermod --password $(echo c0r0n@ | openssl passwd -1 -stdin) gomesjm && \
     usermod -a -G users gomesjm && \
-    usermod -a -G acd gomesjm && \
     usermod -a -G acdiec gomesjm && \
     adduser --disabled-password --gecos "" carla && \
     usermod --password $(echo l1gh7@ | openssl passwd -1 -stdin) carla && \

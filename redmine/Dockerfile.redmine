@@ -8,4 +8,5 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositori
     echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
     apk add envconsul
 
-COPY start.sh /
+CMD envconsul -consul-addr=consul:8500 -consul-token=$CONSUL_TOKEN \
+    -prefix=labqs/redmine rails server --log-to-stdout --daemon --binding=0.0.0.0

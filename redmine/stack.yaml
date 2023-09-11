@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile.redmine
       target: redminebase
-    restart: unless-stopped
+    
     expose:
       - '3000'
     networks:
@@ -26,7 +26,7 @@ services:
       - traefik.http.routers.redmine.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/redmine`)
       - traefik.http.routers.redmine.tls=true
       - traefik.http.services.redmine.loadbalancer.server.port=3000
-    command: [ 'start.sh' ]
+    command: [ '/build/start.sh' ]
 
 volumes:
   redminedata:

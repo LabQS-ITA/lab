@@ -18,7 +18,7 @@
         dest: "{{builddir.path}}"
         recursive: yes
 
-    - name: Build project container (debug)
+    - name: Build project container
       community.docker.docker_compose:
         project_name: redmine
         project_src: "{{builddir.path}}"

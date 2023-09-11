@@ -15,6 +15,7 @@ services:
     volumes:
       - $PWD/config/config.ru:/usr/src/redmine/config.ru
       - $PWD/config/configuration.yml:/usr/src/redmine/config/configuration.yml
+      - $PWD/config/database.yml:/usr/src/redmine/config/database.yml
       - redminedata:/usr/src/redmine/files
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/timezone:/etc/timezone:ro

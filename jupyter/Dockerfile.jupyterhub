@@ -5,42 +5,36 @@ ARG GPES_DEV_PASSWORD=s3cr37
 
 ENV NVIDIA_VISIBLE_DEVICES all
 
-RUN pip install --upgrade pip
-
-RUN pip install jupyter_server dockerspawner wrapspawner --upgrade
-
-RUN groupadd -f mec
-
-RUN adduser --disabled-password --gecos "" gpes
-RUN usermod --password $(echo ${GPES_PASSWORD} | openssl passwd -1 -stdin) gpes
-RUN usermod -a -G users gpes
-RUN usermod -a -G mec gpes
-
-RUN adduser --disabled-password --gecos "" gpesdev
-RUN usermod --password $(echo ${GPES_DEV_PASSWORD} | openssl passwd -1 -stdin) gpesdev
-RUN usermod -a -G users gpesdev
-
-RUN adduser --disabled-password --gecos "" aline
-RUN usermod --password $(echo s3cr37 | openssl passwd -1 -stdin) aline
-RUN usermod -a -G users aline
-RUN usermod -a -G mec aline
-
-RUN adduser --disabled-password --gecos "" wesley
-RUN usermod --password $(echo s3cr37 | openssl passwd -1 -stdin) wesley
-RUN usermod -a -G users wesley
-RUN usermod -a -G mec wesley
-
-RUN groupadd -f acd
-
-RUN groupadd -f acdiec
-
-RUN adduser --disabled-password --gecos "" gomesjm
-RUN usermod --password $(echo c0r0n@ | openssl passwd -1 -stdin) gomesjm
-RUN usermod -a -G users gomesjm
-RUN usermod -a -G acd gomesjm
-RUN usermod -a -G acdiec gomesjm
-
-RUN adduser --disabled-password --gecos "" carla
-RUN usermod --password $(echo l1gh7@ | openssl passwd -1 -stdin) carla
-RUN usermod -a -G users carla
-RUN usermod -a -G acdiec carla
+RUN pip install --upgrade pip && \
+    pip install jupyter_server dockerspawner wrapspawner --upgrade && \
+    groupadd -f acd && \
+    groupadd -f acdiec && \
+    groupadd -f mec && \
+    adduser --disabled-password --gecos "" gpes && \
+    usermod --password $(echo ${GPES_PASSWORD} | openssl passwd -1 -stdin) gpes && \
+    usermod -a -G users gpes && \
+    usermod -a -G mec gpes && \
+    usermod -a -G acdiec gpes && \
+    usermod -a -G acdiec gpes && \
+    adduser --disabled-password --gecos "" gpesdev && \
+    usermod --password $(echo ${GPES_DEV_PASSWORD} | openssl passwd -1 -stdin) gpesdev && \
+    usermod -a -G users gpesdev && \
+    usermod -a -G acdiec gpesdev && \
+    usermod -a -G acdiec gpesdev && \
+    adduser --disabled-password --gecos "" aline && \
+    usermod --password $(echo s3cr37 | openssl passwd -1 -stdin) aline && \
+    usermod -a -G users aline && \
+    usermod -a -G mec aline && \
+    adduser --disabled-password --gecos "" wesley && \
+    usermod --password $(echo s3cr37 | openssl passwd -1 -stdin) wesley && \
+    usermod -a -G users wesley && \
+    usermod -a -G mec wesley && \
+    adduser --disabled-password --gecos "" gomesjm && \
+    usermod --password $(echo c0r0n@ | openssl passwd -1 -stdin) gomesjm && \
+    usermod -a -G users gomesjm && \
+    usermod -a -G acd gomesjm && \
+    usermod -a -G acdiec gomesjm && \
+    adduser --disabled-password --gecos "" carla && \
+    usermod --password $(echo l1gh7@ | openssl passwd -1 -stdin) carla && \
+    usermod -a -G users carla && \
+    usermod -a -G acdiec carla

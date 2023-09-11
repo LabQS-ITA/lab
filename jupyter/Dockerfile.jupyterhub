@@ -19,7 +19,7 @@ RUN pip install --upgrade pip && \
     adduser --disabled-password --gecos "" gpesdev && \
     usermod --password $(echo ${GPES_DEV_PASSWORD} | openssl passwd -1 -stdin) gpesdev && \
     usermod -a -G users gpesdev && \
-    usermod -a -G acdiec gpesdev && \
+    usermod -a -G acd gpesdev && \
     usermod -a -G acdiec gpesdev && \
     adduser --disabled-password --gecos "" aline && \
     usermod --password $(echo s3cr37 | openssl passwd -1 -stdin) aline && \

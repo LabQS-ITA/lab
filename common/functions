@@ -334,13 +334,14 @@ function gitea() {
         echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) > .env
     fi
 
+    sed -i 's\@SVC_HOST\'$LAB_DOMAIN'\g' config/app.ini
+
     docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
 }
 
 function drone() {
-
-    
+  
     cd ../drone
     echo '* Drone *'
 

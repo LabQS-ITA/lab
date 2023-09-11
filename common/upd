@@ -21,6 +21,7 @@ fi
 
 git checkout ../httpd/panel/config/sites/000-default.conf
 git checkout ../traefik/config/traefik.toml
+git checkout ../gitea/config/app.ini
 git checkout ../semaphore/config/config.json
 git checkout ../traefik/config/dynamic.toml
 git checkout ../rabbitmq/config/rabbitmng/20-user.conf
@@ -40,6 +41,8 @@ if [[ -f ../traefik/.env ]]; then
     sed -i 's\@ST_LAB_DOMAIN\'$ST_LAB_DOMAIN'\g' ../traefik/config/dynamic.toml
     sed -i 's\@ST_C_LAB_DOMAIN\'$ST_C_LAB_DOMAIN'\g' ../traefik/config/dynamic.toml
 fi
+
+[[ -f ../gitea/.env ]] && sed -i 's\@SVC_HOST\'$LAB_DOMAIN'\g' ../gitea/config/app.ini
 
 [[ -f ../rabbitmq/.env ]] && sed -i 's/@SVC_PWD/'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../rabbitmq/.env)'/g' ../rabbitmq/config/rabbitmng/20-user.conf
 

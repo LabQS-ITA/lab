@@ -792,24 +792,23 @@ mec = [g.gr_mem for g in grp.getgrall() if g.gr_name == 'mec'][0]
 
 acd = [g.gr_mem for g in grp.getgrall() if g.gr_name == 'acd'][0]
 
+acdiec = [g.gr_mem for g in grp.getgrall() if g.gr_name == 'acdiec'][0]
+
 def config_by_user(spawner):
     username = spawner.user.name
+    spawner.volumes = {
+        'jupyterhub-user-{username}': notebook_dir,
+    }
     if username in mec:
-        spawner.volumes = { 
-            'jupyterhub-user-{username}': notebook_dir,
+        spawner.volumes.append({ 
             'jupyterdata': {"bind": '/home/jovyan/work/data', "mode": "ro"},
             'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
             'flualfadata': {"bind": "/home/jovyan/work/flualfadata", "mode": "ro"},
-        }
-    elif username in acd:
-        spawner.volumes = { 
-            'jupyterhub-user-{username}': notebook_dir,
+        })
+    if username in acdiec:
+        spawner.volumes.append({ 
             'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
-        }
-    else:
-        spawner.volumes = { 
-            'jupyterhub-user-{username}': notebook_dir,
-        }
+        })
 
 c.DockerSpawner.pre_spawn_hook = config_by_user
 

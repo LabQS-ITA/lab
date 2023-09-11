@@ -32,7 +32,15 @@ RUN usermod -a -G mec wesley
 
 RUN groupadd -f acd
 
+RUN groupadd -f acdiec
+
 RUN adduser --disabled-password --gecos "" gomesjm
 RUN usermod --password $(echo c0r0n@ | openssl passwd -1 -stdin) gomesjm
 RUN usermod -a -G users gomesjm
 RUN usermod -a -G acd gomesjm
+RUN usermod -a -G acdiec gomesjm
+
+RUN adduser --disabled-password --gecos "" carla
+RUN usermod --password $(echo l1gh7@ | openssl passwd -1 -stdin) carla
+RUN usermod -a -G users carla
+RUN usermod -a -G acdiec carla

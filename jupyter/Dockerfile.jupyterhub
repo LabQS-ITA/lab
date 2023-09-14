@@ -2,6 +2,7 @@ FROM docker.io/jupyterhub/jupyterhub:latest AS jupyterhubbase
 
 ARG GPES_PASSWORD=s3cr37
 ARG GPES_DEV_PASSWORD=s3cr37
+ARG GPES_USR_PASSWORD=s3cr37
 
 ENV NVIDIA_VISIBLE_DEVICES all
 
@@ -19,18 +20,18 @@ RUN pip install --upgrade pip && \
     usermod -a -G users gpesdev && \
     usermod -a -G acd gpesdev && \
     adduser --disabled-password --gecos "" aline && \
-    usermod --password $(echo s3cr37 | openssl passwd -1 -stdin) aline && \
+    usermod --password $(echo ${GPES_USR_PASSWORD} | openssl passwd -1 -stdin) aline && \
     usermod -a -G users aline && \
     usermod -a -G mec aline && \
     adduser --disabled-password --gecos "" wesley && \
-    usermod --password $(echo s3cr37 | openssl passwd -1 -stdin) wesley && \
+    usermod --password $(echo ${GPES_USR_PASSWORD} | openssl passwd -1 -stdin) wesley && \
     usermod -a -G users wesley && \
     usermod -a -G mec wesley && \
     adduser --disabled-password --gecos "" gomesjm && \
-    usermod --password $(echo c0r0n@ | openssl passwd -1 -stdin) gomesjm && \
+    usermod --password $(echo ${GPES_USR_PASSWORD} | openssl passwd -1 -stdin) gomesjm && \
     usermod -a -G users gomesjm && \
     usermod -a -G acdiec gomesjm && \
     adduser --disabled-password --gecos "" carla && \
-    usermod --password $(echo l1gh7@ | openssl passwd -1 -stdin) carla && \
+    usermod --password $(echo ${GPES_USR_PASSWORD} | openssl passwd -1 -stdin) carla && \
     usermod -a -G users carla && \
     usermod -a -G acdiec carla

@@ -1,8 +1,8 @@
 FROM docker.io/jupyterhub/jupyterhub:latest AS jupyterhubbase
 
-ARG GPES_PASSWORD=s3cr37
-ARG GPES_DEV_PASSWORD=s3cr37
-ARG GPES_USR_PASSWORD=s3cr37
+ARG GPES_PASSWORD=public
+ARG GPES_DEV_PASSWORD=public
+ARG GPES_USR_PASSWORD=public
 
 ENV NVIDIA_VISIBLE_DEVICES all
 

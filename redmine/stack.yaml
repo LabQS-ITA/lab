@@ -7,9 +7,8 @@ services:
       context: .
       dockerfile: Dockerfile.redmine
       target: redminebase
-    
-    expose:
-      - '3000'
+    ports:
+      - ':3000'
     networks:
       - netlab01
     volumes:

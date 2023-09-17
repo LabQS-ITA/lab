@@ -21,7 +21,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
     environment:
       RAILS_RELATIVE_URL_ROOT: /redmine
-      CONSUL_TOKEN: 06f41a91-146c-a786-eb00-64a9fe7b9442
+      CONSUL_TOKEN: 7d8b9b93-d1b4-bebd-523a-837bc70c9025
     labels:
       - traefik.enable=true
       - traefik.http.routers.redmine.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/redmine`)

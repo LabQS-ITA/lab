@@ -4,3 +4,10 @@ production:
  host: <%= ENV['REDMINE_DB_POSTGRES'] %>
  username: <%= ENV['REDMINE_DB_USERNAME'] %>
  password: <%= ENV['REDMINE_DB_PASSWORD'] %>
+
+development:
+ adapter: postgresql
+ database: <%= ENV['REDMINE_DB_DATABASE'] %>
+ host: <%= ENV['REDMINE_DB_POSTGRES'] %>
+ username: <%= ENV['REDMINE_DB_USERNAME'] %>
+ password: <%= ENV['REDMINE_DB_PASSWORD'] %>

@@ -237,19 +237,7 @@ default:
 # specific configuration options for production environment
 # that overrides the default ones
 production:
- adapter: postgresql
- database: <%= ENV['REDMINE_DB_DATABASE'] %>
- host: <%= ENV['REDMINE_DB_POSTGRES'] %>
- username: <%= ENV['REDMINE_DB_USERNAME'] %>
- password: <%= ENV['REDMINE_DB_PASSWORD'] %>
-
 
 # specific configuration options for development environment
 # that overrides the default ones
 development:
- adapter: postgresql
- database: <%= ENV['REDMINE_DB_DATABASE'] %>
- host: <%= ENV['REDMINE_DB_POSTGRES'] %>
- username: <%= ENV['REDMINE_DB_USERNAME'] %>
- password: <%= ENV['REDMINE_DB_PASSWORD'] %>
-

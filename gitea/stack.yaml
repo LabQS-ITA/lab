@@ -5,7 +5,7 @@ services:
     image: gitea/gitea
     restart: unless-stopped
     ports:
-      - '3000'
+      - ':3000'
     networks:
       - netlab01
     volumes:

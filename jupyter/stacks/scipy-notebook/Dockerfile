@@ -57,10 +57,14 @@ RUN mamba install --quiet --yes \
     'statsmodels' \
     'sympy' \
     'numpy' \
-    'cupy-cuda11x' \
     'widgetsnbextension'\
     'xlrd' && \
     mamba clean --all -f -y && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
+
+RUN pip3 install \
+    'cupy-cuda11x' && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 

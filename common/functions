@@ -335,7 +335,7 @@ function gitea() {
     fi
 
     sed -i 's\@SVC_HOST\'$LAB_DOMAIN'\g' config/app.ini
-    sed -i 's\@SMTP_PWD\'$SMTP_PWD'\g' config/app.ini
+    sed -i 's\@SMTP_PWD\'$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env)'\g' config/app.ini
 
     docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --detach
 
@@ -418,7 +418,7 @@ function redmine() {
         echo 'POSTGRES_PWD='$(awk -F'=' '$1 =="SVC_PWD" {print $2}' ../postgresql/.env) > .env
     fi
 
-    sed -i 's\@SMTP_PWD\'$SMTP_PWD'\g' config/configuration.yml
+    sed -i 's\@SMTP_PWD\'$(awk -F'=' '$1 =="SMTP_PWD" {print $2}' ./.env)'\g' config/configuration.yml
 
     docker compose -f stack.yaml up --build --detach
 

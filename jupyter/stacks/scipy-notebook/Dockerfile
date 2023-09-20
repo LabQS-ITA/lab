@@ -56,6 +56,8 @@ RUN mamba install --quiet --yes \
     'sqlalchemy' \
     'statsmodels' \
     'sympy' \
+    'numpy' \
+    'cupy-cuda11x' \
     'widgetsnbextension'\
     'xlrd' && \
     mamba clean --all -f -y && \

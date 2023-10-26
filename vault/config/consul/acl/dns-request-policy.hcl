@@ -1,5 +1,5 @@
 node_prefix "" {
-  policy = "write"
+  policy = "read"
 }
 service_prefix "" {
   policy = "read"

@@ -1,0 +1,28 @@
+services:
+
+  rancher:
+    container_name: rancher
+    image: rancher/rancher:latest
+    restart: unless-stopped
+    privileged: true
+    ports:
+      - ':443'
+    networks:
+      - netlab01
+    volumes:
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.rancher.rule=Host(`${LAB_DOMAIN}`) && PathPrefix(`/rancher`)
+      - traefik.http.routers.rancher.tls=true
+      - traefik.http.services.rancher.loadbalancer.server.port=443
+      - traefik.http.middlewares.rancher-stripprefix.stripprefix.prefixes=/rancher
+      - traefik.http.middlewares.rancher-stripprefix.stripprefix.forceSlash=true
+      - traefik.http.routers.rancher.middlewares=rancher-stripprefix@docker
+      - SERVICE_443_NAME=rancher
+
+networks:
+  netlab01:
+    external: true

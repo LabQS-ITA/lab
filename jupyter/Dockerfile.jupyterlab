@@ -80,3 +80,8 @@ RUN mamba install --quiet --yes -c 'conda-forge/label/gcc7'  \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
+
+RUN wget https://julialang-s3.julialang.org/bin/linux/x64/1.9/julia-1.9.3-linux-x86_64.tar.gz && \
+    tar zxvf julia-1.9.3-linux-x86_64.tar.gz && \
+    mv julia-1.9.3 /usr/share && \
+    echo 'export PATH="$PATH:/usr/share/julia-1.9.3/bin"' > /etc/profile.d/julia

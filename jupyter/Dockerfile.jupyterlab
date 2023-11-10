@@ -32,7 +32,7 @@ RUN curl -o julia-1.9.3-linux-x86_64.tar.gz https://julialang-s3.julialang.org/b
     tar zxvf julia-1.9.3-linux-x86_64.tar.gz && \
     mkdir /usr/share/julia-1.9.3 && \
     mv julia-1.9.3/* /usr/share/julia-1.9.3 && \
-    echo 'export PATH="$PATH:/usr/share/julia-1.9.3/bin"' > /etc/profile.d/julia
+    echo 'export PATH="$PATH:/usr/share/julia-1.9.3/bin"' > /etc/profile.d/julia && \
     chmod +x /etc/profile.d/julia
 
 RUN npm install -g ijavascript && \

@@ -28,6 +28,12 @@ RUN apt-get update && \
     apt-transport-https && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
+RUN curl -o julia-1.9.3-linux-x86_64.tar.gz https://julialang-s3.julialang.org/bin/linux/x64/1.9/julia-1.9.3-linux-x86_64.tar.gz && \
+    tar zxvf julia-1.9.3-linux-x86_64.tar.gz && \
+    mkdir /usr/share/julia-1.9.3 && \
+    mv julia-1.9.3/* /usr/share/julia-1.9.3 && \
+    echo 'export PATH="$PATH:/usr/share/julia-1.9.3/bin"' > /etc/profile.d/julia
+
 USER ${NB_UID}
 
 RUN npm install -g ijavascript && \
@@ -80,9 +86,3 @@ RUN mamba install --quiet --yes -c 'conda-forge/label/gcc7'  \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
-
-RUN curl -o julia-1.9.3-linux-x86_64.tar.gz https://julialang-s3.julialang.org/bin/linux/x64/1.9/julia-1.9.3-linux-x86_64.tar.gz && \
-    tar zxvf julia-1.9.3-linux-x86_64.tar.gz && \
-    mkdir /usr/share/julia-1.9.3 && \
-    mv julia-1.9.3/* /usr/share/julia-1.9.3 && \
-    echo 'export PATH="$PATH:/usr/share/julia-1.9.3/bin"' > /etc/profile.d/julia

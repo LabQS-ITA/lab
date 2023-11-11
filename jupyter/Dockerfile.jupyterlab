@@ -33,7 +33,7 @@ RUN curl -o julia-1.8.5-linux-x86_64.tar.gz https://julialang-s3.julialang.org/b
     mkdir /usr/share/julia-1.8.5 && \
     mv julia-1.8.5/* /usr/share/julia-1.8.5 && \
     echo 'export PATH="$PATH:/usr/share/julia-1.8.5/bin"' > /etc/profile.d/julia.sh && \
-    chmod +x /etc/profile.d/julia.sh
+    chmod +x /etc/profile.d/julia.sh && \
     rm -rf julia-1.8.5*
 
 RUN npm install -g ijavascript && \

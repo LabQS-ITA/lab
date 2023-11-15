@@ -12,7 +12,10 @@ Pkg.update();
 Pkg.add([
     "HDF5",
     "IJulia",
-    "Pluto"
+    "Pluto",
+    "PyPlot",
+    "Crayons",
+    "OffsetArrays"
 ]);
 Pkg.precompile();
 '

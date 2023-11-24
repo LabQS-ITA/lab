@@ -15,7 +15,8 @@ Pkg.add([
     "Pluto",
     "PyPlot",
     "Crayons",
-    "OffsetArrays"
+    "OffsetArrays",
+    "DelimitedFiles"
 ]);
 Pkg.precompile();
 '

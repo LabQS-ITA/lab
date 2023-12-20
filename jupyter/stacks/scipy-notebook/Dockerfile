@@ -57,8 +57,9 @@ RUN mamba install --quiet --yes \
     'statsmodels' \
     'sympy' \
     'numpy' \
-    'widgetsnbextension'\
-    'xlrd' && \
+    'widgetsnbextension' \
+    'xlrd' \
+    'einops' && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"

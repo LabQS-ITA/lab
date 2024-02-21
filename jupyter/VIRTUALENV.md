@@ -77,3 +77,8 @@ conda remove -n game --all
 ```
 
 Agora todos os pacotes instalados no ambiente virtual foram excluídos.
+
+
+### Trabalhando com **conda** no Jupyter
+
+Veja: [Usando **conda** no projeto Jupyter](./VIRTUALENV.md)

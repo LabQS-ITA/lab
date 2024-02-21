@@ -81,4 +81,4 @@ Agora todos os pacotes instalados no ambiente virtual foram excluídos.
 
 ### Trabalhando com **conda** no Jupyter
 
-Veja: [Usando **conda** no projeto Jupyter](./VIRTUALENV.md)
+Veja: [Usando **conda** no projeto Jupyter](./CONDA.md)

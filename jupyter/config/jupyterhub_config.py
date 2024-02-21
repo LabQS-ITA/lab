@@ -788,6 +788,8 @@ c.DockerSpawner.extra_host_config = {
 notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR', '/home/jovyan')
 c.DockerSpawner.notebook_dir = notebook_dir
 
+fab = [g.gr_mem for g in grp.getgrall() if g.gr_name == 'fab'][0]
+
 mec = [g.gr_mem for g in grp.getgrall() if g.gr_name == 'mec'][0]
 
 acd = [g.gr_mem for g in grp.getgrall() if g.gr_name == 'acd'][0]
@@ -797,7 +799,12 @@ acdiec = [g.gr_mem for g in grp.getgrall() if g.gr_name == 'acdiec'][0]
 def config_by_user(spawner):
     username = spawner.user.name
     
-    if username in mec:
+    if username in fab:
+        spawner.volumes = {
+            'jupyterhub-user-{username}': notebook_dir,
+            'fabdata': {"bind": '/home/jovyan/work/fabdata', "mode": "rw"},
+        }
+    elif username in mec:
         spawner.volumes = {
             'jupyterhub-user-{username}': notebook_dir,
             'jupyterdata': {"bind": '/home/jovyan/work/data', "mode": "ro"},

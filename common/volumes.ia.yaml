@@ -8,6 +8,14 @@ volumes:
       device: /import/flualfadata/documents
       o: bind
 
+  fabdata:
+    name: fabdata
+    driver: local
+    driver_opts:
+      type: none
+      device: /import/hom.labqs/fab
+      o: bind
+
   certificates:
     name: certificates
     driver: local

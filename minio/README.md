@@ -25,6 +25,12 @@ mc admin logs st-hom-maint
 
 ### Criar bucket
 
+#### FAB
+
+```sh
+mc mb st-hom-maint/fabdata --with-versioning
+```
+
 #### FluAlfa
 
 ```sh
@@ -33,6 +39,13 @@ mc mb st-hom-maint/flualfa --with-versioning
 ```
 
 ### Criar usuários
+
+#### FAB
+
+```sh
+mc admin user add st-hom-maint fab-ro `openssl rand -hex 8`
+mc admin user add st-hom-maint fab-rw `openssl rand -hex 8`
+```
 
 #### FluAlfa
 
@@ -67,6 +80,13 @@ mc admin user add st-hom-maint labelstudio-rw `openssl rand -hex 8`
 
 ### Criar grupo
 
+#### FAB
+
+```sh
+mc admin group add st-hom-maint fab-ro fab-ro
+mc admin group add st-hom-maint fab-rw fab-rw
+```
+
 #### FluAlfa
 
 ```sh
@@ -99,6 +119,44 @@ mc admin group add st-hom-maint labelstudio-rw labelstudio-rw
 
 
 ### Criar política
+
+#### FAB
+
+Arquivo `fab-ro.policy.json`:
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [{
+        "Effect": "Allow",
+        "Action": [
+            "s3:GetBucketLocation",
+            "s3:GetObject",
+            "s3:ListBucket"
+        ],
+        "Resource": [
+                "arn:aws:s3:::fabdata/*"
+        ]
+    }]
+}
+```
+
+Arquivo `fab-rw.policy.json`:
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [{
+        "Effect": "Allow",
+        "Action": [
+            "s3:*"
+        ],
+        "Resource": [
+                "arn:aws:s3:::fabdata/*"
+        ]
+    }]
+}
+```
 
 #### FluAlfa
 
@@ -181,6 +239,15 @@ Arquivo `labelstudio-rw.policy.json`
 
 
 ### Associar _política_ ao _grupo_:
+
+#### FluAlfa
+
+```sh
+mc admin policy create st-hom-maint fab-ro ./fab-ro.policy.json && \
+mc admin policy attach st-hom-maint fab-ro --group fab-ro && \
+mc admin policy create st-hom-maint fab-rw ./fab-rw.policy.json && \
+mc admin policy attach st-hom-maint fab-rw --group fab-rw
+```
 
 #### FluAlfa
 

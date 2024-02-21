@@ -3,6 +3,7 @@ FROM docker.io/jupyterhub/jupyterhub:latest AS jupyterhubbase
 ARG GPES_PASSWORD=public
 ARG GPES_DEV_PASSWORD=public
 ARG GPES_USR_PASSWORD=public
+ARG FAB_USR_PASSWORD=public
 
 ENV NVIDIA_VISIBLE_DEVICES all
 
@@ -11,6 +12,7 @@ RUN pip install --upgrade pip && \
     groupadd -f acd && \
     groupadd -f acdiec && \
     groupadd -f mec && \
+    groupadd -f fab && \
     adduser --disabled-password --gecos "" gpes && \
     usermod --password $(echo ${GPES_PASSWORD} | openssl passwd -1 -stdin) gpes && \
     usermod -a -G users gpes && \
@@ -34,4 +36,8 @@ RUN pip install --upgrade pip && \
     adduser --disabled-password --gecos "" carla && \
     usermod --password $(echo ${GPES_USR_PASSWORD} | openssl passwd -1 -stdin) carla && \
     usermod -a -G users carla && \
-    usermod -a -G acdiec carla
+    usermod -a -G acdiec carla && \
+    adduser --disabled-password --gecos "" renatocraf && \
+    usermod --password $(echo ${GPES_USR_PASSWORD} | openssl passwd -1 -stdin) renatocraf && \
+    usermod -a -G users renatocraf && \
+    usermod -a -G fab renatocraf

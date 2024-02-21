@@ -1,3 +1,7 @@
+# Usando **conda** no projeto Jupyter
+
+_Author: CAP AV Carlos Renato de Andrade Figueiredo_
+
 Criar um arquivo `.condarc` na pasta do `<projeto>`:
 
 ```yaml

@@ -1,5 +1,5 @@
 ARG OWNER=labqs
-ARG BASE_CONTAINER=$OWNER/minimal-notebook-cuda12
+ARG BASE_CONTAINER=$OWNER/minimal-notebook-cuda11
 FROM $BASE_CONTAINER AS jupyterfabbase
 
 # Fix: https://github.com/hadolint/hadolint/wiki/DL4006

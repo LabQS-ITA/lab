@@ -1,7 +1,7 @@
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
 ARG OWNER=labqs
-ARG BASE_CONTAINER=$OWNER/base-notebook-cuda12
+ARG BASE_CONTAINER=$OWNER/base-notebook-cuda11
 FROM $BASE_CONTAINER
 
 LABEL maintainer="LabQS Project <https://github.com/labqs-ita>"

@@ -828,6 +828,11 @@ def config_by_user(spawner):
             'jupyterhub-user-{username}': notebook_dir,
         }
 
+c.DockerSpawner.allowed_images = {
+    "base":"labqs/jupyterfab",
+    "lab":"labqs/jupyterlab",
+}
+
 c.DockerSpawner.pre_spawn_hook = config_by_user
 
 network_name = os.environ.get('DOCKER_NETWORK_NAME', 'bridge')

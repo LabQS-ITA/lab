@@ -25,7 +25,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /export/jupyterdata
+      device: /export/data/jupyterdata
       o: bind
 
   jupytershared:
@@ -33,7 +33,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /export/jupytershared
+      device: /export/data/jupytershared
       o: bind
 
   jupyteracd:

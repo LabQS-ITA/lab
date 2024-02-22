@@ -8,8 +8,7 @@
 # Setup GPU support
 # https://tustunkok.github.io/tutorial/notes-to-myself/vps/2020/05/16/how-to-create-a-gpu-powered-containerized-multi-user-jupyterhub-research-server.html
 # ARG ROOT_CONTAINER=nvidia/cuda:11.7.1-runtime-ubuntu20.04
-# ARG ROOT_CONTAINER=nvidia/cuda:11.7.1-cudnn8-runtime-ubuntu20.04
-ARG ROOT_CONTAINER=nvidia/cuda:12.2.2-cudnn8-runtime-ubuntu20.04
+ARG ROOT_CONTAINER=nvidia/cuda:11.7.1-cudnn8-runtime-ubuntu20.04
 
 FROM docker.io/$ROOT_CONTAINER
 
@@ -29,12 +28,18 @@ USER root
 # features (e.g., download as all possible file formats)
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update --yes && \
+    # - apt-get upgrade is run to patch known vulnerabilities in apt-get packages as
+    #   the ubuntu base image is rebuilt too seldom sometimes (less than once a month)
     apt-get upgrade --yes && \
     apt-get install --yes --no-install-recommends \
+    # - bzip2 is necessary to extract the micromamba executable.
     bzip2 \
     ca-certificates \
     locales \
     sudo \
+    # - tini is installed as a helpful container entrypoint that reaps zombie
+    #   processes and such of the actual executable we want to start, see
+    #   https://github.com/krallin/tini#why-tini for details.
     tini \
     wget && \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \

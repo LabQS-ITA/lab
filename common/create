@@ -7,8 +7,8 @@ docker network create --driver bridge netlab02 --subnet='172.18.0.0/16'
 if [ $1 == "ia" ]; then
     docker volume create -d local -o type=none -o device="/import/hom.labqs/fab" -o o=bind fabdata
     docker volume create -d local -o type=none -o device="/import/flualfadata/documents" -o o=bind flualfadata
-    docker volume create -d local -o type=none -o device="/volumes/jupyterdata/_data" -o o=bind jupyterdata
-    docker volume create -d local -o type=none -o device="/volumes/jupytershared/_data" -o o=bind jupytershared
+    docker volume create -d local -o type=none -o device="/export/data/jupyterdata" -o o=bind jupyterdata
+    docker volume create -d local -o type=none -o device="/export/data/jupytershared" -o o=bind jupytershared
 
     sudo chown gpes:users /import/hom.labqs/fab
     sudo chown gpes:users /volumes/flualfadata/_data

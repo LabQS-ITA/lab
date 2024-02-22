@@ -829,7 +829,7 @@ def config_by_user(spawner):
         }
 
 c.DockerSpawner.allowed_images = {
-    "base":"labqs/jupyterfab",
+    "cuda12":"labqs/jupyterfab",
     "lab":"labqs/jupyterlab",
 }
 

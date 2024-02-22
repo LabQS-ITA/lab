@@ -20,9 +20,9 @@ RUN apt-get update --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # JavaScript/R pre-requisites
-RUN apt-get update && \
-    apt-get upgrade --yes && \
-    apt-get install --yes --no-install-recommends \
+RUN apt-get update
+RUN apt-get upgrade --yes
+RUN apt-get install --yes --no-install-recommends \
     software-properties-common \
     libzmq3-dev \
     nodejs \
@@ -35,8 +35,8 @@ RUN apt-get update && \
     gcc \
     git-lfs \
     nvidia-cuda-toolkit \
-    apt-transport-https && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+    apt-transport-https
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN npm install -g ijavascript && \
     ijsinstall

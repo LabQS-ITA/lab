@@ -43,5 +43,5 @@ else
 fi
 
 
-# jupyterBuild $1 $CONFIG_ENV
+jupyterBuild $1 $CONFIG_ENV
 jupyter $1 $CONFIG_ENV

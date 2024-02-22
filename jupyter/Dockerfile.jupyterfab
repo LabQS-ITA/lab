@@ -20,20 +20,20 @@ RUN apt-get update --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # JavaScript/R pre-requisites
-RUN apt-get install --yes --no-install-recommends \
-    software-properties-common \
-    libzmq3-dev \
-    nodejs \
-    npm \
-    fonts-dejavu \
-    unixodbc \
-    unixodbc-dev \
-    r-cran-rodbc \
-    gfortran \
-    gcc \
-    git-lfs \
-    nvidia-cuda-toolkit \
-    apt-transport-https
+#RUN apt-get install --yes --no-install-recommends \
+RUN apt-get install --yes --no-install-recommends software-properties-common
+RUN apt-get install --yes --no-install-recommends libzmq3-dev
+RUN apt-get install --yes --no-install-recommends nodejs
+RUN apt-get install --yes --no-install-recommends npm
+RUN apt-get install --yes --no-install-recommends fonts-dejavu
+RUN apt-get install --yes --no-install-recommends unixodbc
+RUN apt-get install --yes --no-install-recommends unixodbc-dev
+RUN apt-get install --yes --no-install-recommends r-cran-rodbc
+RUN apt-get install --yes --no-install-recommends gfortran
+RUN apt-get install --yes --no-install-recommends gcc
+RUN apt-get install --yes --no-install-recommends git-lfs
+RUN apt-get install --yes --no-install-recommends nvidia-cuda-toolkit
+RUN apt-get install --yes --no-install-recommends apt-transport-https
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN npm install -g ijavascript && \

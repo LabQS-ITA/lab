@@ -302,7 +302,7 @@ function jupyterBuild() {
     cd docker-stacks-foundation
     docker build --tag labqs/docker-stacks-foundation --rm .
 
-    cd docker-stacks-foundation-cuda12
+    cd ../docker-stacks-foundation-cuda12
     docker build --tag labqs/docker-stacks-foundation-cuda12 --rm .
 
     cd ../base-notebook

@@ -10,7 +10,7 @@
 # ARG ROOT_CONTAINER=nvidia/cuda:11.7.1-runtime-ubuntu20.04
 # ARG ROOT_CONTAINER=nvidia/cuda:11.7.1-cudnn8-runtime-ubuntu20.04
 # ARG ROOT_CONTAINER=nvidia/cuda:12.2.2-cudnn8-runtime-ubuntu20.04
-ARG ROOT_CONTAINER=nvidia/cuda:12.3.1-runtime-ubuntu20.04
+ARG ROOT_CONTAINER=nvidia/cuda:12.2.2-cudnn8-runtime-ubuntu22.04
 
 FROM docker.io/$ROOT_CONTAINER
 

@@ -302,20 +302,20 @@ function jupyterBuild() {
     cd docker-stacks-foundation
     docker build --tag labqs/docker-stacks-foundation --rm .
 
-    cd ../docker-stacks-foundation-cuda11
-    docker build --tag labqs/docker-stacks-foundation-cuda11 --rm .
+    cd ../docker-stacks-foundation-cuda12
+    docker build --tag labqs/docker-stacks-foundation-cuda12 --rm .
 
     cd ../base-notebook
     docker build --tag labqs/base-notebook --rm .
 
-    cd ../base-notebook-cuda11
-    docker build --tag labqs/base-notebook-cuda11 --rm .
+    cd ../base-notebook-cuda12
+    docker build --tag labqs/base-notebook-cuda12 --rm .
 
     cd ../minimal-notebook
     docker build --tag labqs/minimal-notebook --rm .
 
-    cd ../minimal-notebook-cuda11
-    docker build --tag labqs/minimal-notebook-cuda11 --rm .
+    cd ../minimal-notebook-cuda12
+    docker build --tag labqs/minimal-notebook-cuda12 --rm .
 
     cd ../scipy-notebook
     docker build --tag labqs/scipy-notebook --rm .

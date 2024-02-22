@@ -1,7 +1,7 @@
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
 ARG OWNER=labqs
-ARG BASE_CONTAINER=$OWNER/docker-stacks-foundation-cuda11
+ARG BASE_CONTAINER=$OWNER/docker-stacks-foundation-cuda12
 FROM $BASE_CONTAINER
 
 LABEL maintainer="LabQS Project <https://github.com/labqs-ita>"

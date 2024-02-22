@@ -13,6 +13,7 @@ RUN apt-get update && \
     apt-get upgrade --yes && \
     apt-get install --yes --no-install-recommends \
     software-properties-common \
+    gcc \
     git-lfs \
     nvidia-cuda-toolkit \
     apt-transport-https && \

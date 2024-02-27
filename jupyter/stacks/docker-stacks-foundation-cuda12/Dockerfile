@@ -33,6 +33,8 @@ RUN apt-get update --yes && \
     #   the ubuntu base image is rebuilt too seldom sometimes (less than once a month)
     apt-get upgrade --yes && \
     apt-get install --yes --no-install-recommends \
+    # - python-dev is necessary to Nvidia triton
+    python3-dev \
     # - bzip2 is necessary to extract the micromamba executable.
     bzip2 \
     ca-certificates \

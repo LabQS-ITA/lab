@@ -34,6 +34,7 @@ RUN apt-get update --yes && \
     apt-get upgrade --yes && \
     apt-get install --yes --no-install-recommends \
     # - python-dev is necessary to Nvidia triton
+    build-essential \
     python3-dev \
     # - bzip2 is necessary to extract the micromamba executable.
     bzip2 \

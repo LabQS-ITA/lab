@@ -1,5 +1,22 @@
 services:
 
+  jupyterssm:
+    build:
+      context: .
+      dockerfile: Dockerfile.jupyterssm
+      target: jupyterssmbase
+    networks:
+      - netlab01
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    environment:
+      JUPYTER_HOST: jupyter
+
   jupyterfab:
     build:
       context: .

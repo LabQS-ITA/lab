@@ -829,8 +829,9 @@ def config_by_user(spawner):
         }
 
 c.DockerSpawner.allowed_images = {
-    "cuda12":"labqs/jupyterfab",
-    "lab":"labqs/jupyterlab",
+    "cuda12": "labqs/jupyterfab",
+    "ssm": "labqs/jupyterssm",
+    "lab": "labqs/jupyterlab",
 }
 
 c.DockerSpawner.pre_spawn_hook = config_by_user

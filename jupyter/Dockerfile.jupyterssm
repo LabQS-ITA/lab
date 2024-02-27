@@ -10,6 +10,7 @@ USER root
 
 # Git
 RUN mamba install --quiet --yes \
+    'triton' \
     'jupyterlab-git' \
     'python-decouple' \
     'webdav4' \

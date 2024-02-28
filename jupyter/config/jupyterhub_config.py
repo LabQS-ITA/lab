@@ -804,6 +804,10 @@ def config_by_user(spawner):
             'jupyterhub-user-{username}': notebook_dir,
             'fabdata': {"bind": '/home/jovyan/work/fabdata', "mode": "rw"},
         }
+
+        c.DockerSpawner.allowed_images = {
+            "cuda12": "labqs/jupyterfab",
+        }
     elif username in mec:
         spawner.volumes = {
             'jupyterhub-user-{username}': notebook_dir,
@@ -811,10 +815,19 @@ def config_by_user(spawner):
             'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
             'flualfadata': {"bind": "/home/jovyan/work/flualfadata", "mode": "ro"},
         }
+
+        c.DockerSpawner.allowed_images = {
+            "lab": "labqs/jupyterlab",
+        }
     elif username in acd:
         spawner.volumes = {
             'jupyterhub-user-{username}': notebook_dir,
             'jupyteracd': {"bind": '/home/jovyan/work/acd', "mode": "rw"},
+        }
+
+        c.DockerSpawner.allowed_images = {
+            "ssm": "labqs/jupyterssm",
+            "qis": "labqs/jupyterqis",
         }
     elif username in acdiec:
         spawner.volumes = {
@@ -823,17 +836,22 @@ def config_by_user(spawner):
             'jupyteracd': {"bind": '/home/jovyan/work/acd', "mode": "rw"},
             'jupyteracdiec': {"bind": '/home/jovyan/work/acdiec', "mode": "rw"},
         }
+
+        c.DockerSpawner.allowed_images = {
+            "cuda12": "labqs/jupyterfab",
+            "ssm": "labqs/jupyterssm",
+            "qis": "labqs/jupyterqis",
+            "lab": "labqs/jupyterlab",
+        }
     else:
         spawner.volumes = {
             'jupyterhub-user-{username}': notebook_dir,
         }
 
-c.DockerSpawner.allowed_images = {
-    "cuda12": "labqs/jupyterfab",
-    "ssm": "labqs/jupyterssm",
-    "qis": "labqs/jupyterqis",
-    "lab": "labqs/jupyterlab",
-}
+        c.DockerSpawner.allowed_images = {
+            "cuda12": "labqs/jupyterfab",
+            "lab": "labqs/jupyterlab",
+        }
 
 c.DockerSpawner.pre_spawn_hook = config_by_user
 

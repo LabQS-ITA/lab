@@ -328,6 +328,7 @@ function jupyterBuild() {
     docker build --tag labqs/jupyterlab --file Dockerfile.jupyterlab --rm .
     docker build --tag labqs/jupyterfab --file Dockerfile.jupyterfab --rm .
     docker build --tag labqs/jupyterssm --file Dockerfile.jupyterssm --rm .
+    docker build --tag labqs/jupyterssm --file Dockerfile.jupyterqis --rm .
     docker compose -f stack.yaml -f ../common/networks.yaml -f ../common/volumes.$1.yaml up --build --detach jupyter
 
 }

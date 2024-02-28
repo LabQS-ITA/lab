@@ -1,5 +1,22 @@
 services:
 
+  jupyterqis:
+    build:
+      context: .
+      dockerfile: Dockerfile.jupyterqis
+      target: jupyterqisbase
+    networks:
+      - netlab01
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    environment:
+      JUPYTER_HOST: jupyter
+
   jupyterssm:
     build:
       context: .

@@ -16,6 +16,8 @@ USER root
 # features (e.g., download as all possible file formats)
 RUN apt-get update --yes && \
     apt-get install --yes --no-install-recommends \
+    rar \
+    unrar \
     fonts-liberation \
     # - pandoc is used to convert notebooks to html files
     #   it's not present in aarch64 ubuntu image, so we install it here
@@ -24,8 +26,6 @@ RUN apt-get update --yes && \
     #   than one unique  instance  of  some  command with a unique set of arguments,
     #   we use `run-one-constantly` to support `RESTARTABLE` option
     run-one && \
-    rar && \
-    unrar && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 USER ${NB_UID}

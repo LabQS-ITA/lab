@@ -810,7 +810,7 @@ def config_by_user(spawner):
         }
 
         c.DockerSpawner.allowed_images = {
-            # "cuda12": "labqs/jupyterfab",
+            "cuda12": "labqs/jupyterfab",
             "lab": "labqs/jupyterlab",
         }
     elif username in mec:
@@ -831,8 +831,8 @@ def config_by_user(spawner):
         }
 
         c.DockerSpawner.allowed_images = {
-            # "ssm": "labqs/jupyterssm",
-            # "qis": "labqs/jupyterqis",
+            "ssm": "labqs/jupyterssm",
+            "qis": "labqs/jupyterqis",
             "lab": "labqs/jupyterlab",
         }
     elif username in acdiec:
@@ -844,9 +844,9 @@ def config_by_user(spawner):
         }
 
         c.DockerSpawner.allowed_images = {
-            # "cuda12": "labqs/jupyterfab",
-            # "ssm": "labqs/jupyterssm",
-            # "qis": "labqs/jupyterqis",
+            "cuda12": "labqs/jupyterfab",
+            "ssm": "labqs/jupyterssm",
+            "qis": "labqs/jupyterqis",
             "lab": "labqs/jupyterlab",
         }
     else:
@@ -855,7 +855,7 @@ def config_by_user(spawner):
         }
 
         c.DockerSpawner.allowed_images = {
-            # "cuda12": "labqs/jupyterfab",
+            "cuda12": "labqs/jupyterfab",
             "lab": "labqs/jupyterlab",
         }
 

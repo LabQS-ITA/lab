@@ -18,6 +18,7 @@ RUN apt-get update --yes && \
     apt-get install --yes --no-install-recommends \
     rar \
     unrar \
+    rsync \
     fonts-liberation \
     # - pandoc is used to convert notebooks to html files
     #   it's not present in aarch64 ubuntu image, so we install it here

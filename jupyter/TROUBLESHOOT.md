@@ -1,3 +1,10 @@
+# Apagar imagens inativas
+
+```sh
+docker images | grep none | awk '{ system("docker rmi " $3) }'
+```
+
+
 # NVidia / Jupyter
 
 
@@ -5,9 +12,9 @@ Se não conseguimos ativar o container Jupyter, pode ser que o sistema operacion
 
 Listar o driver:
 
-````
+```
 nvidia-smi
-````
+```
 
 Se der ERROR, listar os módulos:
 

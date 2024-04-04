@@ -4,6 +4,12 @@
 docker images | grep none | awk '{ system("docker rmi " $3) }'
 ```
 
+## Limpar objetos Docker inúteis
+
+```sh
+docker system prune -a -f
+```
+
 
 # NVidia / Jupyter
 
@@ -12,13 +18,13 @@ Se não conseguimos ativar o container Jupyter, pode ser que o sistema operacion
 
 Listar o driver:
 
-```
+```sh
 nvidia-smi
 ```
 
 Se der ERROR, listar os módulos:
 
-```
+```sh
 lsmod | grep nvidia
 
 nvidia_uvm           1216512  0
@@ -31,7 +37,7 @@ drm                   495616  7 drm_kms_helper,drm_vram_helper,nvidia,mgag200,nv
 
 Remover os módulos:
 
-```
+```sh
 sudo rmmod nvidia_drm
 sudo rmmod nvidia_modeset
 sudo rmmod nvidia_uvm
@@ -39,24 +45,24 @@ sudo rmmod nvidia_uvm
 
 Se não conseguir remover, listar quem está usando:
 
-```
+```sh
 sudo lsof /dev/nvidia*
 ```
 
 E matar todo mundo, e repetir "Remover os módulos":
 
-```
+```sh
 sudo kill kill kill
 ```
 
 Confirmar que ficou tudo limpo:
 
-```
+```sh
 lsmod | grep nvidia
 ```
 
 Testar novamente e em seguinda podemos validar iniciando o container Jupyter:
 
-```
+```sh
 nvidia-smi
 ```

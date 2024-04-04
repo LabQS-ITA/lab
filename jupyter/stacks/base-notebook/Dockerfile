@@ -24,6 +24,8 @@ RUN apt-get update --yes && \
     #   than one unique  instance  of  some  command with a unique set of arguments,
     #   we use `run-one-constantly` to support `RESTARTABLE` option
     run-one && \
+    rar && \
+    unrar && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 USER ${NB_UID}

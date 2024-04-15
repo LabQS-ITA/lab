@@ -2,19 +2,11 @@ volumes:
 
   flualfadata:
     name: flualfadata
-    driver: local
-    driver_opts:
-      type: none
-      device: /import/flualfadata/documents
-      o: bind
+    external: true
 
   fabdata:
     name: fabdata
-    driver: local
-    driver_opts:
-      type: none
-      device: /import/hom.labqs/fab
-      o: bind
+    driver: external
 
   certificates:
     name: certificates
@@ -22,19 +14,11 @@ volumes:
 
   jupyterdata:
     name: jupyterdata
-    driver: local
-    driver_opts:
-      type: none
-      device: /export/data/jupyterdata
-      o: bind
+    external: true
 
   jupytershared:
     name: jupytershared
-    driver: local
-    driver_opts:
-      type: none
-      device: /export/data/jupytershared
-      o: bind
+    external: true
 
   jupyteracd:
     name: jupyteracd

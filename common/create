@@ -11,7 +11,8 @@ if [ $1 == "ia" ]; then
     docker volume create -d local -o type=none -o device="/export/data/jupytershared" -o o=bind jupytershared
 
     sudo chown gpes:users /import/hom.labqs/fab
-    sudo chown gpes:users /volumes/flualfadata/_data
-    sudo chown gpes:users /volumes/jupyterdata/_data
-    sudo chown gpes:users /volumes/jupytershared/_data
+    sudo chown gpes:users /import/flualfadata
+    sudo chown -R gpes:users /volumes/docker/images/volumes/flualfadata
+    sudo chown -R gpes:users /volumes/docker/images/volumes/jupyterdata
+    sudo chown -R gpes:users /volumes/docker/images/volumes/jupytershared
 fi

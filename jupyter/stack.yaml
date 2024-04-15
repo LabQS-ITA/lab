@@ -77,6 +77,7 @@ services:
       args:
       - GPES_PASSWORD=${SVC_PWD}
       - GPES_DEV_PASSWORD=${SVC_DEV_PWD}
+      - GPES_USR_PASSWORD=${SVC_USR_PWD}
     restart: unless-stopped
     ports:
       - '8000:8000'

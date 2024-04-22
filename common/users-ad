@@ -7,6 +7,7 @@ function create_user_noexpire() {
     usermod --password $(echo $2 | openssl passwd -1 -stdin) $1
     usermod -a -G users $1
     usermod -a -G acd $1
+    chage -E 2024-07-31 $1
 
 }
 

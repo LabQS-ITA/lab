@@ -3,8 +3,8 @@ set -euo pipefail
 
 function create_user_noexpire() {
 
-    sudo adduser --disabled-password --gecos "" $1
-    sudo usermod --password $(echo $2 | openssl passwd -1 -stdin) $1
+    adduser --disabled-password --gecos "" $1
+    usermod --password $(echo $2 | openssl passwd -1 -stdin) $1
 
 }
 

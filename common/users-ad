@@ -5,6 +5,8 @@ function create_user_noexpire() {
 
     adduser --disabled-password --gecos "" $1
     usermod --password $(echo $2 | openssl passwd -1 -stdin) $1
+    usermod -a -G users $1
+    usermod -a -G acd $1
 
 }
 

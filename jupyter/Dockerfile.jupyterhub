@@ -40,4 +40,24 @@ RUN pip install --upgrade pip && \
     adduser --disabled-password --gecos "" renatocraf && \
     usermod --password $(echo ${GPES_USR_PASSWORD} | openssl passwd -1 -stdin) renatocraf && \
     usermod -a -G users renatocraf && \
-    usermod -a -G fab renatocraf
+    usermod -a -G fab renatocraf && \
+    adduser --disabled-password --gecos "" stephanie && \
+    usermod --password $(echo ${GPES_USR_PASSWORD} | openssl passwd -1 -stdin) stephanie && \
+    usermod -a -G users stephanie && \
+    usermod -a -G fab stephanie && \
+    adduser --disabled-password --gecos "" strauss && \
+    usermod --password $(echo ${GPES_USR_PASSWORD} | openssl passwd -1 -stdin) strauss && \
+    usermod -a -G users strauss && \
+    usermod -a -G fab strauss && \
+    adduser --disabled-password --gecos "" pedro && \
+    usermod --password $(echo ${GPES_USR_PASSWORD} | openssl passwd -1 -stdin) pedro && \
+    usermod -a -G users pedro && \
+    usermod -a -G fab pedro && \
+    adduser --disabled-password --gecos "" victor && \
+    usermod --password $(echo ${GPES_USR_PASSWORD} | openssl passwd -1 -stdin) victor && \
+    usermod -a -G users victor && \
+    usermod -a -G fab victor && \
+    adduser --disabled-password --gecos "" diego && \
+    usermod --password $(echo ${GPES_USR_PASSWORD} | openssl passwd -1 -stdin) diego && \
+    usermod -a -G users diego && \
+    usermod -a -G fab diego && \

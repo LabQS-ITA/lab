@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+function create_user_noexpire() {
+
+    sudo adduser --disabled-password --gecos "" $1
+    sudo usermod --password $(echo $2 | openssl passwd -1 -stdin) $1
+
+}
+
+create_user_noexpire stephanie 1e5474eb5c098f12 # stephanie.osza@gmail.com
+create_user_noexpire strauss 99121028f3c2104c   # engsts@gmail.com
+create_user_noexpire pedro cbe7c74a238e9253     # pedromotta321a@gmail.com
+create_user_noexpire victor 896b9143ceb0fdcb    # vivictoaraujo@gmail.com
+create_user_noexpire diego e2357efcbd288c31     # diegofnrj@gmail.com

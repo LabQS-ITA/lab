@@ -800,51 +800,56 @@ def config_by_user(spawner):
     username = spawner.user.name
 
 
-    spawner.volumes = {
-        'jupyterhub-user-{username}': notebook_dir,
-        'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
-    }
-
-    c.DockerSpawner.allowed_images = {
-        "lab": "labqs/jupyterlab",
-    }
-
-
     if username in fab:
         spawner.volumes = {
+            'jupyterhub-user-{username}': notebook_dir,
+            'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
             'fabdata': {"bind": '/home/jovyan/work/fabdata', "mode": "rw"},
         }
 
         c.DockerSpawner.allowed_images = {
+            "lab": "labqs/jupyterlab",
             "cuda12": "labqs/jupyterfab",
         }
 
     if username in mec:
         spawner.volumes = {
+            'jupyterhub-user-{username}': notebook_dir,
+            'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
             'jupyterdata': {"bind": '/home/jovyan/work/data', "mode": "ro"},
             'flualfadata': {"bind": "/home/jovyan/work/flualfadata", "mode": "ro"},
         }
 
+        c.DockerSpawner.allowed_images = {
+            "lab": "labqs/jupyterlab",
+        }
+
     if username in acd:
         spawner.volumes = {
+            'jupyterhub-user-{username}': notebook_dir,
+            'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
             'jupyteracd': {"bind": '/home/jovyan/work/acd', "mode": "rw"},
         }
 
         c.DockerSpawner.allowed_images = {
+            "lab": "labqs/jupyterlab",
             "ssm": "labqs/jupyterssm",
             "qis": "labqs/jupyterqis",
         }
 
     if username in acdiec:
         spawner.volumes = {
+            'jupyterhub-user-{username}': notebook_dir,
+            'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
             'jupyteracd': {"bind": '/home/jovyan/work/acd', "mode": "rw"},
             'jupyteracdiec': {"bind": '/home/jovyan/work/acdiec', "mode": "rw"},
         }
 
         c.DockerSpawner.allowed_images = {
-            "cuda12": "labqs/jupyterfab",
+            "lab": "labqs/jupyterlab",
             "ssm": "labqs/jupyterssm",
             "qis": "labqs/jupyterqis",
+            "cuda12": "labqs/jupyterfab",
         }
 
 c.DockerSpawner.pre_spawn_hook = config_by_user

@@ -827,6 +827,7 @@ def config_by_user(spawner):
     elif username in acd:
         spawner.volumes = {
             'jupyterhub-user-{username}': notebook_dir,
+            'jupytershared': {"bind": '/home/jovyan/work/shared', "mode": "rw"},
             'jupyteracd': {"bind": '/home/jovyan/work/acd', "mode": "rw"},
         }
 

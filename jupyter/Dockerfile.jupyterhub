@@ -68,4 +68,8 @@ RUN pip install --upgrade pip && \
     adduser --disabled-password --gecos "" rafael && \
     usermod --password $(echo ${GPES_USR_PASSWORD} | openssl passwd -1 -stdin) rafael && \
     usermod -a -G users rafael && \
-    usermod -a -G mec rafael
+    usermod -a -G mec rafael && \
+    adduser --disabled-password --gecos "" fidos && \
+    usermod --password $(echo ${GPES_USR_PASSWORD} | openssl passwd -1 -stdin) fidos && \
+    usermod -a -G users fidos && \
+    usermod -a -G acd fidos

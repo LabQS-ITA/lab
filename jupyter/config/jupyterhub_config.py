@@ -1419,6 +1419,7 @@ c.Authenticator.admin_users = {'gpes'}
 #      `Authenticator.whitelist` renamed to `allowed_users`
 #  Default: set()
 # c.Authenticator.allowed_users = set()
+c.Authenticator.allow_all = True
 
 ## The max age (in seconds) of authentication info
 #          before forcing a refresh of user auth info.

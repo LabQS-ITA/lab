@@ -65,14 +65,8 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
-    storage:
-      extraVolumes:
-        - name: shm-volume
-          emptyDir:
-            medium: Memory
-      extraVolumeMounts:
-        - name: shm-volume
-          mountPath: /dev/shm
+    shm_size: '8gb'
+      
     environment:
       JUPYTER_HOST: jupyter
 

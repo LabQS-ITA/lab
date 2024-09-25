@@ -22,7 +22,7 @@ RUN apt-get update --yes && \
     gfortran \
     gcc \
     git-lfs \
-    nvidia-cuda-toolkit \
+    # nvidia-cuda-toolkit \
     apt-transport-https \
     # OpenJDK 11 is installed as a dependecy for PySpark
     openjdk-11-jdk && \

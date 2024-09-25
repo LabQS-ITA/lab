@@ -83,9 +83,11 @@ systemctl restart docker
 
 ### Testar instalação
 ```sh
-docker run --rm --gpus all nvidia/cuda:11.6.2-base-ubuntu20.04 nvidia-smi
+docker run --rm --gpus all nvidia/cuda:12.4.1-base-ubuntu20.04 nvidia-smi
 ```
 
-## Configuração CUDA, Pytorch
+## Configuração driver Nvidia, CUDA & Pytorch
+
+![](./images/nvidia-cuda.png)
 
 ![](./images/pytorch-cuda.png)

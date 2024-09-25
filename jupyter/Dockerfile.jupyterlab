@@ -68,10 +68,12 @@ RUN mamba install --quiet --yes \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
+# CUDA 12.4 compatibility
 RUN pip3 install \
     'torch' \
     'torchvision' \
-    'torchaudio' && \
+    'torchaudio' \
+    --index-url 'https://download.pytorch.org/whl/cu124' && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 

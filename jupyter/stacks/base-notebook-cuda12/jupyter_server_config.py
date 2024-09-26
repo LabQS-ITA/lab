@@ -11,6 +11,11 @@ c = get_config()  # noqa: F821
 c.ServerApp.ip = "0.0.0.0"
 c.ServerApp.open_browser = False
 
+# The Jupyter server will temporarily stop sending output
+# to the client in order to avoid crashing it.
+c.ServerApp.iopub_msg_rate_limit = 10000.0 # (msgs/sec)
+c.ServerApp.rate_limit_window = 30.0 # (secs)
+
 # to output both image/svg+xml and application/pdf plot formats in the notebook file
 c.InlineBackend.figure_formats = {"png", "jpeg", "svg", "pdf"}
 
